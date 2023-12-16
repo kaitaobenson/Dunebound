@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfyyn42ksngl"]
+
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://pixil-frame-0.png" id="1_puo0q"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_i0tvu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
+texture = ExtResource("1_puo0q")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_0pe5f"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jd2el")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
+radius = 15.0
+height = 34.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0pe5f")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_i0tvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(135, 377)
+shape = SubResource("CapsuleShape2D_hb2my")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(136, 378)
+texture = ExtResource("1_puo0q")
