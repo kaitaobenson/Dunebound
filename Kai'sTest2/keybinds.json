@@ -1,0 +1,9 @@
+{
+	"comment" : "keybinds are in a key-action name format",
+	"keybinds": [
+			{
+				"actionName" : "move-right",
+				"key" : "W"
+			}
+		]
+}

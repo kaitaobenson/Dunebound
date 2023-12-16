@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://des1qwhxxfd06"]
+
+[ext_resource type="Script" path="res://KeybindLoader.gd" id="1_o0njh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="KeybindLoader" type="Node" parent="."]
+script = ExtResource("1_o0njh")
