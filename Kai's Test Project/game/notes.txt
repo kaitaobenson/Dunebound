@@ -1,0 +1,3 @@
+this text file is for writing down things that other team members should be aware of
+
+it doesnt matter what the hitbox looks like in the editor, becuase its automatically positioned and resized at runtime with a handy script i made

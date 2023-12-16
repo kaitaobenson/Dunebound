@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3tfbw37yobnt"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_kle1q"]
+[ext_resource type="Script" path="res://controlHandler.gd" id="2_45cbd"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kle1q")
+
+[node name="playerSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="controlHandler" type="Node" parent="."]
+script = ExtResource("2_45cbd")
