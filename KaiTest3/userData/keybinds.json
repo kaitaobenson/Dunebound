@@ -1,0 +1,18 @@
+{
+	"comment" : "keybinds are in a key-action name format",
+	"comment2" : "the defaults are just some random things i set, feel free to change them",
+	"keybinds": [
+			{
+				"actionName" : "move-right",
+				"key" : "Right"
+			},
+			{
+				"actionName" : "ui_left",
+				"key" : "Left"
+			},
+			{
+				"actionName" : "ui_accept",
+				"key" : "Space"
+			}
+		]
+}
