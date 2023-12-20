@@ -18,6 +18,7 @@ func fireBullet()->void:
 		newBullet.set_meta("bulletActive",true)
 		get_tree().get_current_scene().add_child(newBullet)
 		newBullet.position = position 
+
 		newBullet.fire(self.rotation,get_meta("damage"),get_meta("bulletSpeed"))
 	else:
 		timer.stop()

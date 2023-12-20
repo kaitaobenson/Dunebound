@@ -19,6 +19,7 @@ metadata/bulletPerClip = 9
 metadata/damage = 3
 
 [node name="masterBullet" type="CharacterBody2D" parent="."]
+visible = false
 script = ExtResource("3_fy4pl")
 metadata/damage = 0
 metadata/distanceUntilSlowdown = 0
@@ -27,6 +28,7 @@ metadata/bulletActive = false
 [node name="hitbox" type="CollisionShape2D" parent="masterBullet"]
 position = Vector2(-1.5, 1)
 shape = SubResource("RectangleShape2D_d2di1")
+disabled = true
 
 [node name="sprite2D" type="Sprite2D" parent="masterBullet"]
 texture = ExtResource("4_3t11o")

@@ -2,6 +2,8 @@ extends CharacterBody2D
 signal hitByBullet
 # Called when the node enters the scene tree for the first time.
 func fire(angle,fdamage,speed)->void:
+	self.visible = true
+	self.get_node("hitbox").set_deferred("disabled", false)
 	set_meta("damage",fdamage)
 	self.rotation = angle
 	velocity.y = sin(angle)
