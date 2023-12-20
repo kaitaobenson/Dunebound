@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const gravity = 500;
+@onready var anim = get_node("AnimationPlayer")
+@onready var animSprite = get_node("AnimatedSprite2D")
 
 func ready():
 	pass;
@@ -20,17 +22,26 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#its my keybind systems time to shine!
 	var direction = Input.get_axis("ui_left", "move-right")
-
 	
 	#horiz movement
-	if direction:
+	if velocity.x == 0:
+		anim.stop()
+	
+	if direction == 1:
+		print("right")
+		anim.play("Run")
+		animSprite.flip_h = false
+		
 		velocity.x = direction * SPEED
-		if velocity.y == 0:
-			pass;
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y == 0:
-			pass;
+	if direction == -1:
+		print("left")
+		anim.play("Run")
+		animSprite.flip_h = true
+		
+		velocity.x = direction * SPEED
+	if direction == 0:
+		velocity.x = 0
+
 	if velocity.y > 0:
 		pass;
 
