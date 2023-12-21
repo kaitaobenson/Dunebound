@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://oqb4x3h5pj8"]
 
-[ext_resource type="Texture2D" uid="uid://b8iouluube11q" path="res://icon.svg" id="1_akmww"]
-[ext_resource type="Script" path="res://gunHandler.gd" id="2_aj006"]
-[ext_resource type="Script" path="res://bulletHandler.gd" id="3_fy4pl"]
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://pixil-frame-0.png" id="4_3t11o"]
+[ext_resource type="Texture2D" uid="uid://b8iouluube11q" path="res://Assets/Textures/icon.svg" id="1_g7jmv"]
+[ext_resource type="Script" path="res://Scripts/gunHandler.gd" id="2_wsd3y"]
+[ext_resource type="Script" path="res://Scripts/bulletHandler.gd" id="3_3gmno"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="4_ed2w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2di1"]
 size = Vector2(29, 30)
 
 [node name="linearGun" type="Sprite2D"]
 position = Vector2(479, 305)
-texture = ExtResource("1_akmww")
-script = ExtResource("2_aj006")
+texture = ExtResource("1_g7jmv")
+script = ExtResource("2_wsd3y")
 metadata/bulletSpeed = 400
 metadata/reloadTime = 2.0
 metadata/shotSpeed = 0.5
@@ -20,7 +20,7 @@ metadata/damage = 3
 
 [node name="masterBullet" type="CharacterBody2D" parent="."]
 visible = false
-script = ExtResource("3_fy4pl")
+script = ExtResource("3_3gmno")
 metadata/damage = 0
 metadata/distanceUntilSlowdown = 0
 metadata/bulletActive = false
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_d2di1")
 disabled = true
 
 [node name="sprite2D" type="Sprite2D" parent="masterBullet"]
-texture = ExtResource("4_3t11o")
+texture = ExtResource("4_ed2w3")
 
 [node name="activeBullets" type="Node" parent="."]
 

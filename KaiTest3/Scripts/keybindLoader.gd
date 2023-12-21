@@ -38,16 +38,17 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	lerawjson.close()
 	reloadKeybinds()
 	return true
+	
 func reloadKeybinds():
 	if(!FileAccess.file_exists("user://keybinds.json")):
 		var g = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
-		var res = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var res = FileAccess.open("res://UserData/keybinds.json",FileAccess.READ)
 		g.store_string(res.get_as_text())
 		g.close()
 		res.close()
+		
 	var keybindConfig = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var configText = keybindConfig.get_as_text()
-	print(configText)
 	actions = InputMap.get_actions()
 	
 	for d in actions.size():
@@ -61,6 +62,7 @@ func reloadKeybinds():
 		
 	keybindConfig.close()
 	print(InputMap.get_actions())
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reloadKeybinds()

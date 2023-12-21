@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://bfyyn42ksngl"]
 
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://pixil-frame-0.png" id="1_puo0q"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_i0tvu"]
-[ext_resource type="Script" path="res://keybindLoader.gd" id="3_ch58k"]
-[ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://gun.tscn" id="3_yelqt"]
-[ext_resource type="Script" path="res://UIgenerator.gd" id="5_a461o"]
-[ext_resource type="Script" path="res://keybindUIOpenerTest.gd" id="5_ah6qw"]
-[ext_resource type="Script" path="res://keybindUIButtonHandler.gd" id="6_3w8vr"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
+[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
+[ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
+[ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
+[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
+[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
-texture = ExtResource("1_puo0q")
+texture = ExtResource("1_mpd0d")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -35,7 +35,7 @@ layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(100, 0)
-script = ExtResource("2_i0tvu")
+script = ExtResource("2_44nkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(135, 377)
@@ -43,16 +43,16 @@ shape = SubResource("CapsuleShape2D_hb2my")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(136, 378)
-texture = ExtResource("1_puo0q")
+texture = ExtResource("1_mpd0d")
 
 [node name="keybindHandler" type="Node" parent="."]
-script = ExtResource("3_ch58k")
+script = ExtResource("3_cnpip")
 
-[node name="Gun" parent="." instance=ExtResource("3_yelqt")]
+[node name="Gun" parent="." instance=ExtResource("4_g0evl")]
 position = Vector2(363, 506)
 
 [node name="uiContainer" type="Node2D" parent="."]
-script = ExtResource("5_ah6qw")
+script = ExtResource("5_grjk8")
 
 [node name="ColorRect" type="ColorRect" parent="uiContainer"]
 offset_right = 1160.0
@@ -65,7 +65,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 100.0
-script = ExtResource("5_a461o")
+script = ExtResource("6_bt4hm")
 
 [node name="Label" type="Label" parent="uiContainer"]
 offset_left = 5.0
@@ -79,5 +79,5 @@ text = "press button to change keybind, use ticker to cycle between alternate ke
 [node name="keybindButton" type="Button" parent="Templates"]
 offset_right = 8.0
 offset_bottom = 8.0
-script = ExtResource("6_3w8vr")
+script = ExtResource("7_oiap5")
 metadata/action = &""
