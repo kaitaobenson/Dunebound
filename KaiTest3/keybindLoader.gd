@@ -16,7 +16,7 @@ func Unparse():
 	
 func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	var bufferParse:JSON = JSON.new()
-	var lerawjson = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+	var lerawjson = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var lejson = lerawjson.get_as_text()
 	bufferParse.parse(lejson)
 	
@@ -33,14 +33,21 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 		return false
 		
 	leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
-	lerawjson = FileAccess.open("res://userData/keybinds.json",FileAccess.WRITE)
+	lerawjson = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 	lerawjson.store_string(bufferParse.stringify(leJsonBuffer,"\t"))
 	lerawjson.close()
 	reloadKeybinds()
 	return true
 func reloadKeybinds():
-	var keybindConfig = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+	if(!FileAccess.file_exists("user://keybinds.json")):
+		var g = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
+		var res = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		g.store_string(res.get_as_text())
+		g.close()
+		res.close()
+	var keybindConfig = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var configText = keybindConfig.get_as_text()
+	print(configText)
 	actions = InputMap.get_actions()
 	
 	for d in actions.size():

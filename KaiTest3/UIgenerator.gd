@@ -20,20 +20,23 @@ func reloadKeybindUI():
 		var newTicker = SpinBox.new()
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
-		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()
+		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
+		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newButton.position.x = 475
 		newTicker.value = 0
-		newButton.position.y  =retghghhvh*50
+		newButton.position.y  =retghghhvh*75+25
 		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = 10
-		newText.position.y =  retghghhvh*50
-		newTicker.position.y =  retghghhvh*50
-		newTicker.position.x = 300
+		newText.position.y =  retghghhvh*65
+		newTicker.position.y =  retghghhvh*75+25
+		newTicker.position.x = 700
 		newText.z_index =99
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
 		self.add_child(newText)
 		self.add_child(newTicker)
+		newButton.joob = newTicker
+		print("hi")
 		self.add_child(newButton)
-		newButton.set_meta("correspondingTicker",newTicker.get_path())
+		
 		
