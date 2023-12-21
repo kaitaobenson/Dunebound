@@ -14,7 +14,7 @@ func addInputAction(key:String,actionName:String):
 func Unparse():
 	pass
 	
-func changeKeybind(actionName:String,newKey:String)->bool:
+func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	var bufferParse:JSON = JSON.new()
 	var lerawjson = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
 	var lejson = lerawjson.get_as_text()
@@ -32,11 +32,11 @@ func changeKeybind(actionName:String,newKey:String)->bool:
 	if(foundActionNumber == -1):
 		return false
 		
-	leJsonBuffer["keybinds"][foundActionNumber]["key"] = newKey
+	leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
 	lerawjson = FileAccess.open("res://userData/keybinds.json",FileAccess.WRITE)
 	lerawjson.store_string(bufferParse.stringify(leJsonBuffer,"\t"))
 	lerawjson.close()
-	
+	reloadKeybinds()
 	return true
 func reloadKeybinds():
 	var keybindConfig = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
@@ -49,10 +49,11 @@ func reloadKeybinds():
 	Parse.parse(configText)
 	var parseData = Parse.data
 	for ygu in parseData["keybinds"].size():
-		addInputAction(parseData["keybinds"][ygu]["key"],parseData["keybinds"][ygu]["actionName"])
+		for hbnnkjjijo in parseData["keybinds"][ygu]["key"].size():
+			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
 		
 	keybindConfig.close()
-	
+	print(InputMap.get_actions())
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reloadKeybinds()

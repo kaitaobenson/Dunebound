@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=10 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://pixil-frame-0.png" id="1_puo0q"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_i0tvu"]
 [ext_resource type="Script" path="res://keybindLoader.gd" id="3_ch58k"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://gun.tscn" id="3_yelqt"]
+[ext_resource type="Script" path="res://UIgenerator.gd" id="5_a461o"]
+[ext_resource type="Script" path="res://keybindUIButtonHandler.gd" id="6_3w8vr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_puo0q")
@@ -47,3 +49,33 @@ script = ExtResource("3_ch58k")
 
 [node name="Gun" parent="." instance=ExtResource("3_yelqt")]
 position = Vector2(363, 506)
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_right = 1160.0
+offset_bottom = 648.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="Node2D"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_a461o")
+
+[node name="SpinBox" type="SpinBox" parent="Node2D"]
+offset_right = 83.0625
+offset_bottom = 31.0
+value = 100.0
+
+[node name="Templates" type="Node" parent="."]
+
+[node name="keybindButton" type="Button" parent="Templates"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("6_3w8vr")
+metadata/action = &""
+metadata/correspondingTicker = NodePath("")
