@@ -52,6 +52,8 @@ script = ExtResource("3_cnpip")
 position = Vector2(363, 506)
 
 [node name="uiContainer" type="Node2D" parent="."]
+visible = false
+z_index = 1
 script = ExtResource("5_grjk8")
 
 [node name="ColorRect" type="ColorRect" parent="uiContainer"]

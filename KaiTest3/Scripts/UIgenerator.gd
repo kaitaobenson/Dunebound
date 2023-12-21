@@ -29,10 +29,11 @@ func reloadKeybindUI():
 		newText.position.x = 10
 		newText.position.y =  retghghhvh*65
 		newTicker.position.y =  retghghhvh*75+25
-		newTicker.position.x = 700
 		newText.z_index =99
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
+		newButton.position.x = newText.text.length()*40
+		newTicker.position.x = newText.text.length()*55+newButton.text.length()*1
 		self.add_child(newText)
 		self.add_child(newTicker)
 		newButton.joob = newTicker
