@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const gravity = 500;
-
+var health:int = 100;
 func ready():
 	pass;
 func _physics_process(delta):
@@ -35,3 +35,14 @@ func _physics_process(delta):
 		pass;
 
 	move_and_slide()
+func _hitByBullet(damage:int):
+	print("hit by bullet")
+	doDamage(damage)
+func doDamage(damage:int):
+	health = health - damage
+	print(health)
+	if(health<0):
+		die()
+func die():
+	self.queue_free()
+	#whatever you wanna do when you die

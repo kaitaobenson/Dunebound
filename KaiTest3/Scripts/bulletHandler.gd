@@ -1,5 +1,4 @@
 extends CharacterBody2D
-signal hitByBullet
 # Called when the node enters the scene tree for the first time.
 func fire(angle,fdamage,speed)->void:
 	self.visible = true
@@ -14,7 +13,10 @@ func _ready():
 	velocity.y = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if move_and_collide(velocity*delta)&&get_meta("bulletActive"):
+	var collision = move_and_collide(velocity*delta)
+	if collision&&get_meta("bulletActive"):
 		var damage = get_meta("damage")
-		emit_signal("hitByBullet",damage)
+		print(damage+1000)
+		if (collision.get_collider().has_method("_hitByBullet")):
+			collision.get_collider()._hitByBullet(damage)
 		self.queue_free()

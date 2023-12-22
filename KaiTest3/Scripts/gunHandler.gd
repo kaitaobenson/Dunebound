@@ -7,6 +7,7 @@ func _ready():
 	#all timers in seconds (not milliseconds)
 	ammo = self.get_meta("bulletPerClip")
 	timer.wait_time = self.get_meta("shotSpeed")
+	print(timer.wait_time)
 	reloadTimer.wait_time = self.get_meta("reloadTime")
 	timer.connect("timeout",fireBullet)
 	timer.start()
