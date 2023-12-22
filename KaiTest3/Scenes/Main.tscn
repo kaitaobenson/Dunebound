@@ -87,4 +87,5 @@ metadata/action = &""
 
 [node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
 position = Vector2(568, 460)
+metadata/Damage = 1000000000
 metadata/shotSpeed = 0.05

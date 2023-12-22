@@ -15,6 +15,7 @@ func _ready():
 func _process(delta):
 	var collision = move_and_collide(velocity*delta)
 	if collision&&get_meta("bulletActive"):
+		print("hit")
 		var damage = get_meta("damage")
 		print(damage+1000)
 		if (collision.get_collider().has_method("_hitByBullet")):

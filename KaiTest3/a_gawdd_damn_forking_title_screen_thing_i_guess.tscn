@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuoerosfps357"]
+
+[ext_resource type="Script" path="res://menuHandler.gd" id="1_acmpq"]
+[ext_resource type="Script" path="res://logoDisplayHandler.gd" id="1_y88hk"]
+[ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://ogpc-team-logo.svg" id="2_uo4h8"]
+
+[node name="aGawddDamnForkingTitleScreenThingIGuess" type="Node2D"]
+script = ExtResource("1_acmpq")
+
+[node name="logo" type="Node2D" parent="."]
+script = ExtResource("1_y88hk")
+
+[node name="Sprite2D" type="Sprite2D" parent="logo"]
+z_index = 1
+position = Vector2(656, 464)
+texture = ExtResource("2_uo4h8")
+
+[node name="ColorRect" type="ColorRect" parent="logo"]
+offset_right = 1464.0
+offset_bottom = 827.0
+color = Color(0, 0, 0, 1)
+
+[node name="logoDisplayTimer" type="Timer" parent="logo"]
