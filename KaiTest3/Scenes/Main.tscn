@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=12 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
+[ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://fast_linear_gun.tscn" id="8_f5681"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_mpd0d")
@@ -83,3 +84,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("7_oiap5")
 metadata/action = &""
+
+[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
+position = Vector2(568, 460)
+metadata/shotSpeed = 0.05
