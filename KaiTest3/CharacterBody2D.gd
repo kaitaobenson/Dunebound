@@ -28,13 +28,11 @@ func _physics_process(delta):
 		anim.stop()
 	
 	if direction == 1:
-		print("right")
 		anim.play("Run")
 		animSprite.flip_h = false
 		
 		velocity.x = direction * SPEED
 	if direction == -1:
-		print("left")
 		anim.play("Run")
 		animSprite.flip_h = true
 		
