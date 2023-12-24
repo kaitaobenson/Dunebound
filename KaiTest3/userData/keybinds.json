@@ -1,18 +1,31 @@
 {
-	"comment" : "keybinds are in a key-action name format",
-	"comment2" : "the defaults are just some random things i set, feel free to change them",
+	"comment": "keybinds are in a array of keys-action name format",
+	"comment2": "the defaults are just some random things i set, feel free to change them",
 	"keybinds": [
-			{
-				"actionName" : "move-right",
-				"key" : "Right"
-			},
-			{
-				"actionName" : "ui_left",
-				"key" : "Left"
-			},
-			{
-				"actionName" : "ui_accept",
-				"key" : "Space"
-			}
-		]
+		{
+			"actionName": "openKeybindUI",
+			"key": [
+				"Equal"
+			]
+		},
+		{
+			"actionName": "move-right",
+			"key": [
+				"Right",
+				"L"
+			]
+		},
+		{
+			"actionName": "ui_left",
+			"key": [
+				"Left"
+			]
+		},
+		{
+			"actionName": "ui_accept",
+			"key": [
+				"A"
+			]
+		}
+	]
 }

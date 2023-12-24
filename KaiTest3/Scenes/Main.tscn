@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfyyn42ksngl"]
+
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
+[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
+[ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
+[ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
+[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
+[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
+[ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://fast_linear_gun.tscn" id="8_f5681"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
+texture = ExtResource("1_mpd0d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_0pe5f"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jd2el")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
+radius = 15.0
+height = 34.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0pe5f")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(100, 0)
+script = ExtResource("2_44nkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(135, 377)
+shape = SubResource("CapsuleShape2D_hb2my")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(136, 378)
+texture = ExtResource("1_mpd0d")
+
+[node name="keybindHandler" type="Node" parent="."]
+script = ExtResource("3_cnpip")
+
+[node name="Gun" parent="." instance=ExtResource("4_g0evl")]
+position = Vector2(363, 506)
+
+[node name="uiContainer" type="Node2D" parent="."]
+visible = false
+z_index = 1
+script = ExtResource("5_grjk8")
+
+[node name="ColorRect" type="ColorRect" parent="uiContainer"]
+offset_right = 1160.0
+offset_bottom = 648.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("6_bt4hm")
+
+[node name="Label" type="Label" parent="uiContainer"]
+offset_left = 5.0
+offset_top = 586.0
+offset_right = 1151.0
+offset_bottom = 639.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="Templates" type="Node" parent="."]
+
+[node name="keybindButton" type="Button" parent="Templates"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("7_oiap5")
+metadata/action = &""
+
+[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
+position = Vector2(568, 460)
+metadata/Damage = 1000000000
+metadata/shotSpeed = 0.05
