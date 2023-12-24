@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://Assets/Textures/icon.svg"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/super/Downloads/godotmoviestuffthingy.avi"
+
 [rendering]
 
 renderer/rendering_method="mobile"

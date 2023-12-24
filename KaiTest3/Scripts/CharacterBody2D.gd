@@ -19,7 +19,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+ 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -52,7 +52,7 @@ func _hitByBullet(damage:int):
 func doDamage(damage:int):
 	health = health - damage
 	print(health)
-	if(health<0):
+	if(health<=0):
 		die()
 
 func die():
