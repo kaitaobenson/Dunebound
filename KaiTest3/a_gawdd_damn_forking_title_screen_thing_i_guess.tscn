@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://logoDisplayHandler.gd" id="1_y88hk"]
 [ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://ogpc-team-logo.svg" id="2_uo4h8"]
 
-[node name="aGawddDamnForkingTitleScreenThingIGuess" type="Node2D"]
+[node name="Title Screen" type="Node2D"]
 script = ExtResource("1_acmpq")
 
 [node name="logo" type="Node2D" parent="."]
