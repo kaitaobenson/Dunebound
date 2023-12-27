@@ -6,10 +6,9 @@ extends Node2D
 @onready var currentScene
 #all time based gun metadata in seconds
 func fireBullet():
-	print("ass")
 	var bulletClone = masterBullet.duplicate(15)
-	bulletClone.visible = true
-	bulletClone.set_meta("bulletActive",true)
+	#bulletClone.visible = true
+	#bulletClone.set_meta("bulletActive",true)
 	currentScene.add_child(bulletClone)
 	bulletClone.position = self.position
 	bulletClone.fire(self.rotation,get_meta("Damage"),get_meta("bulletSpeed"))

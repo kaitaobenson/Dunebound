@@ -11,7 +11,7 @@ size = Vector2(29, 30)
 [node name="fastLinearGun" type="CharacterBody2D"]
 position = Vector2(393, 193)
 script = ExtResource("1_stg35")
-metadata/Damage = 0
+metadata/Damage = 3
 metadata/reloadSpeed = 0
 metadata/clipSize = 10
 metadata/reloadTime = 0

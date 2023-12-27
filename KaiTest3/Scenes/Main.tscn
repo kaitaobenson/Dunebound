@@ -159,6 +159,7 @@ script = ExtResource("3_cnpip")
 
 [node name="Gun" parent="." instance=ExtResource("4_g0evl")]
 position = Vector2(363, 506)
+metadata/damage = 50
 
 [node name="uiContainer" type="Node2D" parent="."]
 visible = false

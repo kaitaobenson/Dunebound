@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuoerosfps357"]
 
-[ext_resource type="Script" path="res://menuHandler.gd" id="1_acmpq"]
-[ext_resource type="Script" path="res://logoDisplayHandler.gd" id="1_y88hk"]
-[ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://ogpc-team-logo.svg" id="2_uo4h8"]
+[ext_resource type="Script" path="res://menuHandler.gd" id="1_v02uc"]
+[ext_resource type="Script" path="res://logoDisplayHandler.gd" id="2_w6wqj"]
+[ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://ogpc-team-logo.svg" id="3_cpdny"]
 
 [node name="Title Screen" type="Node2D"]
-script = ExtResource("1_acmpq")
+script = ExtResource("1_v02uc")
 
 [node name="logo" type="Node2D" parent="."]
-script = ExtResource("1_y88hk")
+script = ExtResource("2_w6wqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="logo"]
 z_index = 1
 position = Vector2(656, 464)
-texture = ExtResource("2_uo4h8")
+texture = ExtResource("3_cpdny")
 
 [node name="ColorRect" type="ColorRect" parent="logo"]
 offset_right = 1464.0
