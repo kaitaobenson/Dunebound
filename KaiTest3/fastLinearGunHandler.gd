@@ -16,12 +16,8 @@ func fireBullet():
 func _ready():
 	currentScene = get_tree().get_current_scene()
 func _physics_process(delta):
-	print("ahhhhhhhh godot code make me insane")
-	print(timePerShotIncrementer)
-	print(timePerShotIncrementer>=self.get_meta("shotSpeed"))
 	timePerShotIncrementer += delta/2
 	if(shotsFired>=self.get_meta("clipSize")):
-		print("shit")
 		if(shotsFired==self.get_meta("clipSize")):
 			reloadTimeCounter = 0
 			shotsFired += 1
