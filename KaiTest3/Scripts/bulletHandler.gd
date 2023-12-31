@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var collision = move_and_collide(velocity*delta)
-	if collision&&get_meta("bulletActive"):
+	if collision:
 		print("hit")
 		var damage = get_meta("damage")
 		print(damage+1000)

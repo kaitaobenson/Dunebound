@@ -26,6 +26,12 @@
 			"key": [
 				"A"
 			]
+		},
+		{
+			"actionName": "pause_toggle",
+			"key": [
+				"Escape"
+			]
 		}
 	]
 }

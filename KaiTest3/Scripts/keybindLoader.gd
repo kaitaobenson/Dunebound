@@ -3,7 +3,14 @@ extends Node
 
 @onready var actions:Array = []
 var Parse:JSON = JSON.new()
-
+func makeDefaultKeybinds()->void:
+	#uncomment the line below and delete the line below that line once its time to deploy to production
+	#if(!FileAccess.file_exists("user://keybinds.json")):
+	if(true):
+		var parse:JSON = JSON.new()
+		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
+		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 func addInputAction(key:String,actionName:String):
 	var donger = OS.find_keycode_from_string(key)
 	var dingdongdingalongadingdongdee:InputEventKey = InputEventKey.new()
@@ -65,4 +72,9 @@ func reloadKeybinds():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	makeDefaultKeybinds()
 	reloadKeybinds()
+#handle pausing in keybindhandler, because why the hell not
+func _process(delta):
+		if(Input.is_action_just_pressed("pause_toggle")):
+			get_parent().get_node("PauseScreen/ColorRect").pause()

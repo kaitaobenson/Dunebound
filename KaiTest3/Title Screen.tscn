@@ -12,12 +12,14 @@ script = ExtResource("2_w6wqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="logo"]
 z_index = 1
-position = Vector2(656, 464)
+position = Vector2(570, 378)
 texture = ExtResource("3_cpdny")
 
 [node name="ColorRect" type="ColorRect" parent="logo"]
-offset_right = 1464.0
-offset_bottom = 827.0
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 1408.0
+offset_bottom = 763.0
 color = Color(0, 0, 0, 1)
 
 [node name="logoDisplayTimer" type="Timer" parent="logo"]

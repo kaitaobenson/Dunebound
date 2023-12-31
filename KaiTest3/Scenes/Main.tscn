@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=26 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
 [ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://fast_linear_gun.tscn" id="8_f5681"]
+[ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_mpd0d")
@@ -198,3 +199,14 @@ metadata/action = &""
 position = Vector2(568, 460)
 metadata/Damage = 1000000000
 metadata/shotSpeed = 0.05
+
+[node name="PauseScreen" type="Node2D" parent="."]
+visible = false
+z_index = 12
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+process_mode = 2
+offset_right = 1700.0
+offset_bottom = 1060.0
+color = Color(0.184314, 0.184314, 0.184314, 0.945098)
+script = ExtResource("10_8dq1e")
