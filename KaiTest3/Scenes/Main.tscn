@@ -163,6 +163,7 @@ position = Vector2(363, 506)
 metadata/damage = 50
 
 [node name="uiContainer" type="Node2D" parent="."]
+process_mode = 3
 visible = false
 z_index = 1
 script = ExtResource("5_grjk8")
