@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
-[ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://fast_linear_gun.tscn" id="8_f5681"]
+[ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://Scenes/fast_linear_gun.tscn" id="8_f5681"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]

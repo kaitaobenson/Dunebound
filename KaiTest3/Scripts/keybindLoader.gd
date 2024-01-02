@@ -19,7 +19,7 @@ func addInputAction(key:String,actionName:String):
 	InputMap.action_add_event(actionName,dingdongdingalongadingdongdee)
   
 func Unparse():
-	pass
+	print("what the fuck is wrong with you why would you call this stupidass function")
 	
 func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	var bufferParse:JSON = JSON.new()
