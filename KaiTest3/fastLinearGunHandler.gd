@@ -12,7 +12,6 @@ func fireBullet():
 	currentScene.add_child(bulletClone)
 	bulletClone.position = self.position
 	bulletClone.fire(self.rotation,get_meta("Damage"),get_meta("bulletSpeed"))
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	currentScene = get_tree().get_current_scene()
 func _physics_process(delta):

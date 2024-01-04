@@ -19,7 +19,6 @@ metadata/bulletSpeed = 400
 metadata/shotSpeed = 1.0
 
 [node name="masterBullet" type="CharacterBody2D" parent="."]
-visible = false
 script = ExtResource("2_4my08")
 
 [node name="hitbox" type="CollisionShape2D" parent="masterBullet"]

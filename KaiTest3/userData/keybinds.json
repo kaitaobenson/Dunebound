@@ -9,6 +9,12 @@
 			]
 		},
 		{
+			"actionName": "mouseClick",
+			"key": [
+				"MOuse"
+			]
+		},
+		{
 			"actionName": "move-right",
 			"key": [
 				"Right",

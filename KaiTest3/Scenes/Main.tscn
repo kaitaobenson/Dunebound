@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=27 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="Texture2D" uid="uid://b71wd0v54lri5" path="res://Walk_amination.png" id="3_eh27g"]
+[ext_resource type="PackedScene" uid="uid://6y0e01p1abtp" path="res://grapple_hook.tscn" id="4_8iffy"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
@@ -136,14 +137,13 @@ animations = [{
 tile_set = SubResource("TileSet_0pe5f")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0)
+layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(132, 26)
 script = ExtResource("2_44nkk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(98, 367)
 shape = SubResource("CapsuleShape2D_hb2my")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
@@ -152,8 +152,10 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(97, 366)
 sprite_frames = SubResource("SpriteFrames_dpc2o")
+
+[node name="grappleHook" parent="Player" instance=ExtResource("4_8iffy")]
+metadata/hookSpeed = 100
 
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")
