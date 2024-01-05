@@ -27,7 +27,7 @@ func _ready():
 	#self.connect("tree_exiting",die())
 func _physics_process(delta):
 	print(checkForEntity(get_viewport().get_mouse_position()))
-	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)&&!mousePressed&&checkForEntity(get_viewport().get_mouse_position())):
+	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)&&!(activeGrappleGoUp||activeGrappleShooting)&&checkForEntity(get_viewport().get_mouse_position())):
 		mousePressed = true
 		activeGrappleShooting = true
 		activeGrappleGoUp = false
@@ -38,20 +38,28 @@ func _physics_process(delta):
 		hook = get_node("hookTemplate").duplicate(15)
 		hook.position = self.get_parent().position
 		hook.rotation = (grappleTargetLocation - hook.position).normalized().angle()
-		hook.velocity = Vector2(sin(hook.rotation),cos(hook.rotation))*self.get_meta("hookSpeed")
+		hook.velocity = Vector2(sin(hook.rotation),cos(hook.rotation))*delta*self.get_meta("hookSpeed")
 		hook.get_node("hitbox").set_deferred("disabled",false)
 		sceneRoot.add_child(rope)
 		sceneRoot.add_child(hook)
 		print(hook.velocity)
-	if(activeGrappleShooting&&!activeGrappleGoUp):
-		hook.rotation = (grappleTargetLocation - hook.position).normalized().angle()
-		hook.velocity = Vector2(cos(hook.rotation),sin(hook.rotation))*self.get_meta("hookSpeed")
-		print(hook.velocity)
-		var goofing = hook.move_and_collide(hook.velocity*delta)
-		rope.set_point_position(1,hook.position)
-		rope.set_point_position(0,self.get_parent().position)
-		if(goofing&&!goofing.get_collider().has_method("noGrapple")):
-			#grapple hook hit something. start going up!
+	if(mousePressed):
+		if(!Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+			self.get_parent().grappleDownProcessActive = false
+			hook.queue_free()
+			rope.queue_free()
 			activeGrappleShooting = false
-			activeGrappleGoUp = true
-			self.get_parent().grappleDown()
+			activeGrappleGoUp = false
+			mousePressed = false
+			return
+		if(activeGrappleShooting&&!activeGrappleGoUp):
+			hook.rotation = (grappleTargetLocation - hook.position).normalized().angle()
+			hook.velocity = Vector2(cos(hook.rotation),sin(hook.rotation))*delta*self.get_meta("hookSpeed")
+			var goofing = hook.move_and_collide(hook.velocity)
+			rope.set_point_position(1,hook.position)
+			rope.set_point_position(0,self.get_parent().position)
+			if(goofing&&!goofing.get_collider().has_method("noGrapple")):
+				#grapple hook hit something. start going up!
+				activeGrappleShooting = false
+				activeGrappleGoUp = true
+				self.get_parent().grappleDown()

@@ -13,11 +13,10 @@ position = Vector2(-46, -35.5)
 scale = Vector2(0.28125, 0.445313)
 texture = ExtResource("1_5rrs5")
 script = ExtResource("2_gy7mk")
-metadata/hookSpeed = 2
+metadata/hookSpeed = 10000000
 
 [node name="hookTemplate" type="CharacterBody2D" parent="."]
 z_index = -1
-metadata/hookSpeed = 50
 
 [node name="hitbox" type="CollisionShape2D" parent="hookTemplate"]
 shape = SubResource("RectangleShape2D_qh817")

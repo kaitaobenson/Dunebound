@@ -137,7 +137,7 @@ animations = [{
 tile_set = SubResource("TileSet_0pe5f")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0)
+layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1179665, 0, 0, 1114129, 0, 0, 1114112, 0, 0, 1179648, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(132, 26)
@@ -155,7 +155,6 @@ libraries = {
 sprite_frames = SubResource("SpriteFrames_dpc2o")
 
 [node name="grappleHook" parent="Player" instance=ExtResource("4_8iffy")]
-metadata/hookSpeed = 100
 
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")

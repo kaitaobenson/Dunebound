@@ -17,10 +17,16 @@ func ready():
 	
 # WALK
 func _physics_process(delta):
+	if(is_on_floor()):
+		self.rotation = 0
 	if(grappleDownProcessActive):
 		grappleHook.rope.set_point_position(0,self.position)
 		self.rotation = (self.position - grappleHook.hook.position).normalized().angle() + PI
-		self.velocity += -(self.position - grappleHook.hook.position).normalized()
+		if(self.position<grappleHook.hook.position):
+			self.velocity = -(self.position - grappleHook.hook.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
+		elif(self.position>grappleHook.hook.position):
+			self.velocity = (grappleHook.hook.position-self.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
+		print(self.velocity)
 		var sillygoofy = move_and_collide(self.velocity)
 		if(sillygoofy!=null):
 			if(sillygoofy.get_collider()==grappleHook.hook):
@@ -65,16 +71,15 @@ func grappleDown():
 func _hitByBullet(damage:int):
 	print("hit by bullet")
 	doDamage(damage)
-	
+func amPlayer():
+	pass
+func noGrapple():
+	pass
 func doDamage(damage:int):
 	health = health - damage
 	print(health)
 	if(health<=0):
 		die()
-func noGrapple():
-	pass
-func amPlayer():
-	pass
 func die():
 	self.queue_free()
 	#whatever you wanna do when you die
