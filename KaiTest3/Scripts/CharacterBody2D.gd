@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+const SPEED_LIMIT  = 300.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const gravity = 500;
@@ -37,35 +37,34 @@ func _physics_process(delta):
 				grappleHook.activeGrappleGoUp = false
 				grappleHook.mousePressed = false
 				grappleDownProcessActive = false
-	else:
-		# Add the gravity.
-		if not is_on_floor():
-			velocity.y += gravity * delta
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
  
-		# Handle Jump.
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+	# Handle Jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
-		var direction = Input.get_axis("ui_left", "move-right")
+	var direction = Input.get_axis("ui_left", "move-right")
 	
-		#horiz movement
-		if velocity.x == 0:
-			anim.stop()
+	#horiz movement
+	if velocity.x == 0:
+		anim.stop()
 	
-		if direction == 1:
-			anim.play("Walk")
-			animSprite.flip_h = false
+	if direction == 1:
+		anim.play("Walk")
+		animSprite.flip_h = false
 		
-		velocity.x = direction * SPEED
-		if direction == -1:
-			anim.play("Walk")
-			animSprite.flip_h = true
-		
-			velocity.x = direction * SPEED
-		if direction == 0:
-			velocity.x = 0
+	velocity.x = direction * SPEED
+	if direction == -1:
+		anim.play("Walk")
+		animSprite.flip_h = true
+		if(velocity.x+direction*SPEED>SPEED_LIMIT):
+			velocity.x += direction * SPEED
+	if (direction == 0&&!grappleDownProcessActive):
+		velocity.x = 0
 
-		move_and_slide()
+	move_and_slide()
 func grappleDown():
 	grappleDownProcessActive = true
 func _hitByBullet(damage:int):
