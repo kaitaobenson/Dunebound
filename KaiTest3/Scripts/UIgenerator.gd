@@ -47,6 +47,7 @@ func reloadKeybindUI(tickerValues:Array):
 		var newText = Label.new()
 		var newButton = get_parent().get_parent().get_node("Templates/keybindButton").duplicate(15)
 		var newTicker = SpinBox.new()
+		var newCancelButton = get_parent().get_parent().get_node("Templates/cancelButton").duplicate(15)
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
@@ -54,6 +55,7 @@ func reloadKeybindUI(tickerValues:Array):
 		newButton.position.x = 475
 		newTicker.value = tickerValues[retghghhvh]
 		newButton.position.y  =retghghhvh*75+25
+		newCancelButton.position.y=retghghhvh*75+25
 		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = 10
 		newText.position.y =  retghghhvh*65
@@ -61,11 +63,13 @@ func reloadKeybindUI(tickerValues:Array):
 		newText.z_index =99
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
+		newCancelButton.position.x=newText.text.length()*50
 		newButton.position.x = newText.text.length()*40
 		newTicker.position.x = newText.text.length()*55+newButton.text.length()*1
 		self.add_child(newText)
 		self.add_child(newTicker)
 		newButton.joob = newTicker
 		self.add_child(newButton)
-		
-		
+		newCancelButton.leSillyGoober = newButton
+		self.add_child(newCancelButton)
+		newButton.myCancelButton = newCancelButton

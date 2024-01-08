@@ -13,7 +13,7 @@ position = Vector2(-46, -35.5)
 scale = Vector2(0.28125, 0.445313)
 texture = ExtResource("1_5rrs5")
 script = ExtResource("2_gy7mk")
-metadata/hookSpeed = 10000000
+metadata/hookSpeed = 100
 
 [node name="hookTemplate" type="CharacterBody2D" parent="."]
 z_index = -1
