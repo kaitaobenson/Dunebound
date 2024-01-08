@@ -1,5 +1,6 @@
 extends Node
 var actions = []
+const TEXT_OFFSET_THINGYMABOBBER:int = 100
 #TODO: name a variable "TacticsComradesTactics"
 func replaceWithSpaces(thingydingy:String):
 	var dingythingy = thingydingy
@@ -54,12 +55,12 @@ func reloadKeybindUI(tickerValues:Array):
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newButton.position.x = 475
 		newTicker.value = tickerValues[retghghhvh]
-		newButton.position.y  =retghghhvh*75+25
-		newCancelButton.position.y=retghghhvh*75+25
+		newButton.position.y  =retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
+		newCancelButton.position.y=retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
 		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = 10
-		newText.position.y =  retghghhvh*65
-		newTicker.position.y =  retghghhvh*75+25
+		newText.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER-25
+		newTicker.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
 		newText.z_index =99
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
