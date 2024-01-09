@@ -7,6 +7,8 @@ var rope:Line2D
 var hook:CharacterBody2D
 var sceneRoot 
 var areaChecker:Area2D
+func getRopeLength()->int:
+	return sqrt(pow(rope.get_point_position(1).x+rope.get_point_position(0).x,2)+pow(rope.get_point_position(1).y+rope.get_point_position(0).y,2))
 func checkForEntity(pos:Vector2):
 	var raycast = RayCast2D.new()
 	raycast.target_position = pos
