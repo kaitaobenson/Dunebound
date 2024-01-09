@@ -8,19 +8,10 @@ const gravity = 500;
 var grappleDownProcessActive:bool = false
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
-var grappleRopeLength:int
+
 var health:int = 100;
-func grappleSwingSpeedLimitHandler(direction:int)->int:
-	if(grappleHook.rope!=null):
-		var oobagooba = grappleHook.rope.get_point_position(1)
-		oobagooba.x += velocity.x
-		if(grappleDownProcessActive&&(oobagooba).distance_to(self.position)>grappleRopeLength):
-			return 0 
-			print("ah shit")
-		else:
-			return SPEED_LIMIT
-	else:
-		return SPEED_LIMIT
+
+
 func ready():
 	pass;
 	
@@ -46,7 +37,6 @@ func _physics_process(delta):
 				grappleHook.activeGrappleGoUp = false
 				grappleHook.mousePressed = false
 				grappleDownProcessActive = false
-		grappleRopeLength = grappleHook.getRopeLength()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -56,7 +46,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	var direction = Input.get_axis("ui_left", "move-right")
-	var thingya = grappleSwingSpeedLimitHandler(direction)
+	
 	#horiz movement
 	if velocity.x == 0:
 		anim.stop()
@@ -64,14 +54,12 @@ func _physics_process(delta):
 	if direction == 1:
 		anim.play("Walk")
 		animSprite.flip_h = false
-		if(velocity.x+direction*SPEED<=thingya&&velocity.x+direction*SPEED>=-thingya):
-			velocity.x += direction * SPEED
-	#velocity.x = direction * SPEED
+		
+	velocity.x = direction * SPEED
 	if direction == -1:
 		anim.play("Walk")
 		animSprite.flip_h = true
-		print(velocity.x+direction*SPEED)
-		if(velocity.x+direction*SPEED<=thingya&&velocity.x+direction*SPEED>=-thingya):
+		if(velocity.x+direction*SPEED>SPEED_LIMIT):
 			velocity.x += direction * SPEED
 	if (direction == 0&&!grappleDownProcessActive):
 		velocity.x = 0
