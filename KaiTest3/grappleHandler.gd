@@ -7,6 +7,13 @@ var rope:Line2D
 var hook:CharacterBody2D
 var sceneRoot 
 var areaChecker:Area2D
+var prebakeSwingPathTemplate:Array = []
+func swingPathGenerator(centerPoint:Vector2,aboveCenterPoint:Vector2)->Array:
+	var transformedSwing:Array = prebakeSwingPathTemplate.duplicate()
+	var differenceFromTenplate = (aboveCenterPoint.y - centerPoint.y)/-30
+	for j in transformedSwing.size():
+		transformedSwing[j] = Vector2(transformedSwing[j].x,transformedSwing[j].y*differenceFromTenplate)+centerPoint
+	return transformedSwing
 func checkForEntity(pos:Vector2):
 	var raycast = RayCast2D.new()
 	raycast.target_position = pos
@@ -24,6 +31,11 @@ func die():
 	#self.hook.queue_free()
 func _ready():
 	sceneRoot = get_tree().current_scene
+	prebakeSwingPathTemplate.resize(300)
+	var incrementer:float = -30
+	#thanks to a random graph i found on desmos for the equation!
+	for x in 300:
+		prebakeSwingPathTemplate[x] = Vector2(incrementer,-sqrt(pow(-incrementer,2)+pow(30,2)))
 	#self.connect("tree_exiting",die())
 func _physics_process(delta):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)&&!(activeGrappleGoUp||activeGrappleShooting)&&checkForEntity(get_viewport().get_mouse_position())):
