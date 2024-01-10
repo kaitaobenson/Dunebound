@@ -6,7 +6,6 @@ func pause():
 	get_parent().visible = true
 func _process(delta):
 	if (Input.is_action_just_pressed("pause_toggle")):
-		print("unpaused")
 		get_tree().paused = false
 		get_parent().visible = false
 func resize():

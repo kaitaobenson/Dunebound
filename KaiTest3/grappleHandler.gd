@@ -26,7 +26,6 @@ func _ready():
 	sceneRoot = get_tree().current_scene
 	#self.connect("tree_exiting",die())
 func _physics_process(delta):
-	print(checkForEntity(get_viewport().get_mouse_position()))
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)&&!(activeGrappleGoUp||activeGrappleShooting)&&checkForEntity(get_viewport().get_mouse_position())):
 		mousePressed = true
 		activeGrappleShooting = true
@@ -42,7 +41,6 @@ func _physics_process(delta):
 		hook.get_node("hitbox").set_deferred("disabled",false)
 		sceneRoot.add_child(rope)
 		sceneRoot.add_child(hook)
-		print(hook.velocity)
 	if(mousePressed):
 		if(!Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
 			self.get_parent().grappleDownProcessActive = false

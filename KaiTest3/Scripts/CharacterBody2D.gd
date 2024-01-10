@@ -26,7 +26,6 @@ func _physics_process(delta):
 			self.velocity = -(self.position - grappleHook.hook.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
 		elif(self.position>grappleHook.hook.position):
 			self.velocity = (grappleHook.hook.position-self.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
-		print(self.velocity)
 		var sillygoofy = move_and_collide(self.velocity)
 		if(sillygoofy!=null):
 			if(sillygoofy.get_collider()==grappleHook.hook):
@@ -37,6 +36,7 @@ func _physics_process(delta):
 				grappleHook.activeGrappleGoUp = false
 				grappleHook.mousePressed = false
 				grappleDownProcessActive = false
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
