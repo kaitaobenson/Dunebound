@@ -10,7 +10,10 @@ var areaChecker:Area2D
 var prebakeSwingPathTemplate:Array = []
 func swingPathGenerator(centerPoint:Vector2,aboveCenterPoint:Vector2)->Array:
 	var transformedSwing:Array = prebakeSwingPathTemplate.duplicate()
-	var differenceFromTenplate = (aboveCenterPoint.y - centerPoint.y)/-30
+	print(centerPoint)
+	print(aboveCenterPoint)
+	print(aboveCenterPoint.distance_to(centerPoint))
+	var differenceFromTenplate = 1/(aboveCenterPoint.distance_to(centerPoint)/-30)
 	for j in transformedSwing.size():
 		transformedSwing[j] = Vector2(transformedSwing[j].x,transformedSwing[j].y*differenceFromTenplate)+centerPoint
 	return transformedSwing
@@ -24,6 +27,16 @@ func checkForEntity(pos:Vector2):
 	var bigFancyPantsResultRThingyMajingyAbAbAbGabba =  raycast.get_collider()
 	raycast.queue_free()
 	return bigFancyPantsResultRThingyMajingyAbAbAbGabba!=null
+func returnForEntity(pos:Vector2):
+	var raycast = RayCast2D.new()
+	raycast.target_position = pos
+	raycast.collide_with_areas = false
+	raycast.collide_with_bodies = true
+	sceneRoot.add_child(raycast)
+	raycast.force_raycast_update()
+	var bigFancyPantsResultRThingyMajingyAbAbAbGabba =  raycast.get_collider()
+	raycast.queue_free()
+	return bigFancyPantsResultRThingyMajingyAbAbAbGabba
 func die():
 	#doesnt work yet
 	pass
@@ -40,6 +53,7 @@ func _ready():
 func _physics_process(delta):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)&&!(activeGrappleGoUp||activeGrappleShooting)&&checkForEntity(get_viewport().get_mouse_position())):
 		mousePressed = true
+		
 		activeGrappleShooting = true
 		activeGrappleGoUp = false
 		grappleTargetLocation = get_viewport().get_mouse_position()

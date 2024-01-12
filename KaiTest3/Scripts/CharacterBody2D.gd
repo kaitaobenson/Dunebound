@@ -4,13 +4,18 @@ const SPEED_LIMIT  = 300.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const gravity = 500;
+const swingSpeed:int = 5
+#the name of the variable below is a bit of a misnomer, it takes less momentum to swing farther the higher it is
+const SWING_GRAVITY:int = 5
+var swingPosition:int = 150
+var currentMomentumThingy:int = SWING_GRAVITY
+var momentum:int
 @onready var grappleHook = get_node("grappleHook")
 var grappleDownProcessActive:bool = false
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
-
+var swingCircle:Array
 var health:int = 100;
-
 
 func ready():
 	pass;
@@ -21,11 +26,22 @@ func _physics_process(delta):
 		self.rotation = 0
 	if(grappleDownProcessActive):
 		grappleHook.rope.set_point_position(0,self.position)
-		self.rotation = (self.position - grappleHook.hook.position).normalized().angle() + PI
+		self.rotation = (self.position - grappleHook.hook.position).normalized().angle()
 		if(self.position<grappleHook.hook.position):
-			self.velocity = -(self.position - grappleHook.hook.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
+			self.velocity = -Vector2(cos(self.rotation),sin(self.rotation))*delta*grappleHook.get_meta("hookSpeed")
 		elif(self.position>grappleHook.hook.position):
-			self.velocity = (grappleHook.hook.position-self.position).normalized()*delta*grappleHook.get_meta("hookSpeed")
+			self.velocity = Vector2(cos(self.rotation),sin(self.rotation))*delta*grappleHook.get_meta("hookSpeed")
+		var swingDirection = Input.get_axis("ui_left", "move-right")
+		swingCircle = grappleHook.swingPathGenerator(grappleHook.grappleTargetLocation,self.position)
+		
+		if(swingPosition+momentum>currentMomentumThingy||swingPosition+momentum<-abs(currentMomentumThingy)):
+			swingDirection = -swingDirection
+			momentum += swingDirection*swingSpeed
+			currentMomentumThingy *= SWING_GRAVITY
+			swingPosition+=momentum
+			print("somethingHappened")
+		self.position = swingCircle[swingPosition]
+		print(swingCircle[swingPosition])
 		var sillygoofy = move_and_collide(self.velocity)
 		if(sillygoofy!=null):
 			if(sillygoofy.get_collider()==grappleHook.hook):
