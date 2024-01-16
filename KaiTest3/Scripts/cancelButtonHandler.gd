@@ -10,3 +10,4 @@ func cancelKeybindChange():
 func keybindChangeStarted():
 	self.visible = true
 	self.disabled = false
+	

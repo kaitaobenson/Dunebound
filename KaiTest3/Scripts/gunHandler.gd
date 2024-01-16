@@ -7,12 +7,10 @@ func _ready():
 	#all timers in seconds (not milliseconds)
 	ammo = self.get_meta("bulletPerClip")
 	timer.wait_time = self.get_meta("shotSpeed")
-	print(timer.wait_time)
 	reloadTimer.wait_time = self.get_meta("reloadTime")
 	timer.connect("timeout",fireBullet)
 	timer.start()
 func fireBullet()->void:
-	print(ammo)
 	if ammo>0:
 		ammo -= 1
 		var newBullet = get_node("masterBullet").duplicate()

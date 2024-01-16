@@ -19,8 +19,7 @@ func addInputAction(key:String,actionName:String):
 	InputMap.action_add_event(actionName,dingdongdingalongadingdongdee)
   
 func Unparse():
-	print("what the fuck is wrong with you why would you call this stupidass function")
-	
+	pass
 func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	var bufferParse:JSON = JSON.new()
 	var lerawjson = FileAccess.open("user://keybinds.json",FileAccess.READ)
@@ -68,9 +67,7 @@ func reloadKeybinds():
 			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
 		
 	keybindConfig.close()
-	print(InputMap.get_actions())
-	
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	makeDefaultKeybinds()
 	reloadKeybinds()

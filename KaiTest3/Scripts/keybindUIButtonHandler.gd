@@ -9,20 +9,14 @@ var myCancelButton
 # Called when the node enters the scene tree for the first time.
 func _input(event):
 	if(onStandby&&event.as_text().length()<15&&!event.physical_keycode==InputMap.action_get_events("ui_accept")[0].physical_keycode):
-		print(birthparent.getAllEvents())
-		print(birthparent.getAllEvents().count(event.as_text()))
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
-			print(event.as_text())
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()
 			keybindHandler.changeKeybind(self.get_meta("action"),joob.value,receivedKeypress)
-			print(joob.value)
-			print(InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text())
 		else:
 			self.text = "No Duplicate Keybinds!"
 			duplicateKeybindDialogueTimer.start()
 			await duplicateKeybindDialogueTimer.timeout
-			print("dialogue past")
 			cancelKeybindChange()
 		self.text = InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text()
 func keybindSetSequence():
@@ -41,7 +35,6 @@ func _ready():
 		joob.value_changed.connect(self.switchToAlternateKeybind)
 func cancelKeybindChange():
 	onStandby = false
-	print(myCancelButton)
 	myCancelButton.cancelKeybindChange()
 func _process(delta):
 	if(!onStandby&&joob!=null):

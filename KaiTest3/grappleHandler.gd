@@ -10,9 +10,6 @@ var areaChecker:Area2D
 var prebakeSwingPathTemplate:Array = []
 func swingPathGenerator(centerPoint:Vector2,aboveCenterPoint:Vector2)->Array:
 	var transformedSwing:Array = prebakeSwingPathTemplate.duplicate()
-	print(centerPoint)
-	print(aboveCenterPoint)
-	print(aboveCenterPoint.distance_to(centerPoint))
 	var differenceFromTenplate = 1/(aboveCenterPoint.distance_to(centerPoint)/-30)
 	for j in transformedSwing.size():
 		transformedSwing[j] = Vector2(transformedSwing[j].x,transformedSwing[j].y*differenceFromTenplate)+centerPoint

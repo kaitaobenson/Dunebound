@@ -39,9 +39,7 @@ func _physics_process(delta):
 			momentum += swingDirection*swingSpeed
 			currentMomentumThingy *= SWING_GRAVITY
 			swingPosition+=momentum
-			print("somethingHappened")
 		self.position = swingCircle[swingPosition]
-		print(swingCircle[swingPosition])
 		var sillygoofy = move_and_collide(self.velocity)
 		if(sillygoofy!=null):
 			if(sillygoofy.get_collider()==grappleHook.hook):
@@ -84,7 +82,6 @@ func _physics_process(delta):
 func grappleDown():
 	grappleDownProcessActive = true
 func _hitByBullet(damage:int):
-	print("hit by bullet")
 	doDamage(damage)
 func amPlayer():
 	pass
@@ -92,7 +89,6 @@ func noGrapple():
 	pass
 func doDamage(damage:int):
 	health = health - damage
-	print(health)
 	if(health<=0):
 		die()
 func die():
