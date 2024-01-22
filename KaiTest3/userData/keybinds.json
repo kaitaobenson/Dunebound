@@ -3,6 +3,12 @@
 	"comment2": "the defaults are just some random things i set, feel free to change them",
 	"keybinds": [
 		{
+			"actionName": "openKeybindUI",
+			"key": [
+				"Equal"
+			]
+		},
+		{
 			"actionName": "move-right",
 			"key": [
 				"Right",
@@ -28,7 +34,7 @@
 			]
 		},
 		{
-			"actionName" : "inventory_toggle",
+			"actionName" : "open_inventory",
 			"key" : [
 				"E"
 			]
