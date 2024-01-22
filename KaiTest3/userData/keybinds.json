@@ -11,26 +11,28 @@
 		{
 			"actionName": "mouseClick",
 			"key": [
-				"MOuse"
+				"Mouse"
 			]
 		},
 		{
 			"actionName": "move-right",
 			"key": [
 				"Right",
-				"L"
+				"D"
 			]
 		},
 		{
 			"actionName": "ui_left",
 			"key": [
-				"Left"
+				"Left",
+				"A"
 			]
 		},
 		{
 			"actionName": "ui_accept",
 			"key": [
-				"A"
+				"Up",
+				"W"
 			]
 		},
 		{
