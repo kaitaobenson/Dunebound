@@ -143,6 +143,9 @@ layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0
 [node name="mrLegs" type="CharacterBody2D" parent="."]
 position = Vector2(132, 26)
 script = ExtResource("2_44nkk")
+metadata/SPEED = 300.0
+metadata/JUMP = 600.0
+metadata/GRAVITY = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mrLegs"]
 shape = SubResource("CapsuleShape2D_hb2my")
