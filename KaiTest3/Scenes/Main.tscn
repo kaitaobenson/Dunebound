@@ -221,20 +221,3 @@ offset_right = 1700.0
 offset_bottom = 1060.0
 color = Color(0.184314, 0.184314, 0.184314, 0.945098)
 script = ExtResource("10_8dq1e")
-
-[node name="inventoryContainer" type="Node2D" parent="."]
-
-[node name="Control" type="Control" parent="inventoryContainer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 205.0
-offset_top = 90.0
-offset_right = 916.0
-offset_bottom = 472.0
-
-[node name="ColorRect" type="ColorRect" parent="inventoryContainer"]
-offset_left = 206.0
-offset_top = 107.0
-offset_right = 826.0
-offset_bottom = 492.0
-color = Color(0.0117647, 0.117647, 0.156863, 1)

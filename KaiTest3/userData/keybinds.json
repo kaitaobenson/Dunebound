@@ -9,6 +9,12 @@
 			]
 		},
 		{
+			"actionName": "mouseClick",
+			"key": [
+				"MOuse"
+			]
+		},
+		{
 			"actionName": "move-right",
 			"key": [
 				"Right",
@@ -31,12 +37,6 @@
 			"actionName": "pause_toggle",
 			"key": [
 				"Escape"
-			]
-		},
-		{
-			"actionName" : "open_inventory",
-			"key" : [
-				"E"
 			]
 		}
 	]
