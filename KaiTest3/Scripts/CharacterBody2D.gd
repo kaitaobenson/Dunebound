@@ -1,17 +1,14 @@
 extends CharacterBody2D
 
-const SPEED_LIMIT  = 300.0
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const gravity = 500;
 const swingSpeed:int = 5
 #the name of the variable below is a bit of a misnomer, it takes less momentum to swing farther the higher it is
 const SWING_GRAVITY:int = 5
 var swingPosition:int = 150
 var currentMomentumThingy:int = SWING_GRAVITY
 var momentum:int
-@onready var grappleHook = get_node("grappleHook")
 var grappleDownProcessActive:bool = false
+
+@onready var grappleHook = get_node("grappleHook")
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
 var swingCircle:Array
@@ -20,8 +17,12 @@ var health:int = 100;
 func ready():
 	pass;
 	
-# WALK
+
 func _physics_process(delta):
+	movement(delta)
+	grapple(delta)
+	
+func grapple(delta):
 	if(is_on_floor()):
 		self.rotation = 0
 	if(grappleDownProcessActive):
@@ -51,34 +52,38 @@ func _physics_process(delta):
 				grappleHook.mousePressed = false
 				grappleDownProcessActive = false
 		return
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
- 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
+func movement(delta):
+	
+	const SPEED = 300.0
+	const JUMP_VELOCITY = -400.0
+	const gravity = 500;
 	var direction = Input.get_axis("ui_left", "move-right")
 	
-	#horiz movement
+	# Gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	# Jump
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	# Horiz movement
 	if velocity.x == 0:
 		anim.stop()
-	
+	# Right
 	if direction == 1:
 		anim.play("Walk")
 		animSprite.flip_h = false
-		
-	velocity.x = direction * SPEED
+	# Left
 	if direction == -1:
 		anim.play("Walk")
 		animSprite.flip_h = true
-		if(velocity.x+direction*SPEED>SPEED_LIMIT):
-			velocity.x += direction * SPEED
+	# Grapple Hook
 	if (direction == 0&&!grappleDownProcessActive):
 		velocity.x = 0
-
+		
+	velocity.x = direction * SPEED
 	move_and_slide()
+
 func grappleDown():
 	grappleDownProcessActive = true
 func _hitByBullet(damage:int):
