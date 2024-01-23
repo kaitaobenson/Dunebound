@@ -225,10 +225,15 @@ offset_bottom = 1060.0
 color = Color(0.184314, 0.184314, 0.184314, 0.945098)
 script = ExtResource("10_8dq1e")
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 [node name="inventoryContainer" type="Node2D" parent="."]
 script = ExtResource("12_q70ba")
+=======
+
+[node name="inventoryContainer" type="Node2D" parent="."]
+>>>>>>> parent of 73aa9e2 (Revert "silly little x icon :))")
 
 [node name="Control" type="Control" parent="inventoryContainer"]
 layout_mode = 3
@@ -244,6 +249,7 @@ offset_top = 107.0
 offset_right = 826.0
 offset_bottom = 492.0
 color = Color(0.0117647, 0.117647, 0.156863, 1)
+<<<<<<< HEAD
 
 [node name="closeButton" type="Button" parent="inventoryContainer"]
 offset_left = 723.0
@@ -252,3 +258,5 @@ offset_right = 822.0
 offset_bottom = 209.0
 icon = ExtResource("13_x0xyk")
 >>>>>>> parent of 1758b6e (Revert "ivnentory window go crazy")
+=======
+>>>>>>> parent of 73aa9e2 (Revert "silly little x icon :))")
