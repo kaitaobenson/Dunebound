@@ -3,12 +3,6 @@
 	"comment2": "The defaults are just some random things I set, feel free to change them",
 	"keybinds": [
 		{
-			"actionName": "openKeybindUI",
-			"key": [
-				"Equal"
-			]
-		},
-		{
 			"actionName": "mouseClick",
 			"key": [
 				"Mouse"
@@ -39,6 +33,12 @@
 			"actionName": "pause_toggle",
 			"key": [
 				"Escape"
+			]
+		},
+		{
+			"actionName" : "inventory_toggle",
+			"key" : [
+				"E"
 			]
 		}
 	]

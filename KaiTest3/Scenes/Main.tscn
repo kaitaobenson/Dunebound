@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=29 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_mpd0d"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
@@ -6,12 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://b71wd0v54lri5" path="res://Walk_amination.png" id="3_eh27g"]
 [ext_resource type="PackedScene" uid="uid://6y0e01p1abtp" path="res://grapple_hook.tscn" id="4_8iffy"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
-[ext_resource type="Script" path="res://Scripts/keybindUIOpenerTest.gd" id="5_grjk8"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
 [ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://Scenes/fast_linear_gun.tscn" id="8_f5681"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="10_vag3d"]
+[ext_resource type="Script" path="res://Scenes/inventoryHandler.gd" id="12_q70ba"]
+[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_mpd0d")
@@ -171,7 +172,6 @@ metadata/damage = 50
 process_mode = 3
 visible = false
 z_index = 1
-script = ExtResource("5_grjk8")
 
 [node name="ColorRect" type="ColorRect" parent="uiContainer"]
 offset_right = 1160.0
@@ -224,3 +224,31 @@ offset_right = 1700.0
 offset_bottom = 1060.0
 color = Color(0.184314, 0.184314, 0.184314, 0.945098)
 script = ExtResource("10_8dq1e")
+<<<<<<< HEAD
+=======
+
+[node name="inventoryContainer" type="Node2D" parent="."]
+script = ExtResource("12_q70ba")
+
+[node name="Control" type="Control" parent="inventoryContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 90.0
+offset_right = 916.0
+offset_bottom = 472.0
+
+[node name="ColorRect" type="ColorRect" parent="inventoryContainer"]
+offset_left = 206.0
+offset_top = 107.0
+offset_right = 826.0
+offset_bottom = 492.0
+color = Color(0.0117647, 0.117647, 0.156863, 1)
+
+[node name="closeButton" type="Button" parent="inventoryContainer"]
+offset_left = 723.0
+offset_top = 110.0
+offset_right = 822.0
+offset_bottom = 209.0
+icon = ExtResource("13_x0xyk")
+>>>>>>> parent of 1758b6e (Revert "ivnentory window go crazy")
