@@ -224,16 +224,9 @@ offset_right = 1700.0
 offset_bottom = 1060.0
 color = Color(0.184314, 0.184314, 0.184314, 0.945098)
 script = ExtResource("10_8dq1e")
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
 [node name="inventoryContainer" type="Node2D" parent="."]
 script = ExtResource("12_q70ba")
-=======
-
-[node name="inventoryContainer" type="Node2D" parent="."]
->>>>>>> parent of 73aa9e2 (Revert "silly little x icon :))")
 
 [node name="Control" type="Control" parent="inventoryContainer"]
 layout_mode = 3
