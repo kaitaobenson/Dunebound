@@ -22,3 +22,4 @@ movie_writer/movie_file="C:/Users/super/Downloads/godotmoviestuffthingy.avi"
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.380392, 0.431373, 0.392157, 1)
