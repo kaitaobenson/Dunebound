@@ -30,7 +30,7 @@
 			]
 		},
 		{
-			"actionName" : "open_inventory",
+			"actionName" : "inventory_toggle",
 			"key" : [
 				"E"
 			]
