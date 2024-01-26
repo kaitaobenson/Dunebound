@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53npqxaj6j2h"
-path="res://.godot/imported/SandSlopeLeft.png-cef1330363096de3b0a959e46626e958.ctex"
+uid="uid://dg5vwtp6egk26"
+path="res://.godot/imported/Dune1.png-dc7c9967b0dc6dfdeeb23c1fc4e86205.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SandSlopeLeft.png"
-dest_files=["res://.godot/imported/SandSlopeLeft.png-cef1330363096de3b0a959e46626e958.ctex"]
+source_file="res://Assets/Textures/Dune1.png"
+dest_files=["res://.godot/imported/Dune1.png-dc7c9967b0dc6dfdeeb23c1fc4e86205.ctex"]
 
 [params]
 
