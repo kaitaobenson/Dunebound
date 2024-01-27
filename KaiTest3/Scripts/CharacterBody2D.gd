@@ -55,11 +55,7 @@ func grapple(delta):
 		return
 
 func movement(delta):
-	if(Input.is_action_just_pressed("inventory_toggle")):
-		if invon == true:
-			invon = false
-		else:
-			invon = true
+  invon = Input.is_action_pressed("inventory_toggle ")
 	var SPEED = get_meta("SPEED")
 	var JUMP_VELOCITY = get_meta("JUMP")
 	var gravity = get_meta("GRAVITY");
