@@ -8,7 +8,7 @@ var currentMomentumThingy:int = SWING_GRAVITY
 var momentum:int
 var grappleDownProcessActive:bool = false
 
-@onready var invopen = get_node("Camera2D").get_node("Control").get_node("inventoryContainer").invopen
+@onready var invon = true
 @onready var grappleHook = get_node("grappleHook")
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
@@ -82,10 +82,16 @@ func movement(delta):
 	if (direction == 0&&!grappleDownProcessActive):
 		velocity.x = 0
 	# No movement while open inventory
-	if invopen == false:
-		velocity.x=0
-	print (invopen)
-	velocity.x = direction * SPEED
+	if(Input.is_action_just_pressed("inventory_toggle")):
+		if invon == true:
+			invon = false
+		else:
+			invon = true
+		
+	print (invon)
+	if invon == false:
+		velocity.x = direction * SPEED
+	
 	move_and_slide()
 
 func grappleDown():
