@@ -55,7 +55,11 @@ func grapple(delta):
 		return
 
 func movement(delta):
-	
+	if(Input.is_action_just_pressed("inventory_toggle")):
+		if invon == true:
+			invon = false
+		else:
+			invon = true
 	var SPEED = get_meta("SPEED")
 	var JUMP_VELOCITY = get_meta("JUMP")
 	var gravity = get_meta("GRAVITY");
@@ -65,7 +69,7 @@ func movement(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !invon:
 		velocity.y = -JUMP_VELOCITY
 	# Horiz movement
 	if velocity.x == 0:
@@ -82,13 +86,7 @@ func movement(delta):
 	if (direction == 0&&!grappleDownProcessActive):
 		velocity.x = 0
 	# No movement while open inventory
-	if(Input.is_action_just_pressed("inventory_toggle")):
-		if invon == true:
-			invon = false
-		else:
-			invon = true
-		
-	print (invon)
+	
 	if invon == false:
 		velocity.x = direction * SPEED
 	
