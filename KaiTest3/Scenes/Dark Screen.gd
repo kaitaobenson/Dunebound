@@ -21,4 +21,8 @@ func adjust():
 
 func light():
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0, 2)
+	tween.tween_property(self, "modulate:a", 0, 3)
+
+func dark():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 100, 3)
