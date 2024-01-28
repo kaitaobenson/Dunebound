@@ -225,6 +225,8 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="mrLegs"]
 position = Vector2(6, -173)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 layout_mode = 3
