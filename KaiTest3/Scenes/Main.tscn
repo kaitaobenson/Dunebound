@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=36 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/inventoryHandler.gd" id="12_q70ba"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
+[ext_resource type="Script" path="res://Scenes/Dark Screen.gd" id="17_8qwk7"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
@@ -234,7 +235,7 @@ offset_right = 829.0
 offset_bottom = 575.0
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
-position = Vector2(-205, -90)
+position = Vector2(-201, -64)
 script = ExtResource("12_q70ba")
 
 [node name="itemTileContainer" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
@@ -322,6 +323,15 @@ offset_right = 1700.0
 offset_bottom = 1060.0
 color = Color(0.184314, 0.184314, 0.184314, 0.945098)
 script = ExtResource("10_8dq1e")
+
+[node name="Dark Screen" type="ColorRect" parent="mrLegs/Camera2D"]
+z_index = 1
+offset_left = -977.0
+offset_top = -1467.0
+offset_right = 801.0
+offset_bottom = -413.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_8qwk7")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
