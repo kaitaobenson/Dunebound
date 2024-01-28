@@ -8,7 +8,7 @@ var currentMomentumThingy:int = SWING_GRAVITY
 var momentum:int
 var grappleDownProcessActive:bool = false
 
-@onready var invon = true
+@onready var invon = false
 @onready var grappleHook = get_node("grappleHook")
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
@@ -57,7 +57,6 @@ func grapple(delta):
 		return
 
 func movement(delta):
-	invon = Input.is_action_pressed("inventory_toggle ")
 	var SPEED = get_meta("SPEED")
 	var JUMP_VELOCITY = get_meta("JUMP")
 	var gravity = get_meta("GRAVITY");
@@ -67,7 +66,7 @@ func movement(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !invon:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and invon == false:
 		velocity.y = -JUMP_VELOCITY
 	# Horiz movement
 	if velocity.x == 0:
@@ -75,19 +74,26 @@ func movement(delta):
 	# Right
 	if direction == 1:
 		anim.play("Walk")
-		animSprite.flip_h = false
+		if invon == false:
+			animSprite.flip_h = false
 	# Left
 	if direction == -1:
 		anim.play("Walk")
-		animSprite.flip_h = true
+		if invon == false:
+			animSprite.flip_h = true
 	# Grapple Hook
 	if (direction == 0&&!grappleDownProcessActive):
 		velocity.x = 0
+	# Inventory toggle handler
+	if(Input.is_action_just_pressed("inventory_toggle")):
+		if invon == true:
+			invon = false
+		else:
+			invon = true
 	# No movement while open inventory
-	
 	if invon == false:
 		velocity.x = direction * SPEED
-	
+	else: velocity.x = 0
 	move_and_slide()
 
 func grappleDown():
