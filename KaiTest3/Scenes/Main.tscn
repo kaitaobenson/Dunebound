@@ -278,6 +278,7 @@ offset_left = 251.0
 offset_top = 215.0
 offset_right = 679.0
 offset_bottom = 459.0
+rotation = 0.00526988
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
 [node name="VScrollBar" type="VScrollBar" parent="mrLegs/Camera2D/Control/inventoryContainer"]

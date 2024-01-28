@@ -1,6 +1,7 @@
 extends Node2D
 var closeButton:Button
 func _ready():
+	self.visible = false
 	closeButton = get_node("closeButton")
 	closeButton.connect("pressed",invClose)
 	closeButton.disabled = false
