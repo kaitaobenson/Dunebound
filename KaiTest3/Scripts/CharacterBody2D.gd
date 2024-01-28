@@ -21,7 +21,7 @@ func ready():
 
 func _physics_process(delta):
 	Global.PlayerX = self.position.x
-	Global.PlayerY = self.position.x
+	Global.PlayerY = self.position.y
 	movement(delta)
 	grapple(delta)
 	
