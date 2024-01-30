@@ -1,11 +1,28 @@
 extends ColorRect
 
+const SCREEN_X = 1152
+const SCREEN_Y = 648
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	position.x = 10
-	position.y = 10
+var timer = 0
+var wait_time = 0.01
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if wait_time > 0:
+		timer+=delta
+		if timer>wait_time:
+			wait_time = 0
+			adjust()
+			light()
+
+#(-SCREEN_X / 2) is over the screen, but there is camera smoothing so we need buffer 
+func adjust():
+	self.position.x = (-SCREEN_X / 2) - 100
+	self.position.y = (-SCREEN_Y / 2) - 100
+
+func light():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0, 3)
+
+func dark():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 100, 3)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=37 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="10_vag3d"]
 [ext_resource type="Texture2D" uid="uid://dg5vwtp6egk26" path="res://Assets/Textures/Dune1.png" id="11_4rlmo"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="12_oxlyn"]
 [ext_resource type="Script" path="res://Scenes/inventoryHandler.gd" id="12_q70ba"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
@@ -166,6 +167,11 @@ layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")
 
+[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
+position = Vector2(475, -33)
+metadata/Damage = 1000000000
+metadata/shotSpeed = 0.05
+
 [node name="Gun" parent="." instance=ExtResource("4_g0evl")]
 position = Vector2(661, -23)
 metadata/damage = 50
@@ -185,11 +191,6 @@ offset_bottom = 8.0
 disabled = true
 text = "Cancel"
 script = ExtResource("10_vag3d")
-
-[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
-position = Vector2(475, -33)
-metadata/Damage = 1000000000
-metadata/shotSpeed = 0.05
 
 [node name="Dune1" type="StaticBody2D" parent="."]
 position = Vector2(883, 587)
@@ -225,14 +226,17 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="mrLegs"]
 position = Vector2(6, -173)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("12_oxlyn")
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -341.0
-offset_top = -203.0
-offset_right = 829.0
-offset_bottom = 575.0
+offset_left = -407.0
+offset_top = -231.0
+offset_right = 763.0
+offset_bottom = 547.0
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
 position = Vector2(-201, -64)
@@ -327,12 +331,31 @@ script = ExtResource("10_8dq1e")
 
 [node name="Dark Screen" type="ColorRect" parent="mrLegs/Camera2D"]
 z_index = 1
-offset_left = -977.0
-offset_top = -1467.0
-offset_right = 801.0
-offset_bottom = -413.0
-color = Color(0, 0, 0, 1)
+offset_left = -907.0
+offset_top = -1665.0
+offset_right = 871.0
+offset_bottom = -611.0
+color = Color(0.145098, 0.129412, 0.121569, 1)
 script = ExtResource("17_8qwk7")
+
+[node name="SandParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1095, 188)
+amount = 29
+lifetime = 0.3
+explosiveness = 0.14
+randomness = 1.0
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+spread = 78.75
+gravity = Vector2(2.08165e-12, -50)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+angle_max = 359.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color = Color(0.803922, 0.717647, 0.372549, 1)
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
