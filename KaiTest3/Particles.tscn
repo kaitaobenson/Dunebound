@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cton84lwmiwa7"]
+
+[ext_resource type="Script" path="res://Scenes/SandParticles.gd" id="1_wbs4c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SandParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1095, 188)
+amount = 29
+lifetime = 0.3
+explosiveness = 0.14
+randomness = 1.0
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+spread = 78.75
+gravity = Vector2(2.08165e-12, -50)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+angle_max = 359.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color = Color(0.803922, 0.717647, 0.372549, 1)
+script = ExtResource("1_wbs4c")
