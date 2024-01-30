@@ -41,9 +41,8 @@ func search(query:String):
 	for y in itemPos.size():
 		currentTileAmountOnPage+=1
 		var newTile = templateTile.duplicate(15)
-		newTile.S
 		add_child(newTile)
-		#newTile.get_node("Sprite2D").texture = 
+		newTile.get_node("Sprite2D").texture = items_node[itemPos[y]].get_node("Sprite2D").texture
 		if(currentTileAMountOnRow+1>tilePerRow):
 			newTile.position = templateTile.position+Vector2(0,TILE_MARGIN)
 			currentTileAMountOnRow = 0
