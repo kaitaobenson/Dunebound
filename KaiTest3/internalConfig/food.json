@@ -2,10 +2,10 @@
 	"comment1" : "this file sets out the different types of food and their textures, hitbox sizes, and amount of food points they quench",
 	"food" : {
 		"exampleFood" : [
-			{"texture" : "res://Assets/Textures/icon.svg"},
-			{"hungerPoints" : 5},
-			{"hitboxSize_x" : 50},
-			{"hitboxSize_y" : 50}
-		],
-	},
+				{"texture" : "res://Assets/Textures/icon.svg"},
+				{"hungerPoints" : 5},
+				{"hitboxSize_x" : 50},
+				{"hitboxSize_y" : 50}
+			],
+		},
 }

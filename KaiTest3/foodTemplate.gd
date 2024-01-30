@@ -1,4 +1,5 @@
 extends RigidBody2D
+var foodTypeA:String
 func texture(naim:String):
 	#make a texture, load an image into it, and return the texture!
 	var le_image = Image.new()
@@ -14,6 +15,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	hitbox.size = Vector2(food[3]["hitboxSize_x"],food[4]["hitboxSize_y"])
 	newFood.get_node("hitbox").shape = hitbox
 	newFood.get_node("Sprite2D").texture = texture(food[1]["texture"])
+	newFood.foodTypeA = foodType
 	foodParent.add_child(newFood)
 	newFood.position = pos
 func _process(delta):

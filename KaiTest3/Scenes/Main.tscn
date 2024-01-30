@@ -273,7 +273,7 @@ position = Vector2(256.5, 126.5)
 scale = Vector2(0.406249, 0.40625)
 texture = ExtResource("14_p0hai")
 
-[node name="ColorRect2" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
+[node name="rawr~" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 251.0
 offset_top = 215.0
 offset_right = 679.0
