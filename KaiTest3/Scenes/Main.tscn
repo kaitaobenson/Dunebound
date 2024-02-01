@@ -199,6 +199,11 @@ layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")
 
+[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
+position = Vector2(475, -33)
+metadata/Damage = 1000000000
+metadata/shotSpeed = 0.05
+
 [node name="Gun" parent="." instance=ExtResource("4_g0evl")]
 position = Vector2(661, -23)
 metadata/damage = 50
@@ -218,11 +223,6 @@ offset_bottom = 8.0
 disabled = true
 text = "Cancel"
 script = ExtResource("10_vag3d")
-
-[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
-position = Vector2(475, -33)
-metadata/Damage = 1000000000
-metadata/shotSpeed = 0.05
 
 [node name="Dune1" type="StaticBody2D" parent="."]
 position = Vector2(883, 587)
@@ -265,11 +265,18 @@ script = ExtResource("12_oxlyn")
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
+<<<<<<< HEAD
 offset_left = -341.0
 offset_top = -203.0
 offset_right = 829.0
 offset_bottom = 575.0
 metadata/_edit_lock_ = true
+=======
+offset_left = -407.0
+offset_top = -231.0
+offset_right = 763.0
+offset_bottom = 547.0
+>>>>>>> ad56d9bc46ab9492a32acb2c79e0496e1ac85075
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
 position = Vector2(-201, -64)
@@ -311,7 +318,7 @@ position = Vector2(256.5, 126.5)
 scale = Vector2(0.406249, 0.40625)
 texture = ExtResource("14_p0hai")
 
-[node name="ColorRect2" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
+[node name="rawr~" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 251.0
 offset_top = 215.0
 offset_right = 679.0
@@ -352,15 +359,16 @@ offset_bottom = 639.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
 [node name="PauseScreen" type="Node2D" parent="mrLegs/Camera2D"]
-visible = false
+process_mode = 3
 z_index = 12
 position = Vector2(-87, 103)
 
 [node name="ColorRect" type="ColorRect" parent="mrLegs/Camera2D/PauseScreen"]
-process_mode = 2
-offset_right = 1700.0
-offset_bottom = 1060.0
-color = Color(0.184314, 0.184314, 0.184314, 0.945098)
+offset_left = -2599.0
+offset_top = -761.0
+offset_right = 2111.0
+offset_bottom = 869.0
+color = Color(0.184314, 0.184314, 0.184314, 0.862745)
 script = ExtResource("10_8dq1e")
 
 [node name="Dark Screen" type="ColorRect" parent="mrLegs/Camera2D"]
@@ -371,6 +379,25 @@ offset_right = 871.0
 offset_bottom = -611.0
 color = Color(0.145098, 0.129412, 0.121569, 1)
 script = ExtResource("17_8qwk7")
+
+[node name="SandParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1095, 188)
+amount = 29
+lifetime = 0.3
+explosiveness = 0.14
+randomness = 1.0
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+spread = 78.75
+gravity = Vector2(2.08165e-12, -50)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+angle_max = 359.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color = Color(0.803922, 0.717647, 0.372549, 1)
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
