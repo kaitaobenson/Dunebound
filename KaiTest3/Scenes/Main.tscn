@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=41 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Script" path="res://Scenes/Dark Screen.gd" id="17_8qwk7"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="20_jrg6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -157,6 +158,37 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_b8wcj"]
+script/source = "extends CharacterBody2D
+const SPEED = 100.0
+var direction = -1
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+func _physics_process(delta):
+	var leftwallcheck = get_node(\"leftwallcheck\").is_colliding()
+	var rightwallcheck = get_node(\"rightwallcheck\").is_colliding()
+	var leftfloorcheck = get_node(\"leftfloorcheck\").is_colliding()
+	var rightfloorcheck = get_node(\"rightfloorcheck\").is_colliding()
+	var leftsidecheck = get_node(\"leftsidecheck\").is_colliding()
+	var rightsidecheck = get_node(\"rightsidecheck\").is_colliding()
+	
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+	if (direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck):
+		direction = -direction
+	if (direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck):
+		direction = -direction
+	velocity.x = direction * SPEED
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rmsb"]
+size = Vector2(43, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r35tx"]
+size = Vector2(50, 49)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -205,7 +237,7 @@ position = Vector2(-21, -76)
 texture = ExtResource("11_4rlmo")
 
 [node name="mrLegs" type="CharacterBody2D" parent="."]
-position = Vector2(81, 70)
+position = Vector2(369, 547)
 script = ExtResource("2_44nkk")
 metadata/SPEED = 300.0
 metadata/JUMP = 600.0
@@ -233,10 +265,18 @@ script = ExtResource("12_oxlyn")
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
+<<<<<<< HEAD
+offset_left = -341.0
+offset_top = -203.0
+offset_right = 829.0
+offset_bottom = 575.0
+metadata/_edit_lock_ = true
+=======
 offset_left = -407.0
 offset_top = -231.0
 offset_right = 763.0
 offset_bottom = 547.0
+>>>>>>> ad56d9bc46ab9492a32acb2c79e0496e1ac85075
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
 position = Vector2(-201, -64)
@@ -249,6 +289,7 @@ offset_right = 832.0
 offset_bottom = 482.0
 color = Color(0.0117647, 0.117647, 0.156863, 1)
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="itemTileTemplate" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer/itemTileContainer"]
 z_index = 1
@@ -283,6 +324,7 @@ offset_top = 215.0
 offset_right = 679.0
 offset_bottom = 459.0
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+metadata/_edit_lock_ = true
 
 [node name="VScrollBar" type="VScrollBar" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 659.0
@@ -366,3 +408,59 @@ motion_scale = Vector2(0.2, 1)
 [node name="BigBackground" type="Sprite2D" parent="Background/ParallaxLayer"]
 position = Vector2(268, 200)
 texture = ExtResource("17_s5fwc")
+metadata/_edit_lock_ = true
+
+[node name="jimmy" type="CharacterBody2D" parent="."]
+position = Vector2(161, 583)
+script = SubResource("GDScript_b8wcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jimmy"]
+shape = SubResource("RectangleShape2D_2rmsb")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="jimmy"]
+scale = Vector2(1.375, 1.39062)
+texture = ExtResource("20_jrg6a")
+metadata/_edit_lock_ = true
+
+[node name="leftwallcheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(-25, 20)
+metadata/_edit_lock_ = true
+
+[node name="rightwallcheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(25, 20)
+metadata/_edit_lock_ = true
+
+[node name="leftfloorcheck" type="RayCast2D" parent="jimmy"]
+position = Vector2(-23, 1)
+target_position = Vector2(0, 25)
+metadata/_edit_lock_ = true
+
+[node name="rightfloorcheck" type="RayCast2D" parent="jimmy"]
+position = Vector2(23, 1)
+target_position = Vector2(0, 25)
+metadata/_edit_lock_ = true
+
+[node name="leftabovecheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(25, -25)
+metadata/_edit_lock_ = true
+
+[node name="rightabovecheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(-25, -25)
+metadata/_edit_lock_ = true
+
+[node name="leftsidecheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(-25, 0)
+metadata/_edit_lock_ = true
+
+[node name="rightsidecheck" type="RayCast2D" parent="jimmy"]
+target_position = Vector2(25, 0)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="jimmy"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="jimmy/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_r35tx")
+
+[connection signal="body_entered" from="jimmy/Area2D" to="mrLegs" method="_on_area_2d_body_entered"]
