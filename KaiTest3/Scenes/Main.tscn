@@ -322,10 +322,10 @@ z_index = 12
 position = Vector2(-87, 103)
 
 [node name="ColorRect" type="ColorRect" parent="mrLegs/Camera2D/PauseScreen"]
-offset_left = -2599.0
-offset_top = -761.0
-offset_right = 2111.0
-offset_bottom = 869.0
+offset_left = -2260.0
+offset_top = 1195.0
+offset_right = 2450.0
+offset_bottom = 2825.0
 color = Color(0.184314, 0.184314, 0.184314, 0.862745)
 script = ExtResource("10_8dq1e")
 
@@ -358,6 +358,7 @@ scale_amount_max = 10.0
 color = Color(0.803922, 0.717647, 0.372549, 1)
 
 [node name="Background" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.2, 1)
