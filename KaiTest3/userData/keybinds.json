@@ -24,7 +24,7 @@
 			]
 		},
 		{
-			"actionName": "ui_cancel",
+			"actionName": "pause_toggle",
 			"key": [
 				"Escape"
 			]

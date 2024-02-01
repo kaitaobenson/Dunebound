@@ -3,10 +3,11 @@ extends Node
 var PlayerX
 var PlayerY
 
-func texture(naim:String):
-	#make a texture, load an image into it, and return the texture!
-	var le_image = Image.new()
-	var le_texture = ImageTexture.new()
-	le_image.load(naim)
-	le_texture.create_from_image(le_image)
-	return le_texture
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

@@ -71,3 +71,7 @@ func reloadKeybinds():
 func _ready():
 	makeDefaultKeybinds()
 	reloadKeybinds()
+#handle pausing in keybindhandler, because why the hell not
+func _process(delta):
+		if(Input.is_action_just_pressed("pause_toggle")):
+			get_parent().get_node("PauseScreen/ColorRect").pause()
