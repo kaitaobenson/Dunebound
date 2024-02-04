@@ -13,10 +13,10 @@ var grappleDownProcessActive:bool = false
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
 var swingCircle:Array
-var health:int = 100;
+var health:int = 100
 
 func ready():
-	pass;
+	pass
 	
 
 func _physics_process(delta):
@@ -113,11 +113,10 @@ func die():
 	get_tree().reload_current_scene()
 	
 	#whatever you wanna do when you die
-<<<<<<< HEAD
+
 func _on_area_2d_body_entered(body):
 	if body.name == "mrLegs":
 		die()
-=======
 
 func particles(direction):
 	var particle = $"../SandParticles"
@@ -136,4 +135,3 @@ func particles(direction):
 			particle.orbit_velocity_min = -0.1
 			particle.orbit_velocity_max = -0.1
 			add_child(particle)
->>>>>>> ad56d9bc46ab9492a32acb2c79e0496e1ac85075
