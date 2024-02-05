@@ -13,10 +13,10 @@ var grappleDownProcessActive:bool = false
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
 var swingCircle:Array
-var health:int = 100;
+var health:int = 100
 
 func ready():
-	pass;
+	pass
 	
 
 func _physics_process(delta):
@@ -66,7 +66,7 @@ func movement(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and invon == false:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !invon:
 		velocity.y = -JUMP_VELOCITY
 	# Horiz movement
 	if velocity.x == 0:
@@ -96,7 +96,7 @@ func movement(delta):
 		particles(direction)
 	else: velocity.x = 0
 	move_and_slide()
-
+	collision_layer
 func grappleDown():
 	grappleDownProcessActive = true
 func _hitByBullet(damage:int):
@@ -110,8 +110,13 @@ func doDamage(damage:int):
 	if(health<=0):
 		die()
 func die():
-	self.queue_free()
+	get_tree().reload_current_scene()
+	
 	#whatever you wanna do when you die
+
+func _on_area_2d_body_entered(body):
+	if body.name == "mrLegs":
+		die()
 
 func particles(direction):
 	var particle = $"../SandParticles"
