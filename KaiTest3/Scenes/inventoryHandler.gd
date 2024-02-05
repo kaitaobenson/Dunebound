@@ -16,7 +16,7 @@ func _ready():
 	total_tiles_per_scrollpos = tilePerRow*floor(rawr.size.y/templateTile.size.y+TILE_MARGIN)
 	closeButton = get_node("closeButton")
 	closeButton.connect("pressed",invClose)
-	closeButton.disabled = false
+	closeButton.disabled = true
 func invClose():
 	print("wahhh")
 	self.visible = false

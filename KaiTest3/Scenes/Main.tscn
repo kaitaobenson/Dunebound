@@ -280,6 +280,7 @@ offset_left = 723.0
 offset_top = 110.0
 offset_right = 822.0
 offset_bottom = 209.0
+disabled = true
 action_mode = 0
 icon = ExtResource("13_x0xyk")
 
