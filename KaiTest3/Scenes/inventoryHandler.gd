@@ -18,6 +18,7 @@ func _ready():
 	closeButton.connect("pressed",invClose)
 	closeButton.disabled = false
 func invClose():
+	print("wahhh")
 	self.visible = false
 	closeButton.disabled = true
 func invToggle():
@@ -43,6 +44,7 @@ func search(query:String):
 		var newTile = templateTile.duplicate(15)
 		add_child(newTile)
 		newTile.get_node("Sprite2D").texture = items_node[itemPos[y]].get_node("Sprite2D").texture
+		newTile.get_node("Sprite2D").scale = Vector2(templateTile.size.x-1/newTile.get_node("Sprite2D").texture.get_size().x,templateTile.size.y-1/newTile.get_node("Sprite2D").texture.get_size().y)
 		if(currentTileAMountOnRow+1>tilePerRow):
 			newTile.position = templateTile.position+Vector2(0,TILE_MARGIN)
 			currentTileAMountOnRow = 0

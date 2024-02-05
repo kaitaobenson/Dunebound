@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=38 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="12_oxlyn"]
 [ext_resource type="Script" path="res://Scenes/inventoryHandler.gd" id="12_q70ba"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
+[ext_resource type="Script" path="res://Scenes/itemTileHoverHandler.gd" id="14_6e37q"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Script" path="res://Scenes/Dark Screen.gd" id="17_8qwk7"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
@@ -159,6 +160,15 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
+[node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
+z_index = 16
+offset_left = -262.0
+offset_top = -175.0
+offset_right = -192.0
+offset_bottom = -105.0
+script = ExtResource("14_6e37q")
+metadata/tileName = "itemTileTemplate"
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0pe5f")
 format = 2
@@ -225,12 +235,14 @@ sprite_frames = SubResource("SpriteFrames_dpc2o")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="mrLegs"]
+process_mode = 3
 position = Vector2(6, -173)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("12_oxlyn")
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_left = -407.0
@@ -239,6 +251,7 @@ offset_right = 763.0
 offset_bottom = 547.0
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
+process_mode = 3
 position = Vector2(-201, -64)
 script = ExtResource("12_q70ba")
 
@@ -247,6 +260,7 @@ offset_left = 212.0
 offset_top = 97.0
 offset_right = 832.0
 offset_bottom = 482.0
+mouse_filter = 2
 color = Color(0.0117647, 0.117647, 0.156863, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -257,13 +271,16 @@ offset_left = 47.0
 offset_top = 126.0
 offset_right = 117.0
 offset_bottom = 196.0
+mouse_filter = 2
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
 [node name="closeButton" type="Button" parent="mrLegs/Camera2D/Control/inventoryContainer"]
+process_mode = 3
 offset_left = 723.0
 offset_top = 110.0
 offset_right = 822.0
 offset_bottom = 209.0
+action_mode = 0
 icon = ExtResource("13_x0xyk")
 
 [node name="TextEdit" type="TextEdit" parent="mrLegs/Camera2D/Control/inventoryContainer"]
@@ -282,6 +299,7 @@ offset_left = 251.0
 offset_top = 215.0
 offset_right = 679.0
 offset_bottom = 459.0
+mouse_filter = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
 [node name="VScrollBar" type="VScrollBar" parent="mrLegs/Camera2D/Control/inventoryContainer"]
@@ -318,6 +336,7 @@ text = "press button to change keybind, use ticker to cycle between alternate ke
 
 [node name="PauseScreen" type="Node2D" parent="mrLegs/Camera2D"]
 process_mode = 3
+visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -335,6 +354,7 @@ offset_left = -907.0
 offset_top = -1665.0
 offset_right = 871.0
 offset_bottom = -611.0
+mouse_filter = 2
 color = Color(0.145098, 0.129412, 0.121569, 1)
 script = ExtResource("17_8qwk7")
 
