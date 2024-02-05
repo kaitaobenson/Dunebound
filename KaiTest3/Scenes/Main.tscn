@@ -1,7 +1,7 @@
-
-[gd_scene load_steps=41 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=42 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
@@ -14,13 +14,12 @@
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="10_vag3d"]
 [ext_resource type="Texture2D" uid="uid://dg5vwtp6egk26" path="res://Assets/Textures/Dune1.png" id="11_4rlmo"]
-[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="12_oxlyn"]
-[ext_resource type="Script" path="res://Scenes/inventoryHandler.gd" id="12_q70ba"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_bratx"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
-[ext_resource type="Script" path="res://Scenes/itemTileHoverHandler.gd" id="14_6e37q"]
+[ext_resource type="Script" path="res://inventoryHandler.gd" id="14_2vcrm"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
-[ext_resource type="Script" path="res://Scenes/Dark Screen.gd" id="17_8qwk7"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
+[ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="20_jrg6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
@@ -199,7 +198,7 @@ offset_left = -262.0
 offset_top = -175.0
 offset_right = -192.0
 offset_bottom = -105.0
-script = ExtResource("14_6e37q")
+script = ExtResource("1_iyncb")
 metadata/tileName = "itemTileTemplate"
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -272,28 +271,22 @@ process_mode = 3
 position = Vector2(6, -173)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-script = ExtResource("12_oxlyn")
+script = ExtResource("13_bratx")
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
-<<<<<<< HEAD
-offset_left = -341.0
-offset_top = -203.0
-offset_right = 829.0
-offset_bottom = 575.0
-metadata/_edit_lock_ = true
-
 offset_left = -407.0
 offset_top = -231.0
 offset_right = 763.0
 offset_bottom = 547.0
+metadata/_edit_lock_ = true
 
 [node name="inventoryContainer" type="Node2D" parent="mrLegs/Camera2D/Control"]
 process_mode = 3
 position = Vector2(-201, -64)
-script = ExtResource("12_q70ba")
+script = ExtResource("14_2vcrm")
 
 [node name="itemTileContainer" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 212.0
@@ -399,11 +392,13 @@ offset_right = 871.0
 offset_bottom = -611.0
 mouse_filter = 2
 color = Color(0.145098, 0.129412, 0.121569, 1)
-script = ExtResource("17_8qwk7")
+script = ExtResource("19_b50qg")
 
 [node name="SandParticles" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(1095, 188)
+emitting = false
 amount = 29
 lifetime = 0.3
 explosiveness = 0.14

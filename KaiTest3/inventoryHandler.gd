@@ -18,7 +18,6 @@ func _ready():
 	closeButton.connect("pressed",invClose)
 	closeButton.disabled = true
 func invClose():
-	print("wahhh")
 	self.visible = false
 	closeButton.disabled = true
 func invToggle():

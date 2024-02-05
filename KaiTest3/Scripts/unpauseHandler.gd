@@ -6,6 +6,5 @@ func pause():
 	get_parent().visible = true
 func _process(delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
-		print("waaa")
 		get_tree().paused = !get_tree().paused
 		get_parent().visible = !get_parent().visible
