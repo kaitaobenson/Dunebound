@@ -119,7 +119,7 @@ func _on_area_2d_body_entered(body):
 
 func particles(direction):
 	var particle = $"../SandParticles"
-	if(direction==0):
+	if(direction==0 or !is_on_floor()):
 			particle.visible = false
 			particle.emitting = false
 	if direction != 0 && is_on_floor():
