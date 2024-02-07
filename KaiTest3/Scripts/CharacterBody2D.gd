@@ -111,7 +111,6 @@ func doDamage(damage:int):
 		die()
 func die():
 	get_tree().reload_current_scene()
-	
 	#whatever you wanna do when you die
 
 func _on_area_2d_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=39 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="20_jrg6a"]
+[ext_resource type="PackedScene" uid="uid://b04f6tfgq073g" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -158,37 +158,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="GDScript" id="GDScript_b8wcj"]
-script/source = "extends CharacterBody2D
-const SPEED = 100.0
-var direction = -1
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-
-func _physics_process(delta):
-	var leftwallcheck = get_node(\"leftwallcheck\").is_colliding()
-	var rightwallcheck = get_node(\"rightwallcheck\").is_colliding()
-	var leftfloorcheck = get_node(\"leftfloorcheck\").is_colliding()
-	var rightfloorcheck = get_node(\"rightfloorcheck\").is_colliding()
-	var leftsidecheck = get_node(\"leftsidecheck\").is_colliding()
-	var rightsidecheck = get_node(\"rightsidecheck\").is_colliding()
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-	if (direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck):
-		direction = -direction
-	if (direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck):
-		direction = -direction
-	velocity.x = direction * SPEED
-	move_and_slide()
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rmsb"]
-size = Vector2(43, 44)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r35tx"]
-size = Vector2(50, 49)
 
 [node name="Node2D" type="Node2D"]
 
@@ -426,57 +395,4 @@ position = Vector2(268, 200)
 texture = ExtResource("17_s5fwc")
 metadata/_edit_lock_ = true
 
-[node name="jimmy" type="CharacterBody2D" parent="."]
-position = Vector2(161, 583)
-script = SubResource("GDScript_b8wcj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jimmy"]
-shape = SubResource("RectangleShape2D_2rmsb")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="jimmy"]
-scale = Vector2(1.375, 1.39062)
-texture = ExtResource("20_jrg6a")
-metadata/_edit_lock_ = true
-
-[node name="leftwallcheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(-25, 20)
-metadata/_edit_lock_ = true
-
-[node name="rightwallcheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(25, 20)
-metadata/_edit_lock_ = true
-
-[node name="leftfloorcheck" type="RayCast2D" parent="jimmy"]
-position = Vector2(-23, 1)
-target_position = Vector2(0, 25)
-metadata/_edit_lock_ = true
-
-[node name="rightfloorcheck" type="RayCast2D" parent="jimmy"]
-position = Vector2(23, 1)
-target_position = Vector2(0, 25)
-metadata/_edit_lock_ = true
-
-[node name="leftabovecheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(25, -25)
-metadata/_edit_lock_ = true
-
-[node name="rightabovecheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(-25, -25)
-metadata/_edit_lock_ = true
-
-[node name="leftsidecheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(-25, 0)
-metadata/_edit_lock_ = true
-
-[node name="rightsidecheck" type="RayCast2D" parent="jimmy"]
-target_position = Vector2(25, 0)
-metadata/_edit_lock_ = true
-
-[node name="Area2D" type="Area2D" parent="jimmy"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="jimmy/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_r35tx")
-
-[connection signal="body_entered" from="jimmy/Area2D" to="mrLegs" method="_on_area_2d_body_entered"]
+[node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
