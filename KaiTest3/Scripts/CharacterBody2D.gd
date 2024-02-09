@@ -73,12 +73,12 @@ func movement(delta):
 		anim.stop()
 	# Right
 	if direction == 1:
-		anim.play("Walk")
+		anim.play("Run")
 		if invon == false:
 			animSprite.flip_h = false
 	# Left
 	if direction == -1:
-		anim.play("Walk")
+		anim.play("Run")
 		if invon == false:
 			animSprite.flip_h = true
 	# Grapple Hook
