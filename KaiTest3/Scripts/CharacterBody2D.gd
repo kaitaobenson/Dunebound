@@ -118,22 +118,24 @@ func _on_area_2d_body_entered(body):
 	if body.name == "mrLegs":
 		die()
 
+
 func particles(direction):
 	var particle = $"../SandParticles"
-	if(direction==0):
-			particle.visible = false
-			particle.emitting = false
+	particle.visible = true
+	# start making particles
 	if direction != 0 && is_on_floor():
 		particle.emitting = true
-		particle.visible = true
+		
 		# Y + 60 to be at player's feet
 		particle.position.x = Global.PlayerX
 		particle.position.y = Global.PlayerY + 60
-
+		
 		if direction == 1:
 			particle.orbit_velocity_min = 0.1
 			particle.orbit_velocity_max = 0.1
-
+			
 		if direction == -1:
 			particle.orbit_velocity_min = -0.1
 			particle.orbit_velocity_max = -0.1
+	else:
+		particle.emitting = false
