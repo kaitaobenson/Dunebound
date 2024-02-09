@@ -416,12 +416,11 @@ metadata/_edit_lock_ = true
 
 [node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 
-[node name="DEATH" type="Area2D" parent="jimmy"]
-position = Vector2(-161, -583)
+[node name="Bottom Barrier DEATH" type="Area2D" parent="."]
 script = SubResource("GDScript_lh68d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jimmy/DEATH"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Barrier DEATH"]
 position = Vector2(-477, 1690)
 shape = SubResource("RectangleShape2D_c0ts4")
 
-[connection signal="body_entered" from="jimmy/DEATH" to="jimmy/DEATH" method="_on_body_entered"]
+[connection signal="body_entered" from="Bottom Barrier DEATH" to="Bottom Barrier DEATH" method="_on_body_entered"]
