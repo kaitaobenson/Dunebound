@@ -5,3 +5,5 @@ func _process(delta):
 		print("womp")
 		get_tree().paused = !get_tree().paused
 		get_parent().visible = !get_parent().visible
+		if(!get_parent().visible):
+			get_parent().get_parent().get_node("uiContainer").visible = false
