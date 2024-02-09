@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=42 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
-[ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
+[ext_resource type="PackedScene" uid="uid://b04f6tfgq073g" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -159,18 +159,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_7hcny"]
+
 [sub_resource type="GDScript" id="GDScript_lh68d"]
 script/source = "extends Area2D
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_body_entered(body):
 	if body.name == \"mrLegs\":
-		get_parent().get_node(\"mrLegs\").die()
+		get_parent().get_parent().get_node(\"mrLegs\").die()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
@@ -207,8 +203,10 @@ metadata/damage = 50
 [node name="Templates" type="Node" parent="."]
 
 [node name="keybindButton" type="Button" parent="Templates"]
+visible = false
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
 script = ExtResource("7_oiap5")
 metadata/action = &""
 
@@ -255,8 +253,7 @@ metadata/_edit_lock_ = true
 [node name="Camera2D" type="Camera2D" parent="mrLegs"]
 process_mode = 3
 position = Vector2(6, -173)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 0.0
 script = ExtResource("13_bratx")
 
 [node name="PauseScreen" type="Node2D" parent="mrLegs/Camera2D"]
@@ -273,8 +270,26 @@ offset_left = -2224.0
 offset_top = -791.0
 offset_right = 2486.0
 offset_bottom = 839.0
-color = Color(0.141176, 0.141176, 0.141176, 0.968627)
+color = Color(0.223529, 0.223529, 0.223529, 0.968627)
 script = ExtResource("10_8dq1e")
+
+[node name="Button" type="Button" parent="mrLegs/Camera2D/PauseScreen"]
+z_index = 39
+offset_left = -445.0
+offset_top = -365.0
+offset_right = -163.0
+offset_bottom = -312.0
+theme = SubResource("Theme_7hcny")
+text = "Controls"
+
+[node name="Button2" type="Button" parent="mrLegs/Camera2D/PauseScreen"]
+z_index = 39
+offset_left = -444.0
+offset_top = -281.0
+offset_right = -162.0
+offset_bottom = -228.0
+theme = SubResource("Theme_7hcny")
+text = "Save Game"
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D"]
 process_mode = 3
@@ -321,16 +336,16 @@ disabled = true
 action_mode = 0
 icon = ExtResource("13_x0xyk")
 
+[node name="Sprite2D" type="Sprite2D" parent="mrLegs/Camera2D/Control/inventoryContainer"]
+position = Vector2(256.5, 126.5)
+scale = Vector2(0.406249, 0.40625)
+texture = ExtResource("14_p0hai")
+
 [node name="TextEdit" type="TextEdit" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 284.0
 offset_top = 108.0
 offset_right = 454.0
 offset_bottom = 142.0
-
-[node name="Sprite2D" type="Sprite2D" parent="mrLegs/Camera2D/Control/inventoryContainer"]
-position = Vector2(256.5, 126.5)
-scale = Vector2(0.406249, 0.40625)
-texture = ExtResource("14_p0hai")
 
 [node name="rawr~" type="ColorRect" parent="mrLegs/Camera2D/Control/inventoryContainer"]
 offset_left = 251.0
@@ -350,12 +365,14 @@ offset_bottom = 446.0
 [node name="uiContainer" type="Node2D" parent="mrLegs/Camera2D"]
 process_mode = 3
 visible = false
-z_index = 1
-position = Vector2(0, 100)
+z_index = 60
+position = Vector2(-587, -317)
 
 [node name="ColorRect" type="ColorRect" parent="mrLegs/Camera2D/uiContainer"]
-offset_right = 1160.0
-offset_bottom = 648.0
+offset_left = -2310.0
+offset_top = -1174.0
+offset_right = 4086.0
+offset_bottom = 1994.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Control" type="Control" parent="mrLegs/Camera2D/uiContainer"]

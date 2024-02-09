@@ -62,11 +62,15 @@ func reloadKeybindUI(tickerValues:Array):
 		newText.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER-25
 		newTicker.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
 		newText.z_index =99
+		newButton.z_index=999
+		newCancelButton.z_index=999
+		newButton.visible = true
+		newCancelButton.visible = false
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
-		newCancelButton.position.x=newText.text.length()*50
 		newButton.position.x = newText.text.length()*40
-		newTicker.position.x = newText.text.length()*55+newButton.text.length()*1
+		newCancelButton.position.x = newButton.position.x+150
+		newTicker.position.x = newCancelButton.position.x+150
 		self.add_child(newText)
 		self.add_child(newTicker)
 		newButton.joob = newTicker

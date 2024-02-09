@@ -1,6 +1,6 @@
 extends Camera2D
 
 func _ready():
-	pass
-func _process(delta):
-	pass
+	get_node("PauseScreen/Button").connect("button_down",openthatthing)
+func openthatthing():
+	get_node("uiContainer").visible=true
