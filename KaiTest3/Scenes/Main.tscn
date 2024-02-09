@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
-[ext_resource type="PackedScene" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
+[ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -405,23 +405,23 @@ scale_amount_max = 10.0
 color = Color(0.803922, 0.717647, 0.372549, 1)
 
 [node name="Background" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.2, 1)
 
-[node name="BigBackground" type="Sprite2D" parent="Background/ParallaxLayer"]
-position = Vector2(268, 200)
+[node name="BigBackground2" type="Sprite2D" parent="Background/ParallaxLayer"]
+position = Vector2(291, 183)
 texture = ExtResource("17_s5fwc")
 metadata/_edit_lock_ = true
 
 [node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 
-[node name="DEATH" type="Area2D" parent="."]
+[node name="DEATH" type="Area2D" parent="jimmy"]
+position = Vector2(-161, -583)
 script = SubResource("GDScript_lh68d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DEATH"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jimmy/DEATH"]
 position = Vector2(-477, 1690)
 shape = SubResource("RectangleShape2D_c0ts4")
 
-[connection signal="body_entered" from="DEATH" to="DEATH" method="_on_body_entered"]
+[connection signal="body_entered" from="jimmy/DEATH" to="jimmy/DEATH" method="_on_body_entered"]
