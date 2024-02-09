@@ -111,7 +111,6 @@ func doDamage(damage:int):
 		die()
 func die():
 	get_tree().reload_current_scene()
-	
 	#whatever you wanna do when you die
 
 func _on_area_2d_body_entered(body):
@@ -121,8 +120,7 @@ func _on_area_2d_body_entered(body):
 
 func particles(direction):
 	var particle = $"../SandParticles"
-	particle.visible = true
-	# start making particles
+
 	if direction != 0 && is_on_floor():
 		particle.emitting = true
 		
