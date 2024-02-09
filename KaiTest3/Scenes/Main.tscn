@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
-[ext_resource type="PackedScene" uid="uid://b04f6tfgq073g" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
+[ext_resource type="PackedScene" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -171,7 +171,6 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == \"mrLegs\":
 		get_parent().get_node(\"mrLegs\").die()
-s
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
