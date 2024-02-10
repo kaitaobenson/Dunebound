@@ -8,20 +8,28 @@ var currentMomentumThingy:int = SWING_GRAVITY
 var momentum:int
 var grappleDownProcessActive:bool = false
 
+# Important for camera, don't remove from class level
+var direction = 0
+
 @onready var invon = false
 @onready var grappleHook = get_node("grappleHook")
 @onready var anim = get_node("AnimationPlayer")
 @onready var animSprite = get_node("AnimatedSprite2D")
+
+
 var swingCircle:Array
 var health:int = 100
 
-func ready():
-	pass
-	
+func _ready():
+	Global.PlayerX = global_position.x
+	Global.PlayerY = global_position.y
+	Global.PlayerPosition = global_position
 
 func _physics_process(delta):
-	Global.PlayerX = self.position.x
-	Global.PlayerY = self.position.y
+	Global.PlayerX = global_position.x
+	Global.PlayerY = global_position.y
+	Global.PlayerPosition = global_position
+	
 	movement(delta)
 	grapple(delta)
 	
@@ -60,7 +68,7 @@ func movement(delta):
 	var SPEED = get_meta("SPEED")
 	var JUMP_VELOCITY = get_meta("JUMP")
 	var gravity = get_meta("GRAVITY");
-	var direction = Input.get_axis("ui_left", "move-right")
+	direction = Input.get_axis("ui_left", "move-right")
 	
 	# Gravity
 	if not is_on_floor():
@@ -82,7 +90,7 @@ func movement(delta):
 		if invon == false:
 			animSprite.flip_h = true
 	# Grapple Hook
-	if (direction == 0&&!grappleDownProcessActive):
+	if (direction == 0 && !grappleDownProcessActive):
 		velocity.x = 0
 	# Inventory toggle handler
 	if(Input.is_action_just_pressed("inventory_toggle")):
@@ -126,8 +134,8 @@ func particles(direction):
 		particle.emitting = true
 		
 		# Y + 60 to be at player's feet
-		particle.position.x = Global.PlayerX
-		particle.position.y = Global.PlayerY + 60
+		particle.global_position.x = Global.PlayerX
+		particle.global_position.y = Global.PlayerY + 60
 		
 		if direction == 1:
 			particle.orbit_velocity_min = 0.1
@@ -138,3 +146,6 @@ func particles(direction):
 			particle.orbit_velocity_max = -0.1
 	else:
 		particle.emitting = false
+
+func getDirection():
+	return direction

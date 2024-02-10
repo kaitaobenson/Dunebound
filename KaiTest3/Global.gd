@@ -2,6 +2,7 @@ extends Node
 
 var PlayerX
 var PlayerY
+var PlayerPosition
 
 func texture(naim:String):
 	#make a texture, load an image into it, and return the texture!

@@ -46,9 +46,9 @@ func reloadKeybindUI(tickerValues:Array):
 		myChildren[knife].queue_free()
 	for retghghhvh in actions.size():
 		var newText = Label.new()
-		var newButton = get_parent().get_parent().get_parent().get_parent().get_node("Templates/keybindButton").duplicate(15)
+		var newButton = $"../../../Templates/keybindButton".duplicate(15)
 		var newTicker = SpinBox.new()
-		var newCancelButton = get_parent().get_parent().get_parent().get_parent().get_node("Templates/cancelButton").duplicate(15)
+		var newCancelButton = $"../../../Templates/cancelButton".duplicate(15)
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
