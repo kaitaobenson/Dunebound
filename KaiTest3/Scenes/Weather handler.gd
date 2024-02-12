@@ -11,7 +11,7 @@ func _ready():
 
 func _process(delta):
 	elapsedTime += delta
-	temperature()
+	time_of_day_cycle()
 	print(Global.TimeOfDay)
 
 	if elapsedTime >= Daylength:
@@ -20,7 +20,14 @@ func _process(delta):
 func new_day():
 	elapsedTime = 0
 
-func temperature():
+func time_of_day_cycle():
+	var i = 0
+	while i < 6:
+		if (elapsedTime >= DaySection * i) && (elapsedTime < DaySection * (i + 1)):
+			Global.TimeOfDay = i + 1
+		i += 1
+	
+	"""
 	# DayBegin
 	if (elapsedTime >= DaySection * 0) && (elapsedTime < DaySection * 1):
 		Global.TimeOfDay = 1
@@ -38,5 +45,5 @@ func temperature():
 		Global.TimeOfDay = 5
 	# NightEnd
 	if (elapsedTime >= DaySection * 5) && (elapsedTime < DaySection * 6):
-		Global.timeOfDay = 6
-
+		Global.TimeOfDay = 6
+	"""
