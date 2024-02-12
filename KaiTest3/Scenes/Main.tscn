@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=46 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
@@ -22,6 +22,9 @@
 [ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Script" path="res://Scenes/Weather handler.gd" id="22_a2ihr"]
+[ext_resource type="Texture2D" uid="uid://dh7u5aevkikfd" path="res://Assets/Textures/ScrollDraft-export.png" id="23_086pw"]
+[ext_resource type="Script" path="res://Scenes/Scroll.gd" id="24_dyjx4"]
+[ext_resource type="Script" path="res://Scenes/ScrollText.gd" id="25_34a06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -164,6 +167,9 @@ func _on_body_entered(body):
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
 size = Vector2(4818, 134.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qb4cu"]
+radius = 19.4612
 
 [node name="Node2D" type="Node2D"]
 
@@ -377,6 +383,7 @@ script = ExtResource("19_b50qg")
 position = Vector2(369, 547)
 
 [node name="Player" type="CharacterBody2D" parent="PlayerContainer"]
+unique_name_in_owner = true
 script = ExtResource("2_44nkk")
 metadata/SPEED = 300.0
 metadata/JUMP = 600.0
@@ -437,7 +444,39 @@ script = SubResource("GDScript_lh68d")
 position = Vector2(-477, 1690)
 shape = SubResource("RectangleShape2D_c0ts4")
 
-[node name="Weather handler" type="Node2D" parent="."]
+[node name="Weather Handler" type="Node2D" parent="."]
 script = ExtResource("22_a2ihr")
 
+[node name="Scroll" type="Sprite2D" parent="."]
+position = Vector2(-90, 521)
+scale = Vector2(4.04687, 3.8125)
+texture = ExtResource("23_086pw")
+script = ExtResource("24_dyjx4")
+metadata/ScrollText = "BlahBlahBalh Why is this text so blurry"
+
+[node name="Text" type="RichTextLabel" parent="Scroll"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0927
+offset_top = -45.6394
+offset_right = 41.9073
+offset_bottom = 7.36065
+theme_override_font_sizes/normal_font_size = 6
+text = "Scroll Text Here"
+scroll_active = false
+script = ExtResource("25_34a06")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="Scroll"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scroll/Area2D"]
+position = Vector2(-0.0617752, -0.52459)
+shape = SubResource("CircleShape2D_qb4cu")
+metadata/_edit_lock_ = true
+
 [connection signal="body_entered" from="Bottom Barrier DEATH" to="Bottom Barrier DEATH" method="_on_body_entered"]
+[connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]
