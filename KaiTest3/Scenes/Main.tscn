@@ -351,6 +351,7 @@ offset_bottom = 446.0
 process_mode = 3
 z_index = 60
 position = Vector2(-587, -317)
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/uiContainer"]
 offset_left = -2310.0
