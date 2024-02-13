@@ -1,6 +1,11 @@
 extends Node
 var actions = []
+var ignoreThisVar:Vector2
+#il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
+const uiCrapOffsetQuickFix:int = 200
 const TEXT_OFFSET_THINGYMABOBBER:int = 100
+const uiScaleDownQuickPatch:float = 0.5 
+
 #TODO: name a variable "TacticsComradesTactics"
 func replaceWithSpaces(thingydingy:String):
 	var dingythingy = thingydingy
@@ -38,6 +43,7 @@ func returnCurrentTickerPositions()->Array:
 		deArray.push_back(tickers[ygbhhuy].value)
 	return deArray
 func _ready():
+	ignoreThisVar=Vector2(uiScaleDownQuickPatch,uiScaleDownQuickPatch)
 	actions = InputMap.get_actions()
 	reloadKeybindUI(generateZeroArray(actions.size()))
 func reloadKeybindUI(tickerValues:Array):
@@ -53,14 +59,13 @@ func reloadKeybindUI(tickerValues:Array):
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
-		newButton.position.x = 475
 		newTicker.value = tickerValues[retghghhvh]
-		newButton.position.y  =retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
-		newCancelButton.position.y=retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
+		newButton.position.y  =(retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix
+		newCancelButton.position.y=(retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix
 		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
-		newText.position.x = 10
-		newText.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER-25
-		newTicker.position.y =  retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER
+		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
+		newText.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix
+		newTicker.position.y =  (retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix
 		newText.z_index =99
 		newButton.z_index=999
 		newCancelButton.z_index=999
@@ -68,9 +73,13 @@ func reloadKeybindUI(tickerValues:Array):
 		newCancelButton.visible = false
 		newText.add_theme_font_size_override("font_size",66)
 		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
-		newButton.position.x = newText.text.length()*40
-		newCancelButton.position.x = newButton.position.x+150
-		newTicker.position.x = newCancelButton.position.x+150
+		newButton.position.x = ((newText.position.x+150)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix+newText.text.length()*10
+		newCancelButton.position.x = ((newButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
+		newTicker.position.x = ((newCancelButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
+		newText.scale = ignoreThisVar
+		newTicker.scale = ignoreThisVar
+		newButton.scale = ignoreThisVar
+		newCancelButton.scale = ignoreThisVar
 		self.add_child(newText)
 		self.add_child(newTicker)
 		newButton.joob = newTicker

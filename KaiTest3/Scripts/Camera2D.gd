@@ -11,9 +11,9 @@ func openthatthing():
 	
 func _physics_process(delta):
 	if $"../PlayerContainer/Player".getDirection() == 1:
-		bufferX = 300
+		bufferX = 150
 	if $"../PlayerContainer/Player".getDirection() == -1:
-		bufferX = -300
+		bufferX = -150
 	if $"../PlayerContainer/Player".getDirection() == 0:
 		bufferX = 0
 	var XtoPlayer = (Global.PlayerX - position.x) * 0.1
