@@ -288,7 +288,8 @@ metadata/_edit_lock_ = true
 
 [node name="inventoryContainer" type="Node2D" parent="Camera2D/Control"]
 process_mode = 3
-position = Vector2(-2025, -534)
+visible = false
+position = Vector2(-137, -85)
 script = ExtResource("14_2vcrm")
 
 [node name="itemTileContainer" type="ColorRect" parent="Camera2D/Control/inventoryContainer"]
@@ -349,9 +350,9 @@ offset_bottom = 446.0
 
 [node name="uiContainer" type="Node2D" parent="Camera2D"]
 process_mode = 3
+visible = false
 z_index = 60
 position = Vector2(-587, -317)
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/uiContainer"]
 offset_left = -2310.0
@@ -377,10 +378,10 @@ text = "press button to change keybind, use ticker to cycle between alternate ke
 
 [node name="Dark Screen" type="ColorRect" parent="Camera2D"]
 z_index = 1
-offset_left = -3719.0
-offset_top = -1222.0
-offset_right = -1719.0
-offset_bottom = 778.0
+offset_left = -3994.0
+offset_top = -959.0
+offset_right = -1994.0
+offset_bottom = 1041.0
 mouse_filter = 2
 color = Color(0.145098, 0.129412, 0.121569, 1)
 script = ExtResource("19_b50qg")
