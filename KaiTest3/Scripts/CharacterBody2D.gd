@@ -7,7 +7,7 @@ var swingPosition:int = 150
 var currentMomentumThingy:int = SWING_GRAVITY
 var momentum:int
 var grappleDownProcessActive:bool = false
-
+var stupidUICloseButtonPressed = false
 # Important for camera, don't remove from class level
 var direction = 0
 
@@ -21,10 +21,7 @@ var swingCircle:Array
 var health:int = 100
 
 func _ready():
-	Global.PlayerX = global_position.x
-	Global.PlayerY = global_position.y
-	Global.PlayerPosition = global_position
-
+	pass
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
@@ -93,18 +90,18 @@ func movement(delta):
 	if (direction == 0 && !grappleDownProcessActive):
 		velocity.x = 0
 	# Inventory toggle handler
-	if(Input.is_action_just_pressed("inventory_toggle")):
-		if invon == true:
-			invon = false
-		else:
+	if(Input.is_action_just_pressed("inventory_toggle")||stupidUICloseButtonPressed):
+		if stupidUICloseButtonPressed:
 			invon = true
+			stupidUICloseButtonPressed = false
+		invon = !invon
 	# No movement while open inventory
 	if invon == false:
 		velocity.x = direction * SPEED
 		particles(direction)
-	else: velocity.x = 0
+	else: 
+		velocity.x = 0
 	move_and_slide()
-	collision_layer
 func grappleDown():
 	grappleDownProcessActive = true
 func _hitByBullet(damage:int):

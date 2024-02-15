@@ -1,8 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=46 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
-[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
-[ext_resource type="Texture2D" uid="uid://b8iouluube11q" path="res://Assets/Textures/icon.svg" id="1_opd5u"]
+[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_my4qp"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
@@ -173,16 +172,7 @@ size = Vector2(4818, 134.5)
 radius = 19.4612
 
 [node name="Node2D" type="Node2D"]
-
-[node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
-z_index = 16
-offset_left = -55.0
-offset_top = -151.0
-offset_right = 73.0
-offset_bottom = -23.0
-texture_normal = ExtResource("1_opd5u")
-script = ExtResource("1_iyncb")
-metadata/tileName = "itemTileTemplate"
+script = ExtResource("1_my4qp")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0pe5f")
@@ -289,6 +279,7 @@ metadata/_edit_lock_ = true
 [node name="inventoryContainer" type="Node2D" parent="Camera2D/Control"]
 process_mode = 3
 visible = false
+z_index = 43
 position = Vector2(-137, -85)
 script = ExtResource("14_2vcrm")
 
