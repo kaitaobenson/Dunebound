@@ -21,7 +21,8 @@ var swingCircle:Array
 var health:int = 100
 
 func _ready():
-	pass
+	Global.PlayerX = global_position.x
+	Global.PlayerY = global_position.y
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
