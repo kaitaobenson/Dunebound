@@ -14,8 +14,6 @@ var health:int = 100
 func _ready():
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
-	Global.PlayerPosition = global_position
-
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
@@ -55,6 +53,7 @@ func movement(delta):
 		$"../States".start_state("particles")
 	else: velocity.x = 0
 	move_and_slide()
+
 
 func doDamage(damage:int):
 	health = health - damage
