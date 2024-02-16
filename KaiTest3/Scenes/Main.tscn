@@ -1,12 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=54 format=3 uid="uid://bfyyn42ksngl"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
-[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="1_iyncb"]
-[ext_resource type="Texture2D" uid="uid://bxlfw4cwejfk0" path="res://Assets/BumpDune2.png" id="1_tx01k"]
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_my4qp"]
+[ext_resource type="Texture2D" uid="uid://bxlfw4cwejfk0" path="res://Assets/BumpDune2.png" id="1_tx01k"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
+[ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/BumpDune3.png" id="2_hvuvg"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
@@ -146,6 +146,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_88bld"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="Animation" id="Animation_d83su"]
 length = 0.001
 tracks/0/type = "value"
@@ -175,21 +190,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_88bld"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tieuu"]
@@ -235,15 +235,24 @@ position = Vector2(1, -2)
 polygon = PackedVector2Array(-318, 132, -285, 130, -178, 45, -110, -3, -36, -38, 37, -37, 108, -5, 182, 43, 286, 125, 319, 128, 319, 160, -319, 160)
 metadata/_edit_lock_ = true
 
+[node name="Dune3" type="StaticBody2D" parent="Foreground Container"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Dune3"]
+z_index = 1
+position = Vector2(1718, 324)
+texture = ExtResource("2_hvuvg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune3"]
+polygon = PackedVector2Array(1270, 612, 1368, 551, 1463, 493, 1521, 460, 1573, 435, 1598, 422, 1652, 404, 1687, 397, 1722, 392, 1745, 393, 1790, 398, 1840, 414, 1877, 429, 1912, 448, 1943, 465, 1992, 494, 2024, 516, 2071, 547, 2128, 588, 2165, 613, 2198, 613, 2198, 644, 1238, 644, 1238, 612, 1254, 612, 1270, 612)
+
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 z_index = 16
 offset_left = -262.0
 offset_top = -175.0
 offset_right = -192.0
 offset_bottom = -105.0
-script = ExtResource("1_iyncb")
-metadata/tileName = "itemTileTemplate"
 script = ExtResource("1_my4qp")
+metadata/tileName = "itemTileTemplate"
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-109, 4)

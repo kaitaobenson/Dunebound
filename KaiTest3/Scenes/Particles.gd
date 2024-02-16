@@ -2,7 +2,9 @@ extends Node2D
 
 var particleIsOn = false
 
-	
+func on1():
+	particleIsOn = true
+
 func off1():
 	particleIsOn = false
 	
@@ -30,6 +32,3 @@ func particles():
 			particle.orbit_velocity_min = -0.1
 			particle.orbit_velocity_max = -0.1
 
-
-func particles_on():
-	particleIsOn = true

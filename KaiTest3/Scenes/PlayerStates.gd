@@ -13,7 +13,7 @@ func _ready():
 
 func start_state(name):
 	if states.has(name):
-		$"Particles".on()
+		pass
 	else:
 		print("no")
 
