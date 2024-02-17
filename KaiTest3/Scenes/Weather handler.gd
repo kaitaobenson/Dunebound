@@ -1,6 +1,6 @@
 extends Node2D
 #Daylength in Seconds
-const Daylength = 60
+const Daylength = 6
 const Phaselength = Daylength/6
 var elapsedTime = 0
 
