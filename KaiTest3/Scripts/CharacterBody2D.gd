@@ -4,9 +4,8 @@ extends CharacterBody2D
 var direction = 0
 
 @onready var invon = false
-@onready var anim = get_node("AnimationPlayer")
-@onready var animSprite = get_node("AnimatedSprite2D")
-
+@onready var anim = $AnimationPlayer
+@onready var animSprite = $AnimatedSprite2D
 
 var swingCircle:Array
 var health:int = 100
@@ -14,14 +13,18 @@ var health:int = 100
 func _ready():
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
+	
+func _process(delta):
+	animation()
+	
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
 	Global.PlayerPosition = global_position
-	
 	movement(delta)
 
 func movement(delta):
+	
 	var SPEED = get_meta("SPEED")
 	var JUMP_VELOCITY = get_meta("JUMP")
 	var gravity = get_meta("GRAVITY");
@@ -33,20 +36,14 @@ func movement(delta):
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !invon:
 		velocity.y = -JUMP_VELOCITY
-	# Horiz movement
-	if velocity.x == 0 && is_on_floor():
-		anim.play("Idle")
 	# Right
 	if direction == 1:
-		anim.play("Run")
 		if invon == false:
 			animSprite.flip_h = false
 	# Left
 	if direction == -1:
-		anim.play("Run")
 		if invon == false:
 			animSprite.flip_h = true
-			
 	# No movement while open inventory
 	if invon == false:
 		velocity.x = direction * SPEED
@@ -54,6 +51,26 @@ func movement(delta):
 	else: velocity.x = 0
 	move_and_slide()
 
+
+var currentAnimation = "IDLE"
+
+func animation():
+	
+	if velocity.x != 0:
+		if currentAnimation != "RUN":
+			anim.stop()
+			print(currentAnimation)
+		anim.play("Run")
+		currentAnimation = "RUN"
+		print("Inside of RUN ", str(currentAnimation))
+		
+	if velocity.x == 0 && velocity.y == 0:
+		if currentAnimation != "IDLE":
+			anim.stop()
+		anim.play("Idle")
+		currentAnimation = "IDLE"
+		print("Inside of IDLE ", str(currentAnimation))
+		
 
 func doDamage(damage:int):
 	health = health - damage
