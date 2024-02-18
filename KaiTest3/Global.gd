@@ -5,6 +5,7 @@ var PlayerY
 var PlayerPosition
 
 var TimeOfDay = 0
+var DayCount = 1
 
 func texture(naim:String):
 	#make a texture, load an image into it, and return the texture!
