@@ -242,7 +242,7 @@ radius = 36.0
 height = 116.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
-size = Vector2(4818, 134.5)
+size = Vector2(20626, 111.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qb4cu"]
 radius = 19.4612
@@ -538,7 +538,7 @@ position = Vector2(-498, 375)
 position = Vector2(-91, -211)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Barrier DEATH"]
-position = Vector2(-477, 1690)
+position = Vector2(276, 1678.38)
 shape = SubResource("RectangleShape2D_c0ts4")
 
 [node name="Cycler" type="Node2D" parent="."]

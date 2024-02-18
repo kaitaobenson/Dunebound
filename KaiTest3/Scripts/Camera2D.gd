@@ -1,5 +1,4 @@
 extends Camera2D
-
 var bufferX = 0
 
 func _ready():
@@ -16,9 +15,11 @@ func _physics_process(delta):
 		bufferX = -300
 	if $"../PlayerContainer/Player".direction == 0:
 		bufferX = 0
+	var invon = $"../PlayerContainer/Player".invon
 	var XtoPlayer = (Global.PlayerX - position.x) * 0.1
 	var YtoPlayer = (Global.PlayerY - position.y) * 0.1
-	
+	if invon == true:
+		bufferX = 0
 	position.x +=  XtoPlayer + (Global.PlayerX + bufferX - position.x) * 0.1
 	position.y +=  YtoPlayer
 	
