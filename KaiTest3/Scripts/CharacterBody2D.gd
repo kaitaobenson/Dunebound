@@ -22,7 +22,6 @@ func _physics_process(delta):
 	Global.PlayerY = global_position.y
 	Global.PlayerPosition = global_position
 	movement(delta)
-
 func movement(delta):
 	
 	var SPEED = get_meta("SPEED")
@@ -36,6 +35,7 @@ func movement(delta):
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !invon:
 		velocity.y = -JUMP_VELOCITY
+	
 	# Right
 	if direction == 1:
 		if invon == false:
@@ -49,6 +49,10 @@ func movement(delta):
 		velocity.x = direction * SPEED
 		$"../States".start_state("particles")
 	else: velocity.x = 0
+	#invon updater
+	if(Input.is_action_just_pressed("inventory_toggle")):
+		invon = !invon
+	
 	move_and_slide()
 
 
@@ -59,17 +63,14 @@ func animation():
 	if velocity.x != 0:
 		if currentAnimation != "RUN":
 			anim.stop()
-			print(currentAnimation)
 		anim.play("Run")
 		currentAnimation = "RUN"
-		print("Inside of RUN ", str(currentAnimation))
 		
 	if velocity.x == 0 && velocity.y == 0:
 		if currentAnimation != "IDLE":
 			anim.stop()
 		anim.play("Idle")
 		currentAnimation = "IDLE"
-		print("Inside of IDLE ", str(currentAnimation))
 		
 
 func doDamage(damage:int):
