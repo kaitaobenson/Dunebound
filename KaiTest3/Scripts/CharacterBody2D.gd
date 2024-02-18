@@ -55,22 +55,21 @@ func movement(delta):
 var currentAnimation = "IDLE"
 
 func animation():
-	
-	if velocity.x != 0:
+	#RUN
+	if velocity.x != 0 && is_on_floor():
 		if currentAnimation != "RUN":
 			anim.stop()
-			print(currentAnimation)
 		anim.play("Run")
 		currentAnimation = "RUN"
-		print("Inside of RUN ", str(currentAnimation))
-		
-	if velocity.x == 0 && velocity.y == 0:
+	#IDLE
+	elif velocity.x == 0 && velocity.y == 0:
 		if currentAnimation != "IDLE":
 			anim.stop()
 		anim.play("Idle")
 		currentAnimation = "IDLE"
-		print("Inside of IDLE ", str(currentAnimation))
-		
+	#STOP
+	else:
+		anim.stop()
 
 func doDamage(damage:int):
 	health = health - damage
@@ -80,3 +79,7 @@ func doDamage(damage:int):
 func die():
 	get_tree().reload_current_scene()
 	#whatever you wanna do when you die
+
+
+func out_of_world(body):
+	die()

@@ -1,12 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://bfyyn42ksngl"]
+[gd_scene load_steps=52 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
+[ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_my4qp"]
-[ext_resource type="Texture2D" uid="uid://bxlfw4cwejfk0" path="res://Assets/BumpDune2.png" id="1_tx01k"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
-[ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/BumpDune3.png" id="2_hvuvg"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
@@ -22,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scenes/PlayerStates.gd" id="18_68yrb"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="19_23bu1"]
-[ext_resource type="Script" path="res://Scripts/Dark Screen.gd" id="19_b50qg"]
 [ext_resource type="Script" path="res://Scenes/Particles.gd" id="19_ehuv2"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Script" path="res://Scenes/Weather handler.gd" id="22_a2ihr"]
+[ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
 [ext_resource type="Texture2D" uid="uid://dh7u5aevkikfd" path="res://Assets/Textures/ScrollDraft-export.png" id="23_086pw"]
 [ext_resource type="Script" path="res://Scenes/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scenes/ScrollText.gd" id="25_34a06"]
@@ -146,6 +145,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_3jf04"]
+resource_name = "Idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="Animation" id="Animation_d83su"]
 length = 0.001
 tracks/0/type = "value"
@@ -202,35 +230,6 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_3jf04"]
-resource_name = "Idle"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tieuu"]
 _data = {
 "Idle": SubResource("Animation_3jf04"),
@@ -241,14 +240,6 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
 radius = 36.0
 height = 116.0
-
-[sub_resource type="GDScript" id="GDScript_lh68d"]
-script/source = "extends Area2D
-
-func _on_body_entered(body):
-	if body.name == \"mrLegs\":
-		get_parent().get_parent().get_node(\"mrLegs\").die()
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
 size = Vector2(4818, 134.5)
@@ -261,28 +252,20 @@ position = Vector2(38, 12)
 
 [node name="Foreground Container" type="Node2D" parent="."]
 
-[node name="Dune2" type="StaticBody2D" parent="Foreground Container"]
-position = Vector2(916, 483)
-
-[node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Dune2"]
-texture = ExtResource("1_tx01k")
-metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune2"]
-z_index = -1
-position = Vector2(1, -2)
-polygon = PackedVector2Array(-318, 132, -285, 130, -178, 45, -110, -3, -36, -38, 37, -37, 108, -5, 182, 43, 286, 125, 319, 128, 319, 160, -319, 160)
-metadata/_edit_lock_ = true
-
 [node name="Dune3" type="StaticBody2D" parent="Foreground Container"]
+position = Vector2(1085, 536)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune3"]
+visible = false
+position = Vector2(-1728, -534)
+polygon = PackedVector2Array(1270, 612, 1368, 551, 1463, 493, 1521, 460, 1573, 435, 1598, 422, 1652, 404, 1687, 397, 1722, 392, 1745, 393, 1790, 398, 1840, 414, 1877, 429, 1912, 448, 1943, 465, 1992, 494, 2024, 516, 2071, 547, 2128, 588, 2165, 613, 2198, 613, 2198, 644, 1650.44, 644, 1238, 644, 1238, 612, 1254, 612, 1270, 612)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Dune3"]
 z_index = 1
-position = Vector2(1718, 324)
-texture = ExtResource("2_hvuvg")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune3"]
-polygon = PackedVector2Array(1270, 612, 1368, 551, 1463, 493, 1521, 460, 1573, 435, 1598, 422, 1652, 404, 1687, 397, 1722, 392, 1745, 393, 1790, 398, 1840, 414, 1877, 429, 1912, 448, 1943, 465, 1992, 494, 2024, 516, 2071, 547, 2128, 588, 2165, 613, 2198, 613, 2198, 644, 1238, 644, 1238, 612, 1254, 612, 1270, 612)
+position = Vector2(-11, -212)
+texture = ExtResource("1_ir03b")
+metadata/_edit_lock_ = true
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 z_index = 16
@@ -475,16 +458,6 @@ offset_right = 1151.0
 offset_bottom = 639.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
-[node name="Dark Screen" type="ColorRect" parent="Camera2D"]
-z_index = 1
-offset_left = -3994.0
-offset_top = -959.0
-offset_right = -1994.0
-offset_bottom = 1041.0
-mouse_filter = 2
-color = Color(0.145098, 0.129412, 0.121569, 1)
-script = ExtResource("19_b50qg")
-
 [node name="PlayerContainer" type="Node2D" parent="."]
 position = Vector2(369, 547)
 
@@ -540,21 +513,29 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="Background"]
 position = Vector2(-54, -265)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+[node name="Back1" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.2, 0.1)
+motion_mirroring = Vector2(1390, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Back1"]
+texture_filter = 1
+position = Vector2(423, 285)
+texture = ExtResource("22_i0hv5")
+metadata/_edit_lock_ = true
+
+[node name="Back2" type="ParallaxLayer" parent="Background"]
 position = Vector2(-1128, -236)
 motion_scale = Vector2(0.2, 1)
 
-[node name="BigBackground2" type="Sprite2D" parent="Background/ParallaxLayer"]
-position = Vector2(291, 183)
+[node name="BigBackground2" type="Sprite2D" parent="Background/Back2"]
+position = Vector2(515, 382)
 texture = ExtResource("17_s5fwc")
-metadata/_edit_lock_ = true
 
 [node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 position = Vector2(-498, 375)
 
 [node name="Bottom Barrier DEATH" type="Area2D" parent="."]
 position = Vector2(-91, -211)
-script = SubResource("GDScript_lh68d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Barrier DEATH"]
 position = Vector2(-477, 1690)
@@ -600,5 +581,5 @@ position = Vector2(61, 26)
 color = Color(0.533333, 0.521569, 0.666667, 1)
 
 [connection signal="particlesOn" from="PlayerContainer/States" to="PlayerContainer/States/Particles" method="particles_on"]
-[connection signal="body_entered" from="Bottom Barrier DEATH" to="Bottom Barrier DEATH" method="_on_body_entered"]
+[connection signal="body_entered" from="Bottom Barrier DEATH" to="PlayerContainer/Player" method="out_of_world"]
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]
