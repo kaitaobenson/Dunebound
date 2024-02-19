@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=53 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="2_44nkk"]
+[ext_resource type="Texture2D" uid="uid://mys331w13dt" path="res://Assets/Textures/OscarsDune1.1.png" id="2_tojtu"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
@@ -266,6 +267,16 @@ z_index = 1
 position = Vector2(-11, -212)
 texture = ExtResource("1_ir03b")
 metadata/_edit_lock_ = true
+
+[node name="Dune4" type="StaticBody2D" parent="Foreground Container"]
+position = Vector2(2934, 260)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Foreground Container/Dune4"]
+position = Vector2(174, -401)
+texture = ExtResource("2_tojtu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune4"]
+polygon = PackedVector2Array(-1206, 250, -990, 87, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 z_index = 16
