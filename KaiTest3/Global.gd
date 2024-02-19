@@ -6,6 +6,7 @@ var PlayerPosition
 
 var newFood
 var TimeOfDay = 0
+var DayCount = 1
 
 #run code from a string. yes, our codebase is about to get really bad really fast
 func run_script(input):
