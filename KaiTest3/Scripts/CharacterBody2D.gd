@@ -10,6 +10,8 @@ var grappleDownProcessActive:bool = false
 var stupidUICloseButtonPressed = false
 # Important for camera, don't remove from class level
 var direction = 0
+#stupid ay stupid ay stupid ahhhhhhhhhhhhhhh
+var push_force = 50
 
 @onready var invon = false
 @onready var grappleHook = get_node("grappleHook")
@@ -87,6 +89,13 @@ func movement(delta):
 		anim.play("Run")
 		if invon == false:
 			animSprite.flip_h = true
+	
+	#buetiful code carson copied from stackoverflow
+	for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			
+			if collision && collision.get_collider() is RigidBody2D:
+				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 	# Grapple Hook
 	if (direction == 0 && !grappleDownProcessActive):
 		velocity.x = 0
