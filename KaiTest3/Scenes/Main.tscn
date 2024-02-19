@@ -253,7 +253,7 @@ position = Vector2(38, 12)
 [node name="Foreground Container" type="Node2D" parent="."]
 
 [node name="Dune3" type="StaticBody2D" parent="Foreground Container"]
-position = Vector2(1085, 536)
+position = Vector2(1162, 453)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune3"]
 visible = false
