@@ -53,13 +53,10 @@ func movement(delta):
 			if collision && collision.get_collider() is RigidBody2D:
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 	# Grapple Hook
-	if (direction == 0 && !grappleDownProcessActive):
+	if (direction == 0):
 		velocity.x = 0
 	# Inventory toggle handler
-	if(Input.is_action_just_pressed("inventory_toggle")||stupidUICloseButtonPressed):
-		if stupidUICloseButtonPressed:
-			invon = true
-			stupidUICloseButtonPressed = false
+	if(Input.is_action_just_pressed("inventory_toggle")):
 		invon = !invon
 	# No movement while open inventory
 	if invon == false:

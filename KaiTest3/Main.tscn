@@ -127,7 +127,7 @@ _data = {
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0pe5f")
-cell_quadrant_size = 32
+rendering_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1114112, 0, 0, 1179648, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0, 1245217, 0, 0, 1179681, 0, 0, 1114145, 0, 0)
 
@@ -145,10 +145,10 @@ sprite_frames = SubResource("SpriteFrames_ipind")
 animation = &"Run"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-autoplay = "Run"
 libraries = {
 "": SubResource("AnimationLibrary_dc6fs")
 }
+autoplay = "Run"
 
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_ch58k")
