@@ -627,6 +627,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContainer/Player/AnimatedSprite2D/AttackHitbox"]
 position = Vector2(44.75, 6.5)
 shape = SubResource("RectangleShape2D_7xbk5")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContainer/Player" groups=["Hurtbox"]]
 position = Vector2(-3, 5)

@@ -5,7 +5,7 @@ var PlayerY
 var PlayerPosition
 
 var newFood
-var TimeOfDay = 0
+var TimeOfDay = 1
 var DayCount = 1
 
 
@@ -25,9 +25,3 @@ func run_script(input):
 	script.reload()
 	what_is_wrong_with_me.set_script(script)
 	return what_is_wrong_with_me.eval()
-	
-func texture(waa):
-	#make a texture, load an image into it, and return the texture!
-	var le_texture = ImageTexture.new()
-	le_texture.create_from_image(waa)
-	return le_texture
