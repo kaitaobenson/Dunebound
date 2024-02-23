@@ -1,13 +1,19 @@
 extends Node
 
+#Player Variables
 var PlayerX
 var PlayerY
 var PlayerPosition
 
-var newFood
+#Time Variables
 var TimeOfDay = 1
 var DayCount = 1
 
+#Weather Variables
+var temperature
+
+#???? What is this
+var newFood
 
 func texture(name:String):
 	#make a texture, load an image into it, and return the texture!
