@@ -666,6 +666,7 @@ position = Vector2(-91, -211)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Barrier DEATH"]
 position = Vector2(276, 1678.38)
 shape = SubResource("RectangleShape2D_c0ts4")
+metadata/_edit_lock_ = true
 
 [node name="Cycler" type="Node2D" parent="."]
 position = Vector2(-188, -274)

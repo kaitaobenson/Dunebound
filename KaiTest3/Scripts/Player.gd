@@ -118,11 +118,14 @@ func doDamage(damage:int):
 		
 func die():
 	get_tree().reload_current_scene()
+	print("ouch")
 	#whatever you wanna do when you die
 
 
 func out_of_world(body):
-	die()
+	if body.name == "Player":
+		die()
+	
 
 
 func _attack_hitbox_body_entered(body):
