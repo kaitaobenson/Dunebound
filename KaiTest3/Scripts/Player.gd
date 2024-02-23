@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 # Important for camera, don't remove from class level
 var direction = 0
+#stupid ay stupid ay stupid ahhhhhhhhhhhhhhh
+var push_force = 50
 
 @onready var invon = false
 @onready var anim = $AnimationPlayer
@@ -46,15 +48,23 @@ func movement(delta):
 	else:
 		animation("IDLE")
 	
+	for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			
+			if collision && collision.get_collider() is RigidBody2D:
+				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
+
 	# No movement while open inventory
 	if invon == false:
 		velocity.x = direction * SPEED
 		$"../States".start_state("particles")
 	else: 
 		velocity.x = 0
+
 	#invon updater
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		invon = !invon
+
 	
 	move_and_slide()
 
