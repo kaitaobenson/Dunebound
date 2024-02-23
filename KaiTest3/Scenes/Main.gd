@@ -1,4 +1,4 @@
-extends TextureButton
+extends Node2D
 
 #this script handles stuff that should happen in every single level
 #attach it to the root of every single levels scene

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=54 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
 [ext_resource type="Script" path="res://inventoryHandler.gd" id="14_2vcrm"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="15_2hmb5"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scenes/PlayerStates.gd" id="18_68yrb"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="19_23bu1"]
@@ -250,6 +251,7 @@ radius = 19.4612
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(38, 12)
+script = ExtResource("1_my4qp")
 
 [node name="Foreground Container" type="Node2D" parent="."]
 
@@ -277,15 +279,6 @@ texture = ExtResource("2_tojtu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune4"]
 polygon = PackedVector2Array(-1206, 250, -990, 87, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
-
-[node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
-z_index = 16
-offset_left = -262.0
-offset_top = -175.0
-offset_right = -192.0
-offset_bottom = -105.0
-script = ExtResource("1_my4qp")
-metadata/tileName = "itemTileTemplate"
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-109, 4)
@@ -380,7 +373,6 @@ metadata/_edit_lock_ = true
 
 [node name="inventoryContainer" type="Node2D" parent="Camera2D/Control"]
 process_mode = 3
-visible = false
 z_index = 43
 position = Vector2(-137, -85)
 script = ExtResource("14_2vcrm")
@@ -404,6 +396,14 @@ offset_right = 117.0
 offset_bottom = 196.0
 mouse_filter = 2
 color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="TextureButton" type="TextureButton" parent="Camera2D/Control/inventoryContainer/itemTileContainer/itemTileTemplate"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 72.0
+offset_bottom = 69.0
+script = ExtResource("15_2hmb5")
 
 [node name="closeButton" type="Button" parent="Camera2D/Control/inventoryContainer"]
 process_mode = 3
