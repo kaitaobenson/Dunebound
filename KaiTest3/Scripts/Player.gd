@@ -4,14 +4,7 @@ extends CharacterBody2D
 var direction = 0
 #stupid ay stupid ay stupid ahhhhhhhhhhhhhhh
 var push_force = 50
-const swingSpeed:int = 5
-#the name of the variable below is a bit of a misnomer, it takes less momentum to swing farther the higher it is
-const SWING_GRAVITY:int = 5
-var swingPosition:int = 150
-var currentMomentumThingy:int = SWING_GRAVITY
-var momentum:int
-var grappleDownProcessActive:bool = false
-var stupidUICloseButtonPressed = false
+
 @onready var invon = false
 @onready var anim = $AnimationPlayer
 
@@ -60,15 +53,7 @@ func movement(delta):
 			
 			if collision && collision.get_collider() is RigidBody2D:
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
-	# Grapple Hook
-	if (direction == 0):
-		velocity.x = 0
-	# Inventory toggle handler
-	if(Input.is_action_just_pressed("inventory_toggle")||stupidUICloseButtonPressed):
-		if stupidUICloseButtonPressed:
-			invon = true
-			stupidUICloseButtonPressed = false
-		invon = !invon
+
 	# No movement while open inventory
 	if invon == false:
 		velocity.x = direction * SPEED
