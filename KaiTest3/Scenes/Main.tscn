@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=67 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://inventoryHandler.gd" id="14_2vcrm"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
+[ext_resource type="Script" path="res://Scenes/TextureProgressBar.gd" id="18_3jwuh"]
 [ext_resource type="Script" path="res://Scenes/PlayerStates.gd" id="18_68yrb"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="19_23bu1"]
 [ext_resource type="Script" path="res://Scenes/Particles.gd" id="19_ehuv2"]
@@ -575,6 +576,16 @@ offset_top = 586.0
 offset_right = 1151.0
 offset_bottom = 639.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="HealthBar" type="TextureProgressBar" parent="Camera2D"]
+offset_left = -274.0
+offset_top = 177.0
+offset_right = -93.0
+offset_bottom = 217.0
+tint_under = Color(0.282353, 0.231373, 0.0980392, 1)
+tint_over = Color(0.317647, 0.188235, 1, 1)
+tint_progress = Color(0, 0.74902, 0.301961, 1)
+script = ExtResource("18_3jwuh")
 
 [node name="PlayerContainer" type="Node2D" parent="."]
 position = Vector2(369, 547)

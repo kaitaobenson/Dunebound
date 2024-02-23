@@ -116,6 +116,10 @@ func doDamage(damage:int):
 	if(health<=0):
 		die()
 		
+#it may be unnecessary for the damage to go through the player but its too late at night to think hard about it
+func healthChange(amount:int):
+	$"../../Camera2D/HealthBar".health_changed(amount)
+
 func die():
 	get_tree().reload_current_scene()
 	print("ouch")
