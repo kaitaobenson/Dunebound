@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="23_kckyp"]
 [ext_resource type="Script" path="res://Scenes/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scenes/ScrollText.gd" id="25_34a06"]
-[ext_resource type="Script" path="res://Cycler.gd" id="27_5mglo"]
+[ext_resource type="Script" path="res://Scenes/weatherHandler.gd" id="27_5mglo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
