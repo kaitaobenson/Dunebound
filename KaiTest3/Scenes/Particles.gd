@@ -1,34 +1,26 @@
-extends Node2D
+extends Node
 
-var particleIsOn = false
+var isOn = false
 
-func on1():
-	particleIsOn = true
-
-func off1():
-	particleIsOn = false
-	
 func _process(delta):
-	particles()
+	particles(isOn)
 
-func particles():
+func particles(isOn:bool):
 	var particle = $SandParticles
-	var direction = %Player.direction
+	var direction = %Player.player_direction
 	
-	particle.visible = true
-	particle.emitting = false
-	
-	while particleIsOn:
+	if isOn:
 		particle.emitting = true
-#		Y + 60 to be at player's feet
+		#Y + 60 to be at player's feet
 		particle.global_position.x = Global.PlayerX
 		particle.global_position.y = Global.PlayerY + 60
-		
 		if direction == 1:
 			particle.orbit_velocity_min = 0.1
 			particle.orbit_velocity_max = 0.1
-	
+			
 		if direction == -1:
 			particle.orbit_velocity_min = -0.1
 			particle.orbit_velocity_max = -0.1
+	else:
+		particle.emitting = false
 

@@ -9,17 +9,18 @@ func openthatthing():
 	$uiContainer.visible=true
 	
 func _physics_process(delta):
-	if $"../PlayerContainer/Player".direction == 1:
+	var player_direction = %Player.player_direction
+	
+	if player_direction == 1:
 		bufferX = 300
-	if $"../PlayerContainer/Player".direction == -1:
+	if player_direction == -1:
 		bufferX = -300
-	if $"../PlayerContainer/Player".direction == 0:
+	if player_direction == 0:
 		bufferX = 0
-	var invon = $"../PlayerContainer/Player".invon
+		
 	var XtoPlayer = (Global.PlayerX - position.x) * 0.1
 	var YtoPlayer = (Global.PlayerY - position.y) * 0.1
-	if invon == true:
-		bufferX = 0
+	
 	position.x +=  XtoPlayer + (Global.PlayerX + bufferX - position.x) * 0.1
 	position.y +=  YtoPlayer
 	

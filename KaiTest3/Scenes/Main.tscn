@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=68 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -20,11 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="Script" path="res://Scenes/TextureProgressBar.gd" id="18_3jwuh"]
-[ext_resource type="Script" path="res://Scenes/PlayerStates.gd" id="18_68yrb"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="19_23bu1"]
 [ext_resource type="Script" path="res://Scenes/Particles.gd" id="19_ehuv2"]
+[ext_resource type="Script" path="res://Scenes/States.gd" id="19_f150d"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="20_brpbc"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
+[ext_resource type="Script" path="res://Scenes/Animations.gd" id="21_vu8oi"]
 [ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
 [ext_resource type="Texture2D" uid="uid://dh7u5aevkikfd" path="res://Assets/Textures/ScrollDraft-export.png" id="23_086pw"]
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="23_kckyp"]
@@ -602,38 +603,35 @@ script = ExtResource("18_3jwuh")
 [node name="PlayerContainer" type="Node2D" parent="."]
 position = Vector2(369, 547)
 
-[node name="States" type="Node2D" parent="PlayerContainer"]
-script = ExtResource("18_68yrb")
+[node name="States" type="Node" parent="PlayerContainer"]
+script = ExtResource("19_f150d")
 
-[node name="Particles" type="Node2D" parent="PlayerContainer/States"]
+[node name="Particles" type="Node" parent="PlayerContainer/States"]
 script = ExtResource("19_ehuv2")
 
 [node name="SandParticles" type="CPUParticles2D" parent="PlayerContainer/States/Particles"]
-visible = false
-position = Vector2(726, -359)
 emitting = false
-amount = 29
-lifetime = 0.7
-explosiveness = 0.14
-randomness = 1.0
-lifetime_randomness = 0.3
+amount = 10
+speed_scale = 2.33
+explosiveness = 0.11
+randomness = 0.59
 emission_shape = 3
-emission_rect_extents = Vector2(30, 10)
-spread = 78.75
-gravity = Vector2(2.08165e-12, -50)
-orbit_velocity_min = 0.1
-orbit_velocity_max = 0.1
+emission_rect_extents = Vector2(32, 1)
+direction = Vector2(1, -1)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2)
+angular_velocity_max = 1.0
 angle_max = 359.0
 scale_amount_min = 5.0
 scale_amount_max = 10.0
-color = Color(0.803922, 0.717647, 0.372549, 1)
+color = Color(1, 0.788235, 0.247059, 1)
+
+[node name="Animations" type="Node" parent="PlayerContainer/States"]
+script = ExtResource("21_vu8oi")
 
 [node name="Player" type="CharacterBody2D" parent="PlayerContainer"]
 unique_name_in_owner = true
 script = ExtResource("20_brpbc")
-metadata/SPEED = 300.0
-metadata/JUMP = 600.0
-metadata/GRAVITY = 1000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerContainer/Player"]
 libraries = {
@@ -732,7 +730,6 @@ metadata/_edit_lock_ = true
 position = Vector2(61, 26)
 color = Color(0.533333, 0.521569, 0.666667, 1)
 
-[connection signal="particlesOn" from="PlayerContainer/States" to="PlayerContainer/States/Particles" method="particles_on"]
 [connection signal="body_entered" from="PlayerContainer/Player/AnimatedSprite2D/AttackHitbox" to="PlayerContainer/Player" method="_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="Bottom Barrier DEATH" to="PlayerContainer/Player" method="out_of_world"]
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]
