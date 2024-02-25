@@ -1,15 +1,14 @@
 extends Node
 
-#Player Variables
 var PlayerX
 var PlayerY
-var PlayerPosition
 
-#Time Variables
+var CameraX
+var CameraY
+
 var TimeOfDay = 1
 var DayCount = 1
 
-#Weather Variables
 var temperature
 
 #???? What is this

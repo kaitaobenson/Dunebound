@@ -27,7 +27,7 @@ func _physics_process(delta):
 		direction = -direction
 	if (playerinside && TimeSinceHit > .5):
 		TimeSinceHit = 0
-		$\"../PlayerContainer/Player\".healthChange(-20)
+		%Player.take_damage(20, self)
 	
 	velocity.x = direction * SPEED
 	move_and_slide()
@@ -42,7 +42,6 @@ func _on_area_2d_body_exited(body):
 		playerinside = false
 
 func take_damage(damage):
-	#print(\"Taken Damage\")
 	self.queue_free()
 
 

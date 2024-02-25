@@ -19,6 +19,11 @@ config/icon="res://Assets/Textures/icon.svg"
 
 Global="*res://Global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/super/Downloads/godotmoviestuffthingy.avi"

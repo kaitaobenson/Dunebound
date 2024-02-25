@@ -1,16 +1,18 @@
 extends TextureProgressBar
-@onready var Health:float = 100
 
-# Called when the node enters the scene tree for the first time.
+var XtoCamera
+var YtoCamera
+
 func _ready():
-	set_value_no_signal(Health)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	XtoCamera = global_position.x - Global.CameraX
+	YtoCamera = global_position.y - Global.CameraY
+	
+#Set position
 func _process(delta):
-	if Health <= 0:
-		$"../../PlayerContainer/Player".die()
-
-func health_changed(Amount):
-	Health += Amount
-	set_value_no_signal(Health)
+	global_position.x = XtoCamera + Global.CameraX
+	global_position.y = YtoCamera + Global.CameraY
+	
+#Health between 0 and 100
+func set_health(health:int):
+	set_value_no_signal(health)
+	
