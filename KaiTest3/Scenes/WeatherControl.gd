@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 #Daylength in Seconds
 
 const DAY_LENGTH:float = 10

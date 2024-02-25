@@ -13,15 +13,14 @@ func set_animation_status(name:String, isOn:bool):
 
 func _process(delta):
 	if current_animations.has("ATTACK"):
-		animation("ATTACK")
+		play_animation("ATTACK")
 	elif current_animations.has("RUN"):
-		animation("RUN")
+		play_animation("RUN")
 	elif current_animations.has("IDLE"):
-		animation("IDLE")
+		play_animation("IDLE")
 
 var currentAnimation
-func animation(animationName):
-	
+func play_animation(animationName):
 	#RUN
 	if animationName == "RUN" && currentAnimation != "RUN":
 		if currentAnimation != "RUN":

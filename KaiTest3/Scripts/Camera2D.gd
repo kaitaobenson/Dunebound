@@ -1,28 +1,30 @@
 extends Camera2D
-var bufferX = 0
+
+var _bufferX = 0
 
 func _ready():
+	update_global_position()
 	$PauseScreen/Button.connect("button_down",openthatthing)
-	set_zoom(Vector2(1.5,1.5))
-	
+#THIS SHOULD NOT BE HEREREeEE
 func openthatthing():
 	$uiContainer.visible=true
 	
 func _physics_process(delta):
+	update_global_position()
+	
 	var player_direction = %Player.player_direction
 	
 	if player_direction == 1:
-		bufferX = 300
+		_bufferX = 300
 	if player_direction == -1:
-		bufferX = -300
-	if player_direction == 0:
-		bufferX = 0
+		_bufferX = -300
 		
 	var XtoPlayer = (Global.PlayerX - position.x) * 0.1
 	var YtoPlayer = (Global.PlayerY - position.y) * 0.1
 	
-	position.x +=  XtoPlayer + (Global.PlayerX + bufferX - position.x) * 0.1
+	position.x +=  XtoPlayer + (Global.PlayerX + _bufferX - position.x) * 0.1
 	position.y +=  YtoPlayer
 	
-
-
+func update_global_position():
+	Global.CameraX = global_position.x
+	Global.CameraY = global_position.y

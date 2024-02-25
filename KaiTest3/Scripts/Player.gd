@@ -12,7 +12,7 @@ var health:int = 100
 #I believe that beginning variables with underscore makes them private
 @onready var _anim = $AnimationPlayer
 @onready var _anim_sprite = $"AnimatedSprite2D"
-@onready var states = $"../States"
+@onready var _states = $"../States"
 
 func _ready():
 	Global.PlayerX = global_position.x
@@ -22,7 +22,6 @@ func _ready():
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
-	Global.PlayerPosition = global_position
 	
 	checkForAttack(delta)
 	push_other_bodies()
@@ -35,8 +34,8 @@ func _physics_process(delta):
 		movement(delta)
 	#NOT MOVING
 	else:
-		states.set_state_status("Particles", true)
-		states.get_state("Animations").set_animation_status("RUN", false)
+		_states.set_state_status("Particles", true)
+		_states.get_state("Animations").set_animation_status("RUN", false)
 	
 func movement(delta):
 	player_direction = Input.get_axis("ui_left", "move-right")
@@ -50,18 +49,18 @@ func movement(delta):
 	if player_direction == 1:
 		_anim_sprite.scale.x = 1
 		
-		states.set_state_status("Particles", true)
-		states.get_state("Animations").set_animation_status("RUN", true)
+		_states.set_state_status("Particles", true)
+		_states.get_state("Animations").set_animation_status("RUN", true)
 	#MOVING LEFT
 	elif player_direction == -1:
 		_anim_sprite.scale.x = -1
 		
-		states.set_state_status("Particles", true)
-		states.get_state("Animations").set_animation_status("RUN", true)
+		_states.set_state_status("Particles", true)
+		_states.get_state("Animations").set_animation_status("RUN", true)
 	#NOT MOVING
 	else:
-		states.set_state_status("Particles", false)
-		states.get_state("Animations").set_animation_status("RUN", false)
+		_states.set_state_status("Particles", false)
+		_states.get_state("Animations").set_animation_status("RUN", false)
 		
 	velocity.x = player_direction * SPEED
 	move_and_slide()
@@ -85,33 +84,28 @@ func checkForAttack(delta):
 func attack():
 	var attackHitbox = $"AnimatedSprite2D/AttackHitbox/CollisionShape2D"
 	
-	states.get_state("Animations").set_animation_status("ATTACK", true)
+	_states.get_state("Animations").set_animation_status("ATTACK", true)
 	attackHitbox.set_disabled(false)
 	
 	await _anim.animation_finished
-	states.get_state("Animations").set_animation_status("ATTACK", false)
+	_states.get_state("Animations").set_animation_status("ATTACK", false)
 	attackHitbox.set_disabled(true)
 	
-func doDamage(damage:int):
-	health = health - damage
+func take_damage(damage:int, caller):
+	print("Player took damage from:  " + str(caller))
+	health -= damage
+	$"HealthBar".set_health(health)
 	if(health<=0):
 		die()
-		
-#it may be unnecessary for the damage to go through the player but its too late at night to think hard about it
-func healthChange(amount:int):
-	$"../../Camera2D/HealthBar".health_changed(amount)
 
 func die():
 	get_tree().reload_current_scene()
 	print("ouch")
 	#whatever you wanna do when you die
 
-
 func out_of_world(body):
 	if body.name == "Player":
 		die()
-	
-
 
 func _attack_hitbox_body_entered(body):
 	var attackDamage = 10

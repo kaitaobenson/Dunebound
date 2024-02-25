@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=72 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scenes/Particles.gd" id="19_ehuv2"]
 [ext_resource type="Script" path="res://Scenes/States.gd" id="19_f150d"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="20_brpbc"]
+[ext_resource type="Script" path="res://Scenes/Temperature.gd" id="21_5xu7t"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Script" path="res://Scenes/Animations.gd" id="21_vu8oi"]
 [ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
@@ -31,7 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="23_kckyp"]
 [ext_resource type="Script" path="res://Scenes/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scenes/ScrollText.gd" id="25_34a06"]
-[ext_resource type="Script" path="res://Scenes/weatherHandler.gd" id="27_5mglo"]
+[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="25_eiryn"]
+[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="25_ssm40"]
+[ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
+[ext_resource type="Script" path="res://Scenes/WeatherControl.gd" id="36_a7ulw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")
@@ -450,7 +454,9 @@ script = ExtResource("10_vag3d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
+visible = false
 position = Vector2(375, 374)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 0.0
 script = ExtResource("13_bratx")
 
@@ -590,16 +596,6 @@ offset_right = 1151.0
 offset_bottom = 639.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
-[node name="HealthBar" type="TextureProgressBar" parent="Camera2D"]
-offset_left = -274.0
-offset_top = 177.0
-offset_right = -93.0
-offset_bottom = 217.0
-tint_under = Color(0.282353, 0.231373, 0.0980392, 1)
-tint_over = Color(0.317647, 0.188235, 1, 1)
-tint_progress = Color(0, 0.74902, 0.301961, 1)
-script = ExtResource("18_3jwuh")
-
 [node name="PlayerContainer" type="Node2D" parent="."]
 position = Vector2(369, 547)
 
@@ -629,6 +625,9 @@ color = Color(1, 0.788235, 0.247059, 1)
 [node name="Animations" type="Node" parent="PlayerContainer/States"]
 script = ExtResource("21_vu8oi")
 
+[node name="Temperature" type="Node" parent="PlayerContainer/States"]
+script = ExtResource("21_5xu7t")
+
 [node name="Player" type="CharacterBody2D" parent="PlayerContainer"]
 unique_name_in_owner = true
 script = ExtResource("20_brpbc")
@@ -655,27 +654,45 @@ position = Vector2(-3, 5)
 shape = SubResource("CapsuleShape2D_hb2my")
 metadata/_edit_lock_ = true
 
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerContainer/Player"]
+texture_filter = 1
+offset_left = -360.0
+offset_top = -377.0
+offset_right = -179.0
+offset_bottom = -337.0
+value = 100.0
+texture_over = ExtResource("25_eiryn")
+texture_progress = ExtResource("25_ssm40")
+script = ExtResource("18_3jwuh")
+
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Background"]
 position = Vector2(-54, -265)
 
-[node name="Back1" type="ParallaxLayer" parent="Background"]
+[node name="Sun" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sun"]
+position = Vector2(698, 91)
+texture = ExtResource("28_lyrdh")
+
+[node name="RepeatingDunes" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.2, 0.1)
 motion_mirroring = Vector2(1390, 2.08165e-12)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Back1"]
+[node name="RepeatingDunes" type="Sprite2D" parent="Background/RepeatingDunes"]
 texture_filter = 1
 position = Vector2(423, 285)
 texture = ExtResource("22_i0hv5")
 metadata/_edit_lock_ = true
 
-[node name="Back2" type="ParallaxLayer" parent="Background"]
+[node name="BigRock" type="ParallaxLayer" parent="Background"]
 position = Vector2(-1128, -236)
 metadata/_edit_lock_ = true
 
-[node name="BigBackground2" type="Sprite2D" parent="Background/Back2"]
+[node name="BigRock" type="Sprite2D" parent="Background/BigRock"]
 position = Vector2(1299, 460)
 texture = ExtResource("17_s5fwc")
 metadata/_edit_lock_ = true
@@ -690,10 +707,6 @@ position = Vector2(-91, -211)
 position = Vector2(276, 1678.38)
 shape = SubResource("RectangleShape2D_c0ts4")
 metadata/_edit_lock_ = true
-
-[node name="Cycler" type="Node2D" parent="."]
-position = Vector2(-188, -274)
-script = ExtResource("27_5mglo")
 
 [node name="Scroll" type="Sprite2D" parent="."]
 position = Vector2(-90, 521)
@@ -729,6 +742,9 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(61, 26)
 color = Color(0.533333, 0.521569, 0.666667, 1)
+
+[node name="WeatherControl" type="Node" parent="."]
+script = ExtResource("36_a7ulw")
 
 [connection signal="body_entered" from="PlayerContainer/Player/AnimatedSprite2D/AttackHitbox" to="PlayerContainer/Player" method="_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="Bottom Barrier DEATH" to="PlayerContainer/Player" method="out_of_world"]
