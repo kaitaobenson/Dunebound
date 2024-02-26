@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuoerosfps357"]
 
 [ext_resource type="Script" path="res://menuHandler.gd" id="1_v02uc"]
-[ext_resource type="Script" path="res://logoDisplayHandler.gd" id="2_w6wqj"]
+[ext_resource type="Script" path="res://Scripts/logoDisplayHandler.gd" id="2_w6wqj"]
 [ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://ogpc-team-logo.svg" id="3_cpdny"]
 
 [node name="Title Screen" type="Node2D"]

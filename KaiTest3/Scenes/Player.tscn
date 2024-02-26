@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
-[ext_resource type="Script" path="res://PlayerParticles.gd" id="5_ks2nr"]
+[ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="6_boip0"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="8_lpii5"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="9_3eqo5"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="10_hyhxv"]
+
 [ext_resource type="Script" path="res://Scenes/TextureProgressBar.gd" id="11_8h7df"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
@@ -361,6 +362,7 @@ shape = SubResource("CapsuleShape2D_hb2my")
 script = ExtResource("5_ks2nr")
 
 [node name="SandParticles" type="CPUParticles2D" parent="Player/ParticleManager"]
+unique_name_in_owner = true
 emitting = false
 amount = 10
 speed_scale = 2.33
