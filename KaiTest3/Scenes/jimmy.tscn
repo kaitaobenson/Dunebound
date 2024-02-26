@@ -27,7 +27,7 @@ func _physics_process(delta):
 		direction = -direction
 	if (playerinside && TimeSinceHit > .5):
 		TimeSinceHit = 0
-		%Player.take_damage(20, self)
+		%Player.take_damage(20)
 	
 	velocity.x = direction * SPEED
 	move_and_slide()

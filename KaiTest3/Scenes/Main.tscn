@@ -383,5 +383,6 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
+position = Vector2(536, -193)
 
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]

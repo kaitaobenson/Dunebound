@@ -61,6 +61,8 @@ func movement(delta):
 	else:
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 		
+	
+	
 	velocity.x = player_direction * SPEED
 	move_and_slide()
 	
@@ -81,7 +83,7 @@ func checkForAttack(delta):
 		attack()
 
 func attack():
-	var attackHitbox = $"AnimatedSprite2D/AttackHitbox/CollisionShape2D"
+	var attackHitbox = $"AttackHitbox/CollisionShape2D"
 	
 	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true)
 	attackHitbox.set_disabled(false)
