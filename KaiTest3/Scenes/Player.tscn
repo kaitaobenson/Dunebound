@@ -348,6 +348,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("5_ks2nr")
 
 [node name="SandParticles" type="CPUParticles2D" parent="Player/ParticleManager"]
+unique_name_in_owner = true
 emitting = false
 amount = 10
 speed_scale = 2.33
