@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=41 format=3 uid="uid://bpioau8vlpywf"]
 
 [ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
@@ -332,6 +332,26 @@ position = Vector2(369, 547)
 unique_name_in_owner = true
 script = ExtResource("5_2xnvu")
 
+[node name="ParticleManager" type="Node" parent="Player"]
+script = ExtResource("5_ks2nr")
+
+[node name="SandParticles" type="CPUParticles2D" parent="Player/ParticleManager"]
+emitting = false
+amount = 10
+speed_scale = 2.33
+explosiveness = 0.11
+randomness = 0.59
+emission_shape = 3
+emission_rect_extents = Vector2(32, 1)
+direction = Vector2(1, -1)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2)
+angular_velocity_max = 1.0
+angle_max = 359.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color = Color(1, 0.788235, 0.247059, 1)
+
 [node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
 max_health = 100
 
@@ -356,27 +376,6 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" groups=["Hurtbox"]]
 position = Vector2(-5, 14)
 shape = SubResource("CapsuleShape2D_hb2my")
-
-[node name="ParticleManager" type="Node" parent="Player"]
-script = ExtResource("5_ks2nr")
-
-[node name="SandParticles" type="CPUParticles2D" parent="Player/ParticleManager"]
-unique_name_in_owner = true
-emitting = false
-amount = 10
-speed_scale = 2.33
-explosiveness = 0.11
-randomness = 0.59
-emission_shape = 3
-emission_rect_extents = Vector2(32, 1)
-direction = Vector2(1, -1)
-spread = 180.0
-gravity = Vector2(2.08165e-12, 2)
-angular_velocity_max = 1.0
-angle_max = 359.0
-scale_amount_min = 5.0
-scale_amount_max = 10.0
-color = Color(1, 0.788235, 0.247059, 1)
 
 [node name="AnimationManager" type="Node2D" parent="Player"]
 script = ExtResource("2_i53hd")

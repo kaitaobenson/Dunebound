@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://Scripts/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scripts/ScrollText.gd" id="25_34a06"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
-[ext_resource type="PackedScene" uid="uid://t6uvto6cutwe" path="res://zombie_husk_guy.tscn" id="27_203vw"]
+[ext_resource type="PackedScene" path="res://zombie_husk_guy.tscn" id="27_203vw"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
 [ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
