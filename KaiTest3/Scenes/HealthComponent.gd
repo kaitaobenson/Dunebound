@@ -15,7 +15,7 @@ func damage(attack:Attack):
 	update_health_bar()
 	
 	if health <= 0:
-		$"..".queue_free()
+		$"../".die()
 		
 func update_health_bar():
 	if has_bar() != null:
