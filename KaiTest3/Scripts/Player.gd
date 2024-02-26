@@ -7,7 +7,7 @@ const GRAVITY = 1000
 
 var current_animations = ["IDLE"]
 var player_direction = 0
-var health:int = 100
+var health:int = 100 
 
 var _HOT_LIMIT = 65
 var _COEFFICIENT = 0.2
@@ -16,9 +16,11 @@ var _COLD_LIMIT = 35
 
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
+@onready var _anim_sprite = $AnimationManager/AnimatedSprite2D
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
+	Global.Player = self
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
 	
@@ -81,19 +83,19 @@ func checkForAttack(delta):
 		attack()
 
 func attack():
-	var attackHitbox = $"AnimatedSprite2D/AttackHitbox/CollisionShape2D"
+	var attackHitbox = get_node("AttackHitbox/CollisionShape2D")
 	
-	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true)
+	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true) 
 	attackHitbox.set_disabled(false)
 	
-	await _anim_manager.animation_finished()
+	await _anim_sprite.animation_finished
 	
 	attackHitbox.set_disabled(true)
 	
 func take_damage(damage:int, caller):
 	print("Player took damage from:  " + str(caller))
 	health -= damage
-	$"HealthBar".set_health(health)
+	get_parent().get_node("HealthComponent/HealthBar").set_health(health)
 	if(health<=0):
 		die()
 

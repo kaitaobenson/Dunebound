@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
-[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_my4qp"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Texture2D" uid="uid://b2vrmjcxe8d3" path="res://Assets/Textures/SandDown.png" id="2_7iusw"]
 [ext_resource type="Texture2D" uid="uid://c53npqxaj6j2h" path="res://Assets/Textures/SandSlopeLeft.png" id="2_8q1xi"]
 [ext_resource type="Texture2D" uid="uid://mys331w13dt" path="res://Assets/Textures/OscarsDune1.1.png" id="2_tojtu"]
@@ -21,11 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
 [ext_resource type="Texture2D" uid="uid://dh7u5aevkikfd" path="res://Assets/Textures/ScrollDraft-export.png" id="23_086pw"]
-[ext_resource type="Script" path="res://Scenes/Scroll.gd" id="24_dyjx4"]
-[ext_resource type="Script" path="res://Scenes/ScrollText.gd" id="25_34a06"]
-[ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Player.tscn" id="26_8wl7l"]
+[ext_resource type="Script" path="res://Scripts/Scroll.gd" id="24_dyjx4"]
+[ext_resource type="Script" path="res://Scripts/ScrollText.gd" id="25_34a06"]
+[ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
-[ext_resource type="Script" path="res://Scenes/WeatherControl.gd" id="36_a7ulw"]
+[ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2el"]
 texture = ExtResource("1_65q3v")

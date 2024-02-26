@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://6y0e01p1abtp"]
+[gd_scene load_steps=5 format=3 uid="uid://dyqe3e6e1cr45"]
 
 [ext_resource type="Texture2D" uid="uid://b8iouluube11q" path="res://Assets/Textures/icon.svg" id="1_5rrs5"]
 [ext_resource type="Script" path="res://grappleHandler.gd" id="2_gy7mk"]

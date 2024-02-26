@@ -8,7 +8,7 @@ func _ready():
 	YtoCamera = global_position.y - Global.CameraY
 	
 #Set position
-func _process(delta):
+func _physics_process(delta):
 	global_position.x = XtoCamera + Global.CameraX
 	global_position.y = YtoCamera + Global.CameraY
 	
