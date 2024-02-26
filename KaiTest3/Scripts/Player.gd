@@ -19,7 +19,6 @@ var _COLD_LIMIT = 35
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
-	print()
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
 	

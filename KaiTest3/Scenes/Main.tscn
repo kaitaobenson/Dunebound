@@ -104,7 +104,7 @@ scale = Vector2(0.605673, 0.957455)
 [node name="Polygon2D" type="Polygon2D" parent="Foreground Container/Shelter"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Shelter"]
-position = Vector2(668.678, 190.087)
+position = Vector2(696.747, 205.752)
 scale = Vector2(10.096, -6.49977)
 texture = ExtResource("1_65q3v")
 

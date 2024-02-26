@@ -10,12 +10,12 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var playerinside = false
 var TimeSinceHit = 0
 func _physics_process(delta):
-	var leftwallcheck = get_node(\"leftwallcheck\").is_colliding()
-	var rightwallcheck = get_node(\"rightwallcheck\").is_colliding()
-	var leftfloorcheck = get_node(\"leftfloorcheck\").is_colliding()
-	var rightfloorcheck = get_node(\"rightfloorcheck\").is_colliding()
-	var leftsidecheck = get_node(\"leftsidecheck\").is_colliding()
-	var rightsidecheck = get_node(\"rightsidecheck\").is_colliding()
+	var leftwallcheck = $\"leftwallcheck\".is_colliding()
+	var rightwallcheck = $\"rightwallcheck\".is_colliding()
+	var leftfloorcheck = $\"leftfloorcheck\".is_colliding()
+	var rightfloorcheck = $\"rightfloorcheck\".is_colliding()
+	var leftsidecheck = $\"leftsidecheck\".is_colliding()
+	var rightsidecheck = $\"rightsidecheck\".is_colliding()
 	TimeSinceHit += delta
 	#print (TimeSinceHit)
 	if not is_on_floor():
