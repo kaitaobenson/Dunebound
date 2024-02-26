@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=35 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scripts/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scripts/ScrollText.gd" id="25_34a06"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
+[ext_resource type="PackedScene" uid="uid://t6uvto6cutwe" path="res://zombie_husk_guy.tscn" id="27_203vw"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
 [ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
@@ -383,6 +384,9 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(536, -193)
+position = Vector2(372, 539)
+
+[node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
+position = Vector2(161, 552)
 
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]
