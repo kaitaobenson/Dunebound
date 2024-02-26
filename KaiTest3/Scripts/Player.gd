@@ -9,12 +9,17 @@ var current_animations = ["IDLE"]
 var player_direction = 0
 var health:int = 100
 
+var _HOT_LIMIT = 65
+var _COEFFICIENT = 0.2
+var _COLD_LIMIT = 35
+
+
 #I believe that beginning variables with underscore makes them private
-@onready var _anim = $AnimationPlayer
-@onready var _anim_sprite = $"AnimatedSprite2D"
-@onready var _states = $"../States"
+@onready var _anim_manager = $AnimationManager
+var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
+	print()
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
 	
@@ -25,6 +30,7 @@ func _physics_process(delta):
 	
 	checkForAttack(delta)
 	push_other_bodies()
+	particles_control()
 	
 	var inventory_is_on
 	#is_inventory_on updater
@@ -34,8 +40,7 @@ func _physics_process(delta):
 		movement(delta)
 	#NOT MOVING
 	else:
-		_states.set_state_status("Particles", true)
-		_states.get_state("Animations").set_animation_status("RUN", false)
+		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 	
 func movement(delta):
 	player_direction = Input.get_axis("ui_left", "move-right")
@@ -47,20 +52,15 @@ func movement(delta):
 		velocity.y = -JUMP_VELOCITY
 	#MOVING RIGHT
 	if player_direction == 1:
-		_anim_sprite.scale.x = 1
-		
-		_states.set_state_status("Particles", true)
-		_states.get_state("Animations").set_animation_status("RUN", true)
+		_anim_manager.flip_sprite(true)
+		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
 	#MOVING LEFT
 	elif player_direction == -1:
-		_anim_sprite.scale.x = -1
-		
-		_states.set_state_status("Particles", true)
-		_states.get_state("Animations").set_animation_status("RUN", true)
+		_anim_manager.flip_sprite(false)
+		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
 	#NOT MOVING
 	else:
-		_states.set_state_status("Particles", false)
-		_states.get_state("Animations").set_animation_status("RUN", false)
+		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 		
 	velocity.x = player_direction * SPEED
 	move_and_slide()
@@ -84,11 +84,11 @@ func checkForAttack(delta):
 func attack():
 	var attackHitbox = $"AnimatedSprite2D/AttackHitbox/CollisionShape2D"
 	
-	_states.get_state("Animations").set_animation_status("ATTACK", true)
+	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true)
 	attackHitbox.set_disabled(false)
 	
-	await _anim.animation_finished
-	_states.get_state("Animations").set_animation_status("ATTACK", false)
+	await _anim_manager.animation_finished()
+	
 	attackHitbox.set_disabled(true)
 	
 func take_damage(damage:int, caller):
@@ -113,3 +113,19 @@ func _attack_hitbox_body_entered(body):
 		#All bodies with a hurtbox should have this method!
 		#Is there a way to enforce this?  idk
 		body.take_damage(attackDamage)
+		
+		
+func particles_control():
+	if is_on_floor() && player_direction != 0:
+		$ParticleManager.set_particles_on(true)
+	else:
+		$ParticleManager.set_particles_on(false)
+	
+func take_temperature_damage():
+	
+	if Global.temperature > _HOT_LIMIT:
+		%Player.take_damage((Global.temperature - _HOT_LIMIT) * _COEFFICIENT, self)
+		
+	if Global.temperature < _COLD_LIMIT:
+		%Player.take_damage((_COLD_LIMIT - Global.temperature) * _COEFFICIENT, self)
+		

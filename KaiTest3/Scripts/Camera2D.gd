@@ -12,7 +12,7 @@ func openthatthing():
 func _physics_process(delta):
 	update_global_position()
 	
-	var player_direction = %Player.player_direction
+	var player_direction = $"../PlayerContainer/Player".player_direction
 	
 	if player_direction == 1:
 		_bufferX = 300

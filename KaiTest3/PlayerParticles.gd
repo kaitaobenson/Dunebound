@@ -1,11 +1,6 @@
 extends Node
 
-var isOn = false
-
-func _process(delta):
-	particles(isOn)
-
-func particles(isOn:bool):
+func set_particles_on(isOn:bool):
 	var particle = $SandParticles
 	var direction = %Player.player_direction
 	
@@ -23,4 +18,3 @@ func particles(isOn:bool):
 			particle.orbit_velocity_max = -0.1
 	else:
 		particle.emitting = false
-
