@@ -41,11 +41,12 @@
 				"Space"
 			]
 		},
-				{
+			{
 			"actionName": "dash",
 			"key": [
 				"dash",
 				"E"
-		},
-	]
+			]
+			}
+		]
 }
