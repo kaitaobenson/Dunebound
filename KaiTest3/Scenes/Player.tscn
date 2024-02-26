@@ -6,18 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="6_boip0"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
+[ext_resource type="Script" path="res://PlayerHurtbox.gd" id="7_w5n8h"]
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="8_lpii5"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="9_3eqo5"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="10_hyhxv"]
-[ext_resource type="PackedScene" uid="uid://ba6xnuhkpqhew" path="res://Scenes/hitbox_component.tscn" id="11_5gnw2"]
-[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="11_8h7df"]
+
+[ext_resource type="Script" path="res://Scenes/TextureProgressBar.gd" id="11_8h7df"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
 size = Vector2(44.5, 81)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
-radius = 25.0
-height = 102.0
+radius = 18.0
+height = 82.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3x0x0"]
 atlas = ExtResource("6_boip0")
@@ -321,9 +322,9 @@ _data = {
 "Slash1": SubResource("Animation_rnad5")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w0p8k"]
-radius = 18.0
-height = 80.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_koxun"]
+radius = 78.0
+height = 156.0
 
 [node name="PlayerContainer" type="Node2D"]
 position = Vector2(369, 547)
@@ -332,17 +333,30 @@ position = Vector2(369, 547)
 unique_name_in_owner = true
 script = ExtResource("5_2xnvu")
 
+[node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
+max_health = 100
+
+[node name="HealthBar" type="TextureProgressBar" parent="Player/HealthComponent"]
+texture_filter = 1
+offset_left = -360.0
+offset_top = -377.0
+offset_right = -179.0
+offset_bottom = -337.0
+value = 100.0
+texture_over = ExtResource("9_3eqo5")
+texture_progress = ExtResource("10_hyhxv")
+script = ExtResource("11_8h7df")
+
 [node name="AttackHitbox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackHitbox"]
-position = Vector2(44.75, 6.5)
+position = Vector2(36, 9)
 shape = SubResource("RectangleShape2D_7xbk5")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" groups=["Hurtbox"]]
-position = Vector2(-3, 5)
+position = Vector2(-5, 14)
 shape = SubResource("CapsuleShape2D_hb2my")
-metadata/_edit_lock_ = true
 
 [node name="ParticleManager" type="Node" parent="Player"]
 script = ExtResource("5_ks2nr")
@@ -378,24 +392,13 @@ libraries = {
 "": SubResource("AnimationLibrary_tieuu")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_jbvia")]
+[node name="HurtboxComponent" type="Area2D" parent="Player"]
+script = ExtResource("7_w5n8h")
 
-[node name="HealthBar" type="TextureProgressBar" parent="HealthComponent"]
-texture_filter = 1
-offset_left = -360.0
-offset_top = -377.0
-offset_right = -179.0
-offset_bottom = -337.0
-value = 50.0
-texture_over = ExtResource("9_3eqo5")
-texture_progress = ExtResource("10_hyhxv")
-script = ExtResource("11_8h7df")
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("11_5gnw2")]
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-3, 6)
-shape = SubResource("CapsuleShape2D_w0p8k")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HurtboxComponent"]
+position = Vector2(-4, 13)
+shape = SubResource("CapsuleShape2D_koxun")
 
 [connection signal="body_entered" from="Player/AttackHitbox" to="Player" method="_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_body_entered"]
+[connection signal="body_exited" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_body_exited"]

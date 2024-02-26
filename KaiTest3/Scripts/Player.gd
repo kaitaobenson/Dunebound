@@ -94,13 +94,6 @@ func attack():
 	await _anim_sprite.animation_finished
 	
 	attackHitbox.set_disabled(true)
-	
-func take_damage(damage:int, caller):
-	print("Player took damage from:  " + str(caller))
-	health -= damage
-	get_parent().get_node("HealthComponent/HealthBar").set_health(health)
-	if(health<=0):
-		die()
 
 func die():
 	get_tree().reload_current_scene()
