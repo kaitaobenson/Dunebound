@@ -1,9 +1,9 @@
 extends CharacterBody2D
-var playerinside = false
-var TimeSinceHit = 0
-var direction
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
+
+var movement_direction
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
@@ -12,23 +12,30 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if abs(Global.PlayerX - position.x) < 1:
-		direction = 0
+		movement_direction = 0
 	elif Global.PlayerX < position.x:
-		direction = -1
+		movement_direction = -1
 	elif Global.PlayerX > position.x:
-		direction = 1
+		movement_direction = 1
 	
-	TimeSinceHit += delta
-	if (playerinside && TimeSinceHit > .5):
-		TimeSinceHit = 0
-		Global.Player.take_damage(20, self)
+	velocity.x = movement_direction * SPEED
 	
-	velocity.x = direction * SPEED
+	jump()
 	move_and_slide()
+	
+func jump():
+	if await check_if_moved() == false:
+		velocity.y = JUMP_VELOCITY
+		print(velocity.y)
 
-func _on_area_2d_body_entered(body):
-	if body.name == "Player":
-		playerinside = true
-func _on_area_2d_body_exited(body):
-	if body.name == "Player":
-		playerinside = false
+
+
+func check_if_moved():
+	var x1 = global_position.x
+	var x2
+	await get_tree().create_timer(0.1).timeout
+	x2 = global_position.x
+	if abs(abs(x1) - abs(x2)) < 7:
+		return false
+	else:
+		return true
