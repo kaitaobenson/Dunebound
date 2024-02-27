@@ -4,7 +4,7 @@
 
 [sub_resource type="GDScript" id="GDScript_b8wcj"]
 script/source = "extends CharacterBody2D
-const SPEED = 100.0
+const SPEED = 200.0
 var direction = -1
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var playerinside = false
@@ -80,11 +80,11 @@ target_position = Vector2(0, 25)
 metadata/_edit_lock_ = true
 
 [node name="leftabovecheck" type="RayCast2D" parent="."]
-target_position = Vector2(25, -25)
+target_position = Vector2(-25, -25)
 metadata/_edit_lock_ = true
 
 [node name="rightabovecheck" type="RayCast2D" parent="."]
-target_position = Vector2(-25, -25)
+target_position = Vector2(25, -25)
 metadata/_edit_lock_ = true
 
 [node name="leftsidecheck" type="RayCast2D" parent="."]

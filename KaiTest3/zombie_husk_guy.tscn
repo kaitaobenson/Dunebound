@@ -16,3 +16,37 @@ shape = SubResource("RectangleShape2D_v0e4b")
 position = Vector2(0, 0.374995)
 scale = Vector2(0.9375, 1.91406)
 texture = ExtResource("2_caee5")
+
+[node name="leftwallcheck" type="RayCast2D" parent="."]
+target_position = Vector2(-17, 20)
+metadata/_edit_lock_ = true
+
+[node name="rightwallcheck" type="RayCast2D" parent="."]
+target_position = Vector2(17, 20)
+metadata/_edit_lock_ = true
+
+[node name="leftfloorcheck" type="RayCast2D" parent="."]
+position = Vector2(-17, 0)
+target_position = Vector2(0, 32)
+metadata/_edit_lock_ = true
+
+[node name="rightfloorcheck" type="RayCast2D" parent="."]
+position = Vector2(17, 0)
+target_position = Vector2(0, 32)
+metadata/_edit_lock_ = true
+
+[node name="leftabovecheck" type="RayCast2D" parent="."]
+target_position = Vector2(-17, -25)
+metadata/_edit_lock_ = true
+
+[node name="rightabovecheck" type="RayCast2D" parent="."]
+target_position = Vector2(17, -25)
+metadata/_edit_lock_ = true
+
+[node name="leftsidecheck" type="RayCast2D" parent="."]
+target_position = Vector2(-17, 0)
+metadata/_edit_lock_ = true
+
+[node name="rightsidecheck" type="RayCast2D" parent="."]
+target_position = Vector2(17, 0)
+metadata/_edit_lock_ = true

@@ -36,7 +36,6 @@ func check_for_enemies(delta):
 			
 func i_frames_on(seconds : float):
 	_i_frames_done = false
-	
 	await get_tree().create_timer(seconds).timeout
 	_i_frames_done = true
 	
