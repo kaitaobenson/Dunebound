@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=36 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
@@ -67,10 +67,13 @@ size = Vector2(20626, 111.25)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qb4cu"]
 radius = 19.4612
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylrpf"]
+size = Vector2(71, 14)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(38, 12)
 
-[node name="Foreground Container" type="Node2D" parent="."]
+[node name="Foreground Container" type="Node2D" parent="." groups=["Ground"]]
 
 [node name="Dune3" type="StaticBody2D" parent="Foreground Container"]
 position = Vector2(1162, 453)
@@ -102,12 +105,20 @@ position = Vector2(-1096, 142)
 rotation = 6.28319
 scale = Vector2(0.605673, 0.957455)
 
-[node name="Polygon2D" type="Polygon2D" parent="Foreground Container/Shelter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Shelter"]
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(529.99, 133.686, 561.36, 86.6866, 822.226, 86.6858, 846.993, 135.774, 810.669, 100.264, 577.87, 101.309)
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Shelter"]
-position = Vector2(696.747, 205.752)
+position = Vector2(688.492, 187.996)
 scale = Vector2(10.096, -6.49977)
 texture = ExtResource("1_65q3v")
+
+[node name="Area2D" type="Area2D" parent="Foreground Container/Shelter"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Shelter/Area2D"]
+position = Vector2(-11.5574, -1.0444)
+polygon = PackedVector2Array(574.569, 231.863, 625.751, 151.441, 767.742, 150.397, 820.576, 236.04, 830.483, 280.951, 571.267, 280.952)
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 z_index = 16
@@ -334,7 +345,7 @@ position = Vector2(1299, 460)
 texture = ExtResource("17_s5fwc")
 metadata/_edit_lock_ = true
 
-[node name="jimmy" parent="." groups=["Hurtbox"] instance=ExtResource("21_gvv07")]
+[node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 position = Vector2(-498, 375)
 
 [node name="Bottom Barrier DEATH" type="Area2D" parent="."]
@@ -387,8 +398,13 @@ script = ExtResource("36_a7ulw")
 position = Vector2(372, 539)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(161, 552)
+position = Vector2(1346, 310)
 
 [node name="Spikes" type="StaticBody2D" parent="."]
+position = Vector2(-913, 413)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
+shape = SubResource("RectangleShape2D_ylrpf")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]

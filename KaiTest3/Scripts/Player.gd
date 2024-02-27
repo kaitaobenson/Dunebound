@@ -9,14 +9,12 @@ var current_animations = ["IDLE"]
 var player_direction = 0
 var health:int = 100 
 
-var _HOT_LIMIT = 65
-var _COEFFICIENT = 0.2
-var _COLD_LIMIT = 35
-
 
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
 @onready var _anim_sprite = $AnimationManager/AnimatedSprite2D
+@onready var _particle_manager = $"../ParticleManager"
+
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
@@ -114,15 +112,6 @@ func _attack_hitbox_body_entered(body):
 		
 func particles_control():
 	if is_on_floor() && player_direction != 0:
-		$ParticleManager.set_particles_on(true)
+		_particle_manager.set_particles_on(true)
 	else:
-		$ParticleManager.set_particles_on(false)
-	
-func take_temperature_damage():
-	
-	if Global.temperature > _HOT_LIMIT:
-		%Player.take_damage((Global.temperature - _HOT_LIMIT) * _COEFFICIENT, self)
-		
-	if Global.temperature < _COLD_LIMIT:
-		%Player.take_damage((_COLD_LIMIT - Global.temperature) * _COEFFICIENT, self)
-		
+		_particle_manager.set_particles_on(false)

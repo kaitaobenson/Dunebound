@@ -4,11 +4,12 @@ const JUMP_VELOCITY = -400.0
 var SPEED = 200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var movement_direction = 1
+var timerIsOver : bool = true
 
 func _physics_process(delta):
 	if  abs(Global.PlayerX - position.x) + abs(Global.PlayerX - position.x) < detection_range:
 		following()
-		jump()
+		check_if_jump()
 	else:
 		idle()
 	
@@ -17,10 +18,13 @@ func _physics_process(delta):
 	velocity.x = movement_direction * SPEED
 	move_and_slide()
 
-func jump():
-	if await check_if_moved() == false:
+func check_if_jump():
+	if timerIsOver && await check_if_moved() == false:
+		timerIsOver = false
 		velocity.y = JUMP_VELOCITY
-		print(velocity.y)
+		
+		await get_tree().create_timer(1).timeout
+		timerIsOver = true
 		
 func idle():
 	SPEED = 100
