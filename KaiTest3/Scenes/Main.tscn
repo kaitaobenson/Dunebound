@@ -387,7 +387,7 @@ script = ExtResource("36_a7ulw")
 position = Vector2(372, 539)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(161, 552)
+position = Vector2(-56, 567)
 
 [node name="Spikes" type="StaticBody2D" parent="."]
 

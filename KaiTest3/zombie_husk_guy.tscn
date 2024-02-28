@@ -18,11 +18,11 @@ scale = Vector2(0.9375, 1.91406)
 texture = ExtResource("2_caee5")
 
 [node name="leftwallcheck" type="RayCast2D" parent="."]
-target_position = Vector2(-17, 20)
+target_position = Vector2(-17, 30)
 metadata/_edit_lock_ = true
 
 [node name="rightwallcheck" type="RayCast2D" parent="."]
-target_position = Vector2(17, 20)
+target_position = Vector2(17, 30)
 metadata/_edit_lock_ = true
 
 [node name="leftfloorcheck" type="RayCast2D" parent="."]
