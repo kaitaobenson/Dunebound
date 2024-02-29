@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="10_hyhxv"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="11_8h7df"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
-size = Vector2(44.5, 81)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
 radius = 16.0
 height = 82.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
+size = Vector2(44.5, 81)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3x0x0"]
 atlas = ExtResource("6_boip0")
@@ -327,7 +327,7 @@ radius = 30.0
 height = 102.0
 
 [node name="PlayerContainer" type="Node2D"]
-position = Vector2(369, 547)
+position = Vector2(264, 542)
 
 [node name="ParticleManager" type="Node" parent="."]
 script = ExtResource("5_ks2nr")
@@ -354,24 +354,27 @@ color = Color(1, 0.788235, 0.247059, 1)
 script = ExtResource("3_qv5lc")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-unique_name_in_owner = true
 script = ExtResource("5_2xnvu")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_hb2my")
+metadata/_edit_lock_ = true
 
 [node name="AttackHitbox" type="Area2D" parent="Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackHitbox"]
-position = Vector2(36, 9)
+[node name="AttackCollison" type="CollisionShape2D" parent="Player/AttackHitbox"]
+position = Vector2(39, -1)
 shape = SubResource("RectangleShape2D_7xbk5")
 disabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(14, 15)
-shape = SubResource("CapsuleShape2D_hb2my")
+metadata/_edit_lock_ = true
 
 [node name="AnimationManager" type="Node2D" parent="Player"]
 script = ExtResource("2_i53hd")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/AnimationManager"]
+position = Vector2(-12, -15)
 sprite_frames = SubResource("SpriteFrames_dpc2o")
 animation = &"Idle"
 metadata/_edit_lock_ = true
@@ -384,23 +387,26 @@ libraries = {
 [node name="HurtboxComponent" type="Area2D" parent="Player"]
 script = ExtResource("7_w5n8h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HurtboxComponent"]
-position = Vector2(11, 11)
+[node name="HurtCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
+position = Vector2(3, -3)
 shape = SubResource("CapsuleShape2D_koxun")
+metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
+position = Vector2(8, -59)
 max_health = 100
 
 [node name="HealthBar" type="TextureProgressBar" parent="Player/HealthComponent"]
 texture_filter = 1
-offset_left = -360.0
-offset_top = -377.0
-offset_right = -179.0
-offset_bottom = -337.0
+offset_left = -444.0
+offset_top = -254.0
+offset_right = -263.0
+offset_bottom = -214.0
 value = 100.0
 texture_over = ExtResource("9_3eqo5")
 texture_progress = ExtResource("10_hyhxv")
 script = ExtResource("11_8h7df")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="Player/AttackHitbox" to="Player" method="_attack_hitbox_body_entered"]
 [connection signal="area_entered" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_area_entered"]

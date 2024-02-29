@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-const PUSH_FORCE = 1000
-const SPEED = 300
-const JUMP_VELOCITY = 600
-const GRAVITY = 1000
+const PUSH_FORCE = 50
 
-var current_animations = ["IDLE"]
+const WALK_SPEED = 300
+const SPRINT_SPEED = 500
+const JUMP_VELOCITY = 700
+const GRAVITY = 1700
+
 var player_direction = 0
 var health:int = 100 
-
+var player_speed = WALK_SPEED
 
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
@@ -51,19 +52,18 @@ func movement(delta):
 		velocity.y = -JUMP_VELOCITY
 	#MOVING RIGHT
 	if player_direction == 1:
-		_anim_manager.flip_sprite(true)
+		flip(true)
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
 	#MOVING LEFT
 	elif player_direction == -1:
-		_anim_manager.flip_sprite(false)
+		flip(false)
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
 	#NOT MOVING
 	else:
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 		
-	
-	
-	velocity.x = player_direction * SPEED
+		
+	velocity.x = player_direction * player_speed
 	move_and_slide()
 	
 	
@@ -97,11 +97,8 @@ func die():
 	get_tree().reload_current_scene()
 	print("ouch")
 	#whatever you wanna do when you die
-
-func out_of_world(body):
-	if body.name == "Player":
-		die()
-
+	
+	
 func _attack_hitbox_body_entered(body):
 	var attackDamage = 10
 	if body.is_in_group("Hurtbox"):
@@ -115,3 +112,18 @@ func particles_control():
 		_particle_manager.set_particles_on(true)
 	else:
 		_particle_manager.set_particles_on(false)
+		
+		
+func flip(isRight : bool):
+	var nodes_to_flip = [
+		$PlayerHitbox,
+		$AttackHitbox,
+		$AnimationManager,
+		$HurtboxComponent
+	]
+	if isRight:
+		for i in nodes_to_flip.size():
+			nodes_to_flip[i].scale.x = 1
+	if !isRight:
+		for i in nodes_to_flip.size():
+			nodes_to_flip[i].scale.x = -1

@@ -54,8 +54,3 @@ func play_animation(animationName:ALL_ANIMATIONS):
 		playing_animation = ALL_ANIMATIONS.IDLE
 		
 		
-func flip_sprite(isRight:bool):
-	if isRight:
-		_anim_sprite.scale.x = 1
-	if !isRight:
-		_anim_sprite.scale.x = -1

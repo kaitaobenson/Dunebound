@@ -106,7 +106,6 @@ rotation = 6.28319
 scale = Vector2(0.605673, 0.957455)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Shelter"]
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(529.99, 133.686, 561.36, 86.6866, 822.226, 86.6858, 846.993, 135.774, 810.669, 100.264, 577.87, 101.309)
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Shelter"]
@@ -348,10 +347,10 @@ metadata/_edit_lock_ = true
 [node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 position = Vector2(-498, 375)
 
-[node name="Bottom Barrier DEATH" type="Area2D" parent="."]
+[node name="BottomBarrierDeath" type="Area2D" parent="."]
 position = Vector2(-91, -211)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Barrier DEATH"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
 position = Vector2(276, 1678.38)
 shape = SubResource("RectangleShape2D_c0ts4")
 metadata/_edit_lock_ = true
@@ -395,10 +394,10 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(372, 539)
+position = Vector2(446, 484)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(-56, 567)
+position = Vector2(775, 607)
 
 [node name="Spikes" type="StaticBody2D" parent="."]
 position = Vector2(-913, 413)
