@@ -41,6 +41,12 @@
 				"Space"
 			]
 		},
+				{
+			"actionName" : "sprint",
+			"key" : [
+				"Shift"
+			]
+		},
 			{
 			"actionName": "dash",
 			"key": [

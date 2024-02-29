@@ -1,9 +1,10 @@
-[gd_scene load_steps=42 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=51 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
+[ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Jump-Sheet.png" id="6_8cywk"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="6_boip0"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
@@ -31,6 +32,26 @@ region = Rect2(96, 0, 96, 112)
 [sub_resource type="AtlasTexture" id="AtlasTexture_q07pb"]
 atlas = ExtResource("6_boip0")
 region = Rect2(0, 112, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx5t8"]
+atlas = ExtResource("6_8cywk")
+region = Rect2(288, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6ory"]
+atlas = ExtResource("6_8cywk")
+region = Rect2(384, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odk2p"]
+atlas = ExtResource("6_8cywk")
+region = Rect2(480, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isqhy"]
+atlas = ExtResource("6_8cywk")
+region = Rect2(96, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ew5d"]
+atlas = ExtResource("6_8cywk")
+region = Rect2(192, 0, 96, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bhc6"]
 atlas = ExtResource("7_rg2jw")
@@ -118,6 +139,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lx5t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6ory")
+}],
+"loop": true,
+"name": &"JumpDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odk2p")
+}],
+"loop": true,
+"name": &"JumpLand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isqhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ew5d")
+}],
+"loop": true,
+"name": &"JumpUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7bhc6")
 }, {
 "duration": 1.0,
@@ -185,26 +236,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Idle"]
 }
 
 [sub_resource type="Animation" id="Animation_d83su"]
@@ -212,49 +263,49 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Run"]
+"update": 0,
+"values": [&"Idle"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
+"update": 0,
+"values": [&"Run"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 
@@ -265,26 +316,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Run"]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Run"]
 }
 
 [sub_resource type="Animation" id="Animation_rnad5"]
@@ -292,31 +343,118 @@ resource_name = "Slash1"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Slash1"]
+}
+
+[sub_resource type="Animation" id="Animation_wl5se"]
+resource_name = "JumpUp"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"JumpUp"]
+}
+
+[sub_resource type="Animation" id="Animation_mjucu"]
+resource_name = "JumpDown"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"JumpDown"]
+}
+
+[sub_resource type="Animation" id="Animation_e6e6k"]
+resource_name = "JumpLand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Slash1"]
+"update": 0,
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"JumpLand"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tieuu"]
 _data = {
 "Idle": SubResource("Animation_3jf04"),
+"JumpDown": SubResource("Animation_mjucu"),
+"JumpLand": SubResource("Animation_e6e6k"),
+"JumpUp": SubResource("Animation_wl5se"),
 "RESET": SubResource("Animation_d83su"),
 "Run": SubResource("Animation_o1fut"),
 "Slash1": SubResource("Animation_rnad5")
@@ -376,7 +514,7 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/AnimationManager"]
 position = Vector2(-12, -15)
 sprite_frames = SubResource("SpriteFrames_dpc2o")
-animation = &"Idle"
+animation = &"Run"
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/AnimationManager"]

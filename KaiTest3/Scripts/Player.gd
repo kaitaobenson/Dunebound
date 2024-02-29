@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const PUSH_FORCE = 50
 
-const WALK_SPEED = 300
-const SPRINT_SPEED = 500
+const WALK_SPEED = 350
+const SPRINT_SPEED = 600
 const JUMP_VELOCITY = 700
 const GRAVITY = 1700
 
@@ -43,6 +43,11 @@ func _physics_process(delta):
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 	
 func movement(delta):
+	if Input.is_action_pressed("sprint"):
+		player_speed = SPRINT_SPEED
+	else:
+		player_speed = WALK_SPEED
+	
 	player_direction = Input.get_axis("ui_left", "move-right")
 	#GRAVITY
 	if not is_on_floor():
@@ -50,6 +55,7 @@ func movement(delta):
 	#JUMP
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = -JUMP_VELOCITY
+		_anim_manager.change_animation(ALL_ANIMATIONS.JUMP, true)
 	#MOVING RIGHT
 	if player_direction == 1:
 		flip(true)
