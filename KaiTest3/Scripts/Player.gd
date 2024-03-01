@@ -13,8 +13,9 @@ var player_speed = WALK_SPEED
 
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
-@onready var _anim_sprite = $AnimationManager/AnimatedSprite2D
+@onready var _anim_player = $AnimationManager/AnimationPlayer
 @onready var _particle_manager = $"../ParticleManager"
+@onready var _attack_collision = $"AttackHitbox/AttackCollison"
 
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
@@ -89,15 +90,13 @@ func checkForAttack(delta):
 		attack()
 
 func attack():
-
-	var attackHitbox = get_node("AttackHitbox/CollisionShape2D")
+	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true)
 	
-	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true) 
-	attackHitbox.set_disabled(false)
-	
-	await _anim_sprite.animation_finished
-	
-	attackHitbox.set_disabled(true)
+	#Before swipe time 
+	await get_tree().create_timer(0.4).timeout
+	_attack_collision.set_disabled(false)
+	await get_tree().create_timer(0.1).timeout
+	_attack_collision.set_disabled(true)
 
 func die():
 	get_tree().reload_current_scene()
@@ -105,14 +104,6 @@ func die():
 	#whatever you wanna do when you die
 	
 	
-func _attack_hitbox_body_entered(body):
-	var attackDamage = 10
-	if body.is_in_group("Hurtbox"):
-		#All bodies with a hurtbox should have this method!
-		#Is there a way to enforce this?  idk
-		body.take_damage(attackDamage)
-		
-		
 func particles_control():
 	if is_on_floor() && player_direction != 0:
 		_particle_manager.set_particles_on(true)

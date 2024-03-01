@@ -1,9 +1,18 @@
 extends Node2D
 
-enum ALL_ANIMATIONS {IDLE, RUN, ATTACK, JUMP, JUMP_UP, JUMP_DOWN, JUMP_LAND}
+enum ALL_ANIMATIONS {
+	IDLE, 
+	RUN, 
+	ATTACK, 
+	JUMP, 
+	JUMP_UP, 
+	JUMP_DOWN, 
+	JUMP_LAND,
+	NONE
+	}
 
 var current_animations = [ALL_ANIMATIONS.IDLE]
-var playing_animation
+var playing_animation : ALL_ANIMATIONS
 
 var jump = 0
 
@@ -23,7 +32,6 @@ func _process(delta):
 		
 	elif current_animations.has(ALL_ANIMATIONS.IDLE):
 		play_animation(ALL_ANIMATIONS.IDLE)
-		print("plaing idle")
 		
 		
 func change_animation(name:ALL_ANIMATIONS, isOn:bool):
@@ -33,7 +41,6 @@ func change_animation(name:ALL_ANIMATIONS, isOn:bool):
 	else:
 		if current_animations.has(name) == true:
 			current_animations.erase(name)
-			
 			
 			
 func play_animation(animationName:ALL_ANIMATIONS):
@@ -49,9 +56,11 @@ func play_animation(animationName:ALL_ANIMATIONS):
 		_anim.play("Slash1")
 		playing_animation = ALL_ANIMATIONS.ATTACK
 		
+		await _anim.animation_finished
+		current_animations.erase(ALL_ANIMATIONS.ATTACK)
+		
 	#IDLE
 	if animationName == ALL_ANIMATIONS.IDLE && playing_animation != ALL_ANIMATIONS.IDLE:
-		print("iDEL")
 		stop_animation_if_not_playing(ALL_ANIMATIONS.IDLE)
 		_anim.play("Idle")
 		playing_animation = ALL_ANIMATIONS.IDLE
@@ -75,12 +84,14 @@ func play_animation(animationName:ALL_ANIMATIONS):
 			stop_animation_if_not_playing(ALL_ANIMATIONS.JUMP_LAND)
 			_anim.play("JumpLand")
 			await get_tree().create_timer(0.1).timeout
+			jump = 3
 			
+		if jump == 3:
 			current_animations.erase(ALL_ANIMATIONS.JUMP)
 			jump = 0 
-			
 			
 			
 func stop_animation_if_not_playing(animation : ALL_ANIMATIONS):
 	if playing_animation != animation:
 		_anim.stop()
+		

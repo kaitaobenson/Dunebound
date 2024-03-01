@@ -532,7 +532,6 @@ metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
 position = Vector2(8, -59)
-max_health = 100
 
 [node name="HealthBar" type="TextureProgressBar" parent="Player/HealthComponent"]
 texture_filter = 1

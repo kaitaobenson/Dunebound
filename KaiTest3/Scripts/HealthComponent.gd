@@ -2,7 +2,7 @@ extends Node2D
 
 class_name HealthComponent
 
-@export var max_health : int = 10
+@export var max_health : int = 100
 var health : int
 
 func _ready():
@@ -13,7 +13,6 @@ func _ready():
 func damage(attack:Attack):
 	health -= attack.attack_damage
 	update_health_bar()
-	
 	if health <= 0:
 		$"../".die()
 		

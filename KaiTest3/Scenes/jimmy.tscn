@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://djq52jicd1c67"]
+[gd_scene load_steps=15 format=3 uid="uid://djq52jicd1c67"]
 
 [ext_resource type="Texture2D" uid="uid://bov3dw100dk33" path="res://Assets/Textures/Insect1.png" id="1_1433t"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_s2glg"]
+[ext_resource type="Script" path="res://Scenes/HitboxComponent.gd" id="3_sto7s"]
 
 [sub_resource type="GDScript" id="GDScript_b8wcj"]
 script/source = "extends CharacterBody2D
@@ -36,20 +38,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-func _on_area_2d_body_entered(body):
-	if body.name == \"Player\":
-		playerinside = true
-		
-		
-func _on_area_2d_body_exited(body):
-	if body.name == \"Player\":
-		playerinside = false
-		
-		
-func take_damage(damage):
-	self.queue_free()
-
-
+func die():
+	queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rmsb"]
@@ -158,6 +148,9 @@ _data = {
 "Run": SubResource("Animation_i6a76")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stxym"]
+size = Vector2(60, 36)
+
 [node name="jimmy" type="CharacterBody2D"]
 position = Vector2(161, 583)
 script = SubResource("GDScript_b8wcj")
@@ -213,3 +206,19 @@ root_node = NodePath("../Raycasts/leftwallcheck")
 libraries = {
 "": SubResource("AnimationLibrary_nfeqm")
 }
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_s2glg")]
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(-6, 0)
+script = ExtResource("3_sto7s")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(6, 7)
+shape = SubResource("RectangleShape2D_stxym")
+
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
+[connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]
+[connection signal="body_exited" from="HitboxComponent" to="HitboxComponent" method="_on_body_exited"]
