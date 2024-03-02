@@ -12,6 +12,7 @@ var direction = -1
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var playerinside = false
 var TimeSinceHit = 0
+<<<<<<< HEAD
 
 func _ready():
 	$AnimationPlayer.play(\"Run\")
@@ -23,9 +24,23 @@ func _physics_process(delta):
 	var rightfloorcheck = $\"Raycasts/rightfloorcheck\".is_colliding()
 	var leftsidecheck = $\"Raycasts/leftsidecheck\".is_colliding()
 	var rightsidecheck = $\"Raycasts/rightsidecheck\".is_colliding()
+=======
+var rigidBody:bool
+func _physics_process(delta):
+	var leftwallcheck = $\"leftwallcheck\".is_colliding()
+	var rightwallcheck = $\"rightwallcheck\".is_colliding()
+	var leftfloorcheck = $\"leftfloorcheck\".is_colliding()
+	var rightfloorcheck = $\"rightfloorcheck\".is_colliding()
+	var leftsidecheck = $\"leftsidecheck\".is_colliding()
+	var rightsidecheck = $\"rightsidecheck\".is_colliding()
+	#guys i swear its one hundred percent integral to the game to allow jimmy to push items
+	#the game wont be the same without this core functionality
+	var rigidBodyOther:bool = $\"leftwallcheck\".get_collider() is RigidBody2D or $\"rightwallcheck\".get_collider() is RigidBody2D or $\"leftfloorcheck\".get_collider() is RigidBody2D or $\"rightfloorcheck\".get_collider() is RigidBody2D or $\"leftsidecheck\".get_collider() is RigidBody2D or $\"rightsidecheck\".get_collider() is RigidBody2D
+>>>>>>> 186502ecc8a71b0394f9a2bd3e39eb1a791e6ff9
 	TimeSinceHit += delta
 	if not is_on_floor():
 		velocity.y += gravity * delta
+<<<<<<< HEAD
 	
 	if (direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck):
 		direction = -direction
@@ -40,6 +55,40 @@ func _physics_process(delta):
 	
 func die():
 	queue_free()
+=======
+	for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision && collision.get_collider() is RigidBody2D:
+				rigidBody = true
+				collision.get_collider().apply_central_impulse(-collision.get_normal() * Global.Player.PUSH_FORCE)
+	if(rigidBody):
+		velocity.x = -direction * SPEED
+		move_and_slide()
+	else:
+		if ((direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck) and !rigidBodyOther):
+			direction = -direction
+		if ((direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck) and !rigidBodyOther):
+			direction = -direction
+		if (playerinside && TimeSinceHit > .5):
+			TimeSinceHit = 0
+			Global.Player.take_damage(20, self)
+		velocity.x = direction * SPEED
+		move_and_slide()
+	rigidBody = false
+
+func _on_area_2d_body_entered(body):
+	if body.name == \"Player\":
+		playerinside = true
+
+func _on_area_2d_body_exited(body):
+	if body.name == \"Player\":
+		playerinside = false
+
+func take_damage(damage):
+	self.queue_free()
+
+
+>>>>>>> 186502ecc8a71b0394f9a2bd3e39eb1a791e6ff9
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rmsb"]
