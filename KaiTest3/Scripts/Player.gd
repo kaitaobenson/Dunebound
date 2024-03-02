@@ -5,6 +5,7 @@ const SPEED = 300
 const JUMP_VELOCITY = 600
 const GRAVITY = 1000
 
+var previous_direction = 0
 var current_animations = ["IDLE"]
 var player_direction = 0
 var health:int = 100 
@@ -45,6 +46,11 @@ func _physics_process(delta):
 	
 func movement(delta):
 	player_direction = Input.get_axis("ui_left", "move-right")
+	
+	if (player_direction==-1&&(previous_direction==1||previous_direction==0)):
+		get_node("AttackHitbox").position.x = -get_node("CollisionShape2D").shape.radius*4
+	if (player_direction==1&&(previous_direction==-1||previous_direction==0)):
+		get_node("AttackHitbox").position.x = 0
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -66,6 +72,7 @@ func movement(delta):
 	
 	
 	velocity.x = player_direction * SPEED
+	previous_direction = player_direction
 	move_and_slide()
 	
 	
