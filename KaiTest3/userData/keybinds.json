@@ -29,6 +29,12 @@
 				"Escape"
 			]
 		},
+				{
+			"actionName": "slide",
+			"key": [
+				"S"
+			]
+		},
 		{
 			"actionName" : "inventory_toggle",
 			"key" : [

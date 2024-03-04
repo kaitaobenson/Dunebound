@@ -98,7 +98,7 @@ position = Vector2(174, -401)
 texture = ExtResource("2_tojtu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune4"]
-polygon = PackedVector2Array(-1206, 250, -990, 87, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
+polygon = PackedVector2Array(-1206, 250, -968, 67, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
 
 [node name="Shelter" type="StaticBody2D" parent="Foreground Container"]
 position = Vector2(-1096, 142)
@@ -394,7 +394,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(290, 561)
+position = Vector2(204, 560)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(775, 607)

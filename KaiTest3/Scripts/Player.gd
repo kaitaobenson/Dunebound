@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
-const PUSH_FORCE = 50
+const PUSH_FORCE = 100
 
 const WALK_SPEED = 350
 const SPRINT_SPEED = 600
 const JUMP_VELOCITY = 700
 const GRAVITY = 1700
 
+var slow_speed
+var SLIDE_SPEED
+var player_sliding = false
 var player_direction = 0
 var health:int = 100 
 var player_speed = WALK_SPEED
@@ -28,11 +31,9 @@ func _ready():
 func _physics_process(delta):
 	Global.PlayerX = global_position.x
 	Global.PlayerY = global_position.y
-	
 	checkForAttack(delta)
 	push_other_bodies()
 	particles_control()
-	
 	var inventory_is_on
 	#is_inventory_on updater
 	if(Input.is_action_just_pressed("inventory_toggle")):
@@ -44,12 +45,14 @@ func _physics_process(delta):
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 	
 func movement(delta):
-	if Input.is_action_pressed("sprint"):
+	if player_sliding:
+		player_speed = SLIDE_SPEED
+	elif Input.is_action_pressed("sprint"):
 		player_speed = SPRINT_SPEED
 	else:
 		player_speed = WALK_SPEED
-	
-	player_direction = Input.get_axis("ui_left", "move-right")
+	if !player_sliding:
+		player_direction = Input.get_axis("ui_left", "move-right")
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -70,9 +73,48 @@ func movement(delta):
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 		
 		
-	velocity.x = player_direction * player_speed
-	move_and_slide()
+	#GOOFY AH SLIDING SHIZ
+	if Input.is_action_just_pressed("slide") && !player_sliding && player_direction != 0:
+		SLIDE_SPEED = player_speed
+		player_direction = player_direction
+		player_sliding = true
+		slide()
+	elif Input.is_action_just_pressed("slide") && player_sliding:
+		player_sliding = false
 	
+	if !player_sliding:
+		velocity.x = player_direction * player_speed
+	else:
+		velocity.x = player_direction * SLIDE_SPEED
+	
+	move_and_slide()
+	check_change_in_y()
+	
+func check_change_in_y():
+	var y1 = global_position.y
+	var y2
+	await get_tree().create_timer(0.001).timeout
+	y2 = global_position.y
+	if y1 - y2 < 0:
+		return 1
+	elif y1 - y2 > 0:
+		return -10
+	else:
+		return 0
+
+func slide():
+	while SLIDE_SPEED > 0 && player_sliding == true:
+		await get_tree().create_timer(0.001).timeout
+		var floor_angle = get_floor_angle()
+		var change_in_y = await check_change_in_y()
+		if floor_angle == 0 && change_in_y == 0:
+			slow_speed = -3
+		else:
+			slow_speed = floor_angle * change_in_y
+		SLIDE_SPEED += slow_speed
+		print (SLIDE_SPEED)
+		
+	player_sliding = false
 	
 func push_other_bodies():
 	#Pushing other bodies stuff
