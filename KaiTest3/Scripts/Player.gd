@@ -7,7 +7,7 @@ const SPRINT_SPEED = 600
 const JUMP_VELOCITY = 700
 const GRAVITY = 1700
 
-var slow_speed
+var slide_speed_change
 var SLIDE_SPEED
 var player_sliding = false
 var player_direction = 0
@@ -74,10 +74,9 @@ func movement(delta):
 		
 		
 	#GOOFY AH SLIDING SHIZ
-	if Input.is_action_just_pressed("slide") && !player_sliding && player_direction != 0:
-		SLIDE_SPEED = player_speed
-		player_direction = player_direction
+	if Input.is_action_just_pressed("slide") && !player_sliding:
 		player_sliding = true
+		SLIDE_SPEED = player_speed
 		slide()
 	elif Input.is_action_just_pressed("slide") && player_sliding:
 		player_sliding = false
@@ -86,36 +85,53 @@ func movement(delta):
 		velocity.x = player_direction * player_speed
 	else:
 		velocity.x = player_direction * SLIDE_SPEED
-	
 	move_and_slide()
 	check_change_in_y()
 	
 func check_change_in_y():
 	var y1 = global_position.y
 	var y2
-	await get_tree().create_timer(0.001).timeout
+	await get_tree().create_timer(0.01).timeout
 	y2 = global_position.y
 	if y1 - y2 < 0:
-		return 1
+		return -1
 	elif y1 - y2 > 0:
-		return -10
+		return 1
 	else:
 		return 0
 
 func slide():
-	while SLIDE_SPEED > 0 && player_sliding == true:
+	var floor_angle = get_floor_angle()
+	var slow_or_speed
+	var change_in_y = await check_change_in_y()
+	if player_direction == 0:
+		if get_floor_normal().x < 0:
+			player_direction = -1
+		elif get_floor_normal().x > 0:
+			player_direction = 1
+	while player_sliding == true && SLIDE_SPEED > 0:
 		await get_tree().create_timer(0.001).timeout
-		var floor_angle = get_floor_angle()
-		var change_in_y = await check_change_in_y()
-		if floor_angle == 0 && change_in_y == 0:
-			slow_speed = -3
+		if get_floor_normal().x < 0:
+			if player_direction == 1:
+				slow_or_speed = -2
+			elif player_direction == -1:
+				slow_or_speed = 1
+		elif get_floor_normal().x > 0:
+			if player_direction == 1:
+				slow_or_speed = 1
+			elif player_direction == -1:
+				slow_or_speed = -2
 		else:
-			slow_speed = floor_angle * change_in_y
-		SLIDE_SPEED += slow_speed
-		print (SLIDE_SPEED)
-		
-	player_sliding = false
+			slow_or_speed = 0
+		if floor_angle == 0 && slow_or_speed == 0:
+			slide_speed_change = -1
+		else:
+			slide_speed_change = floor_angle * slow_or_speed
+		SLIDE_SPEED += slide_speed_change
 	
+	player_sliding = false
+	print("end slide")
+
 func push_other_bodies():
 	#Pushing other bodies stuff
 	for i in get_slide_collision_count():
