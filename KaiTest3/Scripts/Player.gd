@@ -101,32 +101,38 @@ func check_change_in_y():
 		return 0
 
 func slide():
-	var floor_angle = get_floor_angle()
-	var slow_or_speed
-	var change_in_y = await check_change_in_y()
 	if player_direction == 0:
+		SLIDE_SPEED = 50
 		if get_floor_normal().x < 0:
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
-	while player_sliding == true && SLIDE_SPEED > 0:
+	while player_sliding == true && SLIDE_SPEED > -0.1:
+		var floor_angle = get_floor_angle()
+		var slow_or_speed
+		var change_in_y = await check_change_in_y()
 		await get_tree().create_timer(0.001).timeout
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
-				slow_or_speed = -2
+				slow_or_speed = -3
 			elif player_direction == -1:
-				slow_or_speed = 1
+				slow_or_speed = 3
 		elif get_floor_normal().x > 0:
 			if player_direction == 1:
-				slow_or_speed = 1
+				slow_or_speed = 3
 			elif player_direction == -1:
-				slow_or_speed = -2
+				slow_or_speed = -3
 		else:
 			slow_or_speed = 0
-		if floor_angle == 0 && slow_or_speed == 0:
-			slide_speed_change = -1
+		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
+		if slide_speed_change > 0:
+			slide_speed_change += 1
 		else:
-			slide_speed_change = floor_angle * slow_or_speed
+			slide_speed_change -= 1
+		if floor_angle == 0:
+			slide_speed_change = -5
+		
+		print(slide_speed_change)
 		SLIDE_SPEED += slide_speed_change
 	
 	player_sliding = false
