@@ -74,7 +74,7 @@ func movement(delta):
 		
 		
 	#GOOFY AH SLIDING SHIZ
-	if Input.is_action_just_pressed("slide") && !player_sliding:
+	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor():
 		player_sliding = true
 		SLIDE_SPEED = player_speed
 		slide()
@@ -86,21 +86,16 @@ func movement(delta):
 	else:
 		velocity.x = player_direction * SLIDE_SPEED
 	move_and_slide()
-	check_change_in_y()
 	
-func check_change_in_y():
-	var y1 = global_position.y
-	var y2
-	await get_tree().create_timer(0.01).timeout
-	y2 = global_position.y
-	if y1 - y2 < 0:
-		return -1
-	elif y1 - y2 > 0:
-		return 1
-	else:
-		return 0
+func check_change_in_x():
+	var x1 = global_position.x
+	var x2
+	await get_tree().create_timer(.001).timeout
+	x2 = global_position.x
+	return x1 - x2
 
 func slide():
+	#For sliding from stationary
 	if player_direction == 0:
 		SLIDE_SPEED = 50
 		if get_floor_normal().x < 0:
@@ -110,7 +105,7 @@ func slide():
 	while player_sliding == true && SLIDE_SPEED > -0.1:
 		var floor_angle = get_floor_angle()
 		var slow_or_speed
-		var change_in_y = await check_change_in_y()
+		var change_in_x = await check_change_in_x()
 		await get_tree().create_timer(0.001).timeout
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
@@ -130,9 +125,7 @@ func slide():
 		else:
 			slide_speed_change -= 1
 		if floor_angle == 0:
-			slide_speed_change = -5
-		
-		print(slide_speed_change)
+			slide_speed_change = -2
 		SLIDE_SPEED += slide_speed_change
 	
 	player_sliding = false
