@@ -35,22 +35,18 @@ func _process(delta):
 	if current_animations.has(ALL_ANIMATIONS.ATTACK):
 		if playing_animation != ALL_ANIMATIONS.ATTACK:
 			play_animation(ALL_ANIMATIONS.ATTACK)
-			print("ATTACK")
 		
 	elif current_animations.has(ALL_ANIMATIONS.JUMP):
 		if playing_animation != ALL_ANIMATIONS.JUMP:
-			print("JUMP")
 			play_animation(ALL_ANIMATIONS.JUMP)
 		
 	elif current_animations.has(ALL_ANIMATIONS.RUN):
 		if playing_animation != ALL_ANIMATIONS.RUN:
 			play_animation(ALL_ANIMATIONS.RUN)
-			print("RUN")
 			
 	elif current_animations.has(ALL_ANIMATIONS.IDLE):
 		if playing_animation != ALL_ANIMATIONS.IDLE:
 			play_animation(ALL_ANIMATIONS.IDLE)
-			print("IDLE")
 			
 			
 			

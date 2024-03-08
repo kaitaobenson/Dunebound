@@ -7,7 +7,7 @@ var movement_direction = 1
 var timerIsOver : bool = true
 
 func _physics_process(delta):
-	if  abs(Global.PlayerX - position.x) + abs(Global.PlayerX - position.x) < detection_range:
+	if  abs(Global.Player.global_position.x - position.x) + abs(Global.Player.global_position.x - position.x) < detection_range:
 		following()
 		check_if_jump()
 	else:
@@ -41,11 +41,11 @@ func idle():
 
 func following():
 	SPEED = 300
-	if abs(Global.PlayerX - position.x) < 10:
+	if abs(Global.Player.global_position.x - position.x) < 10:
 		movement_direction = 0
-	elif Global.PlayerX < position.x:
+	elif Global.Player.global_position.x < position.x:
 		movement_direction = -1
-	elif Global.PlayerX > position.x:
+	elif Global.Player.global_position.y > position.x:
 		movement_direction = 1
 
 func check_if_moved():

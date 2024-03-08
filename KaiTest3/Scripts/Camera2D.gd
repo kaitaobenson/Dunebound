@@ -19,10 +19,10 @@ func _physics_process(delta):
 	if player_direction == -1:
 		_bufferX = -300
 		
-	var XtoPlayer = (Global.PlayerX - position.x) * 0.1
-	var YtoPlayer = (Global.PlayerY - position.y) * 0.1
+	var XtoPlayer = (Global.Player.global_position.x - position.x) * 0.1
+	var YtoPlayer = (Global.Player.global_position.y - position.y) * 0.1
 	
-	position.x +=  XtoPlayer + (Global.PlayerX + _bufferX - position.x) * 0.1
+	position.x +=  XtoPlayer + (Global.Player.global_position.x + _bufferX - position.x) * 0.1
 	position.y +=  YtoPlayer
 	
 func update_global_position():

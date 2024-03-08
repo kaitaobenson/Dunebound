@@ -495,11 +495,26 @@ script = ExtResource("3_qv5lc")
 script = ExtResource("5_2xnvu")
 metadata/_edit_lock_ = true
 
+[node name="GroundRaycasts" type="Node2D" parent="Player"]
+
+[node name="Center" type="RayCast2D" parent="Player/GroundRaycasts"]
+position = Vector2(0, 36)
+target_position = Vector2(0, 19)
+
+[node name="Left" type="RayCast2D" parent="Player/GroundRaycasts"]
+position = Vector2(-11, 36)
+target_position = Vector2(0, 19)
+
+[node name="Right" type="RayCast2D" parent="Player/GroundRaycasts"]
+position = Vector2(11, 36)
+target_position = Vector2(0, 19)
+
 [node name="PlayerHitbox" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_hb2my")
 metadata/_edit_lock_ = true
 
 [node name="AttackHitbox" type="Area2D" parent="Player"]
+metadata/_edit_lock_ = true
 
 [node name="AttackCollison" type="CollisionShape2D" parent="Player/AttackHitbox"]
 position = Vector2(39, -1)
@@ -524,6 +539,7 @@ libraries = {
 
 [node name="HurtboxComponent" type="Area2D" parent="Player"]
 script = ExtResource("7_w5n8h")
+metadata/_edit_lock_ = true
 
 [node name="HurtCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
 position = Vector2(3, -3)
