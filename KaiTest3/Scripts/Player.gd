@@ -16,6 +16,10 @@ var player_speed = WALK_SPEED
 
 var _attack_cooldown_over = true
 
+var _jump_timer = 0.0
+var _can_jump = false
+var _coyote_time = 0.2
+
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
 @onready var _anim_player = $AnimationManager/AnimationPlayer
@@ -34,19 +38,42 @@ func _physics_process(delta):
 	#is_inventory_on updater
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
-		
-		
+	
 	apply_gravity(delta)
 	
-	#LEFT + RIGHT MOVEMENT
+	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor_custom():
+		player_sliding = true
+		SLIDE_SPEED = player_speed
+		slide()
+	elif Input.is_action_just_pressed("slide") && player_sliding:
+		player_sliding = false
+	
+	### AD MOVEMENT ###
 	player_direction = Input.get_axis("ui_left", "move-right")
 	wasd_movement(player_direction)
 	
-	#JUMP
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor_custom():
+	print(is_on_floor_custom())
+	### JUMP ###
+	if is_on_floor_custom():
+		print("onfloor")
+		_can_jump = true
+		_jump_timer = 0.0
+	else:
+		print("notonfloor")
+		_jump_timer += delta
+		if _jump_timer < _coyote_time:
+			_can_jump = true
+		else:
+			_can_jump = false
+			
+	if Input.is_action_just_pressed("ui_accept") && _can_jump:
 		jump()
+		while is_on_floor_custom():
+			await get_tree().create_timer(0.1).timeout
+		_jump_timer = 100.0
+		print("jumptimerset")
 		
-	#ATTACK
+	### ATTACK ###
 	if Input.is_action_just_pressed("attack") && _attack_cooldown_over:
 		attack()
 		_attack_cooldown_over = false
@@ -84,7 +111,7 @@ func jump():
 	
 	
 func apply_gravity(delta):
-	if not is_on_floor():
+	if not is_on_floor_custom():
 		velocity.y += GRAVITY * delta
 	
 	
@@ -104,6 +131,7 @@ func slide():
 		elif get_floor_normal().x > 0:
 			player_direction = 1
 	while player_sliding == true && SLIDE_SPEED > -0.1:
+		#print(player_direction)
 		var floor_angle = get_floor_angle()
 		var slow_or_speed
 		var change_in_x = await check_change_in_x()
@@ -111,13 +139,17 @@ func slide():
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
 				slow_or_speed = -3
+				print(1)
 			elif player_direction == -1:
 				slow_or_speed = 3
+				print(2)
 		elif get_floor_normal().x > 0:
 			if player_direction == 1:
 				slow_or_speed = 3
+				print(3)
 			elif player_direction == -1:
 				slow_or_speed = -3
+				print(4)
 		else:
 			slow_or_speed = 0
 		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
