@@ -17,36 +17,43 @@ position = Vector2(0, 0.374995)
 scale = Vector2(0.9375, 1.91406)
 texture = ExtResource("2_caee5")
 
-[node name="leftwallcheck" type="RayCast2D" parent="."]
+[node name="Collision_Checks" type="Node2D" parent="."]
+
+[node name="leftwallcheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(-17, 30)
 metadata/_edit_lock_ = true
 
-[node name="rightwallcheck" type="RayCast2D" parent="."]
+[node name="rightwallcheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(17, 30)
 metadata/_edit_lock_ = true
 
-[node name="leftfloorcheck" type="RayCast2D" parent="."]
+[node name="leftfloorcheck" type="RayCast2D" parent="Collision_Checks"]
 position = Vector2(-17, 0)
 target_position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
-[node name="rightfloorcheck" type="RayCast2D" parent="."]
+[node name="rightfloorcheck" type="RayCast2D" parent="Collision_Checks"]
 position = Vector2(17, 0)
 target_position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
-[node name="leftabovecheck" type="RayCast2D" parent="."]
+[node name="leftabovecheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(-17, -25)
 metadata/_edit_lock_ = true
 
-[node name="rightabovecheck" type="RayCast2D" parent="."]
+[node name="rightabovecheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(17, -25)
 metadata/_edit_lock_ = true
 
-[node name="leftsidecheck" type="RayCast2D" parent="."]
+[node name="leftsidecheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(-17, 0)
 metadata/_edit_lock_ = true
 
-[node name="rightsidecheck" type="RayCast2D" parent="."]
+[node name="rightsidecheck" type="RayCast2D" parent="Collision_Checks"]
 target_position = Vector2(17, 0)
 metadata/_edit_lock_ = true
+
+[node name="Line_of_sight_pivot" type="Node2D" parent="."]
+
+[node name="line_of_sight" type="RayCast2D" parent="Line_of_sight_pivot"]
+target_position = Vector2(134, 0)

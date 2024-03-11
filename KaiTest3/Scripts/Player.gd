@@ -52,7 +52,6 @@ func _physics_process(delta):
 	player_direction = Input.get_axis("move_left", "move_right")
 	wasd_movement(player_direction)
 	
-	
 	### JUMP ###
 	if is_on_floor_custom():
 		_can_jump = true
