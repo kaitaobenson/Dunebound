@@ -12,12 +12,16 @@ const enemy_info = {
 	"Zombie Husk Guy": [0, true],
 }
 
-
-var _i_frames_done = true
 @onready var health_component = $"../HealthComponent"
 
+var _i_frames_done = true
 var timer : float = 0
 
+func _process(delta):
+	check_for_enemies()
+	regen_health(delta)
+		
+		
 func _on_body_entered(body):
 	if bodies_in_hurtbox.has(body.name) == false:
 		bodies_in_hurtbox.append(body.name)
@@ -38,17 +42,14 @@ func _on_area_exited(area):
 		areas_in_hurtbox.erase(area.name)
 		
 		
-func _process(delta):
-	check_for_shelter()
-	check_for_enemies()
-	regen_health(delta)
-		
 func regen_health(delta):
 	timer += delta
 	if timer >= 1:
 		timer = 0
-		if (false) && (health_component.health != 100):
+		if health_component.health <= 95:
 			make_attack(-5)
+		elif health_component.health < 100:
+			make_attack(100 - health_component.health)
 	
 	
 func check_for_enemies():
@@ -82,14 +83,15 @@ func i_frames_on(seconds : float):
 	
 	
 func make_attack(damage : int):
-	print(damage)
 	var attack = Attack.new()
 	attack.attack_damage = damage
 	health_component.damage(attack)
 	
 	
-func check_for_shelter():
-	if bodies_in_hurtbox.has("Shelter"):
-		print("shelter")
+func is_in_shelter() -> bool:
+	if areas_in_hurtbox.has("ShelterArea"):
+		return true
+	else:
+		return false
 
 

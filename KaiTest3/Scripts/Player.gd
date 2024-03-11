@@ -49,40 +49,26 @@ func _physics_process(delta):
 		player_sliding = false
 	
 	### AD MOVEMENT ###
-	player_direction = Input.get_axis("ui_left", "move-right")
+	player_direction = Input.get_axis("move_left", "move_right")
 	wasd_movement(player_direction)
 	
-	print(is_on_floor_custom())
+	
 	### JUMP ###
 	if is_on_floor_custom():
-		print("onfloor")
 		_can_jump = true
 		_jump_timer = 0.0
 	else:
-		print("notonfloor")
 		_jump_timer += delta
 		if _jump_timer < _coyote_time:
 			_can_jump = true
 		else:
 			_can_jump = false
 			
-	if Input.is_action_just_pressed("ui_accept") && _can_jump:
+	if Input.is_action_just_pressed("jump") && _can_jump:
 		jump()
 		while is_on_floor_custom():
 			await get_tree().create_timer(0.1).timeout
 		_jump_timer = 100.0
-		print("jumptimerset")
-		
-	### ATTACK ###
-	if Input.is_action_just_pressed("attack") && _attack_cooldown_over:
-		attack()
-		_attack_cooldown_over = false
-		
-		var timer = get_tree().create_timer(1)
-		while timer.time_left != 0:
-			await get_tree().create_timer(0.1).timeout
-			
-		_attack_cooldown_over = true
 	
 	
 func wasd_movement(direction : int):
@@ -170,16 +156,8 @@ func push_other_bodies():
 			
 			if collision && collision.get_collider() is RigidBody2D:
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * PUSH_FORCE)
-
-func attack():
-	_anim_manager.change_animation(ALL_ANIMATIONS.ATTACK, true)
-	
-	await get_tree().create_timer(0.4).timeout
-	_attack_collision.set_disabled(false)
-	
-	await get_tree().create_timer(0.1).timeout
-	_attack_collision.set_disabled(true)
-
+				
+				
 func die():
 	get_tree().reload_current_scene()
 	print("ouch")
@@ -196,7 +174,7 @@ func particles_control():
 func flip(isRight : bool):
 	var nodes_to_flip = [
 		$PlayerHitbox,
-		$AttackHitbox,
+		$AttackManager,
 		$AnimationManager,
 		$HurtboxComponent
 	]

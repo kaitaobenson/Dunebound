@@ -3,24 +3,23 @@
 	"comment2": "The defaults are just some random things I set, feel free to change them",
 	"keybinds": [
 		{
-			"actionName": "move-right",
+			"actionName": "move_right",
 			"key": [
 				"Right",
 				"D"
 			]
 		},
 		{
-			"actionName": "ui_left",
+			"actionName": "move_left",
 			"key": [
 				"Left",
 				"A"
 			]
 		},
 		{
-			"actionName": "ui_accept",
+			"actionName": "jump",
 			"key": [
-				"Up",
-				"W"
+				"Space"
 			]
 		},
 		{
@@ -32,7 +31,7 @@
 				{
 			"actionName": "slide",
 			"key": [
-				"S"
+				"Shift"
 			]
 		},
 		{
@@ -56,9 +55,34 @@
 			{
 			"actionName": "dash",
 			"key": [
-				"dash",
 				"E"
 			]
-			}
+		},
+						{
+			"actionName" : "look_up",
+			"key" : [
+				"W",
+				"Up"
+			]
+		},
+			{
+			"actionName": "look_down",
+			"key": [
+				"S",
+				"Down"
+			]
+		},
+			{
+			"actionName": "switch_weapon_1",
+			"key": [
+				"1"
+			]
+		},
+			{
+			"actionName": "switch_weapon_2",
+			"key": [
+				"2"
+			]
+		}
 		]
 }

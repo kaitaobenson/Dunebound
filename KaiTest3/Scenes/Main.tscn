@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=40 format=3 uid="uid://m4074xq6e06m"]
 
-[ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_65q3v"]
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Texture2D" uid="uid://mys331w13dt" path="res://Assets/Textures/OscarsDune1.1.png" id="2_tojtu"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
+[ext_resource type="PackedScene" uid="uid://c8tyqyol5iveh" path="res://Shelter.tscn" id="3_w0wql"]
 [ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Texture2D" uid="uid://cjr2p547ql75p" path="res://Assets/Textures/TILEMAPcopy.png" id="5_w2dmv"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
@@ -20,11 +20,15 @@
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
 [ext_resource type="Texture2D" uid="uid://dh7u5aevkikfd" path="res://Assets/Textures/ScrollDraft-export.png" id="23_086pw"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="23_k7f0p"]
 [ext_resource type="Script" path="res://Scripts/Scroll.gd" id="24_dyjx4"]
 [ext_resource type="Script" path="res://Scripts/ScrollText.gd" id="25_34a06"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://zombie_husk_guy.tscn" id="27_203vw"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
+[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="28_ujqb4"]
+[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="29_l4iya"]
+[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="30_u4llx"]
 [ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
@@ -32,6 +36,9 @@ tile_data = PackedInt32Array(0, 4, 1, 65536, 4, 2, 1, 65540, 1, 65537, 65540, 2,
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gc14l"]
 tile_data = PackedInt32Array(0, 262148, 1, 65536, 262148, 2, 1, 327684, 1, 65537, 327684, 2, 2, 393220, 1, 65538, 393220, 2, 3, 458756, 1, 65539, 458756, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_x17ti"]
+tile_data = PackedInt32Array(0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 4, 0, 11, 4, 0, 12, 4, 0, 13, 4, 0, 14, 4, 0, 15, 4, 0, 16, 4, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fyks6"]
 texture = ExtResource("5_w2dmv")
@@ -115,6 +122,7 @@ physics_layer_0/collision_layer = 1
 sources/4 = SubResource("TileSetAtlasSource_fyks6")
 pattern_0 = SubResource("TileMapPattern_ulina")
 pattern_1 = SubResource("TileMapPattern_gc14l")
+pattern_2 = SubResource("TileMapPattern_x17ti")
 
 [sub_resource type="Theme" id="Theme_7hcny"]
 
@@ -128,9 +136,10 @@ radius = 19.4612
 size = Vector2(71, 14)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(38, 12)
+position = Vector2(-44, -37)
 
 [node name="Foreground Container" type="Node2D" parent="." groups=["Ground"]]
+position = Vector2(-21, -40)
 
 [node name="Dune3" type="StaticBody2D" parent="Foreground Container"]
 position = Vector2(1162, 453)
@@ -157,24 +166,8 @@ texture = ExtResource("2_tojtu")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune4"]
 polygon = PackedVector2Array(-1206, 250, -968, 67, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
 
-[node name="Shelter" type="StaticBody2D" parent="Foreground Container"]
-position = Vector2(-1096, 142)
-rotation = 6.28319
-scale = Vector2(0.605673, 0.957455)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Shelter"]
-polygon = PackedVector2Array(529.99, 133.686, 561.36, 86.6866, 822.226, 86.6858, 846.993, 135.774, 810.669, 100.264, 577.87, 101.309)
-
-[node name="Sprite2D" type="Sprite2D" parent="Foreground Container/Shelter"]
-position = Vector2(688.492, 187.996)
-scale = Vector2(10.096, -6.49977)
-texture = ExtResource("1_65q3v")
-
-[node name="Area2D" type="Area2D" parent="Foreground Container/Shelter"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Shelter/Area2D"]
-position = Vector2(-11.5574, -1.0444)
-polygon = PackedVector2Array(574.569, 231.863, 625.751, 151.441, 767.742, 150.397, 820.576, 236.04, 830.483, 280.951, 571.267, 280.952)
+[node name="Shelter" parent="Foreground Container" instance=ExtResource("3_w0wql")]
+position = Vector2(319, 493)
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 z_index = 16
@@ -189,7 +182,7 @@ metadata/tileName = "itemTileTemplate"
 position = Vector2(-109, 4)
 tile_set = SubResource("TileSet_0pe5f")
 format = 2
-layer_0/tile_data = PackedInt32Array(1310747, 4, 0, 1310746, 4, 0, 1310745, 4, 0, 1310744, 4, 0, 1310743, 4, 0, 1310742, 4, 0, 1310741, 4, 0, 1310740, 4, 0, 1310739, 4, 0, 1310738, 4, 0, 1310737, 4, 0, 1310736, 4, 0, 1310735, 4, 0, 1310734, 4, 0, 1310733, 4, 0, 1310732, 4, 0, 1310731, 4, 0, 1310730, 4, 0, 1310729, 4, 0, 1310728, 4, 0, 1310727, 4, 0, 1245190, 4, 0, 1245189, 4, 0, 1245188, 4, 0, 1245187, 4, 0, 1245186, 4, 0, 1245185, 4, 0, 1245184, 4, 0, 1310719, 4, 0, 1310718, 4, 0, 1310717, 4, 0, 1310716, 4, 0, 1310715, 4, 0, 1310714, 4, 0, 1310713, 4, 0, 1310712, 4, 0, 1310711, 4, 0, 1310710, 4, 0, 1310709, 4, 0, 1310708, 4, 0, 1310726, 65540, 0, 1310700, 4, 1, 1376236, 4, 2, 1310701, 65540, 1, 1376237, 65540, 2, 1310702, 131076, 1, 1376238, 65540, 2, 1310703, 196612, 1, 1376239, 65540, 2, 1703913, 4, 1, 1769449, 4, 2, 1703914, 65540, 1, 1769450, 65540, 2, 1703915, 131076, 1, 1769451, 65540, 2, 1703916, 196612, 1, 1769452, 65540, 2, 1572845, 4, 1, 1638381, 4, 2, 1572846, 65540, 1, 1638382, 65540, 2, 1572847, 131076, 1, 1638383, 65540, 2, 1572848, 196612, 1, 1638384, 65540, 2, 1769457, 4, 1, 1834993, 4, 2, 1769458, 65540, 1, 1834994, 65540, 2, 1769459, 131076, 1, 1834995, 65540, 2, 1769460, 196612, 1, 1834996, 65540, 2, 1703925, 4, 1, 1769461, 4, 2, 1703926, 65540, 1, 1769462, 65540, 2, 1703927, 131076, 1, 1769463, 65540, 2, 1703928, 196612, 1, 1769464, 65540, 2, 1638393, 4, 1, 1703929, 4, 2, 1638394, 65540, 1, 1703930, 65540, 2, 1638395, 131076, 1, 1703931, 65540, 2, 1638396, 196612, 1, 1703932, 65540, 2, 1572861, 4, 1, 1638397, 4, 2, 1572862, 65540, 1, 1638398, 65540, 2, 1572863, 131076, 1, 1638399, 65540, 2, 1507328, 196612, 1, 1572864, 65540, 2, 1507313, 4, 1, 1572849, 4, 2, 1507314, 65540, 1, 1572850, 65540, 2, 1507315, 131076, 1, 1507316, 196612, 1, 1441781, 4, 1, 1507317, 4, 2, 1441782, 65540, 1, 1507318, 65540, 2, 1441783, 131076, 1, 1441784, 196612, 1, 1310704, 4, 1, 1376240, 4, 2, 1310705, 65540, 1, 1376241, 65540, 2, 1310706, 131076, 1, 1310707, 196612, 1, 1376232, 4, 1, 1441768, 4, 2, 1376233, 65540, 1, 1441769, 65540, 2, 1376234, 131076, 1, 1376235, 196612, 1, 1441764, 4, 1, 1507300, 4, 2, 1441765, 65540, 1, 1507301, 65540, 2, 1441766, 131076, 1, 1441767, 196612, 1, 1507296, 4, 1, 1572832, 4, 2, 1507297, 65540, 1, 1572833, 65540, 2, 1507298, 131076, 1, 1572834, 131076, 2, 1507299, 196612, 1, 1572835, 196612, 2, 1572828, 4, 1, 1638364, 4, 2, 1572829, 65540, 1, 1638365, 65540, 2, 1572830, 131076, 1, 1638366, 131076, 2, 1572831, 196612, 1, 1638367, 196612, 2, 1638360, 4, 1, 1703896, 4, 2, 1638361, 65540, 1, 1703897, 65540, 2, 1638362, 131076, 1, 1703898, 131076, 2, 1638363, 196612, 1, 1703899, 196612, 2, 1703892, 4, 1, 1769428, 4, 2, 1703893, 65540, 1, 1769429, 65540, 2, 1703894, 131076, 1, 1769430, 65540, 2, 1703895, 196612, 1, 1769431, 65540, 2, 1769424, 4, 1, 1834960, 4, 2, 1769425, 65540, 1, 1834961, 65540, 2, 1769426, 131076, 1, 1834962, 65540, 2, 1769427, 196612, 1, 1834963, 65540, 2, 1834956, 4, 1, 1900492, 4, 2, 1834957, 65540, 1, 1900493, 65540, 2, 1834958, 131076, 1, 1900494, 65540, 2, 1834959, 196612, 1, 1900495, 65540, 2, 1900488, 4, 1, 1966024, 4, 2, 1900489, 65540, 1, 1966025, 65540, 2, 1900490, 131076, 1, 1966026, 65540, 2, 1900491, 196612, 1, 1966027, 65540, 2, 1966020, 4, 1, 2031556, 4, 2, 1966021, 65540, 1, 2031557, 65540, 2, 1966022, 131076, 1, 2031558, 65540, 2, 1966023, 196612, 1, 2031559, 65540, 2, 2031552, 4, 1, 2097088, 4, 2, 2031553, 65540, 1, 2097089, 65540, 2, 2031554, 131076, 1, 2097090, 65540, 2, 2031555, 196612, 1, 2097091, 65540, 2, 2031548, 262148, 1, 2097084, 262148, 2, 2031549, 327684, 1, 2097085, 327684, 2, 2031550, 393220, 1, 2097086, 393220, 2, 2031551, 458756, 1, 2097087, 458756, 2, 1966008, 262148, 1, 2031544, 262148, 2, 1966009, 327684, 1, 2031545, 327684, 2, 1966010, 393220, 1, 2031546, 393220, 2, 1966011, 458756, 1, 2031547, 458756, 2, 2359229, 262148, 1, 2424765, 262148, 2, 2359230, 327684, 1, 2424766, 327684, 2, 2359231, 393220, 1, 2424767, 393220, 2, 2359232, 458756, 1, 2424768, 458756, 2, 2293689, 262148, 1, 2359225, 262148, 2, 2293690, 327684, 1, 2359226, 327684, 2, 2293691, 393220, 1, 2359227, 393220, 2, 2293692, 458756, 1, 2359228, 458756, 2, 2228149, 262148, 1, 2293685, 262148, 2, 2228150, 327684, 1, 2293686, 327684, 2, 2228151, 393220, 1, 2293687, 393220, 2, 2228152, 458756, 1, 2293688, 458756, 2, 2162609, 262148, 1, 2228145, 262148, 2, 2162610, 327684, 1, 2228146, 327684, 2, 2162611, 393220, 1, 2228147, 393220, 2, 2162612, 458756, 1, 2228148, 458756, 2, 1245167, 4, 0, 1245168, 4, 0, 1179633, 4, 0, 1179627, 262148, 1, 1245163, 262148, 2, 1179628, 327684, 1, 1245164, 327684, 2, 1179629, 393220, 1, 1245165, 393220, 2, 1179630, 458756, 1, 1245166, 458756, 2, 1048551, 262148, 1, 1114087, 262148, 2, 1048552, 327684, 1, 1114088, 327684, 2, 1048553, 393220, 1, 1114089, 393220, 2, 1048554, 458756, 1, 1114090, 458756, 2, 1179623, 262148, 1, 1245159, 262148, 2, 1179624, 327684, 1, 1245160, 327684, 2, 1179625, 393220, 1, 1245161, 393220, 2, 1179626, 458756, 1, 1245162, 458756, 2, 1179635, 262148, 1, 1245171, 262148, 2, 1179636, 327684, 1, 1245172, 327684, 2, 1179637, 393220, 1, 1245173, 393220, 2, 1179638, 458756, 1, 1245174, 458756, 2, 1048563, 262148, 1, 1114099, 262148, 2, 1048564, 327684, 1, 1114100, 327684, 2, 1048565, 393220, 1, 1114101, 393220, 2, 1048566, 458756, 1, 1114102, 458756, 2, 917491, 262148, 1, 983027, 262148, 2, 917492, 327684, 1, 983028, 327684, 2, 917493, 393220, 1, 983029, 393220, 2, 917494, 458756, 1, 983030, 458756, 2, 786419, 262148, 1, 851955, 262148, 2, 786420, 327684, 1, 851956, 327684, 2, 786421, 393220, 1, 851957, 393220, 2, 786422, 458756, 1, 851958, 458756, 2, 655347, 262148, 1, 720883, 262148, 2, 655348, 327684, 1, 720884, 327684, 2, 655349, 393220, 1, 720885, 393220, 2, 655350, 458756, 1, 720886, 458756, 2, 655351, 262148, 1, 720887, 262148, 2, 655352, 327684, 1, 720888, 327684, 2, 655353, 393220, 1, 720889, 393220, 2, 655354, 458756, 1, 720890, 458756, 2, 786423, 262148, 1, 851959, 262148, 2, 786424, 327684, 1, 851960, 327684, 2, 786425, 393220, 1, 851961, 393220, 2, 786426, 458756, 1, 851962, 458756, 2, 917495, 262148, 1, 983031, 262148, 2, 917496, 327684, 1, 983032, 327684, 2, 917497, 393220, 1, 983033, 393220, 2, 917498, 458756, 1, 983034, 458756, 2, 1048567, 262148, 1, 1114103, 262148, 2, 1048568, 327684, 1, 1114104, 327684, 2, 1048569, 393220, 1, 1114105, 393220, 2, 1048570, 458756, 1, 1114106, 458756, 2, 1048571, 262148, 1, 1114107, 262148, 2, 1048572, 327684, 1, 1114108, 327684, 2, 1048573, 393220, 1, 1114109, 393220, 2, 1048574, 458756, 1, 1114110, 458756, 2, 917499, 262148, 1, 983035, 262148, 2, 917500, 327684, 1, 983036, 327684, 2, 917501, 393220, 1, 983037, 393220, 2, 917502, 458756, 1, 983038, 458756, 2, 786427, 262148, 1, 851963, 262148, 2, 786428, 327684, 1, 851964, 327684, 2, 786429, 393220, 1, 851965, 393220, 2, 786430, 458756, 1, 851966, 458756, 2, 917503, 262148, 1, 983039, 262148, 2, 851968, 327684, 1, 917504, 327684, 2, 851969, 393220, 1, 917505, 393220, 2, 851970, 458756, 1, 917506, 458756, 2, 1048575, 262148, 1, 1114111, 262148, 2, 983040, 327684, 1, 1048576, 327684, 2, 983041, 393220, 1, 1048577, 393220, 2, 983042, 458756, 1, 1048578, 458756, 2, 983043, 262148, 1, 1048579, 262148, 2, 983044, 327684, 1, 1048580, 327684, 2, 983045, 393220, 1, 1048581, 393220, 2, 983046, 458756, 1, 1048582, 458756, 2, 1114119, 262148, 1, 1179655, 262148, 2, 1114120, 327684, 1, 1179656, 327684, 2, 1114121, 393220, 1, 1179657, 393220, 2, 1114122, 458756, 1, 1179658, 458756, 2, 524271, 262148, 1, 589807, 262148, 2, 524272, 327684, 1, 589808, 327684, 2, 524273, 393220, 1, 589809, 393220, 2, 524274, 458756, 1, 589810, 458756, 2, 524275, 262148, 1, 589811, 262148, 2, 524276, 327684, 1, 589812, 327684, 2, 524277, 393220, 1, 589813, 393220, 2, 524278, 458756, 1, 589814, 458756, 2, 393199, 262148, 1, 458735, 262148, 2, 393200, 327684, 1, 458736, 327684, 2, 393201, 393220, 1, 458737, 393220, 2, 393202, 458756, 1, 458738, 458756, 2, 393203, 262148, 1, 458739, 262148, 2, 393204, 327684, 1, 458740, 327684, 2, 393205, 393220, 1, 458741, 393220, 2, 393206, 458756, 1, 458742, 458756, 2, 524279, 262148, 1, 589815, 262148, 2, 524280, 327684, 1, 589816, 327684, 2, 524281, 393220, 1, 589817, 393220, 2, 524282, 458756, 1, 589818, 458756, 2, 262127, 262148, 1, 327663, 262148, 2, 262128, 327684, 1, 327664, 327684, 2, 262129, 393220, 1, 327665, 393220, 2, 262130, 458756, 1, 327666, 458756, 2, 196595, 262148, 1, 262131, 262148, 2, 196596, 327684, 1, 262132, 327684, 2, 196597, 393220, 1, 262133, 393220, 2, 196598, 458756, 1, 262134, 458756, 2, 327671, 262148, 1, 393207, 262148, 2, 327672, 327684, 1, 393208, 327684, 2, 327673, 393220, 1, 393209, 393220, 2, 327674, 458756, 1, 393210, 458756, 2, 589819, 262148, 1, 655355, 262148, 2, 589820, 327684, 1, 655356, 327684, 2, 589821, 393220, 1, 655357, 393220, 2, 589822, 458756, 1, 655358, 458756, 2, 720895, 262148, 1, 786431, 262148, 2, 655360, 327684, 1, 720896, 327684, 2, 655361, 393220, 1, 720897, 393220, 2, 655362, 458756, 1, 720898, 458756, 2)
+layer_0/tile_data = PackedInt32Array(1310723, 4, 0, 1310724, 4, 0, 1310725, 4, 0, 1310726, 4, 0, 1310727, 4, 0, 1310728, 4, 0, 1310729, 4, 0, 1310730, 4, 0, 1310731, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1376242, 4, 0, 1376243, 4, 0, 1376244, 4, 0, 1376245, 4, 0, 1376246, 4, 0, 1376247, 4, 0, 1376248, 4, 0, 1376249, 4, 0, 1376250, 4, 0, 1376251, 4, 0, 1376252, 4, 0, 1376253, 4, 0, 1376254, 4, 0, 1376255, 4, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310740, 4, 0, 1310741, 4, 0, 1310742, 4, 0, 1310743, 4, 0, 1310744, 4, 0, 1310745, 4, 0, 1310746, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310753, 4, 0, 1310754, 4, 0, 1310755, 4, 0, 1310756, 4, 0)
 
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")
@@ -210,9 +203,9 @@ anchors_preset = -1
 anchor_right = 0.054
 anchor_bottom = 0.021
 offset_left = 40.0
-offset_top = 2.0
+offset_top = -64.0
 offset_right = -14.208
-offset_bottom = -3.608
+offset_bottom = -69.608
 theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
 script = ExtResource("7_oiap5")
 metadata/action = &""
@@ -421,20 +414,23 @@ script = ExtResource("24_dyjx4")
 metadata/ScrollText = "BlahBlahBalh Why is this text so blurry"
 
 [node name="Text" type="RichTextLabel" parent="Scroll"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0927
-offset_top = -45.6394
-offset_right = 41.9073
-offset_bottom = 7.36065
-theme_override_font_sizes/normal_font_size = 6
+offset_left = 13.0
+offset_top = -118.0
+offset_right = 260.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("23_k7f0p")
+theme_override_font_sizes/normal_font_size = 20
 text = "Scroll Text Here"
 scroll_active = false
 script = ExtResource("25_34a06")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="Scroll"]
 metadata/_edit_lock_ = true
@@ -445,17 +441,17 @@ shape = SubResource("CircleShape2D_qb4cu")
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(61, 26)
+position = Vector2(86, -31)
 color = Color(0.533333, 0.521569, 0.666667, 1)
 
 [node name="WeatherControl" type="Node" parent="."]
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(204, 560)
+position = Vector2(277, 558)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(727, 612)
+position = Vector2(1054, 273)
 
 [node name="Spikes" type="StaticBody2D" parent="."]
 position = Vector2(-913, 413)
@@ -463,5 +459,24 @@ position = Vector2(-913, 413)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
 shape = SubResource("RectangleShape2D_ylrpf")
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.482063
+anchor_top = 0.456
+anchor_right = 0.482063
+anchor_bottom = 0.456
+offset_left = -533.337
+offset_top = -272.488
+offset_right = -352.337
+offset_bottom = -232.488
+value = 100.0
+texture_over = ExtResource("28_ujqb4")
+texture_progress = ExtResource("29_l4iya")
+script = ExtResource("30_u4llx")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]

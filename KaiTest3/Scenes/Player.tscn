@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=53 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
@@ -10,16 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
 [ext_resource type="Script" path="res://PlayerHurtbox.gd" id="7_w5n8h"]
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="8_lpii5"]
-[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="9_3eqo5"]
-[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="10_hyhxv"]
-[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="11_8h7df"]
+[ext_resource type="Script" path="res://Scenes/PlayerAttackManager.gd" id="11_k66ym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
 radius = 16.0
 height = 82.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
-size = Vector2(44.5, 81)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3x0x0"]
 atlas = ExtResource("6_boip0")
@@ -371,7 +366,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -383,7 +378,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -427,7 +422,7 @@ resource_name = "Slash1"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimationManager/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -439,7 +434,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimationManager/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -461,11 +456,26 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_koxun"]
-radius = 30.0
+radius = 26.0
 height = 102.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
+size = Vector2(44.5, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b3hd"]
+size = Vector2(70, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa3bh"]
+size = Vector2(68, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wikqq"]
+size = Vector2(155, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8pa8"]
+size = Vector2(59.9998, 133.382)
+
 [node name="PlayerContainer" type="Node2D"]
-position = Vector2(264, 542)
+position = Vector2(943, 599)
 
 [node name="ParticleManager" type="Node" parent="."]
 script = ExtResource("5_ks2nr")
@@ -513,15 +523,6 @@ target_position = Vector2(0, 19)
 shape = SubResource("CapsuleShape2D_hb2my")
 metadata/_edit_lock_ = true
 
-[node name="AttackHitbox" type="Area2D" parent="Player"]
-metadata/_edit_lock_ = true
-
-[node name="AttackCollison" type="CollisionShape2D" parent="Player/AttackHitbox"]
-position = Vector2(39, -1)
-shape = SubResource("RectangleShape2D_7xbk5")
-disabled = true
-metadata/_edit_lock_ = true
-
 [node name="AnimationManager" type="Node2D" parent="Player"]
 script = ExtResource("2_i53hd")
 metadata/_edit_lock_ = true
@@ -539,29 +540,63 @@ libraries = {
 
 [node name="HurtboxComponent" type="Area2D" parent="Player"]
 script = ExtResource("7_w5n8h")
-metadata/_edit_lock_ = true
 
-[node name="HurtCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
+[node name="HurtboxCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
 position = Vector2(3, -3)
 shape = SubResource("CapsuleShape2D_koxun")
 metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
+visible = true
 position = Vector2(8, -59)
+health_bar = "../../../CanvasLayer/PlayerHealthBar"
 
-[node name="HealthBar" type="TextureProgressBar" parent="Player/HealthComponent"]
-texture_filter = 1
-offset_left = -444.0
-offset_top = -254.0
-offset_right = -263.0
-offset_bottom = -214.0
-value = 100.0
-texture_over = ExtResource("9_3eqo5")
-texture_progress = ExtResource("10_hyhxv")
-script = ExtResource("11_8h7df")
-metadata/_edit_use_anchors_ = true
+[node name="AttackManager" type="Node2D" parent="Player"]
+position = Vector2(3, -3)
+script = ExtResource("11_k66ym")
 
-[connection signal="body_entered" from="Player/AttackHitbox" to="Player" method="_attack_hitbox_body_entered"]
+[node name="ShortAttack" type="Area2D" parent="Player/AttackManager"]
+metadata/_edit_lock_ = true
+
+[node name="AD" type="CollisionShape2D" parent="Player/AttackManager/ShortAttack"]
+position = Vector2(39, -1)
+shape = SubResource("RectangleShape2D_7xbk5")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="W" type="CollisionShape2D" parent="Player/AttackManager/ShortAttack"]
+position = Vector2(3, -64)
+shape = SubResource("RectangleShape2D_3b3hd")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="S" type="CollisionShape2D" parent="Player/AttackManager/ShortAttack"]
+position = Vector2(3, 64)
+shape = SubResource("RectangleShape2D_pa3bh")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="LongAttack" type="Area2D" parent="Player/AttackManager"]
+metadata/_edit_lock_ = true
+
+[node name="AD" type="CollisionShape2D" parent="Player/AttackManager/LongAttack"]
+position = Vector2(94.5, 0)
+shape = SubResource("RectangleShape2D_wikqq")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="W" type="CollisionShape2D" parent="Player/AttackManager/LongAttack"]
+position = Vector2(2, -108.309)
+shape = SubResource("RectangleShape2D_s8pa8")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="S" type="CollisionShape2D" parent="Player/AttackManager/LongAttack"]
+position = Vector2(3.00012, 106)
+shape = SubResource("RectangleShape2D_s8pa8")
+disabled = true
+metadata/_edit_lock_ = true
+
 [connection signal="area_entered" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_area_exited"]
 [connection signal="body_entered" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_body_entered"]
