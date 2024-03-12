@@ -29,12 +29,12 @@ metadata/_edit_lock_ = true
 
 [node name="leftfloorcheck" type="RayCast2D" parent="Collision_Checks"]
 position = Vector2(-17, 0)
-target_position = Vector2(0, 32)
+target_position = Vector2(0, 60)
 metadata/_edit_lock_ = true
 
 [node name="rightfloorcheck" type="RayCast2D" parent="Collision_Checks"]
 position = Vector2(17, 0)
-target_position = Vector2(0, 32)
+target_position = Vector2(0, 60)
 metadata/_edit_lock_ = true
 
 [node name="leftabovecheck" type="RayCast2D" parent="Collision_Checks"]

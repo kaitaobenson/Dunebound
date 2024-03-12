@@ -40,6 +40,10 @@ func _physics_process(delta):
 		inventory_is_on = !inventory_is_on
 	
 	apply_gravity(delta)
+	if player_sliding:
+		player_speed = SLIDE_SPEED
+	else:
+		player_speed = WALK_SPEED
 	
 	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor_custom():
 		player_sliding = true
@@ -49,7 +53,8 @@ func _physics_process(delta):
 		player_sliding = false
 	
 	### AD MOVEMENT ###
-	player_direction = Input.get_axis("move_left", "move_right")
+	if !player_sliding:
+		player_direction = Input.get_axis("move_left", "move_right")
 	wasd_movement(player_direction)
 	
 	### JUMP ###
@@ -71,32 +76,32 @@ func _physics_process(delta):
 	
 	
 func wasd_movement(direction : int):
-	if direction > 0:
-		#direction = 1
-		flip(true)
+	if direction != 0:
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
-		velocity.x = 1 * player_speed
-		
-	elif direction < 0:
-		#direction = -1
-		flip(false)
-		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
-		velocity.x = -1 * player_speed 
-		
 	else:
-		# direction = 0
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
 		velocity.x = 0
-		
+	
+	if direction > 0:
+		flip(true)
+	elif direction < 0:
+		flip(false)
+	if !player_sliding:
+		velocity.x = direction * player_speed
+	else:
+		velocity.x = direction * player_speed
+	
+	
+	
+	
 	move_and_slide()
-	
-	
+
 func jump():
 	velocity.y = -JUMP_VELOCITY
 	
 	
 func apply_gravity(delta):
-	if not is_on_floor_custom():
+	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
 	
@@ -108,36 +113,34 @@ func check_change_in_x():
 	return x1 - x2
 
 func slide():
+	var slow_or_speed : float
 	#For sliding from stationary
 	if player_direction == 0:
-		SLIDE_SPEED = 50
+		SLIDE_SPEED = 100
 		if get_floor_normal().x < 0:
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
 	while player_sliding == true && SLIDE_SPEED > -0.1:
-		#print(player_direction)
 		var floor_angle = get_floor_angle()
-		var slow_or_speed
-		var change_in_x = await check_change_in_x()
 		await get_tree().create_timer(0.001).timeout
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
 				slow_or_speed = -3
 				print(1)
 			elif player_direction == -1:
-				slow_or_speed = 3
+				slow_or_speed = 5
 				print(2)
 		elif get_floor_normal().x > 0:
 			if player_direction == 1:
-				slow_or_speed = 3
+				slow_or_speed = 5
 				print(3)
 			elif player_direction == -1:
 				slow_or_speed = -3
 				print(4)
 		else:
 			slow_or_speed = 0
-		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
+		slide_speed_change = 1.25 * floor_angle * (abs(floor_angle) + 1) * slow_or_speed
 		if slide_speed_change > 0:
 			slide_speed_change += 1
 		else:
