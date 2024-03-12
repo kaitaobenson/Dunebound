@@ -41,7 +41,7 @@ func _physics_process(delta):
 				direction = -direction
 		if ((direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck) and !rigidBodyOther):
 				direction = -direction
-	
+	rigidBody=false
 	velocity.x = direction * SPEED
 	move_and_slide()
 	
