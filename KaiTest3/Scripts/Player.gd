@@ -105,18 +105,12 @@ func apply_gravity(delta):
 		velocity.y += GRAVITY * delta
 	
 	
-func check_change_in_x():
-	var x1 = global_position.x
-	var x2
-	await get_tree().create_timer(.001).timeout
-	x2 = global_position.x
-	return x1 - x2
 
 func slide():
 	var slow_or_speed : float
 	#For sliding from stationary
 	if player_direction == 0:
-		SLIDE_SPEED = 100
+		SLIDE_SPEED = 200
 		if get_floor_normal().x < 0:
 			player_direction = -1
 		elif get_floor_normal().x > 0:
@@ -140,7 +134,7 @@ func slide():
 				print(4)
 		else:
 			slow_or_speed = 0
-		slide_speed_change = 1.25 * floor_angle * (abs(floor_angle) + 1) * slow_or_speed
+		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
 		if slide_speed_change > 0:
 			slide_speed_change += 1
 		else:
