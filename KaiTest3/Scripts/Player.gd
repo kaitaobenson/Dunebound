@@ -4,8 +4,12 @@ const PUSH_FORCE = 100
 
 const WALK_SPEED = 350
 const SPRINT_SPEED = 600
-const JUMP_VELOCITY = 700
-const GRAVITY = 1700
+const JUMP_VELOCITY = 800
+
+const NORMAL_GRAVITY = 2000
+const SLIDING_GRAVITY = 9000
+# Uh it kinda should be constant but I want change for slide ;/
+var GRAVITY = NORMAL_GRAVITY
 
 var slide_speed_change
 var SLIDE_SPEED
@@ -22,7 +26,6 @@ var _coyote_time = 0.2
 
 #I believe that beginning variables with underscore makes them private
 @onready var _anim_manager = $AnimationManager
-@onready var _anim_player = $AnimationManager/AnimationPlayer
 @onready var _particle_manager = $"../ParticleManager"
 @onready var _attack_collision = $"AttackHitbox/AttackCollison"
 
@@ -91,21 +94,19 @@ func wasd_movement(direction : int):
 	else:
 		velocity.x = direction * player_speed
 	
-	
-	
-	
 	move_and_slide()
 
 func jump():
 	velocity.y = -JUMP_VELOCITY
+	_anim_manager.change_animation(ALL_ANIMATIONS.JUMP, true)
 	
 	
 func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+	if !is_on_floor_custom():
+		GRAVITY = NORMAL_GRAVITY
+	velocity.y += GRAVITY * delta
 	
 	
-
 func slide():
 	var slow_or_speed : float
 	#For sliding from stationary
@@ -115,7 +116,12 @@ func slide():
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
+			
+	#I assume while player is sliding
 	while player_sliding == true && SLIDE_SPEED > -0.1:
+		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
+		GRAVITY = SLIDING_GRAVITY
+		
 		var floor_angle = get_floor_angle()
 		await get_tree().create_timer(0.001).timeout
 		if get_floor_normal().x < 0:
@@ -141,9 +147,12 @@ func slide():
 			slide_speed_change -= 1
 		if floor_angle == 0:
 			slide_speed_change = -2
+			
 		SLIDE_SPEED += slide_speed_change
 	
 	player_sliding = false
+	GRAVITY = NORMAL_GRAVITY
+	_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, false)
 	print("end slide")
 
 func push_other_bodies():
