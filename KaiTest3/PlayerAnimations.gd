@@ -4,17 +4,30 @@ enum ALL_ANIMATIONS {
 	IDLE, 
 	RUN, 
 	ATTACK, 
+	
 	JUMP, 
 	JUMP_UP, 
 	JUMP_DOWN, 
 	JUMP_LAND,
+	
+	SLIDE,
+	SLIDE_BEGIN,
+	SLIDE_LOOP,
+	SLIDE_END,
+	
 	NONE
 	}
 
 var current_animations = [ALL_ANIMATIONS.IDLE]
 var playing_animation : ALL_ANIMATIONS = ALL_ANIMATIONS.NONE
 
-var jump = 0
+var animation_priority = [
+	ALL_ANIMATIONS.ATTACK,
+	ALL_ANIMATIONS.JUMP,
+	ALL_ANIMATIONS.SLIDE,
+	ALL_ANIMATIONS.RUN,
+	ALL_ANIMATIONS.IDLE
+]
 
 @onready var _anim = $AnimationPlayer
 @onready var _anim_sprite = $AnimatedSprite2D
@@ -30,26 +43,17 @@ func change_animation(name:ALL_ANIMATIONS, isOn:bool):
 			current_animations.erase(name)
 			
 			
-			
 func _process(delta):
-	if current_animations.has(ALL_ANIMATIONS.ATTACK):
-		if playing_animation != ALL_ANIMATIONS.ATTACK:
-			play_animation(ALL_ANIMATIONS.ATTACK)
-		
-	elif current_animations.has(ALL_ANIMATIONS.JUMP):
-		if playing_animation != ALL_ANIMATIONS.JUMP:
-			play_animation(ALL_ANIMATIONS.JUMP)
-		
-	elif current_animations.has(ALL_ANIMATIONS.RUN):
-		if playing_animation != ALL_ANIMATIONS.RUN:
-			play_animation(ALL_ANIMATIONS.RUN)
-			
-	elif current_animations.has(ALL_ANIMATIONS.IDLE):
-		if playing_animation != ALL_ANIMATIONS.IDLE:
-			play_animation(ALL_ANIMATIONS.IDLE)
-			
-			
-			
+	for animation in animation_priority:
+		if current_animations.has(animation):
+			if playing_animation == animation:
+				var keys = ALL_ANIMATIONS.keys()
+				break
+			else:
+				play_animation(animation)
+				break
+				
+				
 func play_animation(animationName:ALL_ANIMATIONS):
 	if animationName == ALL_ANIMATIONS.RUN:
 		_anim.play("Run")
@@ -77,9 +81,20 @@ func play_animation(animationName:ALL_ANIMATIONS):
 			await get_tree().create_timer(0.1).timeout
 		_anim.play("JumpDown")
 		
-		while _player.is_on_floor() == false:
+		while _player.is_on_floor_custom() == false:
 			await get_tree().create_timer(0.1).timeout
-		_anim.play("JumpLand")
-		
-		await _anim.animation_finished
 		current_animations.erase(ALL_ANIMATIONS.JUMP)
+
+		_anim.play("JumpLand")
+		await _anim.animation_finished
+		
+		
+	if animationName == ALL_ANIMATIONS.SLIDE:
+		playing_animation = ALL_ANIMATIONS.SLIDE
+		_anim.play("SlideBegin")
+		await _anim.animation_finished
+		_anim.play("SlideLoop")
+		
+		
+		
+	

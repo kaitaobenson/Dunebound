@@ -56,8 +56,8 @@ func _process(delta):
 			
 	if active_inputs.size() > 0:
 		attack[1] = active_inputs[int(active_inputs.size()) - 1]
-	#print(active_inputs)
-	
+
+	#print(active_inputs)	
 	
 	### ATTACK ###
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && _attack_cooldown_over:
