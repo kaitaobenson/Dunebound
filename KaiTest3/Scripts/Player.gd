@@ -37,7 +37,6 @@ func _ready():
 	Global.Player = self
 	
 func _physics_process(delta):
-	print(SLIDE_SPEED)
 	push_other_bodies()
 	particles_control()
 	var inventory_is_on
@@ -49,9 +48,10 @@ func _physics_process(delta):
 		player_speed = SLIDE_SPEED
 	else:
 		player_speed = WALK_SPEED
-	
-	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor_custom() && can_slide:
+	print(player_direction)
+	if Input.is_action_pressed("slide") && !player_sliding && is_on_floor_custom() && can_slide:
 		slide_button_down = true
+		SLIDE_SPEED = player_speed
 		slide()
 	elif Input.is_action_just_released("slide") && player_sliding:
 		slide_button_down = false
@@ -110,6 +110,7 @@ func apply_gravity(delta):
 func slide():
 	var floor_angle = get_floor_angle()
 	var slow_or_speed : float
+	print ("start slide")
 	player_sliding = true
 	if player_direction == 0:
 		SLIDE_SPEED = 200
@@ -117,30 +118,27 @@ func slide():
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
-	else:
-		SLIDE_SPEED = player_speed + floor_angle * 100 + 50
-		while await get_tree().create_timer(0.5).timeout or !player_sliding:
-			break
+	SLIDE_SPEED = player_speed + floor_angle * 100
+	await get_tree().create_timer(0.5).timeout
+	
 	while slide_button_down == true && SLIDE_SPEED > 0:
 		floor_angle = get_floor_angle()
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.001).timeout
 		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
 		GRAVITY = SLIDING_GRAVITY
-		
-		await get_tree().create_timer(0.001).timeout
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
-				slow_or_speed = -3
+				slow_or_speed = -5
 			elif player_direction == -1:
 				slow_or_speed = 5
 		elif get_floor_normal().x > 0:
 			if player_direction == 1:
 				slow_or_speed = 5
 			elif player_direction == -1:
-				slow_or_speed = -3
+				slow_or_speed = -5
 		else:
 			slow_or_speed = 0
-		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
+		slide_speed_change = floor_angle * slow_or_speed
 		if slide_speed_change > 0:
 			slide_speed_change += 1
 		else:
@@ -152,7 +150,7 @@ func slide():
 	
 	#End skid
 	while SLIDE_SPEED > 0:
-		SLIDE_SPEED += -5
+		SLIDE_SPEED += -10
 		await get_tree().create_timer(0.001).timeout
 	
 	player_sliding = false
