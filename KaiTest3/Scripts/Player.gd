@@ -10,11 +10,13 @@ const GRAVITY = 1700
 var slide_speed_change
 var SLIDE_SPEED
 var player_sliding = false
+var can_slide = true
+var slide_button_down = false
 var player_direction = 0
 var health:int = 100 
 var player_speed = WALK_SPEED
-
 var _attack_cooldown_over = true
+
 
 var _jump_timer = 0.0
 var _can_jump = false
@@ -32,27 +34,27 @@ func _ready():
 	Global.Player = self
 	
 func _physics_process(delta):
+	print(SLIDE_SPEED)
 	push_other_bodies()
 	particles_control()
 	var inventory_is_on
 	#is_inventory_on updater
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
-	
 	apply_gravity(delta)
 	if player_sliding:
 		player_speed = SLIDE_SPEED
 	else:
 		player_speed = WALK_SPEED
 	
-	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor_custom():
-		player_sliding = true
-		SLIDE_SPEED = player_speed
+	if Input.is_action_just_pressed("slide") && !player_sliding && is_on_floor_custom() && can_slide:
+		slide_button_down = true
 		slide()
-	elif Input.is_action_just_pressed("slide") && player_sliding:
-		player_sliding = false
+	elif Input.is_action_just_released("slide") && player_sliding:
+		slide_button_down = false
+		
 	
-	### AD MOVEMENT ###
+	### ADD MOVEMENT ###
 	if !player_sliding:
 		player_direction = Input.get_axis("move_left", "move_right")
 	wasd_movement(player_direction)
@@ -86,10 +88,8 @@ func wasd_movement(direction : int):
 		flip(true)
 	elif direction < 0:
 		flip(false)
-	if !player_sliding:
-		velocity.x = direction * player_speed
-	else:
-		velocity.x = direction * player_speed
+	velocity.x = direction * player_speed
+	
 	
 	
 	
@@ -107,31 +107,32 @@ func apply_gravity(delta):
 	
 
 func slide():
+	var floor_angle = get_floor_angle()
 	var slow_or_speed : float
-	#For sliding from stationary
+	player_sliding = true
 	if player_direction == 0:
 		SLIDE_SPEED = 200
 		if get_floor_normal().x < 0:
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
-	while player_sliding == true && SLIDE_SPEED > -0.1:
-		var floor_angle = get_floor_angle()
-		await get_tree().create_timer(0.001).timeout
+	else:
+		SLIDE_SPEED = player_speed + floor_angle * 100 + 50
+		while await get_tree().create_timer(0.5).timeout or !player_sliding:
+			break
+	while slide_button_down == true && SLIDE_SPEED > 0:
+		floor_angle = get_floor_angle()
+		await get_tree().create_timer(0.01).timeout
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
 				slow_or_speed = -3
-				print(1)
 			elif player_direction == -1:
 				slow_or_speed = 5
-				print(2)
 		elif get_floor_normal().x > 0:
 			if player_direction == 1:
 				slow_or_speed = 5
-				print(3)
 			elif player_direction == -1:
 				slow_or_speed = -3
-				print(4)
 		else:
 			slow_or_speed = 0
 		slide_speed_change = floor_angle * (abs(floor_angle) + 1) * slow_or_speed
@@ -140,11 +141,20 @@ func slide():
 		else:
 			slide_speed_change -= 1
 		if floor_angle == 0:
-			slide_speed_change = -2
+			slide_speed_change = -3
 		SLIDE_SPEED += slide_speed_change
+	
+	#End skid
+	while SLIDE_SPEED > 0:
+		SLIDE_SPEED += -5
+		await get_tree().create_timer(0.001).timeout
 	
 	player_sliding = false
 	print("end slide")
+	can_slide = false
+	await get_tree().create_timer(1).timeout
+	can_slide = true
+
 
 func push_other_bodies():
 	for i in get_slide_collision_count():
