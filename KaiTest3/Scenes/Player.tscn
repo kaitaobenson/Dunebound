@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=65 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://PlayerHurtbox.gd" id="7_w5n8h"]
 [ext_resource type="Texture2D" uid="uid://cokqlsoinxnxi" path="res://Assets/Textures/Slash3.png" id="8_lpii5"]
 [ext_resource type="Texture2D" uid="uid://cj725hspey8vt" path="res://Assets/Textures/PlayerSlide.png" id="9_dttr2"]
+[ext_resource type="Script" path="res://Scenes/PlayerTilemapDetector.gd" id="11_5tc6m"]
 [ext_resource type="Script" path="res://Scenes/PlayerAttackManager.gd" id="11_k66ym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
@@ -601,9 +602,11 @@ _data = {
 "SlideLoop": SubResource("Animation_n04qn")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_koxun"]
-radius = 26.0
-height = 102.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kr2j"]
+size = Vector2(77, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xmnn"]
+size = Vector2(77, 120.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbk5"]
 size = Vector2(44.5, 81)
@@ -688,9 +691,17 @@ libraries = {
 script = ExtResource("7_w5n8h")
 
 [node name="HurtboxCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
-position = Vector2(3, -3)
-shape = SubResource("CapsuleShape2D_koxun")
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_5kr2j")
 metadata/_edit_lock_ = true
+
+[node name="TilemapDetector" type="Area2D" parent="Player" node_paths=PackedStringArray("_health_component")]
+script = ExtResource("11_5tc6m")
+_health_component = NodePath("../HealthComponent")
+
+[node name="TileDetectionArea" type="CollisionShape2D" parent="Player/TilemapDetector"]
+position = Vector2(0, -3.75)
+shape = SubResource("RectangleShape2D_0xmnn")
 
 [node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
 visible = true
@@ -747,3 +758,5 @@ metadata/_edit_lock_ = true
 [connection signal="area_exited" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_area_exited"]
 [connection signal="body_entered" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_body_entered"]
 [connection signal="body_exited" from="Player/HurtboxComponent" to="Player/HurtboxComponent" method="_on_body_exited"]
+[connection signal="body_shape_entered" from="Player/TilemapDetector" to="Player/TilemapDetector" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Player/TilemapDetector" to="Player/TilemapDetector" method="_on_body_shape_exited"]
