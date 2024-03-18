@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=43 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Texture2D" uid="uid://djhyr7n7fiied" path="res://Assets/Textures/BumpDune3.png" id="1_ir03b"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="28_ujqb4"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="29_l4iya"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="30_u4llx"]
+[ext_resource type="Script" path="res://Scenes/Checkpoint.gd" id="31_e37l8"]
+[ext_resource type="Script" path="res://SavingThingy.gd" id="31_emn2m"]
 [ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
@@ -134,6 +136,9 @@ radius = 19.4612
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylrpf"]
 size = Vector2(71, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbgdl"]
+size = Vector2(116, 28)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-44, -37)
@@ -448,7 +453,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 script = ExtResource("36_a7ulw")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(2923, -242)
+position = Vector2(165, 533)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(1054, 273)
@@ -479,4 +484,24 @@ texture_progress = ExtResource("29_l4iya")
 script = ExtResource("30_u4llx")
 metadata/_edit_use_anchors_ = true
 
+[node name="Checkpoint1" type="Area2D" parent="."]
+position = Vector2(-2, 638)
+script = ExtResource("31_e37l8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint1"]
+shape = SubResource("RectangleShape2D_mbgdl")
+
+[node name="SavingThingy" type="Node" parent="."]
+script = ExtResource("31_emn2m")
+
+[node name="Checkpoint2" type="Area2D" parent="."]
+position = Vector2(373, 619)
+script = ExtResource("31_e37l8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
+position = Vector2(4, 17)
+shape = SubResource("RectangleShape2D_mbgdl")
+
 [connection signal="body_entered" from="Scroll/Area2D" to="Scroll" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]

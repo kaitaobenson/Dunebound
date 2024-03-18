@@ -35,6 +35,7 @@ var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
 	Global.Player = self
+	global_position = $"../../SavingThingy".loader()
 	
 func _physics_process(delta):
 	push_other_bodies()
@@ -48,7 +49,7 @@ func _physics_process(delta):
 		player_speed = SLIDE_SPEED
 	else:
 		player_speed = WALK_SPEED
-	print(player_direction)
+
 	if Input.is_action_pressed("slide") && !player_sliding && is_on_floor_custom() && can_slide:
 		slide_button_down = true
 		SLIDE_SPEED = player_speed
@@ -118,7 +119,7 @@ func slide():
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
-	SLIDE_SPEED = player_speed + floor_angle * 100
+	SLIDE_SPEED = player_speed + floor_angle * 100 + 50
 	await get_tree().create_timer(0.5).timeout
 	
 	while slide_button_down == true && SLIDE_SPEED > 0:
