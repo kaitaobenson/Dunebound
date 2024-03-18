@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Test3"
 run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://Assets/Textures/icon.svg"
 
 [autoload]
@@ -28,6 +28,11 @@ window/stretch/aspect="expand"
 
 movie_writer/movie_file="C:/Users/super/Downloads/godotmoviestuffthingy.avi"
 version_control/autoload_on_startup=true
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Spikes"
 
 [rendering]
 
