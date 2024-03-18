@@ -18,7 +18,8 @@ func _physics_process(delta):
 		_bufferX = 300
 	if player_direction == -1:
 		_bufferX = -300
-		
+	if player_direction == 0:
+		_bufferX = 0
 	var XtoPlayer = (Global.Player.global_position.x - position.x) * 0.1
 	var YtoPlayer = (Global.Player.global_position.y - position.y) * 0.1
 	
