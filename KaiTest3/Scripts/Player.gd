@@ -34,9 +34,13 @@ var _coyote_time = 0.2
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
+	var default_position = global_position
 	Global.Player = self
-	global_position = $"../../SavingThingy".loader()
-	
+	if $"../../SavingThingy".loader() is Vector2:
+		global_position = $"../../SavingThingy".loader()
+	else:
+		global_position = default_position
+
 func _physics_process(delta):
 	push_other_bodies()
 	particles_control()
