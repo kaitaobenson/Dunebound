@@ -36,10 +36,10 @@ var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 func _ready():
 	var default_position = global_position
 	Global.Player = self
-	if $"../../SavingThingy".loader() is Vector2:
-		global_position = $"../../SavingThingy".loader()
-	else:
-		global_position = default_position
+	#if $"../../SavingThingy".loader() is Vector2:
+	#	global_position = $"../../SavingThingy".loader()
+	#else:
+	#	global_position = default_position
 
 func _physics_process(delta):
 	push_other_bodies()
@@ -176,6 +176,12 @@ func push_other_bodies():
 				
 				
 func die():
+	#turn visibility and physics
+	self.visible = false
+	set_physics_process(false)
+	
+	await get_tree().create_timer(1).timeout
+	
 	get_tree().reload_current_scene()
 	print("ouch")
 	#whatever you wanna do when you die
