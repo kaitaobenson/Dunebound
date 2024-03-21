@@ -1,7 +1,6 @@
 extends Node
 
-var PlayerX
-var PlayerY
+var Player
 
 var CameraX
 var CameraY
