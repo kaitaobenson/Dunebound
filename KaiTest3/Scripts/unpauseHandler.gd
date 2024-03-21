@@ -17,10 +17,11 @@ func isHovering(size,pos):
 	return Rect2(pos, size).has_point(get_global_mouse_position())
 func _input(event):
 	if ((event is InputEventMouseButton and event.button_index==1) or event is InputEventMouseMotion):
-		var pressed = event is InputEventMouseButton and event.button_index==1
+		var pressed = event is InputEventMouseButton and event.button_index==1 and event.is_pressed()
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
+				print("ruh row")
 				get_parent().get_parent().get_node("uiContainer").visible = !get_parent().get_parent().get_node("uiContainer").visible
 		else:
 			controls.color = Color("4b4b4b")

@@ -2,11 +2,12 @@ extends Node
 var actions = []
 var ignoreThisVar:Vector2
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
-const uiCrapOffsetQuickFix:int = 200
+const uiCrapOffsetQuickFix:int = 300
 const TEXT_OFFSET_THINGYMABOBBER:int = 100
 const uiScaleDownQuickPatch:float = 0.5 
-
 #TODO: name a variable "TacticsComradesTactics"
+func getScrollbarSize():
+	pass
 func replaceWithSpaces(thingydingy:String):
 	var dingythingy = thingydingy
 	for wrkjn in thingydingy.length():
