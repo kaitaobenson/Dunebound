@@ -17,10 +17,10 @@ var player_sliding = false
 var can_slide = true
 var slide_button_down = false
 var player_direction = 0
-var health:int = 100 
+var health : int = 100 
 var player_speed = WALK_SPEED
 var _attack_cooldown_over = true
-
+var player_dashing : bool = false
 
 var _jump_timer = 0.0
 var _can_jump = false
@@ -60,12 +60,15 @@ func _physics_process(delta):
 		slide()
 	elif Input.is_action_just_released("slide") && player_sliding:
 		slide_button_down = false
-		
+	
 	
 	### ADD MOVEMENT ###
 	if !player_sliding:
 		player_direction = Input.get_axis("move_left", "move_right")
+	
 	wasd_movement(player_direction)
+	
+	move_and_slide()
 	
 	### JUMP ###
 	if is_on_floor_custom():
@@ -78,7 +81,7 @@ func _physics_process(delta):
 		else:
 			_can_jump = false
 			
-	if Input.is_action_just_pressed("jump") && _can_jump:
+	if Input.is_action_just_pressed("jump") && _can_jump && !player_dashing:
 		jump()
 		while is_on_floor_custom():
 			await get_tree().create_timer(0.1).timeout
@@ -99,7 +102,7 @@ func wasd_movement(direction : int):
 	velocity.x = direction * player_speed
 	
 	
-	move_and_slide()
+
 
 func jump():
 	velocity.y = -JUMP_VELOCITY
@@ -115,22 +118,28 @@ func apply_gravity(delta):
 func slide():
 	var floor_angle = get_floor_angle()
 	var slow_or_speed : float
+	var dash_timer : float = 0.5
 	print ("start slide")
 	player_sliding = true
+	#For sliding from stationary
 	if player_direction == 0:
 		SLIDE_SPEED = 200
 		if get_floor_normal().x < 0:
 			player_direction = -1
 		elif get_floor_normal().x > 0:
 			player_direction = 1
-	SLIDE_SPEED = player_speed + floor_angle * 100 + 50
-	await get_tree().create_timer(0.5).timeout
-	
+	#Dash speed boost at beginning thingy
+	SLIDE_SPEED = 500
+	player_dashing = true
+	await get_tree().create_timer(dash_timer).timeout
+	player_dashing = false
 	while slide_button_down == true && SLIDE_SPEED > 0:
+		can_slide = false
 		floor_angle = get_floor_angle()
 		await get_tree().create_timer(0.001).timeout
 		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
 		GRAVITY = SLIDING_GRAVITY
+		#All this does is it finds out if you are speeding up or slowing down.
 		if get_floor_normal().x < 0:
 			if player_direction == 1:
 				slow_or_speed = -5
@@ -144,13 +153,17 @@ func slide():
 		else:
 			slow_or_speed = 0
 		slide_speed_change = floor_angle * slow_or_speed
+		#Makes it a little more speedy or slowey and slide change cant be 0
 		if slide_speed_change > 0:
 			slide_speed_change += 1
 		else:
-			slide_speed_change -= 1
+			slide_speed_change -= 1.5
+		#Slow down on flat surface
 		if floor_angle == 0:
 			slide_speed_change = -3
-			
+		#Slow down in air
+		if !is_on_floor_custom():
+			slide_speed_change = -5
 		SLIDE_SPEED += slide_speed_change
 	
 	#End skid
@@ -162,8 +175,9 @@ func slide():
 	GRAVITY = NORMAL_GRAVITY
 	_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, false)
 	print("end slide")
+	#Slide delay so you can't spam
 	can_slide = false
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(.5).timeout
 	can_slide = true
 
 

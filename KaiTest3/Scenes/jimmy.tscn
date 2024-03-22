@@ -179,12 +179,12 @@ metadata/_edit_lock_ = true
 
 [node name="leftfloorcheck" type="RayCast2D" parent="Raycasts"]
 position = Vector2(-23, 1)
-target_position = Vector2(0, 25)
+target_position = Vector2(0, 40)
 metadata/_edit_lock_ = true
 
 [node name="rightfloorcheck" type="RayCast2D" parent="Raycasts"]
 position = Vector2(23, 1)
-target_position = Vector2(0, 25)
+target_position = Vector2(1, 40)
 metadata/_edit_lock_ = true
 
 [node name="leftabovecheck" type="RayCast2D" parent="Raycasts"]
