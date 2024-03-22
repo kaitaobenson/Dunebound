@@ -1,7 +1,7 @@
 [gd_scene load_steps=65 format=3 uid="uid://c2e2hmw035cvv"]
 
-[ext_resource type="Script" path="res://PlayerAnimations.gd" id="2_i53hd"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
+[ext_resource type="Script" path="res://Assets/PlayerAnimations.gd" id="4_dnagu"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
 [ext_resource type="Texture2D" uid="uid://5jlonc6s7qho" path="res://Assets/Textures/Jump-Sheet1.png" id="6_0xsnr"]
@@ -673,7 +673,7 @@ shape = SubResource("CapsuleShape2D_hb2my")
 metadata/_edit_lock_ = true
 
 [node name="AnimationManager" type="Node2D" parent="Player"]
-script = ExtResource("2_i53hd")
+script = ExtResource("4_dnagu")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/AnimationManager"]
