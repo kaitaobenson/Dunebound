@@ -42,7 +42,7 @@ func _ready():
 	#	global_position = default_position
 
 func _physics_process(delta):
-	move_and_slide()
+	#move_and_slide()
 	push_other_bodies()
 	particles_control()
 	var inventory_is_on
@@ -50,11 +50,13 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
 	apply_gravity(delta)
-	
+
 	### AD MOVEMENT ###
 	if _slide.get_move_status() == false:
 		player_movement_direction = Input.get_axis("move_left", "move_right")
 		ad_movement(player_movement_direction)
+	
+	move_and_slide()
 	
 	### JUMP ###
 	if is_on_floor_custom():
@@ -67,6 +69,7 @@ func _physics_process(delta):
 		else:
 			_can_jump = false
 			
+
 	if Input.is_action_just_pressed("jump") && _can_jump && _slide.get_jump_status() == false:
 		jump()
 		while is_on_floor_custom():

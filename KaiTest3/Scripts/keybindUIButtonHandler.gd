@@ -8,7 +8,7 @@ var myCancelButton
 @onready var duplicateKeybindDialogueTimer = Timer.new()
 # Called when the node enters the scene tree for the first time.
 func _input(event):
-	if(onStandby&&event.as_text().length()<15&&!event.physical_keycode==InputMap.action_get_events("ui_accept")[0].physical_keycode):
+	if(onStandby&&event.as_text().length()<15):
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()

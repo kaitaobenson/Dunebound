@@ -7,7 +7,7 @@ const TILE_CONTAINER_MARGIN:float = 20
 var items_node:Array= []
 var items_type:Array= []
 var total_tiles_per_scrollpos
-@onready var player = get_parent().get_parent().get_parent().get_node("PlayerContainer/Player")
+
 @onready var rawr = get_node("rawr~")
 @onready var templateTile = get_node("itemTileContainer").get_node("itemTileTemplate")
 func _ready():
@@ -21,7 +21,6 @@ func _ready():
 func invClose():
 	self.visible = false
 	closeButton.disabled = true
-	player.stupidUICloseButtonPressed = true
 func invToggle():
 	self.visible = !self.visible
 	closeButton.disabled = !closeButton.disabled

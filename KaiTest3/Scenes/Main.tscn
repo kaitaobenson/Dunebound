@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="13_x0xyk"]
 [ext_resource type="Script" path="res://inventoryHandler.gd" id="14_2vcrm"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="14_p0hai"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="15_k6mbm"]
 [ext_resource type="Texture2D" uid="uid://btub72b04vmnj" path="res://Assets/Textures/Big Background2.png" id="17_s5fwc"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/jimmy.tscn" id="21_gvv07"]
 [ext_resource type="Texture2D" uid="uid://bbyb12rkxps" path="res://Assets/Textures/FullBackground1-export.png" id="22_i0hv5"]
@@ -392,8 +393,6 @@ pattern_8 = SubResource("TileMapPattern_ir82k")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l2tc"]
 size = Vector2(48, 255.484)
 
-[sub_resource type="Theme" id="Theme_7hcny"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ts4"]
 size = Vector2(20626, 111.25)
 
@@ -521,7 +520,6 @@ script = ExtResource("10_vag3d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
-visible = false
 position = Vector2(375, 374)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 0.0
@@ -532,24 +530,6 @@ process_mode = 3
 visible = false
 z_index = 12
 position = Vector2(-87, 103)
-
-[node name="Button" type="Button" parent="Camera2D/PauseScreen"]
-z_index = 39
-offset_left = -29.0
-offset_top = -304.0
-offset_right = 253.0
-offset_bottom = -251.0
-theme = SubResource("Theme_7hcny")
-text = "Controls"
-
-[node name="Button2" type="Button" parent="Camera2D/PauseScreen"]
-z_index = 39
-offset_left = -29.0
-offset_top = -199.0
-offset_right = 253.0
-offset_bottom = -146.0
-theme = SubResource("Theme_7hcny")
-text = "Save Game"
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/PauseScreen"]
 process_mode = 3
@@ -562,78 +542,38 @@ offset_bottom = 911.0
 color = Color(0.223529, 0.223529, 0.223529, 0.968627)
 script = ExtResource("10_8dq1e")
 
-[node name="Control" type="Control" parent="Camera2D"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 0
-offset_left = -407.0
-offset_top = -231.0
-offset_right = 763.0
-offset_bottom = 547.0
-metadata/_edit_lock_ = true
+[node name="Button" type="ColorRect" parent="Camera2D/PauseScreen"]
+z_index = 60
+offset_left = -29.0
+offset_top = -304.0
+offset_right = 253.0
+offset_bottom = -251.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
-[node name="inventoryContainer" type="Node2D" parent="Camera2D/Control"]
-process_mode = 3
-visible = false
-z_index = 43
-position = Vector2(-137, -85)
-script = ExtResource("14_2vcrm")
-
-[node name="itemTileContainer" type="ColorRect" parent="Camera2D/Control/inventoryContainer"]
-offset_left = 212.0
-offset_top = 97.0
-offset_right = 832.0
-offset_bottom = 482.0
-mouse_filter = 2
-color = Color(0.0117647, 0.117647, 0.156863, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="itemTileTemplate" type="ColorRect" parent="Camera2D/Control/inventoryContainer/itemTileContainer"]
-z_index = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/PauseScreen/Button"]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 126.0
-offset_right = 117.0
-offset_bottom = 196.0
-mouse_filter = 2
-color = Color(0.294118, 0.294118, 0.294118, 1)
+offset_left = 70.0
+offset_right = 270.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 30
+text = "controls"
 
-[node name="closeButton" type="Button" parent="Camera2D/Control/inventoryContainer"]
-process_mode = 3
-offset_left = 723.0
-offset_top = 110.0
-offset_right = 822.0
-offset_bottom = 209.0
-disabled = true
-action_mode = 0
-icon = ExtResource("13_x0xyk")
+[node name="Button2" type="ColorRect" parent="Camera2D/PauseScreen"]
+z_index = 40
+offset_left = -29.0
+offset_top = -199.0
+offset_right = 253.0
+offset_bottom = -146.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Control/inventoryContainer"]
-position = Vector2(256.5, 126.5)
-scale = Vector2(0.406249, 0.40625)
-texture = ExtResource("14_p0hai")
-
-[node name="TextEdit" type="TextEdit" parent="Camera2D/Control/inventoryContainer"]
-offset_left = 284.0
-offset_top = 108.0
-offset_right = 454.0
-offset_bottom = 142.0
-
-[node name="rawr~" type="ColorRect" parent="Camera2D/Control/inventoryContainer"]
-offset_left = 251.0
-offset_top = 215.0
-offset_right = 679.0
-offset_bottom = 459.0
-mouse_filter = 2
-color = Color(0.0392157, 0.0392157, 0.0392157, 1)
-metadata/_edit_lock_ = true
-
-[node name="VScrollBar" type="VScrollBar" parent="Camera2D/Control/inventoryContainer"]
-offset_left = 659.0
-offset_top = 222.0
-offset_right = 677.0
-offset_bottom = 446.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/PauseScreen/Button2"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 262.0
+offset_bottom = 51.0
+theme_override_font_sizes/normal_font_size = 30
+text = "save game
+"
 
 [node name="uiContainer" type="Node2D" parent="Camera2D"]
 process_mode = 3
@@ -662,6 +602,70 @@ offset_top = 586.0
 offset_right = 1151.0
 offset_bottom = 639.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="inventoryContainer" type="Node2D" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 45
+position = Vector2(-500, -300)
+script = ExtResource("14_2vcrm")
+
+[node name="itemTileContainer" type="ColorRect" parent="Camera2D/inventoryContainer"]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 832.0
+offset_bottom = 482.0
+mouse_filter = 2
+color = Color(0.0117647, 0.117647, 0.156863, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="itemTileTemplate" type="ColorRect" parent="Camera2D/inventoryContainer/itemTileContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 126.0
+offset_right = 117.0
+offset_bottom = 196.0
+mouse_filter = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+script = ExtResource("15_k6mbm")
+
+[node name="closeButton" type="Button" parent="Camera2D/inventoryContainer"]
+process_mode = 3
+offset_left = 723.0
+offset_top = 110.0
+offset_right = 822.0
+offset_bottom = 209.0
+disabled = true
+action_mode = 0
+icon = ExtResource("13_x0xyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/inventoryContainer"]
+position = Vector2(256.5, 126.5)
+scale = Vector2(0.406249, 0.40625)
+texture = ExtResource("14_p0hai")
+
+[node name="TextEdit" type="TextEdit" parent="Camera2D/inventoryContainer"]
+offset_left = 284.0
+offset_top = 108.0
+offset_right = 454.0
+offset_bottom = 142.0
+
+[node name="rawr~" type="ColorRect" parent="Camera2D/inventoryContainer"]
+offset_left = 251.0
+offset_top = 215.0
+offset_right = 679.0
+offset_bottom = 459.0
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="Camera2D/inventoryContainer"]
+offset_left = 659.0
+offset_top = 222.0
+offset_right = 677.0
+offset_bottom = 446.0
 
 [node name="Background" type="ParallaxBackground" parent="."]
 visible = false
@@ -721,10 +725,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1.54442
-offset_top = -120.393
-offset_right = 248.544
-offset_bottom = 25.6066
+offset_left = 13.0
+offset_top = -120.361
+offset_right = 260.0
+offset_bottom = 25.6393
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("23_k7f0p")

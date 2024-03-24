@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Test3"
 run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://Assets/Textures/icon.svg"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://Scripts/Global.gd"
 
 [display]
 
