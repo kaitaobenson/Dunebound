@@ -1,7 +1,8 @@
-[gd_scene load_steps=65 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=66 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Assets/PlayerAnimations.gd" id="4_dnagu"]
+[ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
 [ext_resource type="Texture2D" uid="uid://5jlonc6s7qho" path="res://Assets/Textures/Jump-Sheet1.png" id="6_0xsnr"]
@@ -653,6 +654,9 @@ script = ExtResource("3_qv5lc")
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("5_2xnvu")
 metadata/_edit_lock_ = true
+
+[node name="Slide" type="Node" parent="Player"]
+script = ExtResource("4_s8vyt")
 
 [node name="GroundRaycasts" type="Node2D" parent="Player"]
 

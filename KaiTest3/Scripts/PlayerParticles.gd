@@ -2,7 +2,7 @@ extends Node
 
 func set_particles_on(isOn:bool):
 	var particle = $SandParticles
-	var direction = $"../Player".player_direction
+	var direction = $"../Player".player_movement_direction
 	
 	if isOn:
 		particle.emitting = true

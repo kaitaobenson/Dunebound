@@ -1,32 +1,30 @@
 extends CharacterBody2D
 
 const PUSH_FORCE = 100
+const JUMP_VELOCITY = 800
 
 const WALK_SPEED = 350
 const SPRINT_SPEED = 600
-const JUMP_VELOCITY = 800
+var player_speed = WALK_SPEED
 
 const NORMAL_GRAVITY = 2000
 const SLIDING_GRAVITY = 9000
-# Uh it kinda should be constant but I want change for slide ;/
-var GRAVITY = NORMAL_GRAVITY
+var gravity: int = NORMAL_GRAVITY
 
-var slide_speed_change
-var SLIDE_SPEED
-var player_sliding = false
-var can_slide = true
-var slide_button_down = false
-var player_direction = 0
-var health:int = 100 
-var player_speed = WALK_SPEED
+#1, 0, -1
+var player_movement_direction: int = 0
+#1, -1
+var player_sprite_direction: int = 1
+
+var health: int = 100 
+
 var _attack_cooldown_over = true
-
 
 var _jump_timer = 0.0
 var _can_jump = false
 var _coyote_time = 0.2
 
-#I believe that beginning variables with underscore makes them private
+@onready var _slide = $"Slide/"
 @onready var _anim_manager = $AnimationManager
 @onready var _particle_manager = $"../ParticleManager"
 @onready var _attack_collision = $"AttackHitbox/AttackCollison"
@@ -34,6 +32,8 @@ var _coyote_time = 0.2
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
+	pass
+	
 	var default_position = global_position
 	Global.Player = self
 	#if $"../../SavingThingy".loader() is Vector2:
@@ -42,6 +42,7 @@ func _ready():
 	#	global_position = default_position
 
 func _physics_process(delta):
+	move_and_slide()
 	push_other_bodies()
 	particles_control()
 	var inventory_is_on
@@ -49,23 +50,11 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
 	apply_gravity(delta)
-	if player_sliding:
-		player_speed = SLIDE_SPEED
-	else:
-		player_speed = WALK_SPEED
-
-	if Input.is_action_pressed("slide") && !player_sliding && is_on_floor_custom() && can_slide:
-		slide_button_down = true
-		SLIDE_SPEED = player_speed
-		slide()
-	elif Input.is_action_just_released("slide") && player_sliding:
-		slide_button_down = false
-		
 	
-	### ADD MOVEMENT ###
-	if !player_sliding:
-		player_direction = Input.get_axis("move_left", "move_right")
-	wasd_movement(player_direction)
+	### AD MOVEMENT ###
+	if _slide.get_move_status() == false:
+		player_movement_direction = Input.get_axis("move_left", "move_right")
+		ad_movement(player_movement_direction)
 	
 	### JUMP ###
 	if is_on_floor_custom():
@@ -78,14 +67,14 @@ func _physics_process(delta):
 		else:
 			_can_jump = false
 			
-	if Input.is_action_just_pressed("jump") && _can_jump:
+	if Input.is_action_just_pressed("jump") && _can_jump && _slide.get_jump_status() == false:
 		jump()
 		while is_on_floor_custom():
 			await get_tree().create_timer(0.1).timeout
 		_jump_timer = 100.0
 	
 	
-func wasd_movement(direction : int):
+func ad_movement(direction: int) -> void:
 	if direction != 0:
 		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
 	else:
@@ -97,9 +86,6 @@ func wasd_movement(direction : int):
 	elif direction < 0:
 		flip(false)
 	velocity.x = direction * player_speed
-	
-	
-	move_and_slide()
 
 func jump():
 	velocity.y = -JUMP_VELOCITY
@@ -108,63 +94,8 @@ func jump():
 	
 func apply_gravity(delta):
 	if !is_on_floor_custom():
-		GRAVITY = NORMAL_GRAVITY
-	velocity.y += GRAVITY * delta
-	
-	
-func slide():
-	var floor_angle = get_floor_angle()
-	var slow_or_speed : float
-	print ("start slide")
-	player_sliding = true
-	if player_direction == 0:
-		SLIDE_SPEED = 200
-		if get_floor_normal().x < 0:
-			player_direction = -1
-		elif get_floor_normal().x > 0:
-			player_direction = 1
-	SLIDE_SPEED = player_speed + floor_angle * 100 + 50
-	await get_tree().create_timer(0.5).timeout
-	
-	while slide_button_down == true && SLIDE_SPEED > 0:
-		floor_angle = get_floor_angle()
-		await get_tree().create_timer(0.001).timeout
-		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
-		GRAVITY = SLIDING_GRAVITY
-		if get_floor_normal().x < 0:
-			if player_direction == 1:
-				slow_or_speed = -5
-			elif player_direction == -1:
-				slow_or_speed = 5
-		elif get_floor_normal().x > 0:
-			if player_direction == 1:
-				slow_or_speed = 5
-			elif player_direction == -1:
-				slow_or_speed = -5
-		else:
-			slow_or_speed = 0
-		slide_speed_change = floor_angle * slow_or_speed
-		if slide_speed_change > 0:
-			slide_speed_change += 1
-		else:
-			slide_speed_change -= 1
-		if floor_angle == 0:
-			slide_speed_change = -3
-			
-		SLIDE_SPEED += slide_speed_change
-	
-	#End skid
-	while SLIDE_SPEED > 0:
-		SLIDE_SPEED += -10
-		await get_tree().create_timer(0.001).timeout
-	
-	player_sliding = false
-	GRAVITY = NORMAL_GRAVITY
-	_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, false)
-	print("end slide")
-	can_slide = false
-	await get_tree().create_timer(1).timeout
-	can_slide = true
+		gravity = NORMAL_GRAVITY
+	velocity.y += gravity * delta
 
 
 func push_other_bodies():
@@ -188,7 +119,7 @@ func die():
 	
 	
 func particles_control():
-	if is_on_floor() && player_direction != 0:
+	if is_on_floor() && player_movement_direction != 0:
 		_particle_manager.set_particles_on(true)
 	else:
 		_particle_manager.set_particles_on(false)
@@ -202,9 +133,11 @@ func flip(isRight : bool):
 		$HurtboxComponent
 	]
 	if isRight:
+		player_sprite_direction = 1
 		for i in nodes_to_flip.size():
 			nodes_to_flip[i].scale.x = 1
 	if !isRight:
+		player_sprite_direction = -1
 		for i in nodes_to_flip.size():
 			nodes_to_flip[i].scale.x = -1
 			
