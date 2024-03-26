@@ -16,6 +16,9 @@ var slide_has_moved: bool = false
 var move_is_locked: bool = false
 var jump_is_locked: bool = false
 
+var can_stop_slide: bool = false
+
+var sliding_in_air: bool = false
 
 
 
@@ -48,14 +51,23 @@ func handle_slide():
 		jump_is_locked = false
 		
 		slide_has_moved = true
+		sliding_in_air = false
 		await slide()
+		
+		can_stop_slide = true
 		previous_slide_done = true
 		move_is_locked = false
 		slide_is_pressed = false
+		_player.gravity = _player.NORMAL_GRAVITY
 		
-	if (!slide_is_pressed && !move_is_locked) || (previous_slide_done):
+		
+	if ((!slide_is_pressed && !move_is_locked) || previous_slide_done) && can_stop_slide:
 		### STOP SLIDE, TRIGGERED ONCE ###
+		can_stop_slide = false
 		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, false)
+		if !sliding_in_air:
+			_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE_END, true)
+		_player.gravity = _player.NORMAL_GRAVITY
 
 
 func dash():
@@ -84,6 +96,7 @@ func slide():
 		await get_tree().create_timer(0.001).timeout
 		
 	while slide_is_pressed && !_player.is_on_floor_custom():
+		sliding_in_air = true
 		_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()

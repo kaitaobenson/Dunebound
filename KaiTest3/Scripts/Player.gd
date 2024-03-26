@@ -3,7 +3,7 @@ extends CharacterBody2D
 const PUSH_FORCE = 100
 const JUMP_VELOCITY = 800
 
-const WALK_SPEED = 350
+const WALK_SPEED = 380
 const SPRINT_SPEED = 600
 var player_speed = WALK_SPEED
 
@@ -154,3 +154,10 @@ func is_on_floor_custom() -> bool:
 		return true
 	else: 
 		return false
+		
+		
+var floor_angle = 0
+func get_floor_angle_custom() -> float:
+	if abs(floor_angle - (rad_to_deg(atan2(get_floor_normal().y, get_floor_normal().x)) + 90)) < 45:
+		floor_angle = rad_to_deg(atan2(get_floor_normal().y, get_floor_normal().x)) + 90
+	return floor_angle

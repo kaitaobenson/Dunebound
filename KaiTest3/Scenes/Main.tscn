@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/ScrollText.gd" id="25_34a06"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://zombie_husk_guy.tscn" id="27_203vw"]
+[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://weather_control.tscn" id="27_raabt"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/HealthBarTop.png" id="28_ujqb4"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/HealthBarBottom.png" id="29_l4iya"]
@@ -33,7 +34,6 @@
 [ext_resource type="Script" path="res://Scenes/Checkpoint.gd" id="31_e37l8"]
 [ext_resource type="Script" path="res://SavingThingy.gd" id="31_emn2m"]
 [ext_resource type="Texture2D" uid="uid://b10da1o127f7t" path="res://Assets/Textures/Pillar.png" id="33_60p8f"]
-[ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="36_a7ulw"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
 tile_data = PackedInt32Array(0, 4, 1, 65536, 4, 2, 1, 65540, 1, 65537, 65540, 2, 2, 131076, 1, 65538, 65540, 2, 3, 196612, 1, 65539, 65540, 2)
@@ -747,10 +747,10 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(86, -31)
+rotation = 1.76802
 color = Color(0.533333, 0.521569, 0.666667, 1)
 
-[node name="WeatherControl" type="Node" parent="."]
-script = ExtResource("36_a7ulw")
+[node name="WeatherControl" parent="." instance=ExtResource("27_raabt")]
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
 position = Vector2(671, 349)

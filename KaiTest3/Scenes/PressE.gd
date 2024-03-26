@@ -1,6 +1,6 @@
 extends Node2D
 
-var _is_on: bool = true
+var _is_on: bool = false
 var _can_tween = true
 var _default_position: Vector2
 
