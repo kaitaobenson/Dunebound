@@ -158,6 +158,6 @@ func is_on_floor_custom() -> bool:
 		
 var floor_angle = 0
 func get_floor_angle_custom() -> float:
-	if abs(floor_angle - (rad_to_deg(atan2(get_floor_normal().y, get_floor_normal().x)) + 90)) < 45:
+	if is_on_floor():
 		floor_angle = rad_to_deg(atan2(get_floor_normal().y, get_floor_normal().x)) + 90
 	return floor_angle

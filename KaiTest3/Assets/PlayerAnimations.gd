@@ -45,6 +45,8 @@ func change_animation(name:ALL_ANIMATIONS, isOn:bool):
 			
 			
 func _process(delta):
+	make_sure_angle_right()
+	
 	for animation in animation_priority:
 		if current_animations.has(animation):
 			if playing_animation == animation:
