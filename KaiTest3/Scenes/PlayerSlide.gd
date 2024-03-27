@@ -42,6 +42,7 @@ func handle_slide():
 	if slide_is_pressed && _player.is_on_floor_custom() && previous_slide_done:
 		### SLIDE, TRIGGERED ONCE ###
 		previous_slide_done = false
+		
 		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
 		jump_is_locked = true
 		move_is_locked = true
@@ -52,12 +53,15 @@ func handle_slide():
 		
 		slide_has_moved = true
 		sliding_in_air = false
+		print("slide begin")
 		await slide()
+		print("slide end")
+		slide_is_pressed = false
 		
 		can_stop_slide = true
 		previous_slide_done = true
 		move_is_locked = false
-		slide_is_pressed = false
+		
 		_player.gravity = _player.NORMAL_GRAVITY
 		
 		
@@ -97,6 +101,7 @@ func slide():
 		
 	while slide_is_pressed && !_player.is_on_floor_custom():
 		sliding_in_air = true
+		
 		_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()

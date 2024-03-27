@@ -50,7 +50,6 @@ func _process(delta):
 	for animation in animation_priority:
 		if current_animations.has(animation):
 			if playing_animation == animation:
-				var keys = ALL_ANIMATIONS.keys()
 				break
 			else:
 				play_animation(animation)
@@ -93,15 +92,18 @@ func play_animation(animationName:ALL_ANIMATIONS):
 	if animationName == ALL_ANIMATIONS.SLIDE:
 		playing_animation = ALL_ANIMATIONS.SLIDE
 		_anim.play("SlideBegin")
-		
+		print("sfd")
 		await _anim.animation_finished
-		_anim.play("SlideLoop")
-		while current_animations.has(ALL_ANIMATIONS.SLIDE):
+		print("animfinniedss")
+		
+		while current_animations.has(ALL_ANIMATIONS.SLIDE) && !current_animations.has(ALL_ANIMATIONS.JUMP):
+			_anim.play("SlideLoop")
 			if _player.is_on_floor_custom():
 				_anim_sprite.rotation_degrees = _player.get_floor_angle_custom() * _player.player_sprite_direction
 			else:
 				_anim_sprite.rotation_degrees = 0
 			await get_tree().create_timer(0.1).timeout
+			print("inwhile loop")
 		
 	if animationName == ALL_ANIMATIONS.SLIDE_END:
 		playing_animation = ALL_ANIMATIONS.SLIDE_END

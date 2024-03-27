@@ -28,12 +28,11 @@ var _coyote_time = 0.2
 @onready var _anim_manager = $AnimationManager
 @onready var _particle_manager = $"../ParticleManager"
 @onready var _attack_collision = $"AttackHitbox/AttackCollison"
+@onready var _hitbox = $"PlayerHitbox"
 
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
-	pass
-	
 	var default_position = global_position
 	Global.Player = self
 	#if $"../../SavingThingy".loader() is Vector2:

@@ -1,11 +1,11 @@
-[gd_scene load_steps=68 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=67 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Assets/PlayerAnimations.gd" id="4_dnagu"]
 [ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
-[ext_resource type="Texture2D" uid="uid://5jlonc6s7qho" path="res://Assets/Textures/Jump-Sheet1.png" id="6_0xsnr"]
+[ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Jump-Sheet.png" id="6_0xsnr"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Idle1.png" id="6_boip0"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
@@ -33,25 +33,25 @@ region = Rect2(96, 0, 96, 112)
 atlas = ExtResource("6_boip0")
 region = Rect2(0, 112, 96, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ii4uk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4vqf"]
 atlas = ExtResource("6_0xsnr")
-region = Rect2(288, 0, 96, 112)
+region = Rect2(660, 0, 220, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3novk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rytb"]
 atlas = ExtResource("6_0xsnr")
-region = Rect2(384, 0, 96, 112)
+region = Rect2(880, 0, 220, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s4qr6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yiyl"]
 atlas = ExtResource("6_0xsnr")
-region = Rect2(480, 0, 96, 112)
+region = Rect2(1100, 0, 220, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kll3s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l15j3"]
 atlas = ExtResource("6_0xsnr")
-region = Rect2(96, 0, 96, 112)
+region = Rect2(220, 0, 220, 180)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7a85l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_82iwq"]
 atlas = ExtResource("6_0xsnr")
-region = Rect2(192, 0, 96, 112)
+region = Rect2(440, 0, 220, 180)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bhc6"]
 atlas = ExtResource("7_rg2jw")
@@ -163,7 +163,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ii4uk")
+"texture": SubResource("AtlasTexture_u4vqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yiyl")
 }],
 "loop": true,
 "name": &"JumpDown",
@@ -171,21 +177,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3novk")
+"texture": SubResource("AtlasTexture_l15j3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s4qr6")
-}],
-"loop": true,
-"name": &"JumpLand",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kll3s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7a85l")
+"texture": SubResource("AtlasTexture_82iwq")
 }],
 "loop": true,
 "name": &"JumpUp",
@@ -313,62 +308,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [&"Idle"]
-}
-
-[sub_resource type="Animation" id="Animation_mjucu"]
-resource_name = "JumpDown"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"JumpDown"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_e6e6k"]
-resource_name = "JumpLand"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"JumpLand"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_wl5se"]
@@ -591,11 +530,39 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_mjucu"]
+resource_name = "JumpDown"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"JumpDown"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tieuu"]
 _data = {
 "Idle": SubResource("Animation_3jf04"),
 "JumpDown": SubResource("Animation_mjucu"),
-"JumpLand": SubResource("Animation_e6e6k"),
 "JumpUp": SubResource("Animation_wl5se"),
 "RESET": SubResource("Animation_d83su"),
 "Run": SubResource("Animation_o1fut"),
