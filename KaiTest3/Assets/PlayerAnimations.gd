@@ -92,9 +92,7 @@ func play_animation(animationName:ALL_ANIMATIONS):
 	if animationName == ALL_ANIMATIONS.SLIDE:
 		playing_animation = ALL_ANIMATIONS.SLIDE
 		_anim.play("SlideBegin")
-		print("sfd")
 		await _anim.animation_finished
-		print("animfinniedss")
 		
 		while current_animations.has(ALL_ANIMATIONS.SLIDE) && !current_animations.has(ALL_ANIMATIONS.JUMP):
 			_anim.play("SlideLoop")
@@ -103,7 +101,7 @@ func play_animation(animationName:ALL_ANIMATIONS):
 			else:
 				_anim_sprite.rotation_degrees = 0
 			await get_tree().create_timer(0.1).timeout
-			print("inwhile loop")
+		_anim_sprite.rotation_degrees = 0
 		
 	if animationName == ALL_ANIMATIONS.SLIDE_END:
 		playing_animation = ALL_ANIMATIONS.SLIDE_END

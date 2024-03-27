@@ -53,9 +53,7 @@ func handle_slide():
 		
 		slide_has_moved = true
 		sliding_in_air = false
-		print("slide begin")
 		await slide()
-		print("slide end")
 		slide_is_pressed = false
 		
 		can_stop_slide = true
