@@ -35,10 +35,11 @@ var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 func _ready():
 	var default_position = global_position
 	Global.Player = self
-	#if $"../../SavingThingy".loader() is Vector2:
-	#	global_position = $"../../SavingThingy".loader()
-	#else:
-	#	global_position = default_position
+	
+	if $"../../SavingThingy".loader("PlayerPos") is Vector2:
+		global_position = $"../../SavingThingy".loader("PlayerPos")
+	else:
+		global_position = default_position
 
 func _physics_process(delta):
 	#move_and_slide()
