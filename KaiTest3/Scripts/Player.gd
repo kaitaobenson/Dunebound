@@ -50,8 +50,8 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
 	apply_gravity(delta)
-
-	### AD MOVEMENT ###
+	
+	### A/D MOVEMENT ###
 	if _slide.get_move_status() == false:
 		player_movement_direction = Input.get_axis("move_left", "move_right")
 		ad_movement(player_movement_direction)
