@@ -33,13 +33,11 @@ var _coyote_time = 0.2
 var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _ready():
+	$"../../SavingThingy".find_saved_value("Health")
 	var default_position = global_position
 	Global.Player = self
-	
-	if $"../../SavingThingy".loader("PlayerPos") is Vector2:
-		global_position = $"../../SavingThingy".loader("PlayerPos")
-	else:
-		global_position = default_position
+	$"../../SavingThingy".loader()
+	global_position = $"../../SavingThingy".find_saved_value("PlayerPos")
 
 func _physics_process(delta):
 	#move_and_slide()
