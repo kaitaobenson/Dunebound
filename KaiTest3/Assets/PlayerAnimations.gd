@@ -2,13 +2,18 @@ extends Node2D
 
 enum ALL_ANIMATIONS {
 	IDLE, 
-	RUN, 
-	ATTACK, 
+	RUN,
+	
+	SHORT_ATTACK_BEGIN_1,
+	SHORT_ATTACK_END_1,
+	
+	LONG_ATTACK_BEGIN_1,
+	LONG_ATTACK_END_1,
 	
 	JUMP, 
 	JUMP_UP, 
 	JUMP_DOWN, 
-	JUMP_LAND,
+	#JUMP_LAND,
 	
 	SLIDE,
 	SLIDE_BEGIN,
@@ -20,20 +25,11 @@ enum ALL_ANIMATIONS {
 
 var current_animations = [ALL_ANIMATIONS.IDLE]
 var playing_animation : ALL_ANIMATIONS = ALL_ANIMATIONS.NONE
-
-var animation_priority = [
-	ALL_ANIMATIONS.ATTACK,
-	ALL_ANIMATIONS.JUMP,
-	ALL_ANIMATIONS.SLIDE,
-	ALL_ANIMATIONS.SLIDE_END,
-	ALL_ANIMATIONS.RUN,
-	ALL_ANIMATIONS.IDLE
-]
+var attack_type
 
 @onready var _anim = $AnimationPlayer
 @onready var _anim_sprite = $AnimatedSprite2D
 @onready var _player = $"../"
-
 
 func change_animation(name:ALL_ANIMATIONS, isOn:bool):
 	if isOn:
@@ -42,46 +38,69 @@ func change_animation(name:ALL_ANIMATIONS, isOn:bool):
 	else:
 		if current_animations.has(name) == true:
 			current_animations.erase(name)
-			
-			
+
+
+
 func _process(delta):
-	make_sure_angle_right()
+	sprite_angle_0()
+	var animation_with_highest_priority: ALL_ANIMATIONS
+	var highest_priority: int = -1
 	
-	for animation in animation_priority:
-		if current_animations.has(animation):
-			if playing_animation == animation:
-				break
-			else:
-				play_animation(animation)
-				break
-				
-				
-func play_animation(animationName:ALL_ANIMATIONS):
+	for animation in current_animations:
+		var loop_priority = get_animation_priority(animation)
+		if loop_priority > highest_priority:
+			highest_priority = loop_priority
+			animation_with_highest_priority = animation
+			
+	if animation_with_highest_priority != playing_animation:
+		play_animation_sequence(animation_with_highest_priority)
+
+
+
+func play_animation_sequence(animationName:ALL_ANIMATIONS):
 	if animationName == ALL_ANIMATIONS.RUN:
-		_anim.play("Run")
 		playing_animation = ALL_ANIMATIONS.RUN
+		play_custom(ALL_ANIMATIONS.RUN)
 		
 		
-	if animationName == ALL_ANIMATIONS.ATTACK:
-		_anim.play("Slash1")
-		playing_animation = ALL_ANIMATIONS.ATTACK
+	if animationName == ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1:
+		playing_animation = ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1
+		play_custom(ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1)
+		
+	if animationName == ALL_ANIMATIONS.LONG_ATTACK_END_1:
+		playing_animation = ALL_ANIMATIONS.LONG_ATTACK_END_1
+		play_custom(ALL_ANIMATIONS.LONG_ATTACK_END_1)
 		
 		await _anim.animation_finished
-		current_animations.erase(ALL_ANIMATIONS.ATTACK)
+		current_animations.erase(ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1)
+		current_animations.erase(ALL_ANIMATIONS.LONG_ATTACK_END_1)
+	
+	
+	
+	if animationName == ALL_ANIMATIONS.SHORT_ATTACK_BEGIN_1:
+		playing_animation = ALL_ANIMATIONS.SHORT_ATTACK_BEGIN_1
+		play_custom(ALL_ANIMATIONS.SHORT_ATTACK_BEGIN_1)
 		
+	if animationName == ALL_ANIMATIONS.SHORT_ATTACK_END_1:
+		playing_animation = ALL_ANIMATIONS.SHORT_ATTACK_END_1
+		play_custom(ALL_ANIMATIONS.SHORT_ATTACK_END_1)
+		
+		await _anim.animation_finished
+		current_animations.erase(ALL_ANIMATIONS.SHORT_ATTACK_BEGIN_1)
+		current_animations.erase(ALL_ANIMATIONS.SHORT_ATTACK_END_1)
 		
 	if animationName == ALL_ANIMATIONS.IDLE:
-		_anim.play("Idle")
 		playing_animation = ALL_ANIMATIONS.IDLE
+		play_custom(ALL_ANIMATIONS.IDLE)
 		
 		
 	if animationName == ALL_ANIMATIONS.JUMP:
 		playing_animation = ALL_ANIMATIONS.JUMP
-		_anim.play("JumpUp")
+		play_custom(ALL_ANIMATIONS.JUMP_UP)
 		
 		while _player.velocity.y <= 0:
 			await get_tree().create_timer(0.1).timeout
-		_anim.play("JumpDown")
+		play_custom(ALL_ANIMATIONS.JUMP_DOWN)
 		
 		while _player.is_on_floor_custom() == false:
 			await get_tree().create_timer(0.001).timeout
@@ -91,11 +110,11 @@ func play_animation(animationName:ALL_ANIMATIONS):
 		
 	if animationName == ALL_ANIMATIONS.SLIDE:
 		playing_animation = ALL_ANIMATIONS.SLIDE
-		_anim.play("SlideBegin")
+		play_custom(ALL_ANIMATIONS.SLIDE_BEGIN)
 		await _anim.animation_finished
 		
 		while current_animations.has(ALL_ANIMATIONS.SLIDE) && !current_animations.has(ALL_ANIMATIONS.JUMP):
-			_anim.play("SlideLoop")
+			play_custom(ALL_ANIMATIONS.SLIDE_LOOP)
 			if _player.is_on_floor_custom():
 				_anim_sprite.rotation_degrees = _player.get_floor_angle_custom() * _player.player_sprite_direction
 			else:
@@ -103,15 +122,49 @@ func play_animation(animationName:ALL_ANIMATIONS):
 			await get_tree().create_timer(0.1).timeout
 		_anim_sprite.rotation_degrees = 0
 		
+		
 	if animationName == ALL_ANIMATIONS.SLIDE_END:
 		playing_animation = ALL_ANIMATIONS.SLIDE_END
-		_anim.play("SlideEnd")
+		play_custom(ALL_ANIMATIONS.SLIDE_END)
 		await _anim.animation_finished
 		_anim_sprite.rotation_degrees = 0
 		change_animation(ALL_ANIMATIONS.SLIDE_END, false)
-		
-		
-func make_sure_angle_right():
-	#uhh yeah
+
+
+
+func sprite_angle_0():
 	if !current_animations.has(ALL_ANIMATIONS.SLIDE):
 		_anim_sprite.rotation_degrees = 0
+
+
+
+func play_custom(animation: ALL_ANIMATIONS):
+	var first_animation_priority = get_animation_priority(animation)
+	for animation1 in current_animations:
+		var loop_animation_priority = get_animation_priority(animation1)
+		if loop_animation_priority > first_animation_priority:
+			return
+	var animation_string: String = ALL_ANIMATIONS.keys()[animation]
+	_anim.play(animation_string.to_pascal_case())
+
+
+
+func get_animation_priority(animation: ALL_ANIMATIONS) -> int:
+	var animation_priority = [
+		ALL_ANIMATIONS.IDLE,
+		ALL_ANIMATIONS.RUN,
+		ALL_ANIMATIONS.SLIDE,
+		ALL_ANIMATIONS.SLIDE_BEGIN,
+		ALL_ANIMATIONS.SLIDE_LOOP,
+		ALL_ANIMATIONS.SLIDE_END,
+		ALL_ANIMATIONS.JUMP,
+		ALL_ANIMATIONS.JUMP_UP,
+		ALL_ANIMATIONS.JUMP_DOWN,
+		
+		ALL_ANIMATIONS.SHORT_ATTACK_BEGIN_1,
+		ALL_ANIMATIONS.SHORT_ATTACK_END_1,
+		ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1,
+		ALL_ANIMATIONS.LONG_ATTACK_END_1,
+	]
+	
+	return animation_priority.find(animation)

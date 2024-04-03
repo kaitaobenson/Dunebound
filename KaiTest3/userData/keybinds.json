@@ -19,7 +19,8 @@
 		{
 			"actionName": "jump",
 			"key": [
-				"Space"
+				"W",
+				"Up"
 			]
 		},
 		{

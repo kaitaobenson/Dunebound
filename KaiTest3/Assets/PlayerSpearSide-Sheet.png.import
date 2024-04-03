@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cokqlsoinxnxi"
-path="res://.godot/imported/Slash3.png-0f040ddf75a40e31f24f6ab047f262bf.ctex"
+uid="uid://cqnsk6qlh0rvi"
+path="res://.godot/imported/PlayerSpearSide-Sheet.png-a41c9f35387059e9b6f33f7d194dde7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Slash3.png"
-dest_files=["res://.godot/imported/Slash3.png-0f040ddf75a40e31f24f6ab047f262bf.ctex"]
+source_file="res://Assets/PlayerSpearSide-Sheet.png"
+dest_files=["res://.godot/imported/PlayerSpearSide-Sheet.png-a41c9f35387059e9b6f33f7d194dde7a.ctex"]
 
 [params]
 

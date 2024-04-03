@@ -217,16 +217,10 @@ libraries = {
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_s2glg")]
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HitboxComponent" type="Area2D" parent="." groups=["Hurtbox"]]
 position = Vector2(-6, 0)
 script = ExtResource("3_sto7s")
-health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(6, 7)
 shape = SubResource("RectangleShape2D_stxym")
-
-[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
-[connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
-[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]
-[connection signal="body_exited" from="HitboxComponent" to="HitboxComponent" method="_on_body_exited"]

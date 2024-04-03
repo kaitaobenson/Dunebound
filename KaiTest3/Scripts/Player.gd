@@ -27,10 +27,8 @@ var _coyote_time = 0.2
 @onready var _slide = $"Slide/"
 @onready var _anim_manager = $AnimationManager
 @onready var _particle_manager = $"../ParticleManager"
-@onready var _attack_collision = $"AttackHitbox/AttackCollison"
 @onready var _hitbox = $"PlayerHitbox"
-
-var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
+@onready var _attack_manager = $"AttackManager"
 
 func _ready():
 	var default_position = global_position
@@ -41,7 +39,7 @@ func _ready():
 	#	global_position = default_position
 
 func _physics_process(delta):
-	#move_and_slide()
+	move_and_slide()
 	push_other_bodies()
 	particles_control()
 	var inventory_is_on
@@ -49,13 +47,15 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		inventory_is_on = !inventory_is_on
 	apply_gravity(delta)
-
-	### AD MOVEMENT ###
-	if _slide.get_move_status() == false:
-		player_movement_direction = Input.get_axis("move_left", "move_right")
-		ad_movement(player_movement_direction)
 	
-	move_and_slide()
+	### AD MOVEMENT ###
+	if (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")) && (!_slide.is_move_locked() && !_attack_manager.is_move_locked()):
+		player_movement_direction = Input.get_axis("move_left", "move_right")
+		if player_movement_direction != 0:
+			ad_movement(player_movement_direction)
+	elif !_slide.is_sliding():
+		velocity.x = lerp(velocity.x, 0.0, 0.2)
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, false)
 	
 	### JUMP ###
 	if is_on_floor_custom():
@@ -69,7 +69,7 @@ func _physics_process(delta):
 			_can_jump = false
 			
 
-	if Input.is_action_just_pressed("jump") && _can_jump && _slide.get_jump_status() == false:
+	if Input.is_action_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked():
 		jump()
 		while is_on_floor_custom():
 			await get_tree().create_timer(0.1).timeout
@@ -78,10 +78,9 @@ func _physics_process(delta):
 	
 func ad_movement(direction: int) -> void:
 	if direction != 0:
-		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, true)
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, true)
 	else:
-		_anim_manager.change_animation(ALL_ANIMATIONS.RUN, false)
-		velocity.x = 0
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, false)
 	
 	if direction > 0:
 		flip(true)
@@ -91,7 +90,7 @@ func ad_movement(direction: int) -> void:
 
 func jump():
 	velocity.y = -JUMP_VELOCITY
-	_anim_manager.change_animation(ALL_ANIMATIONS.JUMP, true)
+	_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.JUMP, true)
 	
 	
 func apply_gravity(delta):
