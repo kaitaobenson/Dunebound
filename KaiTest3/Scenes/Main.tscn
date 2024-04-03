@@ -525,6 +525,52 @@ zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 0.0
 script = ExtResource("13_bratx")
 
+[node name="uiContainer" type="Node2D" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 60
+position = Vector2(-587, -317)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = -2
+offset_left = -2310.0
+offset_top = -1174.0
+offset_right = 4086.0
+offset_bottom = 1994.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="Camera2D/uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("6_bt4hm")
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = 4095
+offset_left = 260.0
+offset_top = 458.0
+offset_right = 1418.0
+offset_bottom = 627.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = 4095
+offset_left = 257.0
+offset_top = -15.0
+offset_right = 1422.0
+offset_bottom = 207.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="Camera2D/uiContainer"]
+z_index = 4096
+offset_left = 273.0
+offset_top = 472.0
+offset_right = 1419.0
+offset_bottom = 525.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
 [node name="PauseScreen" type="Node2D" parent="Camera2D"]
 process_mode = 3
 visible = false
@@ -543,7 +589,7 @@ color = Color(0.223529, 0.223529, 0.223529, 0.968627)
 script = ExtResource("10_8dq1e")
 
 [node name="Button" type="ColorRect" parent="Camera2D/PauseScreen"]
-z_index = 60
+z_index = 4096
 offset_left = -29.0
 offset_top = -304.0
 offset_right = 253.0
@@ -575,33 +621,13 @@ theme_override_font_sizes/normal_font_size = 30
 text = "save game
 "
 
-[node name="uiContainer" type="Node2D" parent="Camera2D"]
-process_mode = 3
-visible = false
-z_index = 60
-position = Vector2(-587, -317)
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/uiContainer"]
-offset_left = -2310.0
-offset_top = -1174.0
-offset_right = 4086.0
-offset_bottom = 1994.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Control" type="Control" parent="Camera2D/uiContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 100.0
-script = ExtResource("6_bt4hm")
-
-[node name="Label" type="Label" parent="Camera2D/uiContainer"]
-offset_left = 5.0
-offset_top = 586.0
-offset_right = 1151.0
-offset_bottom = 639.0
-text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+[node name="VScrollBar" type="VScrollBar" parent="Camera2D/PauseScreen"]
+z_index = 4096
+z_as_relative = false
+offset_left = 449.0
+offset_top = -322.0
+offset_right = 467.0
+offset_bottom = 38.0
 
 [node name="inventoryContainer" type="Node2D" parent="Camera2D"]
 process_mode = 3
@@ -725,10 +751,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = -120.361
-offset_right = 260.0
-offset_bottom = 25.6393
+offset_left = -31.8147
+offset_top = -194.885
+offset_right = 215.185
+offset_bottom = -48.8849
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("23_k7f0p")
