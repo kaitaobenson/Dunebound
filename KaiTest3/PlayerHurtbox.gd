@@ -2,7 +2,6 @@ extends Area2D
 
 var bodies_in_hurtbox = []
 var areas_in_hurtbox = []
-var runningTheDamnCode:bool = false
 #first is damage, second is if it stops for i frames
 #spikes and bottom barrier don't care about i frames
 const enemy_info = {
@@ -58,8 +57,7 @@ func check_for_enemies():
 			var current_info = enemy_info.get(bodies_in_hurtbox[i])
 			
 			if current_info[1] == true:
-				if _i_frames_done&&Global.Player.get_node("HealthComponent").health>0:
-					print(Global.Player.get_node("HealthComponent").health)
+				if _i_frames_done && Global.Player.get_node("HealthComponent").health > 0:
 					make_attack(current_info[0])
 					i_frames_on(1)
 			if current_info[1] == false:
@@ -78,11 +76,9 @@ func check_for_enemies():
 				
 				
 func i_frames_on(seconds : float):
-	if(!runningTheDamnCode&&!str(self.get_path())==""):
-		_i_frames_done = false
-		print(str(self.get_path())=="")
-		await get_tree().create_timer(seconds).timeout
-		_i_frames_done = true
+	_i_frames_done = false
+	await get_tree().create_timer(seconds).timeout
+	_i_frames_done = true
 	
 	
 func make_attack(damage : int):

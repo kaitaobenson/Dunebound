@@ -20,12 +20,8 @@ var can_stop_slide: bool = false
 
 var sliding_in_air: bool = false
 
-
-
 @onready var _player = $"../"
 @onready var _anim_manager = $"../AnimationManager/"
-
-var ALL_ANIMATIONS = preload("res://PlayerAnimations.gd").ALL_ANIMATIONS
 
 func _process(delta):
 	if Input.is_action_just_pressed("slide"):
@@ -43,7 +39,7 @@ func handle_slide():
 		### SLIDE, TRIGGERED ONCE ###
 		previous_slide_done = false
 		
-		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, true)
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.SLIDE, true)
 		jump_is_locked = true
 		move_is_locked = true
 		_player.gravity = _player.SLIDING_GRAVITY
@@ -53,6 +49,7 @@ func handle_slide():
 		
 		slide_has_moved = true
 		sliding_in_air = false
+		
 		await slide()
 		slide_is_pressed = false
 		
@@ -66,9 +63,9 @@ func handle_slide():
 	if ((!slide_is_pressed && !move_is_locked) || previous_slide_done) && can_stop_slide:
 		### STOP SLIDE, TRIGGERED ONCE ###
 		can_stop_slide = false
-		_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE, false)
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.SLIDE, false)
 		if !sliding_in_air:
-			_anim_manager.change_animation(ALL_ANIMATIONS.SLIDE_END, true)
+			_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.SLIDE_END, true)
 		_player.gravity = _player.NORMAL_GRAVITY
 
 
@@ -119,8 +116,11 @@ func check_if_moved() -> bool:
 		return false
 
 
-func get_move_status() -> bool:
+func is_move_locked() -> bool:
 	return move_is_locked
 
-func get_jump_status() -> bool:
+func is_jump_locked() -> bool:
 	return jump_is_locked
+
+func is_sliding() -> bool:
+	return !previous_slide_done
