@@ -12,6 +12,7 @@ var player_temp: float
 @onready var _health_component = $"../Player/HealthComponent"
 @onready var _hurtbox = $"../Player/HurtboxComponent"
 
+"""
 func _ready():
 	player_temp = Global.temperature
 
@@ -60,3 +61,4 @@ func protect_from_cold(rate):
 func protect_from_hot(rate):
 	if player_temp < 50:
 		player_temp += rate
+"""

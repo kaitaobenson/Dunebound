@@ -17,8 +17,7 @@ var player_movement_direction: int = 0
 var player_sprite_direction: int = 1
 
 var health: int = 100 
-
-var _attack_cooldown_over = true
+var is_dead: bool = false
 
 var _jump_timer = 0.0
 var _can_jump = false
@@ -110,15 +109,13 @@ func push_other_bodies():
 				
 				
 func die():
-	#turn visibility and physics
-	self.visible = false
-	set_physics_process(false)
-	
-	await get_tree().create_timer(1).timeout
-	
-	get_tree().reload_current_scene()
-	print("ouch")
-	#whatever you wanna do when you die
+	if !is_dead:
+		is_dead = true
+		visible = false
+		_hitbox.disabled = true
+		set_physics_process(false)
+		await get_tree().create_timer(1).timeout
+		get_tree().reload_current_scene()
 	
 	
 func particles_control():

@@ -14,14 +14,14 @@ func _ready():
 func damage(attack:Attack):
 	if attack.attack_damage != 0:
 		health -= attack.attack_damage
-		damaged_visuals()
+		damaged_visuals(attack.attack_damage)
 		update_health_bar()
 	if health <= 0:
 		await get_tree().create_timer(0.2).timeout
 		$"../".die()
 
-func damaged_visuals():
-	if animation_sprite != null:
+func damaged_visuals(attack_damage: float):
+	if (animation_sprite != null) && (attack_damage > 0):
 		animation_sprite.modulate = Color(255, 255, 255)
 		await get_tree().create_timer(0.2).timeout
 		animation_sprite.modulate = Color(1, 1, 1, 1)

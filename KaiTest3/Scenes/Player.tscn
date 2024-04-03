@@ -790,6 +790,10 @@ script = ExtResource("3_3arou")
 script = ExtResource("5_2xnvu")
 metadata/_edit_lock_ = true
 
+[node name="PlayerHitbox" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_hb2my")
+metadata/_edit_lock_ = true
+
 [node name="Slide" type="Node" parent="Player"]
 script = ExtResource("4_s8vyt")
 
@@ -806,10 +810,6 @@ target_position = Vector2(0, 19)
 [node name="Right" type="RayCast2D" parent="Player/GroundRaycasts"]
 position = Vector2(11, 36)
 target_position = Vector2(0, 19)
-
-[node name="PlayerHitbox" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_hb2my")
-metadata/_edit_lock_ = true
 
 [node name="AnimationManager" type="Node2D" parent="Player"]
 script = ExtResource("4_dnagu")
@@ -843,9 +843,10 @@ position = Vector2(0, -3.75)
 shape = SubResource("RectangleShape2D_0xmnn")
 metadata/_edit_lock_ = true
 
-[node name="HealthComponent" parent="Player" instance=ExtResource("7_jbvia")]
+[node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
 visible = true
 position = Vector2(8, -59)
+animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
 health_bar = "../../../CanvasLayer/PlayerHealthBar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]

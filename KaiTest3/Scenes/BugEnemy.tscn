@@ -18,6 +18,7 @@ var rigidBody:bool
 @onready var _anim_player = $\"AnimationPlayer\"
 
 func _ready():
+	name = \"BugEnemy\"
 	direction = starting_direction
 	flip()
 	

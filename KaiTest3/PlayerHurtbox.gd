@@ -7,7 +7,7 @@ var areas_in_hurtbox = []
 const enemy_info = {
 	"Spikes": [100, false],
 	"BottomBarrierDeath" : [100, false],
-	"jimmy": [20, true],
+	"BugEnemy": [20, true],
 	"Zombie Husk Guy": [0, true],
 }
 
@@ -19,28 +19,28 @@ var timer : float = 0
 func _process(delta):
 	check_for_enemies()
 	regen_health(delta)
-		
-		
+
+
 func _on_body_entered(body):
 	if bodies_in_hurtbox.has(body.name) == false:
 		bodies_in_hurtbox.append(body.name)
-		
-		
+
+
 func _on_body_exited(body):
 	if bodies_in_hurtbox.has(body.name):
 		bodies_in_hurtbox.erase(body.name)
-		
-		
+
+
 func _on_area_entered(area):
 	if areas_in_hurtbox.has(area.name) == false:
 		areas_in_hurtbox.append(area.name)
-		
-		
+
+
 func _on_area_exited(area):
 	if areas_in_hurtbox.has(area.name):
 		areas_in_hurtbox.erase(area.name)
-		
-		
+
+
 func regen_health(delta):
 	timer += delta
 	if timer >= 1:
@@ -49,16 +49,17 @@ func regen_health(delta):
 			make_attack(-5)
 		elif health_component.health < 100:
 			make_attack(100 - health_component.health)
-	
-	
+
+
 func check_for_enemies():
 	for i in range(bodies_in_hurtbox.size()):
 		if enemy_info.has(bodies_in_hurtbox[i]):
 			var current_info = enemy_info.get(bodies_in_hurtbox[i])
 			
 			if current_info[1] == true:
-				if _i_frames_done && Global.Player.get_node("HealthComponent").health > 0:
+				if _i_frames_done:
 					make_attack(current_info[0])
+					print(current_info)
 					i_frames_on(1)
 			if current_info[1] == false:
 				make_attack(current_info[0])
@@ -83,6 +84,8 @@ func i_frames_on(seconds : float):
 	
 func make_attack(damage : int):
 	var attack = Attack.new()
+	attack.attack_damage = damage
+	print(attack.attack_damage)
 	health_component.damage(attack)
 	
 	
