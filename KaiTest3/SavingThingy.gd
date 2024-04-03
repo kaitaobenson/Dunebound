@@ -3,10 +3,10 @@ extends Node
 
 const save_path = "user://savegame.tres"
 var loaded
-var save_dict = {
+var save_dict: Dictionary = {
 }
 
-var default_dict = {
+var default_dict: Dictionary = {
 	"PlayerPos" = Vector2(0,0),
 	"Health" = 100
 }

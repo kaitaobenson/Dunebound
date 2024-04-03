@@ -1,5 +1,6 @@
-[gd_scene load_steps=82 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=83 format=3 uid="uid://c2e2hmw035cvv"]
 
+[ext_resource type="Script" path="res://Scenes/PlayerWaterManager.gd" id="3_3arou"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Assets/PlayerAnimations.gd" id="4_dnagu"]
 [ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
@@ -782,6 +783,9 @@ color = Color(1, 0.788235, 0.247059, 1)
 [node name="TempManager" type="Node" parent="."]
 script = ExtResource("3_qv5lc")
 
+[node name="WaterManager" type="Node" parent="."]
+script = ExtResource("3_3arou")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("5_2xnvu")
 metadata/_edit_lock_ = true
@@ -847,7 +851,6 @@ health_bar = "../../../CanvasLayer/PlayerHealthBar"
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)
 script = ExtResource("11_k66ym")
-metadata/_edit_lock_ = true
 
 [node name="AttackArea" type="Area2D" parent="Player/AttackManager"]
 metadata/_edit_lock_ = true

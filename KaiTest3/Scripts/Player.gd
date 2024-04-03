@@ -31,12 +31,15 @@ var _coyote_time = 0.2
 @onready var _attack_manager = $"AttackManager"
 
 func _ready():
+	Global.Player = self
+	pass
+	"""
 	$"../../SavingThingy".find_saved_value("Health")
 	var default_position = global_position
-	Global.Player = self
 	$"../../SavingThingy".loader()
 	global_position = $"../../SavingThingy".find_saved_value("PlayerPos")
-
+	"""
+	
 func _physics_process(delta):
 	move_and_slide()
 	push_other_bodies()
