@@ -7,9 +7,13 @@ class_name HealthComponent
 var health : int
 
 func _ready():
-	health = max_health
+	get_node("/root/Node2D/SavingThingy").loader()
+	if get_node("/root/Node2D/SavingThingy").find_saved_value("Health") <= 0:
+		health = max_health
+	else:
+		health = get_node("/root/Node2D/SavingThingy").find_saved_value("Health")
 	update_health_bar()
-	
+
 func damage(attack:Attack):
 	health -= attack.attack_damage
 	update_health_bar()

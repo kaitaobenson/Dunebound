@@ -759,7 +759,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 sandstorm_is_on = false
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(671, 349)
+position = Vector2(-1131, 569)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(-1004, 727)
@@ -783,24 +783,25 @@ texture_progress = ExtResource("29_l4iya")
 script = ExtResource("30_u4llx")
 metadata/_edit_use_anchors_ = true
 
+[node name="SavingThingy" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("31_emn2m")
+
 [node name="Checkpoint1" type="Area2D" parent="."]
-position = Vector2(-2, 638)
+position = Vector2(-1542, 633)
 script = ExtResource("31_e37l8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint1"]
-position = Vector2(-1450, 120)
 shape = SubResource("RectangleShape2D_mbgdl")
-
-[node name="SavingThingy" type="Node" parent="."]
-script = ExtResource("31_emn2m")
+metadata/_edit_lock_ = true
 
 [node name="Checkpoint2" type="Area2D" parent="."]
-position = Vector2(-692, 577)
+position = Vector2(-742, 569)
 script = ExtResource("31_e37l8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
-position = Vector2(-157, -100)
 shape = SubResource("RectangleShape2D_mbgdl")
+metadata/_edit_lock_ = true
 
 [node name="BigTree" type="Sprite2D" parent="."]
 position = Vector2(-3063, 564)
