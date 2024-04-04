@@ -29,8 +29,10 @@ var _coyote_time = 0.2
 @onready var _hitbox = $"PlayerHitbox"
 @onready var _attack_manager = $"AttackManager"
 
-func _ready():
+func _init():
 	Global.Player = self
+
+func _ready():
 	pass
 	"""
 	$"../../SavingThingy".find_saved_value("Health")

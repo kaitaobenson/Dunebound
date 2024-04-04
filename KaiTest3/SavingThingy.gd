@@ -12,6 +12,7 @@ var default_dict: Dictionary = {
 }
 
 func _ready():
+	Global.saver_loader = self
 	loader()
 
 func var_update(value, var_name):

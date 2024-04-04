@@ -11,6 +11,7 @@ sandstorm_is_on = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
 position = Vector2(579, 13)
+emitting = false
 amount = 1600
 lifetime = 33.34
 speed_scale = 1.39

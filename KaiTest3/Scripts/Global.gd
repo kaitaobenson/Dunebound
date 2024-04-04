@@ -1,9 +1,8 @@
 extends Node
 
-var Player
-
-var CameraX
-var CameraY
+var Player: Object
+var camera: Camera2D
+var saver_loader: Object
 
 var TimeOfDay = 1
 var DayCount = 1
