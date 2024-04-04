@@ -5,10 +5,6 @@ position = Vector2(1, 348)
 rotation = 6.28319
 scale = Vector2(0.605673, 0.957455)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(172.911, 96.0881)
-scale = Vector2(21.0061, -6.49977)
-
 [node name="ShelterArea" type="Area2D" parent="."]
 position = Vector2(-1.65007, 139.954)
 

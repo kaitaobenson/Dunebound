@@ -1,14 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=48 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
-[ext_resource type="PackedScene" uid="uid://c8tyqyol5iveh" path="res://Scenes/Shelter.tscn" id="3_w0wql"]
-[ext_resource type="PackedScene" uid="uid://oqb4x3h5pj8" path="res://Scenes/gun.tscn" id="4_g0evl"]
 [ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/Tilemap.png" id="5_f8wla"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
-[ext_resource type="PackedScene" uid="uid://0y2i0juhrmv2" path="res://Scenes/fast_linear_gun.tscn" id="8_f5681"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="10_vag3d"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_bratx"]
@@ -469,9 +466,6 @@ texture = SubResource("CompressedTexture2D_pa1t4")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Foreground Container/Dune4"]
 polygon = PackedVector2Array(-1206, 250, -968, 67, -743, -81, -530, -208, -346, -300, -201, -348, -76, -375, 45, -383, 113, -380, 191, -368, 267, -351, 364, -314, 554, -229, 950, -21, 1282, 143, 1579, 268, 1592, 269, 1648, 269, 1648, 333, -1298, 335, -1298, 271, -1235, 271)
 
-[node name="Shelter" parent="Foreground Container" instance=ExtResource("3_w0wql")]
-position = Vector2(319, 493)
-
 [node name="Pillar" type="Node2D" parent="Foreground Container"]
 position = Vector2(-591, 776)
 rotation = 1.8426
@@ -515,15 +509,6 @@ metadata/tileName = "itemTileTemplate"
 
 [node name="keybindHandler" type="Node" parent="."]
 script = ExtResource("3_cnpip")
-
-[node name="fastLinearGun" parent="." instance=ExtResource("8_f5681")]
-position = Vector2(475, -33)
-metadata/Damage = 1000000000
-metadata/shotSpeed = 0.05
-
-[node name="Gun" parent="." instance=ExtResource("4_g0evl")]
-position = Vector2(661, -23)
-metadata/damage = 50
 
 [node name="Templates" type="Node" parent="."]
 
@@ -776,7 +761,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 sandstorm_is_on = false
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(3024, 883)
+position = Vector2(1984, 727)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(-1004, 727)
