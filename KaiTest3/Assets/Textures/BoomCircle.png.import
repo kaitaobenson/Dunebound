@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1wq287rmaq8l"
-path="res://.godot/imported/BigTree.png-98f44298ec87aa94111110c61d466eb3.ctex"
+uid="uid://cvytbi3sgdier"
+path="res://.godot/imported/BoomCircle.png-d2c121ab64caec8743135b8f17f2da79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BigTree.png"
-dest_files=["res://.godot/imported/BigTree.png-98f44298ec87aa94111110c61d466eb3.ctex"]
+source_file="res://Assets/Textures/BoomCircle.png"
+dest_files=["res://.godot/imported/BoomCircle.png-d2c121ab64caec8743135b8f17f2da79.ctex"]
 
 [params]
 

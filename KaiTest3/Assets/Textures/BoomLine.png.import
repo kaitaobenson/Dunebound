@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bottouauwxhoj"
-path="res://.godot/imported/SlopeTilemap.png-f9d180408ed8ca06455268bb97707317.ctex"
+uid="uid://b33o8xheukgk8"
+path="res://.godot/imported/BoomLine.png-933c6ae6dc98c34cba1e09945628bdfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/SlopeTilemap.png"
-dest_files=["res://.godot/imported/SlopeTilemap.png-f9d180408ed8ca06455268bb97707317.ctex"]
+source_file="res://Assets/Textures/BoomLine.png"
+dest_files=["res://.godot/imported/BoomLine.png-933c6ae6dc98c34cba1e09945628bdfd.ctex"]
 
 [params]
 

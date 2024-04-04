@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://djq52jicd1c67"]
 
-[ext_resource type="Texture2D" uid="uid://wx80ljwbnofb" path="res://Assets/BuggyRun.png" id="1_ca2u8"]
+[ext_resource type="Texture2D" uid="uid://wx80ljwbnofb" path="res://Assets/Textures/BuggyRun.png" id="1_ca2u8"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_s2glg"]
 [ext_resource type="Script" path="res://Scenes/HitboxComponent.gd" id="3_sto7s"]
 

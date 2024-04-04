@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfpip6ipg0f6m"]
 
 [ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="1_6esv1"]
-[ext_resource type="Texture2D" uid="uid://l51xqhn74v7c" path="res://Assets/SandParticle.png" id="2_0ebvh"]
+[ext_resource type="Texture2D" uid="uid://l51xqhn74v7c" path="res://Assets/Textures/SandParticle.png" id="2_0ebvh"]
 
 [node name="WeatherControl" type="Node"]
 script = ExtResource("1_6esv1")

@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8tyqyol5iveh"]
-
-[ext_resource type="Texture2D" uid="uid://etj2opaduok3" path="res://Assets/Textures/Sand.png" id="1_0el0r"]
+[gd_scene format=3 uid="uid://c8tyqyol5iveh"]
 
 [node name="Shelter" type="StaticBody2D"]
 position = Vector2(1, 348)
@@ -10,7 +8,6 @@ scale = Vector2(0.605673, 0.957455)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(172.911, 96.0881)
 scale = Vector2(21.0061, -6.49977)
-texture = ExtResource("1_0el0r")
 
 [node name="ShelterArea" type="Area2D" parent="."]
 position = Vector2(-1.65007, 139.954)

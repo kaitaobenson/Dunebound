@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmv3op0yjapoy"
-path="res://.godot/imported/PressE.png-5401aa4cf25a7525d1501687b7f0d796.ctex"
+uid="uid://e7wjjkl53kx2"
+path="res://.godot/imported/Slash3-Sheet.png-8a91584d405d6fc9dfa79e01f7371b8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PressE.png"
-dest_files=["res://.godot/imported/PressE.png-5401aa4cf25a7525d1501687b7f0d796.ctex"]
+source_file="res://Assets/Textures/Slash3-Sheet.png"
+dest_files=["res://.godot/imported/Slash3-Sheet.png-8a91584d405d6fc9dfa79e01f7371b8f.ctex"]
 
 [params]
 

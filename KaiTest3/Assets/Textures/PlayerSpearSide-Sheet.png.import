@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etj2opaduok3"
-path="res://.godot/imported/Sand.png-3a815e3f52d45a210dd63e1aab9ec6e4.ctex"
+uid="uid://cqnsk6qlh0rvi"
+path="res://.godot/imported/PlayerSpearSide-Sheet.png-4d579a10761879e7d5585d99aebca5d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Sand.png"
-dest_files=["res://.godot/imported/Sand.png-3a815e3f52d45a210dd63e1aab9ec6e4.ctex"]
+source_file="res://Assets/Textures/PlayerSpearSide-Sheet.png"
+dest_files=["res://.godot/imported/PlayerSpearSide-Sheet.png-4d579a10761879e7d5585d99aebca5d4.ctex"]
 
 [params]
 

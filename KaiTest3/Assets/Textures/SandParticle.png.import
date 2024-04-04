@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjr2p547ql75p"
-path="res://.godot/imported/TILEMAPcopy.png-881be477835644da83c0525670292ccb.ctex"
+uid="uid://l51xqhn74v7c"
+path="res://.godot/imported/SandParticle.png-beae9a76065aaa15070ee3cb2cdb41d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/TILEMAPcopy.png"
-dest_files=["res://.godot/imported/TILEMAPcopy.png-881be477835644da83c0525670292ccb.ctex"]
+source_file="res://Assets/Textures/SandParticle.png"
+dest_files=["res://.godot/imported/SandParticle.png-beae9a76065aaa15070ee3cb2cdb41d4.ctex"]
 
 [params]
 

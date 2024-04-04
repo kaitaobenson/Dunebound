@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djhyr7n7fiied"
-path="res://.godot/imported/BumpDune3.png-cd4b670d11949d4c7a72fff5dc62382d.ctex"
+uid="uid://d1wq287rmaq8l"
+path="res://.godot/imported/BigTree.png-71a2aacb819e45f9d9ff23690e509825.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/BumpDune3.png"
-dest_files=["res://.godot/imported/BumpDune3.png-cd4b670d11949d4c7a72fff5dc62382d.ctex"]
+source_file="res://Assets/Textures/BigTree.png"
+dest_files=["res://.godot/imported/BigTree.png-71a2aacb819e45f9d9ff23690e509825.ctex"]
 
 [params]
 

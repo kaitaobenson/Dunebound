@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/PlayerWaterManager.gd" id="3_3arou"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
-[ext_resource type="Script" path="res://Assets/PlayerAnimations.gd" id="4_dnagu"]
+[ext_resource type="Script" path="res://Scripts/PlayerAnimations.gd" id="4_dnagu"]
 [ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
@@ -11,16 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Run1-Sheet.png" id="7_rg2jw"]
 [ext_resource type="Script" path="res://PlayerHurtbox.gd" id="7_w5n8h"]
-[ext_resource type="Texture2D" uid="uid://cqnsk6qlh0rvi" path="res://Assets/PlayerSpearSide-Sheet.png" id="8_yxkyt"]
-[ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Slash3-Sheet.png" id="9_kdg8m"]
-[ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/PlayerSlide2.png" id="10_rbakg"]
+[ext_resource type="Texture2D" uid="uid://cqnsk6qlh0rvi" path="res://Assets/Textures/PlayerSpearSide-Sheet.png" id="8_yxkyt"]
+[ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/Textures/PlayerSlide2.png" id="10_rbakg"]
 [ext_resource type="Script" path="res://Scenes/PlayerTilemapDetector.gd" id="11_5tc6m"]
 [ext_resource type="Script" path="res://Scenes/PlayerAttackManager.gd" id="11_k66ym"]
+[ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Assets/Textures/Slash3-Sheet.png" id="11_mr6g6"]
 [ext_resource type="Script" path="res://Scenes/PressE.gd" id="15_rrqr5"]
-[ext_resource type="Texture2D" uid="uid://dmv3op0yjapoy" path="res://Assets/PressE.png" id="16_7tdrr"]
+[ext_resource type="Texture2D" uid="uid://dmv3op0yjapoy" path="res://Assets/Textures/PressE.png" id="16_7tdrr"]
 [ext_resource type="Script" path="res://Scenes/PlayerBoom.gd" id="17_a47ef"]
-[ext_resource type="Texture2D" uid="uid://cvytbi3sgdier" path="res://Assets/BoomCircle.png" id="18_o8h7w"]
-[ext_resource type="Texture2D" uid="uid://b33o8xheukgk8" path="res://Assets/BoomLine.png" id="19_1770a"]
+[ext_resource type="Texture2D" uid="uid://cvytbi3sgdier" path="res://Assets/Textures/BoomCircle.png" id="18_o8h7w"]
+[ext_resource type="Texture2D" uid="uid://b33o8xheukgk8" path="res://Assets/Textures/BoomLine.png" id="19_1770a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
 radius = 16.0
@@ -119,43 +119,43 @@ atlas = ExtResource("7_rg2jw")
 region = Rect2(576, 0, 96, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7ky2"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(0, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jlv2"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(300, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pix5d"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(600, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m51wo"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(900, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wme6h"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(1200, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pp8na"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(1500, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocp0b"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(1800, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtb5x"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(2100, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_df3ds"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(2400, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lu3uo"]
-atlas = ExtResource("9_kdg8m")
+atlas = ExtResource("11_mr6g6")
 region = Rect2(2700, 0, 300, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ayb3"]
