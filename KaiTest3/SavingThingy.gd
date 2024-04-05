@@ -10,10 +10,11 @@ var default_dict: Dictionary = {
 	"PlayerPos" = Vector2(0,0),
 	"Health" = 100
 }
-
-func _ready():
-	Global.saver_loader = self
+func _init():
 	loader()
+	print (save_dict)
+	Global.saver_loader = self
+
 
 func var_update(value, var_name):
 	save_dict[var_name] = value

@@ -34,12 +34,10 @@ func _init():
 
 func _ready():
 	pass
-	"""
-	$"../../SavingThingy".find_saved_value("Health")
-	var default_position = global_position
-	$"../../SavingThingy".loader()
-	global_position = $"../../SavingThingy".find_saved_value("PlayerPos")
-	"""
+	
+	Global.saver_loader.find_saved_value("Health")
+	global_position = Global.saver_loader.find_saved_value("PlayerPos")
+	
 	
 func _physics_process(delta):
 	print(foodPickup)
