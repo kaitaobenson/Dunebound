@@ -12,9 +12,8 @@ var default_dict: Dictionary = {
 }
 func _init():
 	loader()
-
-func _ready():
-	pass
+	Global.saver_loader = self
+	
 
 func var_update(value, var_name):
 	save_dict[var_name] = value
