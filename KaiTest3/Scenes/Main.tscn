@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
-[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/Tilemap.png" id="5_f8wla"]
+[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/TILEMAP.png" id="5_f8wla"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
@@ -764,7 +764,7 @@ sandstorm_is_on = false
 position = Vector2(1984, 727)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(-1004, 727)
+position = Vector2(3673, -790)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
