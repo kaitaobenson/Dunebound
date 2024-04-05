@@ -7,10 +7,10 @@ const TILE_CONTAINER_MARGIN:float = 20
 var items_node:Array= []
 var items_type:Array= []
 var total_tiles_per_scrollpos
-
 @onready var rawr = get_node("rawr~")
 @onready var templateTile = get_node("itemTileContainer").get_node("itemTileTemplate")
 func _ready():
+	#i hate math
 	scrollbar = get_node("VScrollBar")
 	tilePerRow = floor((rawr.size.x-TILE_CONTAINER_MARGIN*2)/(templateTile.size.x+TILE_MARGIN))
 	self.visible = false

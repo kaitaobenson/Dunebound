@@ -56,7 +56,7 @@
 			{
 			"actionName": "dash",
 			"key": [
-				"E"
+				"C"
 			]
 		},
 						{
@@ -84,6 +84,12 @@
 			"key": [
 				"2"
 			]
-		}
+		},
+		{
+			"actionName": "interact",
+			"key": [
+				"E"
+			]
+		},
 		]
 }

@@ -10,7 +10,7 @@ var player_speed = WALK_SPEED
 const NORMAL_GRAVITY = 2000
 const SLIDING_GRAVITY = 9000
 var gravity: int = NORMAL_GRAVITY
-
+var foodPickup 
 #1, 0, -1
 var player_movement_direction: int = 0
 #1, -1
@@ -42,6 +42,7 @@ func _ready():
 	"""
 	
 func _physics_process(delta):
+	print(foodPickup)
 	move_and_slide()
 	push_other_bodies()
 	particles_control()
