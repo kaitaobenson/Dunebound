@@ -42,7 +42,7 @@ func display_damage_value(attack_damage):
 		
 		await get_tree().create_timer(1.1).timeout
 		_text_label.modulate.a = 0
-		get_tree().create_tween().tween_property(_text_label, "position:y", _text_label.position.y + 100, 0)
+		get_tree().create_tween().tween_property(_text_label, "position:y", _text_label.position.y + 50, 0)
 		done_tweening = true
 
 
