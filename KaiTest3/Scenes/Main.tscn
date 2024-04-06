@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="Script" path="res://Scenes/AreaZoom1.gd" id="4_potqj"]
-[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/TILEMAP.png" id="5_f8wla"]
+[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/Tilemap.png" id="5_f8wla"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="6_bt4hm"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="7_oiap5"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="10_8dq1e"]
@@ -816,6 +816,14 @@ script = ExtResource("31_e37l8")
 shape = SubResource("RectangleShape2D_mbgdl")
 metadata/_edit_lock_ = true
 
+[node name="Checkpoint3" type="Area2D" parent="."]
+position = Vector2(2906, 845)
+script = ExtResource("31_e37l8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint3"]
+shape = SubResource("RectangleShape2D_mbgdl")
+metadata/_edit_lock_ = true
+
 [node name="Checkpoint2" type="Area2D" parent="."]
 position = Vector2(-742, 569)
 script = ExtResource("31_e37l8")
@@ -850,4 +858,5 @@ polygon = PackedVector2Array(-15.9525, 15, -15.9525, -14, 15.8576, -14, 15.8576,
 [connection signal="body_entered" from="AreaZoom1/Area2D" to="AreaZoom1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AreaZoom1/Area2D" to="AreaZoom1" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint3" to="Checkpoint3" method="_on_body_entered"]
 [connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]

@@ -223,7 +223,6 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_s2glg")]
-visible = true
 animation_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="Raycasts" type="Node2D" parent="."]

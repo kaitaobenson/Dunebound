@@ -844,7 +844,6 @@ shape = SubResource("RectangleShape2D_0xmnn")
 metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
-visible = true
 position = Vector2(8, -59)
 animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
 health_bar = "../../../CanvasLayer/PlayerHealthBar"
