@@ -59,7 +59,6 @@ func check_for_enemies():
 			if current_info[1] == true:
 				if _i_frames_done:
 					make_attack(current_info[0])
-					print(current_info)
 					i_frames_on(1)
 			if current_info[1] == false:
 				make_attack(current_info[0])

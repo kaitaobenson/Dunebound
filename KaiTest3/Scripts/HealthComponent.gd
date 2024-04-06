@@ -6,15 +6,15 @@ class_name HealthComponent
 @export var animation_sprite: AnimatedSprite2D
 @export_multiline var health_bar: String
 
+
+var done_tweening: bool = true
 var health : int
+@onready var _text_label = $RichTextLabel
 
 func _ready():
+	_text_label.modulate.a = 0
 	health = max_health
 	update_health_bar()
-
-
-func _process(delta):
-	pass
 
 
 func damage(attack:Attack):
@@ -33,23 +33,17 @@ func damaged_visuals(attack_damage: float):
 
 
 func display_damage_value(attack_damage):
-	if (animation_sprite != null) && (attack_damage > 0):
-		var _text_label = RichTextLabel.new()
-		_text_label.position = Vector2(-10,0)
-		_text_label.modulate.a = 0
+	if (animation_sprite != null) && (attack_damage > 0) && done_tweening:
+		done_tweening = false
 		_text_label.text = str(attack_damage)
-		_text_label.set_size(Vector2(1000,1000))
-		_text_label.scroll_active = false
+		_text_label.visible = true
+		get_tree().create_tween().tween_property(_text_label, "modulate:a", 1, 1)
+		get_tree().create_tween().tween_property(_text_label, "position:y", _text_label.position.y - 50, 1)
 		
-		add_child(_text_label)
-		
-		var _text_label_node: RichTextLabel = get_node(str(_text_label.name))
-		
-		get_tree().create_tween().tween_property(_text_label_node, "modulate:a", 1, 1)
-		get_tree().create_tween().tween_property(_text_label_node, "position:y", _text_label_node.position.y - 100, 1)
-		
-		await get_tree().create_timer(1).timeout
-		_text_label_node.queue_free()
+		await get_tree().create_timer(1.1).timeout
+		_text_label.modulate.a = 0
+		get_tree().create_tween().tween_property(_text_label, "position:y", _text_label.position.y + 100, 0)
+		done_tweening = true
 
 
 func flash_white(attack_damage):

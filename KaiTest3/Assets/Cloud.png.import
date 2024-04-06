@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://die0p5kx5djnf"
-path="res://.godot/imported/SandCloud.png-63d923eace088f2c3a431e8ddaeb776d.ctex"
+uid="uid://cxpcw6mvg73jw"
+path="res://.godot/imported/Cloud.png-4250df8913900f919d931d6ca919b2fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/SandCloud.png"
-dest_files=["res://.godot/imported/SandCloud.png-63d923eace088f2c3a431e8ddaeb776d.ctex"]
+source_file="res://Assets/Cloud.png"
+dest_files=["res://.godot/imported/Cloud.png-4250df8913900f919d931d6ca919b2fc.ctex"]
 
 [params]
 
