@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov3dw100dk33"
-path="res://.godot/imported/Insect1.png-0f7176d8584d0f7223c3b58af9a314c7.ctex"
+uid="uid://b2gmrkvmxi80a"
+path="res://.godot/imported/Jump-Sheet.png-a7e24564b2905ca1900c424c16f0b8b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Insect1.png"
-dest_files=["res://.godot/imported/Insect1.png-0f7176d8584d0f7223c3b58af9a314c7.ctex"]
+source_file="res://Assets/Textures/Player/Jump-Sheet.png"
+dest_files=["res://.godot/imported/Jump-Sheet.png-a7e24564b2905ca1900c424c16f0b8b1.ctex"]
 
 [params]
 

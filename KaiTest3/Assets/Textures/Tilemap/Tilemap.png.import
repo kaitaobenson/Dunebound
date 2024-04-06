@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn8bwu11l2wj4"
-path="res://.godot/imported/Run1-Sheet.png-36b76f3e106f2723883d12b0cf497acd.ctex"
+uid="uid://c7yu5r8m0qgie"
+path="res://.godot/imported/Tilemap.png-72c41bf1c72fc7a5397215ad5fb6c67b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Run1-Sheet.png"
-dest_files=["res://.godot/imported/Run1-Sheet.png-36b76f3e106f2723883d12b0cf497acd.ctex"]
+source_file="res://Assets/Textures/Tilemap/Tilemap.png"
+dest_files=["res://.godot/imported/Tilemap.png-72c41bf1c72fc7a5397215ad5fb6c67b.ctex"]
 
 [params]
 

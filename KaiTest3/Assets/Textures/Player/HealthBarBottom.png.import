@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqnsk6qlh0rvi"
-path="res://.godot/imported/PlayerSpearSide-Sheet.png-4d579a10761879e7d5585d99aebca5d4.ctex"
+uid="uid://cmhbro3us7ukd"
+path="res://.godot/imported/HealthBarBottom.png-2573c195e9d6c1e75e426c7e19a77461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/PlayerSpearSide-Sheet.png"
-dest_files=["res://.godot/imported/PlayerSpearSide-Sheet.png-4d579a10761879e7d5585d99aebca5d4.ctex"]
+source_file="res://Assets/Textures/Player/HealthBarBottom.png"
+dest_files=["res://.godot/imported/HealthBarBottom.png-2573c195e9d6c1e75e426c7e19a77461.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2axghrxf5aqr"
-path="res://.godot/imported/sand-better.png-6a0c1e3d8e267cbf4e09cd43e00734c5.ctex"
+uid="uid://cq82x7ivekrg6"
+path="res://.godot/imported/PlayerSlide2.png-a6dc928272036157b18eae6f03b3721e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/sand-better.png"
-dest_files=["res://.godot/imported/sand-better.png-6a0c1e3d8e267cbf4e09cd43e00734c5.ctex"]
+source_file="res://Assets/Textures/Player/PlayerSlide2.png"
+dest_files=["res://.godot/imported/PlayerSlide2.png-a6dc928272036157b18eae6f03b3721e.ctex"]
 
 [params]
 
