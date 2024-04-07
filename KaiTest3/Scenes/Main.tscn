@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=55 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
@@ -21,12 +21,17 @@
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="26_8wl7l"]
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://Scenes/zombie_husk_guy.tscn" id="27_203vw"]
 [ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/weather_control.tscn" id="27_raabt"]
+[ext_resource type="Script" path="res://Scripts/SunMovement.gd" id="28_lvuh5"]
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="28_lyrdh"]
+[ext_resource type="Texture2D" uid="uid://cdmidcmhfbbf0" path="res://Assets/Textures/Clouds/Cloud1.png" id="28_q1dx4"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="28_ujqb4"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="29_l4iya"]
+[ext_resource type="Texture2D" uid="uid://en4ieyrseo6o" path="res://Assets/Textures/Clouds/Cloud2.png" id="29_nh2bq"]
+[ext_resource type="Texture2D" uid="uid://bv6wrf7kqtklh" path="res://Assets/Textures/Clouds/Cloud3.png" id="30_0eyqf"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="30_u4llx"]
 [ext_resource type="Script" path="res://Checkpoint.gd" id="31_e37l8"]
 [ext_resource type="Script" path="res://SavingThingy.gd" id="31_emn2m"]
+[ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="31_x1k6r"]
 [ext_resource type="Texture2D" uid="uid://b10da1o127f7t" path="res://Assets/Textures/Pillar.png" id="33_60p8f"]
 [ext_resource type="Texture2D" uid="uid://d1wq287rmaq8l" path="res://Assets/Textures/BigTree.png" id="35_jthrx"]
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="36_5ek8d"]
@@ -555,7 +560,7 @@ script = ExtResource("10_vag3d")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
 position = Vector2(375, 374)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 0.0
 script = ExtResource("13_bratx")
 
@@ -727,39 +732,6 @@ offset_top = 222.0
 offset_right = 677.0
 offset_bottom = 446.0
 
-[node name="Background" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
-position = Vector2(-54, -265)
-
-[node name="Sun" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Sun"]
-position = Vector2(698, 91)
-texture = ExtResource("28_lyrdh")
-
-[node name="RepeatingDunes" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.2, 0.1)
-motion_mirroring = Vector2(1390, 2.08165e-12)
-metadata/_edit_lock_ = true
-
-[node name="RepeatingDunes" type="Sprite2D" parent="Background/RepeatingDunes"]
-texture_filter = 1
-position = Vector2(423, 285)
-texture = ExtResource("22_i0hv5")
-metadata/_edit_lock_ = true
-
-[node name="BigRock" type="ParallaxLayer" parent="Background"]
-position = Vector2(-1128, -236)
-metadata/_edit_lock_ = true
-
-[node name="BigRock" type="Sprite2D" parent="Background/BigRock"]
-position = Vector2(1299, 460)
-texture = ExtResource("17_s5fwc")
-metadata/_edit_lock_ = true
-
 [node name="jimmy" parent="." instance=ExtResource("21_gvv07")]
 position = Vector2(3172, 913)
 
@@ -852,6 +824,69 @@ region_filter_clip_enabled = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water/WaterCollision"]
 position = Vector2(0, -2)
 polygon = PackedVector2Array(-15.9525, 15, -15.9525, -14, 15.8576, -14, 15.8576, 16)
+
+[node name="Background" type="ParallaxBackground" parent="."]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 1.04636e-15, -1.04636e-15, 1, 576, 324)
+follow_viewport_scale = 166.667
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+position = Vector2(-54.0001, -265)
+
+[node name="Sun" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="SunSprite" type="Sprite2D" parent="Background/Sun"]
+position = Vector2(-945, -40)
+texture = ExtResource("28_lyrdh")
+script = ExtResource("28_lvuh5")
+
+[node name="Clouds" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2000, 2.08165e-12)
+metadata/_edit_lock_ = true
+
+[node name="Cloud1" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(-519, -325)
+texture = ExtResource("28_q1dx4")
+metadata/_edit_lock_ = true
+
+[node name="Cloud2" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(1, -211)
+texture = ExtResource("29_nh2bq")
+metadata/_edit_lock_ = true
+
+[node name="Cloud3" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(452, -389)
+texture = ExtResource("30_0eyqf")
+metadata/_edit_lock_ = true
+
+[node name="Cloud4" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(860, -170)
+texture = ExtResource("31_x1k6r")
+metadata/_edit_lock_ = true
+
+[node name="RepeatingDunes" type="ParallaxLayer" parent="Background"]
+visible = false
+motion_scale = Vector2(0.2, 0.1)
+motion_mirroring = Vector2(1390, 2.08165e-12)
+metadata/_edit_lock_ = true
+
+[node name="RepeatingDunes" type="Sprite2D" parent="Background/RepeatingDunes"]
+texture_filter = 1
+position = Vector2(423, 285)
+texture = ExtResource("22_i0hv5")
+metadata/_edit_lock_ = true
+
+[node name="BigRock" type="ParallaxLayer" parent="Background"]
+visible = false
+position = Vector2(-1128, -236)
+metadata/_edit_lock_ = true
+
+[node name="BigRock" type="Sprite2D" parent="Background/BigRock"]
+position = Vector2(1299, 460)
+texture = ExtResource("17_s5fwc")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="AreaLabel1/Area2D" to="AreaLabel1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AreaLabel1/Area2D" to="AreaLabel1" method="_on_area_2d_body_exited"]
