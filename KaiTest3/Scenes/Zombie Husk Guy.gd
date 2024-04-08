@@ -6,9 +6,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var movement_direction = 1
 var timerIsOver : bool = true
 var can_see : bool = false
-@onready var Player = $"../PlayerContainer/Player"
-@onready var line_of_sight = $"Line_of_sight_pivot/line_of_sight" as RayCast2D
-@onready var line_of_sight_pivot = $"Line_of_sight_pivot" as Node2D
+@onready var Player = Global.Player
+@onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
+@onready var line_of_sight_pivot = $"LineOfSightPivot" as Node2D
 
 func _ready():
 	pass
@@ -31,8 +31,8 @@ func _process(delta):
 
 
 func is_in_range():
-	var who_i_see = $"Line_of_sight_pivot/line_of_sight".get_collider()
-	var can_i_see = $"Line_of_sight_pivot/line_of_sight".is_colliding()
+	var who_i_see = $"LineOfSightPivot/LineOfSight".get_collider()
+	var can_i_see = $"LineOfSightPivot/LineOfSight".is_colliding()
 	if who_i_see == Player:
 		can_see = true
 	else:

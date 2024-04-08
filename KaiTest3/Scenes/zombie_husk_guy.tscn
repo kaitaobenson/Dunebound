@@ -53,7 +53,7 @@ metadata/_edit_lock_ = true
 target_position = Vector2(17, 0)
 metadata/_edit_lock_ = true
 
-[node name="Line_of_sight_pivot" type="Node2D" parent="."]
+[node name="LineOfSightPivot" type="Node2D" parent="."]
 
-[node name="line_of_sight" type="RayCast2D" parent="Line_of_sight_pivot"]
+[node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
 target_position = Vector2(134, 0)

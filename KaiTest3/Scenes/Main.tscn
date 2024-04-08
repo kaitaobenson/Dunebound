@@ -783,7 +783,7 @@ sandstorm_is_on = false
 position = Vector2(1984, 727)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
-position = Vector2(3673, -790)
+position = Vector2(-1298, 616)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
