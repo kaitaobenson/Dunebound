@@ -25,7 +25,6 @@ func _process(delta):
 
 func new_day_phase():
 	elapsedTime = 0
-	#print(Global.TimeOfDay)
 	if Global.TimeOfDay < 6:
 		Global.TimeOfDay += 1
 	else:
@@ -34,7 +33,6 @@ func new_day_phase():
 		
 func day_night_visuals():
 	var colorValue:float = (sin(PI / DAY_LENGTH * (totalElapsedTime + DAY_LENGTH * BEGIN_PHASE - 0.5)) + 1) / 2
-	#print (colorValue)
 	$"../CanvasModulate".set_color(gradientResource.sample(colorValue))
 	$"../Background/CanvasModulate".set_color(gradientResource.sample(colorValue))
 	

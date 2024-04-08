@@ -35,7 +35,6 @@ func new_day_phase():
 
 func day_night_visuals():
 	var colorValue:float = (cos(PI / (0.5 * DAY_LENGTH) * (totalElapsedTime + DAY_LENGTH * BEGIN_PHASE )) + 1)/ 2
-	#print(str(Global.TimeOfDay) + "Value:  " + str(colorValue))
 	$"../CanvasModulate".set_color(gradientResource.sample(colorValue))
 	$"../Background/CanvasModulate".set_color(gradientResource.sample(colorValue))
 

@@ -40,7 +40,6 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	print(foodPickup)
 	move_and_slide()
 	push_other_bodies()
 	particles_control()

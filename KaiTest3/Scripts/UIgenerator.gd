@@ -62,7 +62,6 @@ func reloadKeybindUI():
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newTicker.value = tickerValues[retghghhvh]
-		print(scrollbar.value)
 		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()

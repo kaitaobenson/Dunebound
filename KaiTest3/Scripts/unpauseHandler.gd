@@ -4,7 +4,6 @@ var controls
 #this script handles unpausing
 func _process(delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
-		print("womp")
 		get_tree().paused = !get_tree().paused
 		get_parent().visible = !get_parent().visible
 		if(!get_parent().visible):
@@ -21,7 +20,6 @@ func _input(event):
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
-				print("ruh row")
 				get_parent().get_parent().get_node("uiContainer").visible = !get_parent().get_parent().get_node("uiContainer").visible
 		else:
 			controls.color = Color("4b4b4b")
