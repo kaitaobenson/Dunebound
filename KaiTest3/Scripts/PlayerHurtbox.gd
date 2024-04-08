@@ -1,7 +1,5 @@
 extends Area2D
 
-var bodies_in_hurtbox = []
-var areas_in_hurtbox = []
 #first is damage, second is if it stops for i frames
 #spikes and bottom barrier don't care about i frames
 const enemy_info = {
@@ -10,6 +8,12 @@ const enemy_info = {
 	"BugEnemy": [20, true],
 	"Zombie Husk Guy": [0, true],
 }
+
+const i_frame_time: float = 0.5
+const health_regen_time: float = 10
+
+var bodies_in_hurtbox = []
+var areas_in_hurtbox = []
 
 @onready var health_component = $"../HealthComponent"
 
@@ -43,7 +47,7 @@ func _on_area_exited(area):
 
 func regen_health(delta):
 	timer += delta
-	if timer >= 1:
+	if timer >= health_regen_time:
 		timer = 0
 		if health_component.health <= 95:
 			make_attack(-5)
@@ -59,7 +63,7 @@ func check_for_enemies():
 			if current_info[1] == true:
 				if _i_frames_done:
 					make_attack(current_info[0])
-					i_frames_on(1)
+					i_frames_on(i_frame_time)
 			if current_info[1] == false:
 				make_attack(current_info[0])
 				
@@ -70,28 +74,39 @@ func check_for_enemies():
 			if current_info[1] == true:
 				if _i_frames_done:
 					make_attack(current_info[0])
-					i_frames_on(1)
+					i_frames_on(i_frame_time)
 			if current_info[1] == false:
 				make_attack(current_info[0])
-				
-				
+
+
 func i_frames_on(seconds : float):
 	_i_frames_done = false
 	await get_tree().create_timer(seconds).timeout
 	_i_frames_done = true
-	
-	
+
+
 func make_attack(damage : int):
 	var attack = Attack.new()
 	attack.attack_damage = damage
 	print(attack.attack_damage)
 	health_component.damage(attack)
-	
-	
+
+
+
 func is_in_shelter() -> bool:
 	if areas_in_hurtbox.has("ShelterArea"):
 		return true
 	else:
 		return false
 
+func is_in_fire() -> bool:
+	if areas_in_hurtbox.has("FireArea"):
+		return true
+	else:
+		return false
 
+func is_in_water() -> bool:
+	if areas_in_hurtbox.has("WaterArea"):
+		return true
+	else:
+		return false

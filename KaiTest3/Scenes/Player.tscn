@@ -1,6 +1,5 @@
-[gd_scene load_steps=83 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=82 format=3 uid="uid://c2e2hmw035cvv"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerWaterManager.gd" id="3_3arou"]
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnimations.gd" id="4_dnagu"]
 [ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
@@ -9,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Player/Jump-Sheet.png" id="6_0xsnr"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Player/Idle1.png" id="7_povkh"]
-[ext_resource type="Script" path="res://PlayerHurtbox.gd" id="7_w5n8h"]
+[ext_resource type="Script" path="res://Scripts/PlayerHurtbox.gd" id="7_w5n8h"]
 [ext_resource type="Texture2D" uid="uid://cqnsk6qlh0rvi" path="res://Assets/Textures/Player/PlayerSpearSide-Sheet.png" id="8_yxkyt"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Player/Run1-Sheet.png" id="10_jlror"]
 [ext_resource type="Script" path="res://Scenes/PlayerTilemapDetector.gd" id="11_5tc6m"]
@@ -782,9 +781,6 @@ color = Color(1, 0.788235, 0.247059, 1)
 
 [node name="TempManager" type="Node" parent="."]
 script = ExtResource("3_qv5lc")
-
-[node name="WaterManager" type="Node" parent="."]
-script = ExtResource("3_3arou")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("5_2xnvu")

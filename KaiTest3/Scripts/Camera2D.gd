@@ -13,7 +13,7 @@ func openthatthing():
 	$uiContainer.visible=true
 	
 func _physics_process(delta):
-	var player_direction = Global.Player.player_movement_direction
+	var player_direction = Global.Player.player_sprite_direction
 	
 	if player_direction == 1:
 		_bufferX = 300
