@@ -16,7 +16,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	sensorHitbox.shape.size = hitbox.size*pickupSensorSize
 	#fun
 	
-	print(Global.run_script("var funnyTexture = preload('"+str(food[0]["texture"])+"');Global.newFood.get_node('Sprite2D').texture = funnyTexture;"))
+	Global.run_script("var funnyTexture = preload('"+str(food[0]["texture"])+"');Global.newFood.get_node('Sprite2D').texture = funnyTexture;")
 	#texture needs to fit the hitbox
 	Global.newFood.get_node("Sprite2D").scale = Global.newFood.get_node("hitbox").shape.size/Global.newFood.get_node("Sprite2D").texture.get_size()
 	Global.newFood.foodTypeA = foodType

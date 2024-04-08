@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bne8t5nsj3dxj"
-path="res://.godot/imported/PalletOGPC1.png-3782aa8ed3285db6885a1d172b2c1779.ctex"
+uid="uid://bv6wrf7kqtklh"
+path="res://.godot/imported/Cloud3.png-24c88028f7433cf5648f5606dbea7cb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/PalletOGPC1.png"
-dest_files=["res://.godot/imported/PalletOGPC1.png-3782aa8ed3285db6885a1d172b2c1779.ctex"]
+source_file="res://Assets/Textures/Clouds/Cloud3.png"
+dest_files=["res://.godot/imported/Cloud3.png-24c88028f7433cf5648f5606dbea7cb7.ctex"]
 
 [params]
 

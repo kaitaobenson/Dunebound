@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi4mqft8lbvt4"
-path="res://.godot/imported/pixilart-drawing (5).png-383430e413a60c5778abbe2c8f4e88ec.ctex"
+uid="uid://en4ieyrseo6o"
+path="res://.godot/imported/Cloud2.png-a2714c8cb29b717a8c8e253d5adbf05f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/pixilart-drawing (5).png"
-dest_files=["res://.godot/imported/pixilart-drawing (5).png-383430e413a60c5778abbe2c8f4e88ec.ctex"]
+source_file="res://Assets/Textures/Clouds/Cloud2.png"
+dest_files=["res://.godot/imported/Cloud2.png-a2714c8cb29b717a8c8e253d5adbf05f.ctex"]
 
 [params]
 

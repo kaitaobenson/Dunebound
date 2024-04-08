@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov3dw100dk33"
-path="res://.godot/imported/Insect1.png-0f7176d8584d0f7223c3b58af9a314c7.ctex"
+uid="uid://e7wjjkl53kx2"
+path="res://.godot/imported/Slash3-Sheet.png-2c50b5150557d1e8dc0c051302f685a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Insect1.png"
-dest_files=["res://.godot/imported/Insect1.png-0f7176d8584d0f7223c3b58af9a314c7.ctex"]
+source_file="res://Assets/Textures/Player/Slash3-Sheet.png"
+dest_files=["res://.godot/imported/Slash3-Sheet.png-2c50b5150557d1e8dc0c051302f685a9.ctex"]
 
 [params]
 

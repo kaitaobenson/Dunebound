@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7yu5r8m0qgie"
-path="res://.godot/imported/TILEMAP.png-40f1aa782f7a63dfcc1640d6e23666e2.ctex"
+uid="uid://bbyvxx7xqvand"
+path="res://.godot/imported/CactusHeidi1.png-f85c28c3eb1330f6665a223becaf2ea1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/TILEMAP.png"
-dest_files=["res://.godot/imported/TILEMAP.png-40f1aa782f7a63dfcc1640d6e23666e2.ctex"]
+source_file="res://Assets/Textures/Fire/CactusHeidi1.png"
+dest_files=["res://.godot/imported/CactusHeidi1.png-f85c28c3eb1330f6665a223becaf2ea1.ctex"]
 
 [params]
 

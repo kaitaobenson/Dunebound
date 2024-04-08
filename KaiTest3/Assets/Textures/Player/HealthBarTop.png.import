@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e7wjjkl53kx2"
-path="res://.godot/imported/Slash3-Sheet.png-8a91584d405d6fc9dfa79e01f7371b8f.ctex"
+uid="uid://b3mbwkpmg8ycu"
+path="res://.godot/imported/HealthBarTop.png-53f7f9726ab20f308777e0634ff2be08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Slash3-Sheet.png"
-dest_files=["res://.godot/imported/Slash3-Sheet.png-8a91584d405d6fc9dfa79e01f7371b8f.ctex"]
+source_file="res://Assets/Textures/Player/HealthBarTop.png"
+dest_files=["res://.godot/imported/HealthBarTop.png-53f7f9726ab20f308777e0634ff2be08.ctex"]
 
 [params]
 

@@ -8,9 +8,16 @@ var TimeOfDay = 1
 var DayCount = 1
 
 var temperature
+var elapsed_time: float
 
 #???? What is this
 var newFood
+
+func _process(delta):
+	elapsed_time += delta
+	if temperature > 99 || temperature < 1:
+		elapsed_time = 0
+
 
 func texture(name:String):
 	#make a texture, load an image into it, and return the texture!

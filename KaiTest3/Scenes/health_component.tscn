@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cddpy8wn110kt"]
+[gd_scene load_steps=3 format=3 uid="uid://cddpy8wn110kt"]
 
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="1_xetch"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="2_qxixd"]
 
 [node name="HealthComponent" type="Node2D"]
-visible = false
 script = ExtResource("1_xetch")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -23.0
+offset_top = -53.0
+offset_right = 24.0
+offset_bottom = -23.0
+theme_override_fonts/normal_font = ExtResource("2_qxixd")
+theme_override_font_sizes/normal_font_size = 30
+text = "100"
+scroll_active = false

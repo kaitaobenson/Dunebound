@@ -40,7 +40,7 @@ func new_day_phase():
 func day_night_visuals():
 	var colorValue:float = (sin(PI / DAY_LENGTH * (totalElapsedTime + DAY_LENGTH * BEGIN_PHASE - 0.5)) + 1) / 2
 	$"../CanvasModulate".set_color(gradientResource.sample(colorValue))
-	$"../Background/CanvasModulate".set_color(gradientResource.sample(colorValue))
+	$"../BackgroundContainer/ParallaxBackground/CanvasModulate".set_color(gradientResource.sample(colorValue))
 	
 func update_temperature():
 	var heatValue:float = (sin(PI / DAY_LENGTH * (totalElapsedTime + DAY_LENGTH * BEGIN_PHASE - 0.5)) + 1) / 2

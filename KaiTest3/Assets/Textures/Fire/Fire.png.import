@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mbwkpmg8ycu"
-path="res://.godot/imported/HealthBarTop.png-709478b3e02e0490c76c0708121f49fd.ctex"
+uid="uid://c02mxnfe4rjrx"
+path="res://.godot/imported/Fire.png-4a92fbb27ac2eb14e7b4d708b8474c33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/HealthBarTop.png"
-dest_files=["res://.godot/imported/HealthBarTop.png-709478b3e02e0490c76c0708121f49fd.ctex"]
+source_file="res://Assets/Textures/Fire/Fire.png"
+dest_files=["res://.godot/imported/Fire.png-4a92fbb27ac2eb14e7b4d708b8474c33.ctex"]
 
 [params]
 

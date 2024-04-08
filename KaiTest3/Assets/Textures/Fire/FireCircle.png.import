@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3rytiu1p4kxu"
-path="res://.godot/imported/Idle1.png-d213c35d88e02e182c07181745509c81.ctex"
+uid="uid://bwdv8t64uel3v"
+path="res://.godot/imported/FireCircle.png-c3d60d67a7cbba454b3ce2824f1fed10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Idle1.png"
-dest_files=["res://.godot/imported/Idle1.png-d213c35d88e02e182c07181745509c81.ctex"]
+source_file="res://Assets/Textures/Fire/FireCircle.png"
+dest_files=["res://.godot/imported/FireCircle.png-c3d60d67a7cbba454b3ce2824f1fed10.ctex"]
 
 [params]
 
