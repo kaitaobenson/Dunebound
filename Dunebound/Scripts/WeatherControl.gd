@@ -4,7 +4,7 @@ extends Node
 const NUMBER_OF_PHASES : float = 6.0
 const DAY_LENGTH:float = 10
 const PHASE_LENGTH:float = DAY_LENGTH / NUMBER_OF_PHASES
-const BEGIN_PHASE:float = 0
+const BEGIN_PHASE:float = 1
 
 
 var elapsedTime:float = 0.0

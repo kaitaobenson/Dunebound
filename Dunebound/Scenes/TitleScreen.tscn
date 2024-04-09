@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuoerosfps357"]
+
+[ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_b1i4c"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="2_nq5fw"]
+[ext_resource type="Script" path="res://Scripts/PlayButton.gd" id="3_jwrft"]
+[ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://Assets/ogpc-team-logo.svg" id="4_jmfyh"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_b1i4c")
+
+[node name="MainScreen" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="MainScreen"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_jwrft")
+
+[node name="ColorRect" type="ColorRect" parent="MainScreen/Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Play" type="Button" parent="MainScreen/Control"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 445.0
+offset_right = 716.0
+offset_bottom = 601.0
+theme_override_fonts/font = ExtResource("2_nq5fw")
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "Play"
+
+[node name="Logo" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Logo"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Logo"]
+z_index = 1
+position = Vector2(570, 378)
+texture = ExtResource("4_jmfyh")
+
+[connection signal="pressed" from="MainScreen/Control/Play" to="MainScreen/Control" method="_on_play_pressed"]
