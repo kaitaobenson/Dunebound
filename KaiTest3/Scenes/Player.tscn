@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=90 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnimations.gd" id="4_dnagu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
 [ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
 [ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Player/Jump-Sheet.png" id="6_0xsnr"]
+[ext_resource type="Texture2D" uid="uid://cjrb3f03ig5fo" path="res://Assets/Textures/Player/PlayerDeath.png" id="6_cl80o"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Player/Idle1.png" id="7_povkh"]
 [ext_resource type="Script" path="res://Scripts/PlayerHurtbox.gd" id="7_w5n8h"]
@@ -24,6 +25,30 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb2my"]
 radius = 16.0
 height = 82.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkbg1"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(0, 0, 352, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31sv2"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(352, 0, 352, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2jox"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(704, 0, 352, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5ik"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(1056, 0, 352, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bb7f"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(1408, 0, 352, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m61mv"]
+atlas = ExtResource("6_cl80o")
+region = Rect2(1760, 0, 352, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3x0x0"]
 atlas = ExtResource("7_povkh")
@@ -183,6 +208,29 @@ region = Rect2(1016, 0, 254, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpc2o"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkbg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31sv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2jox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bb7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m61mv")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3x0x0")
@@ -355,6 +403,34 @@ animations = [{
 "name": &"SlideLoop",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_fr8ka"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 1, 1, 2, 3, 4, 5]
+}
 
 [sub_resource type="Animation" id="Animation_3jf04"]
 resource_name = "Idle"
@@ -721,6 +797,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tieuu"]
 _data = {
+"Death": SubResource("Animation_fr8ka"),
 "Idle": SubResource("Animation_3jf04"),
 "JumpDown": SubResource("Animation_mjucu"),
 "JumpUp": SubResource("Animation_wl5se"),
@@ -842,7 +919,7 @@ metadata/_edit_lock_ = true
 [node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
 position = Vector2(8, -59)
 animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
-health_bar = "../../../CanvasLayer/PlayerHealthBar"
+health_bar = "../../../UI/PlayerHealthBar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)

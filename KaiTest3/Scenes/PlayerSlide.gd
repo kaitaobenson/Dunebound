@@ -1,7 +1,7 @@
 extends Node
 
 const MIN_SPEED = 350
-const MAX_SPEED = 1000
+const MAX_SPEED = 1200
 
 const SLIDE_SPEED_MULTIPLIER = 6.9
 const SLIDE_DRAG = 80
@@ -31,11 +31,12 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	handle_slide()
+	if !Input.is_action_pressed("jump"):
+		handle_slide()
 
 
 func handle_slide():
-	if slide_is_pressed && _player.is_on_floor_custom() && previous_slide_done:
+	if slide_is_pressed && _player.is_on_floor() && previous_slide_done:
 		### SLIDE, TRIGGERED ONCE ###
 		previous_slide_done = false
 		
@@ -89,7 +90,8 @@ func slide():
 		new_speed += (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG * _player.player_sprite_direction)
 		if new_speed > MAX_SPEED:
 			new_speed = MAX_SPEED
-		_player.velocity.x = new_speed
+		if slide_is_pressed && slide_has_moved && _player.is_on_floor_custom() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
+			_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()
 		await get_tree().create_timer(0.001).timeout

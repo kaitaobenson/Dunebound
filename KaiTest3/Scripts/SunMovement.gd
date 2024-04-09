@@ -3,7 +3,7 @@ extends Sprite2D
 @export var central_pos: Vector2 = Vector2(0,0)
 @export var radius: float = 400.0
 
-var coefficent: float = 100
+var coefficent: float = 1
 var angle: float = 0.0
 
 func _ready():

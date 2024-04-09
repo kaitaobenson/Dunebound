@@ -20,6 +20,8 @@ enum ALL_ANIMATIONS {
 	SLIDE_LOOP,
 	SLIDE_END,
 	
+	DEATH,
+	
 	NONE
 	}
 
@@ -129,6 +131,11 @@ func play_animation_sequence(animationName:ALL_ANIMATIONS):
 		await _anim.animation_finished
 		_anim_sprite.rotation_degrees = 0
 		change_animation(ALL_ANIMATIONS.SLIDE_END, false)
+		
+		
+	if animationName == ALL_ANIMATIONS.DEATH:
+		playing_animation = ALL_ANIMATIONS.DEATH
+		play_custom(ALL_ANIMATIONS.DEATH)
 
 
 
@@ -165,6 +172,8 @@ func get_animation_priority(animation: ALL_ANIMATIONS) -> int:
 		ALL_ANIMATIONS.SHORT_ATTACK_END_1,
 		ALL_ANIMATIONS.LONG_ATTACK_BEGIN_1,
 		ALL_ANIMATIONS.LONG_ATTACK_END_1,
+		
+		ALL_ANIMATIONS.DEATH
 	]
 	
 	return animation_priority.find(animation)

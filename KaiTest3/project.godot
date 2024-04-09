@@ -13,6 +13,8 @@ config_version=5
 config/name="Test3"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/show_image=false
+boot_splash/image="res://Assets/Textures/pixil-frame-0.png"
 config/icon="res://Assets/Textures/icon.svg"
 
 [autoload]
@@ -38,3 +40,4 @@ version_control/autoload_on_startup=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.380392, 0.431373, 0.392157, 1)
+viewport/transparent_background=true

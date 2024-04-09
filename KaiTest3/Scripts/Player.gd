@@ -33,16 +33,13 @@ func _init():
 	Global.Player = self
 
 func _ready():
-	pass
-	
 	Global.saver_loader.find_saved_value("Health")
 	global_position = Global.saver_loader.find_saved_value("PlayerPos")
-	
-	
+
+
 func _physics_process(delta):
 	move_and_slide()
 	push_other_bodies()
-	particles_control()
 	var inventory_is_on
 	#is_inventory_on updater
 	if(Input.is_action_just_pressed("inventory_toggle")):
@@ -50,8 +47,8 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	
 	### AD MOVEMENT ###
-	if (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")) && (!_slide.is_move_locked() && !_attack_manager.is_move_locked()):
-		player_movement_direction = Input.get_axis("move_left", "move_right")
+	player_movement_direction = Input.get_axis("move_left", "move_right")
+	if player_movement_direction != 0 && (!_slide.is_move_locked() && !_attack_manager.is_move_locked() && !is_dead):
 		if player_movement_direction != 0:
 			ad_movement(player_movement_direction)
 	elif !_slide.is_sliding():
@@ -69,14 +66,14 @@ func _physics_process(delta):
 		else:
 			_can_jump = false
 			
-
-	if Input.is_action_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked():
+			
+	if Input.is_action_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked() && !is_dead:
 		jump()
 		while is_on_floor_custom():
 			await get_tree().create_timer(0.1).timeout
 		_jump_timer = 100.0
-	
-	
+
+
 func ad_movement(direction: int) -> void:
 	if direction != 0:
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, true)
@@ -89,11 +86,12 @@ func ad_movement(direction: int) -> void:
 		flip(false)
 	velocity.x = direction * player_speed
 
+
 func jump():
 	velocity.y = -JUMP_VELOCITY
 	_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.JUMP, true)
-	
-	
+
+
 func apply_gravity(delta):
 	if !is_on_floor_custom():
 		gravity = NORMAL_GRAVITY
@@ -106,25 +104,23 @@ func push_other_bodies():
 			
 			if collision && collision.get_collider() is RigidBody2D:
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * PUSH_FORCE)
-				
-				
+
+
 func die():
 	if !is_dead:
 		is_dead = true
-		visible = false
-		_hitbox.disabled = true
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.DEATH, true)
+		
+		await get_tree().create_timer(1).timeout
 		set_physics_process(false)
+		set_process(false)
+		for child in get_children():
+			child.set_physics_process(false)
+			child.set_process(false)
+		_hitbox.disabled = true
 		await get_tree().create_timer(1).timeout
 		get_tree().reload_current_scene()
-	
-	
-func particles_control():
-	if is_on_floor() && player_movement_direction != 0:
-		_particle_manager.set_particles_on(true)
-	else:
-		_particle_manager.set_particles_on(false)
-		
-		
+
 func flip(isRight : bool):
 	var nodes_to_flip = [
 		$PlayerHitbox,
@@ -140,8 +136,8 @@ func flip(isRight : bool):
 		player_sprite_direction = -1
 		for i in nodes_to_flip.size():
 			nodes_to_flip[i].scale.x = -1
-			
-			
+
+
 func is_on_floor_custom() -> bool:
 	var left = $GroundRaycasts/Left
 	var center = $GroundRaycasts/Center
@@ -151,8 +147,8 @@ func is_on_floor_custom() -> bool:
 		return true
 	else: 
 		return false
-		
-		
+
+
 var floor_angle = 0
 func get_floor_angle_custom() -> float:
 	if is_on_floor():

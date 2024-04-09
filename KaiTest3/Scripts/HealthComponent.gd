@@ -6,7 +6,7 @@ class_name HealthComponent
 @export var animation_sprite: AnimatedSprite2D
 @export_multiline var health_bar: String
 
-
+var finished_death: bool = false
 var done_tweening: bool = true
 var health : int
 @onready var _text_label = $RichTextLabel
@@ -29,7 +29,12 @@ func damage(attack:Attack):
 
 func damaged_visuals(attack_damage: float):
 	display_damage_value(attack_damage)
-	flash_white(attack_damage)
+	
+	if !finished_death:
+		flash_white(attack_damage)
+	if health <= 0:
+		finished_death = true
+
 
 
 func display_damage_value(attack_damage):

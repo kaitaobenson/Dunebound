@@ -34,4 +34,5 @@ color = Color(1, 1, 0, 1)
 modulate = Color(0.333333, 0.223529, 0.0352941, 0.34902)
 offset_right = 1152.0
 offset_bottom = 648.0
+color = Color(0.129412, 0.129412, 0.129412, 1)
 metadata/_edit_lock_ = true
