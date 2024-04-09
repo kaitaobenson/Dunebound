@@ -12,7 +12,6 @@ var default_dict: Dictionary = {
 }
 func _init():
 	loader()
-	print (save_dict)
 	Global.saver_loader = self
 
 
