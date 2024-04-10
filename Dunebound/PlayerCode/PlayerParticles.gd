@@ -6,7 +6,6 @@ var direction: int = 0
 
 func _process(delta):
 	direction = player.player_movement_direction
-	print(direction)
 	if direction != 0 && player.is_on_floor():
 		set_particles_on(true)
 	else:

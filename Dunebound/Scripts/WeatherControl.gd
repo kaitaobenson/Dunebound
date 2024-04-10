@@ -18,7 +18,7 @@ var totalElapsedTime:float = 0.0
 #Gradient for Night / Day
 var gradientResource = load("res://Assets/Textures/DayNightGradient.tres")
 
-func _ready():
+func _init():
 	update_temperature()
 
 func _process(delta):

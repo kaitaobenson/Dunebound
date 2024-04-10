@@ -1,24 +1,24 @@
 [gd_scene load_steps=90 format=3 uid="uid://c2e2hmw035cvv"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerTemp.gd" id="3_qv5lc"]
-[ext_resource type="Script" path="res://Scripts/PlayerAnimations.gd" id="4_dnagu"]
-[ext_resource type="Script" path="res://Scenes/PlayerSlide.gd" id="4_s8vyt"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="5_2xnvu"]
-[ext_resource type="Script" path="res://Scripts/PlayerParticles.gd" id="5_ks2nr"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerParticles.gd" id="1_kaien"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerTemp.gd" id="2_nfs4v"]
+[ext_resource type="Script" path="res://PlayerCode/Player.gd" id="3_xsgwl"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerSlide.gd" id="4_majib"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerAnimations.gd" id="5_02tc4"]
 [ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Player/Jump-Sheet.png" id="6_0xsnr"]
 [ext_resource type="Texture2D" uid="uid://cjrb3f03ig5fo" path="res://Assets/Textures/Player/PlayerDeath.png" id="6_cl80o"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Player/Idle1.png" id="7_povkh"]
-[ext_resource type="Script" path="res://Scripts/PlayerHurtbox.gd" id="7_w5n8h"]
 [ext_resource type="Texture2D" uid="uid://cqnsk6qlh0rvi" path="res://Assets/Textures/Player/PlayerSpearSide-Sheet.png" id="8_yxkyt"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Player/Run1-Sheet.png" id="10_jlror"]
-[ext_resource type="Script" path="res://Scenes/PlayerTilemapDetector.gd" id="11_5tc6m"]
 [ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Assets/Textures/Player/Slash3-Sheet.png" id="11_jwwth"]
-[ext_resource type="Script" path="res://Scenes/PlayerAttackManager.gd" id="11_k66ym"]
 [ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/Textures/Player/PlayerSlide2.png" id="12_l81jy"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerHurtbox.gd" id="13_clvl7"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerTilemapDetector.gd" id="14_p7wcr"]
 [ext_resource type="Script" path="res://Scenes/PressE.gd" id="15_rrqr5"]
 [ext_resource type="Texture2D" uid="uid://dmv3op0yjapoy" path="res://Assets/Textures/PressE.png" id="16_7tdrr"]
-[ext_resource type="Script" path="res://Scenes/PlayerBoom.gd" id="17_a47ef"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerAttackManager.gd" id="16_xxbpk"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerBoom.gd" id="17_jrvf6"]
 [ext_resource type="Texture2D" uid="uid://cvytbi3sgdier" path="res://Assets/Textures/BoomCircle.png" id="18_o8h7w"]
 [ext_resource type="Texture2D" uid="uid://b33o8xheukgk8" path="res://Assets/Textures/BoomLine.png" id="19_1770a"]
 
@@ -836,7 +836,7 @@ light_mode = 1
 position = Vector2(943, 599)
 
 [node name="ParticleManager" type="Node" parent="."]
-script = ExtResource("5_ks2nr")
+script = ExtResource("1_kaien")
 
 [node name="SandParticles" type="CPUParticles2D" parent="ParticleManager"]
 unique_name_in_owner = true
@@ -857,10 +857,10 @@ scale_amount_max = 10.0
 color = Color(1, 0.788235, 0.247059, 1)
 
 [node name="TempManager" type="Node" parent="."]
-script = ExtResource("3_qv5lc")
+script = ExtResource("2_nfs4v")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("5_2xnvu")
+script = ExtResource("3_xsgwl")
 metadata/_edit_lock_ = true
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="Player"]
@@ -868,7 +868,7 @@ shape = SubResource("CapsuleShape2D_hb2my")
 metadata/_edit_lock_ = true
 
 [node name="Slide" type="Node" parent="Player"]
-script = ExtResource("4_s8vyt")
+script = ExtResource("4_majib")
 
 [node name="GroundRaycasts" type="Node2D" parent="Player"]
 
@@ -885,7 +885,7 @@ position = Vector2(11, 36)
 target_position = Vector2(0, 19)
 
 [node name="AnimationManager" type="Node2D" parent="Player"]
-script = ExtResource("4_dnagu")
+script = ExtResource("5_02tc4")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/AnimationManager"]
@@ -900,7 +900,7 @@ libraries = {
 }
 
 [node name="HurtboxComponent" type="Area2D" parent="Player"]
-script = ExtResource("7_w5n8h")
+script = ExtResource("13_clvl7")
 
 [node name="HurtboxCollison" type="CollisionShape2D" parent="Player/HurtboxComponent"]
 position = Vector2(-0.5, -3.5)
@@ -908,7 +908,7 @@ shape = SubResource("RectangleShape2D_5kr2j")
 metadata/_edit_lock_ = true
 
 [node name="TilemapDetector" type="Area2D" parent="Player" node_paths=PackedStringArray("_health_component")]
-script = ExtResource("11_5tc6m")
+script = ExtResource("14_p7wcr")
 _health_component = NodePath("../HealthComponent")
 
 [node name="TileDetectionArea" type="CollisionShape2D" parent="Player/TilemapDetector"]
@@ -923,7 +923,7 @@ health_bar = "../../../UI/PlayerHealthBar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)
-script = ExtResource("11_k66ym")
+script = ExtResource("16_xxbpk")
 
 [node name="AttackArea" type="Area2D" parent="Player/AttackManager"]
 metadata/_edit_lock_ = true
@@ -943,7 +943,7 @@ metadata/_edit_lock_ = true
 [node name="Boom" type="Node2D" parent="Player/AttackManager"]
 visible = false
 position = Vector2(-3, 3)
-script = ExtResource("17_a47ef")
+script = ExtResource("17_jrvf6")
 metadata/_edit_lock_ = true
 
 [node name="Line" type="Sprite2D" parent="Player/AttackManager/Boom"]
