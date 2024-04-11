@@ -38,6 +38,12 @@ func _ready():
 
 
 func _physics_process(delta):
+<<<<<<< HEAD:KaiTest3/Scripts/Player.gd
+	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
+		Global.inventory.newInfoGhost(foodPickup)
+		foodPickup.queue_free()
+=======
+>>>>>>> 87a63b60664408a431ce63e1cc45f667c5d33b3b:Dunebound/PlayerCode/Player.gd
 	move_and_slide()
 	push_other_bodies()
 	var inventory_is_on
