@@ -40,7 +40,9 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	print(foodPickup)
+	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
+		Global.inventory.newInfoGhost(foodPickup)
+		foodPickup.queue_free()
 	move_and_slide()
 	push_other_bodies()
 	particles_control()
