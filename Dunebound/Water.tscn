@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsbwa3l44tpqa"]
+
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_dimx6"]
+
+[node name="Water" type="Node2D"]
+position = Vector2(-2.38419e-07, -16)
+scale = Vector2(10.5312, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0509804, 0.313726, 1, 0.670588)
+texture = ExtResource("1_dimx6")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+region_filter_clip_enabled = true
+
+[node name="WaterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-15.9525, 15, -15.9525, -14, 15.8576, -14, 15.8576, 16)

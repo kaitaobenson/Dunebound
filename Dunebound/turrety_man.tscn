@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkduxmrjthkt3"]
+
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_2ummm"]
+[ext_resource type="Script" path="res://turrety_man.gd" id="1_dv6c4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uklvo"]
+size = Vector2(45, 132)
+
+[node name="TurretyMan" type="CharacterBody2D"]
+position = Vector2(203, 174)
+script = ExtResource("1_dv6c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uklvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-06, 0)
+scale = Vector2(1.40625, 4.125)
+texture = ExtResource("1_2ummm")
+
+[node name="LineOfSightPivot" type="Node2D" parent="."]
+
+[node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
+target_position = Vector2(114, 0)

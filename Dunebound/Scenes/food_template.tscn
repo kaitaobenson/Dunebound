@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyr6tageajddq"]
+
+[ext_resource type="Script" path="res://Scripts/foodTemplate.gd" id="1_bw6jq"]
+
+[node name="foodTemplate" type="RigidBody2D"]
+script = ExtResource("1_bw6jq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="."]

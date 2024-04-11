@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfpip6ipg0f6m"]
+
+[ext_resource type="Script" path="res://Scripts/WeatherControl.gd" id="1_6esv1"]
+[ext_resource type="Texture2D" uid="uid://l51xqhn74v7c" path="res://Assets/Textures/SandParticle.png" id="2_0ebvh"]
+
+[node name="WeatherControl" type="Node"]
+script = ExtResource("1_6esv1")
+sandstorm_is_on = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer"]
+position = Vector2(579, 13)
+emitting = false
+amount = 1600
+lifetime = 33.34
+speed_scale = 1.39
+texture = ExtResource("2_0ebvh")
+emission_shape = 3
+emission_rect_extents = Vector2(576, 1)
+direction = Vector2(-5, -100)
+spread = 46.25
+initial_velocity_max = 645.83
+angular_velocity_min = -510.0
+angular_velocity_max = 270.0
+linear_accel_max = 40.59
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_max = 3.0
+color = Color(1, 1, 0, 1)
+
+[node name="StormOverlay" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.333333, 0.223529, 0.0352941, 0.34902)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.129412, 0.129412, 0.129412, 1)
+metadata/_edit_lock_ = true

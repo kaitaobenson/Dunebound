@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cddpy8wn110kt"]
-
-[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="1_xetch"]
-
-[node name="HealthComponent" type="Node2D"]
-visible = false
-script = ExtResource("1_xetch")
