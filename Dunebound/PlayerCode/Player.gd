@@ -38,6 +38,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
+		Global.inventory.newInfoGhost(foodPickup)
+		foodPickup.queue_free()
+		
 	move_and_slide()
 	push_other_bodies()
 	var inventory_is_on
@@ -69,8 +73,8 @@ func _physics_process(delta):
 			
 	if Input.is_action_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked() && !is_dead:
 		jump()
-		while is_on_floor_custom():
-			await get_tree().create_timer(0.1).timeout
+		while is_on_floor_custom() && !is_dead:
+			await get_tree().process_frame
 		_jump_timer = 100.0
 
 

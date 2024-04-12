@@ -90,7 +90,7 @@ func slide():
 		new_speed += (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG * _player.player_sprite_direction)
 		if new_speed > MAX_SPEED:
 			new_speed = MAX_SPEED
-		if slide_is_pressed && slide_has_moved && _player.is_on_floor_custom() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
+		if _player.is_on_floor() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
 			_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()
@@ -99,7 +99,8 @@ func slide():
 	while slide_is_pressed && !_player.is_on_floor_custom():
 		sliding_in_air = true
 		
-		_player.velocity.x = new_speed
+		if _player.is_on_floor() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
+			_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()
 		await get_tree().create_timer(0.001).timeout

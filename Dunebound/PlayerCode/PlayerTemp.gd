@@ -26,7 +26,8 @@ var can_take_damage: bool = true
 @onready var _temperature_label: RichTextLabel = $"../../UI/TempGauge"
 
 func _ready():
-	player_temp = Global.temperature
+	pass
+	#player_temp = Global.temperature
 
 
 func _process(delta):
