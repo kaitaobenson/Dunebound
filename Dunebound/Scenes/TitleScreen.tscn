@@ -18,11 +18,21 @@ position = Vector2(576, 324)
 texture = ExtResource("3_3aerd")
 metadata/_edit_lock_ = true
 
+[node name="RichTextLabel" type="RichTextLabel" parent="MainScreen"]
+offset_left = 153.0
+offset_top = 20.0
+offset_right = 995.0
+offset_bottom = 221.0
+theme_override_fonts/normal_font = ExtResource("2_nq5fw")
+theme_override_font_sizes/normal_font_size = 200
+text = "Dunebound"
+scroll_active = false
+
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 71.0
-offset_top = 196.0
-offset_right = 321.0
-offset_bottom = 506.0
+offset_left = 43.0
+offset_top = 286.0
+offset_right = 293.0
+offset_bottom = 596.0
 theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 20
 
@@ -49,6 +59,7 @@ action_mode = 0
 text = "Thingy"
 
 [node name="Logo" type="Node2D" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Logo"]
 offset_right = 1152.0
