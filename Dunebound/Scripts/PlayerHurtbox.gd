@@ -7,6 +7,8 @@ const enemy_info = {
 	"BottomBarrierDeath" : [100, false],
 	"BugEnemy": [20, true],
 	"Zombie Husk Guy": [0, true],
+	"TurretyMan": [10, true],
+	"TurretBullet": [50, true],
 }
 
 const i_frame_time: float = 0.5
