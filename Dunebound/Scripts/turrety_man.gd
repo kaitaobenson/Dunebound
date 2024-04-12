@@ -43,7 +43,6 @@ func fire_bullet():
 	can_fire = false
 	var bullet = bulletPath.instantiate()
 	var bullet_pos : Vector2
-	var direction_to_player = (Player.global_position - bullet.global_position)
 	# Prevents bullets from blocking line of sight
 	line_of_sight.add_exception(bullet)
 	# Offsets spawn position depending on if you are to the right or to the left
@@ -53,10 +52,16 @@ func fire_bullet():
 	else:
 		bullet_pos = Vector2(global_position.x - 60, global_position.y - 30)
 	
-	add_child(bullet)
+	var bullet_container = Node2D.new()
+	add_child(bullet_container)
+	var bullet_container_node = get_node(str(bullet_container.name))
+	
+	
+	bullet_container_node.add_child(bullet)
 	bullet.global_position = bullet_pos
 	bullet.velociter = Player.global_position - bullet.global_position
 	await get_tree().create_timer(1).timeout
+	
 	can_fire = true
 	
 	

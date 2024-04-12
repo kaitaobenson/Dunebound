@@ -8,7 +8,7 @@ const enemy_info = {
 	"BugEnemy": [20, true],
 	"Zombie Husk Guy": [0, true],
 	"TurretyMan": [10, true],
-	"TurretBullet": [50, true],
+	"TurretBullet": [40, true],
 }
 
 const i_frame_time: float = 0.5
@@ -65,6 +65,7 @@ func check_for_enemies():
 			if current_info[1] == true:
 				if _i_frames_done:
 					make_attack(current_info[0])
+					
 					i_frames_on(i_frame_time)
 			if current_info[1] == false:
 				make_attack(current_info[0])
