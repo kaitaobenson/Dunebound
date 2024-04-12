@@ -833,7 +833,6 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ku7qv"]
 
 [node name="PlayerContainer" type="Node2D"]
-position = Vector2(943, 599)
 
 [node name="ParticleManager" type="Node" parent="."]
 script = ExtResource("1_kaien")

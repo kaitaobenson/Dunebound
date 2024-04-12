@@ -1,13 +1,16 @@
 extends Node
 
-#no you cant just use bad conventions!1!1!!! haha global variables go brrrrr
 var inventory
 var Player: Object
+var player_temp: float 
+
 var camera: Camera2D
 var saver_loader: Object
+var temperature_ui: Object
 
 var TimeOfDay = 1
 var DayCount = 1
+var seconds_per_day = 0
 
 var temperature
 

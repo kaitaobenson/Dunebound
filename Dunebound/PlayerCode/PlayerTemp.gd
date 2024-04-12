@@ -11,7 +11,7 @@ const player_cold_limit: float = 35
 const time_before_damage: float = 1
 const damage: float = 5
 
-var ease_to_outside_temp_value: float = 1
+var ease_to_outside_temp_value: float = 3
 var can_ease_to_outside_temp: bool = true
 
 var outside_temp_status: TEMP_STATES
@@ -23,17 +23,19 @@ var can_take_damage: bool = true
 
 @onready var _health_component: HealthComponent = $"../Player/HealthComponent"
 @onready var _hurtbox_component = $"../Player/HurtboxComponent"
-@onready var _temperature_label: RichTextLabel = $"../../UI/TempGauge"
+@onready var _temperature_label: RichTextLabel = Global.temperature_ui.get_node("TempGauge")
+@onready var _temperature_ui: Node = Global.temperature_ui
+
 
 func _ready():
 	pass
-	#player_temp = Global.temperature
 
 
 func _process(delta):
 	update_player_temp_status()
 	player_take_damage()
 	keep_player_temp_within_boundries()
+	Global.player_temp = player_temp
 	
 	_temperature_label.text = str(round(player_temp)) + ". F"
 	
@@ -63,7 +65,7 @@ func player_take_damage():
 			
 			var attack = Attack.new()
 			attack.attack_damage = damage
-			_health_component.damage(attack)
+			_health_component.damage_without_visuals(attack)
 			
 			await get_tree().create_timer(time_before_damage).timeout
 			can_take_damage = true
@@ -74,9 +76,9 @@ func ease_toward_outside_temp():
 	if can_ease_to_outside_temp:
 		can_ease_to_outside_temp = false
 		#Add / subtract to outside temp
-		if (Global.temperature - player_temp) > ease_to_outside_temp_value:
+		if (Global.temperature - player_temp) >= ease_to_outside_temp_value:
 			player_temp += ease_to_outside_temp_value
-		elif (Global.temperature - player_temp) < -ease_to_outside_temp_value:
+		elif (Global.temperature - player_temp) <= -ease_to_outside_temp_value:
 			player_temp -= ease_to_outside_temp_value
 		
 		
