@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c374iml6q4wds"]
+
+[ext_resource type="Script" path="res://Scenes/turret_bullet.gd" id="1_3wafu"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/pixil-frame-0.png" id="1_ss44d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2xcw"]
+radius = 17.1172
+
+[node name="TurretBullet" type="CharacterBody2D"]
+script = ExtResource("1_3wafu")
+
+[node name="BulletHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y2xcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ss44d")
