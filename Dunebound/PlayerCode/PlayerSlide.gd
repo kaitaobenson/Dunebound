@@ -3,7 +3,7 @@ extends Node
 const MIN_SPEED = 350
 const MAX_SPEED = 1200
 
-const SLIDE_SPEED_MULTIPLIER = 6.9
+const SLIDE_SPEED_MULTIPLIER = 8.4
 const SLIDE_DRAG = 80
 
 const DASH_TIME = 0.13

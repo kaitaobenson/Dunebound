@@ -7,7 +7,7 @@
 [sub_resource type="GDScript" id="GDScript_b8wcj"]
 script/source = "extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 100.0
 var direction = 0
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var rigidBody:bool
@@ -192,10 +192,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stxym"]
-size = Vector2(62, 42)
+size = Vector2(76, 54)
 
 [node name="BugEnemy" type="CharacterBody2D"]
-position = Vector2(161, 583)
+position = Vector2(0, 1)
 script = SubResource("GDScript_b8wcj")
 
 [node name="Square" type="CollisionShape2D" parent="."]
@@ -268,6 +268,6 @@ script = ExtResource("3_sto7s")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(5, 5)
+position = Vector2(5, 6)
 shape = SubResource("RectangleShape2D_stxym")
 metadata/_edit_lock_ = true

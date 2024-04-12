@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ukr6qxq7e77o"]
+
+[ext_resource type="Script" path="res://Scripts/Wind.gd" id="1_2pcb3"]
+
+[sub_resource type="Curve" id="Curve_fy2sy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_g6p2p"]
+offsets = PackedFloat32Array(0, 0.526012, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.0843618, 0.0843618, 0.0843618, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_8ibr0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 82, -137.794, -4.7836, 137.794, 4.7836, 367, 235, -168.337, 0.788528, 168.337, -0.788528, 1020, 219, -127.772, -36.5193, 127.772, 36.5193, 1342, 51)
+}
+point_count = 4
+
+[node name="Node2D" type="Node2D"]
+modulate = Color(1, 1, 1, 0.203922)
+
+[node name="Wind1" type="Line2D" parent="."]
+points = PackedVector2Array(1022, 394)
+width_curve = SubResource("Curve_fy2sy")
+script = ExtResource("1_2pcb3")
+trail_length = 0.5
+trail_speed = 0.004
+trail_color_gradient = SubResource("Gradient_g6p2p")
+
+[node name="Path2D" type="Path2D" parent="Wind1"]
+position = Vector2(-39, 92)
+curve = SubResource("Curve2D_8ibr0")

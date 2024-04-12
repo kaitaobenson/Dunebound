@@ -71,7 +71,7 @@ func _physics_process(delta):
 			_can_jump = false
 			
 			
-	if Input.is_action_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked() && !is_dead:
+	if Input.is_action_just_pressed("jump") && _can_jump && !_slide.is_jump_locked() && !_attack_manager.is_jump_locked() && !is_dead:
 		jump()
 		while is_on_floor_custom() && !is_dead:
 			await get_tree().process_frame
