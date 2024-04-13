@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvcyou122pw7h"]
+
+[ext_resource type="Script" path="res://Scripts/Fader.gd" id="1_2e3fl"]
+
+[node name="Fader" type="Node2D"]
+script = ExtResource("1_2e3fl")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -903.0
+offset_top = -906.0
+offset_right = 2202.0
+offset_bottom = 1492.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true

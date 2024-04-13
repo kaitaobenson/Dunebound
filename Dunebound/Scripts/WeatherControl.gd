@@ -2,7 +2,7 @@ extends Node
 #Daylength in Seconds
 
 const NUMBER_OF_PHASES : float = 6.0
-const DAY_LENGTH:float = 10
+const DAY_LENGTH:float = 100
 const PHASE_LENGTH:float = DAY_LENGTH / NUMBER_OF_PHASES
 const BEGIN_PHASE:float = 1
 

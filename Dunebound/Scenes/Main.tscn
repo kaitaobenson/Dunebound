@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=61 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
@@ -33,10 +33,12 @@
 [ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="31_x1k6r"]
 [ext_resource type="Texture2D" uid="uid://b10da1o127f7t" path="res://Assets/Textures/Pillar.png" id="33_60p8f"]
 [ext_resource type="Texture2D" uid="uid://d1wq287rmaq8l" path="res://Assets/Textures/BigTree.png" id="35_jthrx"]
-[ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Water.tscn" id="35_l2rf1"]
-[ext_resource type="PackedScene" uid="uid://dx3mqourudlti" path="res://Fire.tscn" id="36_e6kxd"]
+[ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Scenes/Water.tscn" id="35_l2rf1"]
+[ext_resource type="PackedScene" uid="uid://dx3mqourudlti" path="res://Scenes/Fire.tscn" id="36_e6kxd"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/turrety_man.tscn" id="36_x5bvt"]
+[ext_resource type="Texture2D" uid="uid://yuud211ss8hw" path="res://Assets/Textures/MachineParts/MachinePart1.png" id="38_r3ba3"]
 [ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/BigBackground5.png" id="38_v3ahm"]
+[ext_resource type="Texture2D" uid="uid://cm623gl5afuk3" path="res://Assets/Textures/MachineParts/Rock1.png" id="39_0ups4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
 tile_data = PackedInt32Array(0, 4, 1, 65536, 4, 2, 1, 65540, 1, 65537, 65540, 2, 2, 131076, 1, 65538, 65540, 2, 3, 196612, 1, 65539, 65540, 2)
@@ -420,6 +422,9 @@ size = Vector2(20626, 111.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbgdl"]
 size = Vector2(116, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4571r"]
+size = Vector2(128, 95.5)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-44, -37)
 
@@ -476,14 +481,15 @@ area_node = NodePath("Area2D")
 [node name="CanvasLayer" type="CanvasLayer" parent="AreaLabel1"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AreaLabel1/CanvasLayer"]
-offset_left = 153.0
-offset_top = 194.0
-offset_right = 985.0
-offset_bottom = 263.0
+show_behind_parent = true
+offset_left = 50.0
+offset_top = 195.0
+offset_right = 1124.0
+offset_bottom = 275.0
 theme_override_fonts/normal_font = ExtResource("23_k7f0p")
-theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/normal_font_size = 70
 text = "The big phat mountain full of goats"
-metadata/_edit_lock_ = true
+scroll_active = false
 
 [node name="Area2D" type="Area2D" parent="AreaLabel1"]
 metadata/_edit_lock_ = true
@@ -798,7 +804,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 sandstorm_is_on = false
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(3315, 892)
+position = Vector2(657, 385)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(-1298, 616)
@@ -933,6 +939,54 @@ position = Vector2(-1259, 805)
 
 [node name="TurretyMan" parent="." instance=ExtResource("36_x5bvt")]
 position = Vector2(5203, 826)
+
+[node name="MachineParts" type="Node2D" parent="."]
+
+[node name="MachinePart1" type="Node2D" parent="MachineParts"]
+position = Vector2(4865, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachineParts/MachinePart1"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("38_r3ba3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachineParts/MachinePart1"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineParts/MachinePart1/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")
+
+[node name="MachinePart2" type="Node2D" parent="MachineParts"]
+position = Vector2(4614, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachineParts/MachinePart2"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("38_r3ba3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachineParts/MachinePart2"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineParts/MachinePart2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")
+
+[node name="MachinePart3" type="Node2D" parent="MachineParts"]
+position = Vector2(4409, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachineParts/MachinePart3"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("38_r3ba3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachineParts/MachinePart3"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineParts/MachinePart3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(3475, 860)
+texture = ExtResource("39_0ups4")
 
 [connection signal="body_entered" from="AreaLabel1/Area2D" to="AreaLabel1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AreaLabel1/Area2D" to="AreaLabel1" method="_on_area_2d_body_exited"]

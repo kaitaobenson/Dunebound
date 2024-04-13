@@ -4,12 +4,11 @@
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="2_nq5fw"]
 [ext_resource type="Texture2D" uid="uid://b4fkck4nifekb" path="res://Scenes/TitleScreen copy1.png" id="3_3aerd"]
 [ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://Assets/ogpc-team-logo.svg" id="4_jmfyh"]
-[ext_resource type="Script" path="res://Scripts/PlayButton.gd" id="4_upd61"]
+[ext_resource type="Script" path="res://Scenes/TitleScreenButtons.gd" id="4_t51x1"]
 [ext_resource type="Script" path="res://Scripts/WindController.gd" id="6_vpbns"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_b1i4c")
-do_display = false
 
 [node name="MainScreen" type="Node2D" parent="."]
 
@@ -35,6 +34,7 @@ offset_right = 293.0
 offset_bottom = 596.0
 theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 20
+script = ExtResource("4_t51x1")
 
 [node name="Play" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
@@ -42,7 +42,6 @@ theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 80
 action_mode = 0
 text = "Play"
-script = ExtResource("4_upd61")
 
 [node name="Options" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
@@ -51,12 +50,12 @@ theme_override_font_sizes/font_size = 80
 action_mode = 0
 text = "Options"
 
-[node name="Thingy" type="Button" parent="MainScreen/GridContainer"]
+[node name="Credits" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 80
 action_mode = 0
-text = "Thingy"
+text = "Credits"
 
 [node name="Logo" type="Node2D" parent="."]
 visible = false
@@ -74,4 +73,6 @@ texture = ExtResource("4_jmfyh")
 [node name="WindController" type="Node" parent="."]
 script = ExtResource("6_vpbns")
 
-[connection signal="pressed" from="MainScreen/GridContainer/Play" to="MainScreen/GridContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="MainScreen/GridContainer/Play" to="MainScreen/GridContainer" method="_on_play_pressed"]
+[connection signal="pressed" from="MainScreen/GridContainer/Options" to="MainScreen/GridContainer" method="_on_options_pressed"]
+[connection signal="pressed" from="MainScreen/GridContainer/Credits" to="MainScreen/GridContainer" method="_on_credits_pressed"]

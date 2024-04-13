@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const PUSH_FORCE = 100
-const JUMP_VELOCITY = 800
+const JUMP_VELOCITY = 900
 
 const WALK_SPEED = 380
 const SPRINT_SPEED = 600
