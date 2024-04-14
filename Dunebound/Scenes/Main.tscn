@@ -1,6 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://m4074xq6e06m"]
+[gd_scene load_steps=62 format=3 uid="uid://m4074xq6e06m"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_my4qp"]
+[ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="1_we1t8"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="2_rllli"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="3_cnpip"]
 [ext_resource type="Script" path="res://Scenes/AreaZoom1.gd" id="4_potqj"]
@@ -427,6 +428,11 @@ size = Vector2(128, 95.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-44, -37)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_we1t8")
+volume_db = -15.461
+autoplay = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Ground"]]
 position = Vector2(480, 380)
