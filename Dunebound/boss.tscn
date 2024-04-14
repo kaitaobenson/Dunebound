@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ifichujqsx1"]
+
+[ext_resource type="Script" path="res://Boss.gd" id="1_47de6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebkaj"]
+size = Vector2(243.25, 275.5)
+
+[node name="Boss" type="CharacterBody2D"]
+position = Vector2(323, 252)
+script = ExtResource("1_47de6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ebkaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

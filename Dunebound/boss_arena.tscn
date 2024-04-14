@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://155drgw1huj7"]
+
+[ext_resource type="TileSet" uid="uid://cw53rgdpxsv28" path="res://Scenes/Tilemap.tres" id="1_qkr06"]
+
+[node name="BossArena" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_qkr06")
+format = 2
+
+[node name="TPContainer" type="Node" parent="."]
+
+[node name="Tp1" type="Node2D" parent="TPContainer"]
+
+[node name="Tp2" type="Node2D" parent="TPContainer"]
+
+[node name="Tp3" type="Node2D" parent="TPContainer"]
