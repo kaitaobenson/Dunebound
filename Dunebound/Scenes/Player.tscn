@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=98 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerCode/PlayerParticles.gd" id="1_kaien"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTemp.gd" id="2_nfs4v"]
@@ -17,7 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://yd4duwk35xur" path="res://Sound/attackWhoosh2.mp3" id="9_8fpsb"]
 [ext_resource type="AudioStream" uid="uid://s66tirmetlwu" path="res://Sound/AttackCharge.mp3" id="10_frqvc"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Player/Run1-Sheet.png" id="10_jlror"]
+[ext_resource type="AudioStream" uid="uid://bexs4y8v6dre6" path="res://Sound/slideRepeated.mp3" id="11_aiurh"]
 [ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Assets/Textures/Player/Slash3-Sheet.png" id="11_jwwth"]
+[ext_resource type="AudioStream" uid="uid://ur11sfy8lgcu" path="res://Sound/slideBegin.mp3" id="12_e3ub4"]
 [ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/Textures/Player/PlayerSlide2.png" id="12_l81jy"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerHurtbox.gd" id="13_clvl7"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTilemapDetector.gd" id="14_p7wcr"]
@@ -902,6 +904,15 @@ pitch_scale = 1.3
 stream = ExtResource("10_frqvc")
 volume_db = -8.433
 pitch_scale = 1.13
+
+[node name="SlideRepeat" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("11_aiurh")
+volume_db = -36.54
+pitch_scale = 0.27
+
+[node name="SlideBegin" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("12_e3ub4")
+volume_db = -8.12
 
 [node name="GroundRaycasts" type="Node2D" parent="Player"]
 
