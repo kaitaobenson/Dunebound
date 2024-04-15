@@ -1,17 +1,25 @@
-[gd_scene load_steps=90 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=98 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerCode/PlayerParticles.gd" id="1_kaien"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTemp.gd" id="2_nfs4v"]
+[ext_resource type="Script" path="res://PlayerCode/PlayerAudioManager.gd" id="3_tcyi7"]
 [ext_resource type="Script" path="res://PlayerCode/Player.gd" id="3_xsgwl"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerSlide.gd" id="4_majib"]
+[ext_resource type="AudioStream" uid="uid://cr6jkmdymrcm2" path="res://Sound/footsteps.mp3" id="4_ox184"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerAnimations.gd" id="5_02tc4"]
 [ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Player/Jump-Sheet.png" id="6_0xsnr"]
 [ext_resource type="Texture2D" uid="uid://cjrb3f03ig5fo" path="res://Assets/Textures/Player/PlayerDeath.png" id="6_cl80o"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="7_jbvia"]
+[ext_resource type="AudioStream" uid="uid://djh0v3juw4uax" path="res://Sound/Jump.mp3" id="7_ndnrg"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Player/Idle1.png" id="7_povkh"]
+[ext_resource type="AudioStream" uid="uid://bcxheha2d8618" path="res://Sound/attackWhoosh.mp3" id="8_6r18x"]
 [ext_resource type="Texture2D" uid="uid://cqnsk6qlh0rvi" path="res://Assets/Textures/Player/PlayerSpearSide-Sheet.png" id="8_yxkyt"]
+[ext_resource type="AudioStream" uid="uid://yd4duwk35xur" path="res://Sound/attackWhoosh2.mp3" id="9_8fpsb"]
+[ext_resource type="AudioStream" uid="uid://s66tirmetlwu" path="res://Sound/AttackCharge.mp3" id="10_frqvc"]
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Player/Run1-Sheet.png" id="10_jlror"]
+[ext_resource type="AudioStream" uid="uid://bexs4y8v6dre6" path="res://Sound/slideRepeated.mp3" id="11_aiurh"]
 [ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Assets/Textures/Player/Slash3-Sheet.png" id="11_jwwth"]
+[ext_resource type="AudioStream" uid="uid://ur11sfy8lgcu" path="res://Sound/slideBegin.mp3" id="12_e3ub4"]
 [ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/Textures/Player/PlayerSlide2.png" id="12_l81jy"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerHurtbox.gd" id="13_clvl7"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTilemapDetector.gd" id="14_p7wcr"]
@@ -833,7 +841,6 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ku7qv"]
 
 [node name="PlayerContainer" type="Node2D"]
-position = Vector2(943, 599)
 
 [node name="ParticleManager" type="Node" parent="."]
 script = ExtResource("1_kaien")
@@ -869,6 +876,43 @@ metadata/_edit_lock_ = true
 
 [node name="Slide" type="Node" parent="Player"]
 script = ExtResource("4_majib")
+
+[node name="AudioManager" type="Node2D" parent="Player"]
+script = ExtResource("3_tcyi7")
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+position = Vector2(-1, 1)
+stream = ExtResource("4_ox184")
+volume_db = -3.435
+pitch_scale = 0.83
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("7_ndnrg")
+volume_db = -52.919
+pitch_scale = 2.74
+
+[node name="Attack1" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("8_6r18x")
+volume_db = -20.3
+pitch_scale = 1.43
+
+[node name="Attack2" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("9_8fpsb")
+pitch_scale = 1.3
+
+[node name="AttackCharge" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("10_frqvc")
+volume_db = -8.433
+pitch_scale = 1.13
+
+[node name="SlideRepeat" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("11_aiurh")
+volume_db = -36.54
+pitch_scale = 0.27
+
+[node name="SlideBegin" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+stream = ExtResource("12_e3ub4")
+volume_db = -8.12
 
 [node name="GroundRaycasts" type="Node2D" parent="Player"]
 
@@ -919,7 +963,7 @@ metadata/_edit_lock_ = true
 [node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
 position = Vector2(8, -59)
 animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
-health_bar = "../../../UI/PlayerHealthBar"
+health_bar = "../../../NecessaryStuff/UI/PlayerHealthBar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)

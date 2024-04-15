@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://blwd4708oqwfs"]
+
+[ext_resource type="Script" path="res://Scripts/AreaZoom1.gd" id="1_0vlx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efo45"]
+size = Vector2(1147, 492)
+
+[node name="AreaZoom1" type="Node2D" node_paths=PackedStringArray("area_node")]
+visible = false
+position = Vector2(639, 330)
+script = ExtResource("1_0vlx8")
+go_to_zoom_value = 0.8
+go_to_time_value = 10.0
+back_from_time_value = 10.0
+area_node = NodePath("")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-19.5, 111)
+shape = SubResource("RectangleShape2D_efo45")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

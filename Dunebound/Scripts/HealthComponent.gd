@@ -9,7 +9,9 @@ class_name HealthComponent
 var finished_death: bool = false
 var done_tweening: bool = true
 var health : int
+
 @onready var _text_label = $RichTextLabel
+
 
 func _ready():
 	_text_label.modulate.a = 0
@@ -17,14 +19,23 @@ func _ready():
 	update_health_bar()
 
 
-func damage(attack:Attack):
-	if attack.attack_damage != 0:
-		health -= attack.attack_damage
-		damaged_visuals(attack.attack_damage)
-		update_health_bar()
+func _process(delta):
 	if health <= 0:
 		await get_tree().create_timer(0.2).timeout
 		$"../".die()
+
+
+func damage(attack: Attack):
+	if (attack.attack_damage != 0) && (attack.attack_damage != null):
+		health -= attack.attack_damage
+		damaged_visuals(attack.attack_damage)
+		update_health_bar()
+
+
+func damage_without_visuals(attack: Attack):
+	if (attack.attack_damage != 0) && (attack.attack_damage != null):
+		health -= attack.attack_damage
+		update_health_bar()
 
 
 func damaged_visuals(attack_damage: float):
@@ -34,7 +45,6 @@ func damaged_visuals(attack_damage: float):
 		flash_white(attack_damage)
 	if health <= 0:
 		finished_death = true
-
 
 
 func display_damage_value(attack_damage):

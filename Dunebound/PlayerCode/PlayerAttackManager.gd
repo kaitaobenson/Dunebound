@@ -30,6 +30,7 @@ var jump_is_locked: bool = false
 @onready var _anim_player = $"../AnimationManager/AnimationPlayer"
 @onready var _slide = $"../Slide"
 @onready var _boom = $"Boom"
+@onready var _audio_manager = $"../AudioManager"
 
 
 func _ready() -> void:
@@ -75,6 +76,7 @@ func charge_short_knife() -> void:
 			jump_is_locked = true
 			current_attack.attack_damage = short_knife_charged_damage
 			_anim_manager.modulate = Color(216, 105, 224, 1)
+			_audio_manager.play(_audio_manager.ALL_SOUNDS.ATTACK_CHARGED)
 			
 		await get_tree().create_timer(0.1).timeout
 		
@@ -99,6 +101,7 @@ func charge_long_spear() -> void:
 			jump_is_locked = true
 			current_attack.attack_damage = long_spear_charged_damage
 			_anim_manager.modulate = Color(216, 105, 224, 1)
+			_audio_manager.play(_audio_manager.ALL_SOUNDS.ATTACK_CHARGED)
 			
 		await get_tree().create_timer(0.1).timeout
 		
@@ -118,6 +121,9 @@ func do_attack() -> void:
 			is_charged = false
 		
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.SHORT_ATTACK_END_1, true)
+		_audio_manager.play(_audio_manager.ALL_SOUNDS.SHORT_ATTACK)
+		
+		
 		short_knife_collision.disabled = false
 		await get_tree().create_timer(0.05).timeout
 		short_knife_collision.disabled = true

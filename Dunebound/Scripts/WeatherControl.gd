@@ -2,7 +2,7 @@ extends Node
 #Daylength in Seconds
 
 const NUMBER_OF_PHASES : float = 6.0
-const DAY_LENGTH:float = 10
+const DAY_LENGTH:float = 100
 const PHASE_LENGTH:float = DAY_LENGTH / NUMBER_OF_PHASES
 const BEGIN_PHASE:float = 1
 
@@ -20,6 +20,7 @@ var gradientResource = load("res://Assets/Textures/DayNightGradient.tres")
 
 func _init():
 	update_temperature()
+	Global.seconds_per_day = DAY_LENGTH
 
 func _process(delta):
 	sandstorm()
@@ -43,7 +44,6 @@ func day_night_visuals():
 	var colorValue:float = (sin(2 * PI / DAY_LENGTH * (totalElapsedTime - DAY_LENGTH * (0.25 + BEGIN_PHASE / NUMBER_OF_PHASES) - 1)) + 1) / 2
 	$"../CanvasModulate".set_color(gradientResource.sample(colorValue))
 	$"../BackgroundContainer/ParallaxBackground/CanvasModulate".set_color(gradientResource.sample(colorValue))
-	#print(Global.TimeOfDay)	
 
 func update_temperature():
 	var heatValue:float = (sin(2 * PI / DAY_LENGTH * (totalElapsedTime - DAY_LENGTH * (0.25 + BEGIN_PHASE / NUMBER_OF_PHASES) - 1)) + 1) / 2

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const PUSH_FORCE = 100
-const JUMP_VELOCITY = 800
+const JUMP_VELOCITY = 900
 
 const WALK_SPEED = 380
 const SPRINT_SPEED = 600
@@ -23,11 +23,14 @@ var _jump_timer = 0.0
 var _can_jump = false
 var _coyote_time = 0.2
 
-@onready var _slide = $"Slide/"
+
 @onready var _anim_manager = $AnimationManager
 @onready var _particle_manager = $"../ParticleManager"
-@onready var _hitbox = $"PlayerHitbox"
 @onready var _attack_manager = $"AttackManager"
+@onready var _audio_manager = $"AudioManager"
+
+@onready var _slide = $"Slide/"
+@onready var _hitbox = $"PlayerHitbox"
 
 func _init():
 	Global.Player = self
@@ -38,6 +41,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	
 	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
 		Global.inventory.newInfoGhost(foodPickup)
 		foodPickup.queue_free()
@@ -55,9 +59,12 @@ func _physics_process(delta):
 	if player_movement_direction != 0 && (!_slide.is_move_locked() && !_attack_manager.is_move_locked() && !is_dead):
 		if player_movement_direction != 0:
 			ad_movement(player_movement_direction)
+			_audio_manager.play(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
+			
 	elif !_slide.is_sliding():
 		velocity.x = lerp(velocity.x, 0.0, 0.2)
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, false)
+		_audio_manager.stop(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
 	
 	### JUMP ###
 	if is_on_floor_custom():
@@ -92,6 +99,7 @@ func ad_movement(direction: int) -> void:
 
 
 func jump():
+	_audio_manager.play(_audio_manager.ALL_SOUNDS.JUMP)
 	velocity.y = -JUMP_VELOCITY
 	_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.JUMP, true)
 
