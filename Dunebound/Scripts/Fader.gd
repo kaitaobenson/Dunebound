@@ -6,7 +6,6 @@ extends Node2D
 @export var fade_out_time: float = 1
 
 func fade_in() -> void:
-	print("fadein")
 	get_tree().create_tween().tween_property(color_rect, "modulate:a", 1, fade_in_time)
 
 func fade_out() -> void:

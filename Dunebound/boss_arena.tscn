@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccaw8pyrnvjn"]
 
 [ext_resource type="PackedScene" uid="uid://bhcvy0qd2gcto" path="res://boss.tscn" id="1_5lsnb"]
-[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Textures/Tilemap/Tilemap.png" id="1_hk2kx"]
+[ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Tilemap/Tilemap.png" id="1_hk2kx"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
 tile_data = PackedInt32Array(0, 4, 1, 65536, 4, 2, 1, 65540, 1, 65537, 65540, 2, 2, 131076, 1, 65538, 65540, 2, 3, 196612, 1, 65539, 65540, 2)

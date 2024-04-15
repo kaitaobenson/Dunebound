@@ -14,7 +14,6 @@ func _process(delta):
 	decor.position.y -= 1
 	
 	if sensor.position.y == 0:
-		print("end")
 		fader.fade_in()
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://Scenes/TitleScreen.tscn")

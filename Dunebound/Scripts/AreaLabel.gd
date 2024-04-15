@@ -11,11 +11,13 @@ var fade_out
 
 @onready var timer = get_tree().create_timer(5)
 @onready var text = $"CanvasLayer/RichTextLabel"
+@onready var canvas_layer = $"CanvasLayer"
 
 func _ready():
 	fade_in = get_tree().create_tween()
 	fade_out = get_tree().create_tween()
 	
+	canvas_layer.visible = true
 	text.modulate.a = 0
 
 

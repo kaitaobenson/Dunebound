@@ -4,13 +4,12 @@
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="2_oogsd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bfyp"]
-size = Vector2(2177.75, 1189.5)
+size = Vector2(995, 811)
 
-[node name="AreaLabel1" type="Node2D" node_paths=PackedStringArray("area_node")]
+[node name="AreaLabel1" type="Node2D"]
 visible = false
 position = Vector2(-593, 44)
 script = ExtResource("1_5xnyy")
-area_node = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -32,6 +31,3 @@ metadata/_edit_lock_ = true
 position = Vector2(1088.12, 594.25)
 shape = SubResource("RectangleShape2D_1bfyp")
 metadata/_edit_lock_ = true
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

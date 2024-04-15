@@ -4,4 +4,3 @@ extends Area2D
 
 func damage(attack: Attack):
 	health_component.damage(attack)
-	print(attack.attack_damage)

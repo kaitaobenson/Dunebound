@@ -963,7 +963,7 @@ metadata/_edit_lock_ = true
 [node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
 position = Vector2(8, -59)
 animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
-health_bar = "../../../UI/PlayerHealthBar"
+health_bar = "../../../NecessaryStuff/UI/PlayerHealthBar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)

@@ -91,7 +91,6 @@ func i_frames_on(seconds : float):
 func make_attack(damage : int):
 	var attack = Attack.new()
 	attack.attack_damage = damage
-	print(attack.attack_damage)
 	health_component.damage(attack)
 
 

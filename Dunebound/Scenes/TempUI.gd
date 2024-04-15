@@ -8,5 +8,4 @@ func _init():
 
 func _process(delta):
 	color_value = Global.player_temp / 100.0
-	print(color_value)
 	modulate = gradientResource.sample(color_value)
