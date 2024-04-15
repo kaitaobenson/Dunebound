@@ -6,7 +6,6 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	var food = JSON.parse_string(file.get_as_text())["food"][foodType]
 	var hitbox = RectangleShape2D.new()
 	Global.newFood = self.duplicate(15)
-	print(Global.newFood.get_node("Sprite2D").texture)
 	hitbox.size = Vector2(food[2]["hitboxSize_x"],food[3]["hitboxSize_y"])
 	Global.newFood.get_node("hitbox").shape = hitbox
 	var funnyImage = Image.load_from_file(food[0]["texture"])
@@ -23,6 +22,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	#texture needs to fit the hitbox
 	Global.newFood.get_node("Sprite2D").scale = Global.newFood.get_node("hitbox").shape.size/Global.newFood.get_node("Sprite2D").texture.get_size()
 	Global.newFood.foodTypeA = foodType
+	print(Global.newFood)
 	foodParent.add_child(Global.newFood)
 	Global.newFood.add_child(pickupSensor)
 	Global.newFood.get_node("pickupSensor").add_child(sensorHitbox)
