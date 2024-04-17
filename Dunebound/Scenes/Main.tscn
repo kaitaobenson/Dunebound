@@ -810,7 +810,7 @@ color = Color(0.533333, 0.521569, 0.666667, 1)
 sandstorm_is_on = false
 
 [node name="PlayerContainer" parent="." instance=ExtResource("26_8wl7l")]
-position = Vector2(657, 385)
+position = Vector2(4747, 739)
 
 [node name="Zombie Husk Guy" parent="." instance=ExtResource("27_203vw")]
 position = Vector2(-1298, 616)

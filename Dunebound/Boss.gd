@@ -23,8 +23,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	var randomValue = randi_range(1, 2)
-	action = randomValue.randomize()
+	action = (randi_range(1, 2))
 	
 	if can_action:
 		if action == 1:

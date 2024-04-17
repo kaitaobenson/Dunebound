@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://155drgw1huj7"]
+[gd_scene load_steps=3 format=3 uid="uid://155drgw1huj7"]
 
 [ext_resource type="TileSet" uid="uid://cw53rgdpxsv28" path="res://Scenes/Tilemap.tres" id="1_qkr06"]
+[ext_resource type="PackedScene" uid="uid://3ifichujqsx1" path="res://boss.tscn" id="2_h35ct"]
 
 [node name="BossArena" type="Node2D"]
 
@@ -15,3 +16,5 @@ format = 2
 [node name="Tp2" type="Node2D" parent="TPContainer"]
 
 [node name="Tp3" type="Node2D" parent="TPContainer"]
+
+[node name="Boss" parent="." instance=ExtResource("2_h35ct")]
