@@ -8,7 +8,7 @@ const SPRINT_SPEED = 600
 var player_speed = WALK_SPEED
 
 const NORMAL_GRAVITY = 2000
-const SLIDING_GRAVITY = 9000
+const SLIDING_GRAVITY = 10000
 var gravity: int = NORMAL_GRAVITY
 var foodPickup 
 #1, 0, -1
@@ -19,6 +19,7 @@ var player_sprite_direction: int = 1
 var health: int = 100 
 var is_dead: bool = false
 
+var jumping: bool = false
 var _jump_timer = 0.0
 var _can_jump = false
 var _coyote_time = 0.2
@@ -61,7 +62,7 @@ func _physics_process(delta):
 			ad_movement(player_movement_direction)
 			_audio_manager.play(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
 			
-	elif !_slide.is_sliding():
+	elif !_slide.move_is_locked:
 		velocity.x = lerp(velocity.x, 0.0, 0.2)
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, false)
 		_audio_manager.stop(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
@@ -99,13 +100,23 @@ func ad_movement(direction: int) -> void:
 
 
 func jump():
+	jumping = true
 	_audio_manager.play(_audio_manager.ALL_SOUNDS.JUMP)
 	velocity.y = -JUMP_VELOCITY
 	_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.JUMP, true)
+	while is_on_floor():
+		await get_tree().process_frame
+	while !is_on_floor_custom():
+		await get_tree().process_frame
+	jumping = false
 
 
 func apply_gravity(delta):
-	if !is_on_floor_custom():
+	if _slide.is_move_locked() && !jumping:
+		gravity = SLIDING_GRAVITY
+	else:
+		gravity = NORMAL_GRAVITY
+	if is_on_floor_custom() && !_slide.is_move_locked():
 		gravity = NORMAL_GRAVITY
 	velocity.y += gravity * delta
 

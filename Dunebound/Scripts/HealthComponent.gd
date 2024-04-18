@@ -3,8 +3,8 @@ extends Node2D
 class_name HealthComponent
 
 @export var max_health: int = 100
-@export var animation_sprite: AnimatedSprite2D
-@export_multiline var health_bar: String
+@export var animation_sprite: Node
+@export_multiline var health_bar_path: String
 
 var finished_death: bool = false
 var done_tweening: bool = true
@@ -69,5 +69,5 @@ func flash_white(attack_damage):
 
 
 func update_health_bar():
-	if get_node(health_bar) != null:
-		get_node(health_bar).set_health(health)
+	if get_node(health_bar_path) != null:
+		get_node(health_bar_path).set_health(health)

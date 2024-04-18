@@ -14,7 +14,7 @@ config/name="Dunebound"
 run/main_scene="res://Scenes/TitleScreen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
-boot_splash/image="res://Assets/Textures/pixil-frame-0.png"
+boot_splash/image="res://Assets/Textures/Jimmy.png"
 config/icon="res://Assets/Textures/icon.svg"
 
 [autoload]

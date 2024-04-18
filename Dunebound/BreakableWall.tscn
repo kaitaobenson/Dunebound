@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ncso8po0iow"]
+
+[ext_resource type="Script" path="res://BreakableWall.gd" id="1_myqgn"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_2fa55"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="3_nbgri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cwr5"]
+size = Vector2(246, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy6gi"]
+size = Vector2(276.5, 313.5)
+
+[node name="BreakableWall" type="Node2D"]
+position = Vector2(-1, -6)
+script = ExtResource("1_myqgn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_6cwr5")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_2fa55")]
+animation_sprite = NodePath("../Sprite2D")
+
+[node name="Hurtbox" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
+position = Vector2(-1, 1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Hurtbox"]
+position = Vector2(-1.25, 0.25)
+shape = SubResource("RectangleShape2D_iy6gi")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(7.75, 8.98437)
+texture = ExtResource("3_nbgri")
+metadata/_edit_lock_ = true
