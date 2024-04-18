@@ -2,6 +2,7 @@ extends Node
 var scrollbarMax
 var actions = []
 var ignoreThisVar:Vector2
+var Parse:JSON = JSON.new()
 @onready var scrollbar = get_parent().get_parent().get_node("PauseScreen").get_node("VScrollBar")
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
 const uiCrapOffsetQuickFix:int = 300
@@ -9,7 +10,7 @@ const TEXT_OFFSET_THINGYMABOBBER:int = 100
 const uiScaleDownQuickPatch:float = 0.5 
 #TODO: name a variable "TacticsComradesTactics"
 func getScrollbarSize():
-	var shit = InputMap.get_actions()
+	var shit = actions
 	scrollbarMax = 350+65*shit.size()
 	scrollbar.max_value = (scrollbarMax/65)-9
 func replaceWithSpaces(thingydingy:String):
@@ -37,8 +38,8 @@ func getAllEvents():
 	for yhuib in thingydingymalingypasingy.size():
 		theotherdingybuffer = InputMap.action_get_events(thingydingymalingypasingy[yhuib])
 		for abbagabba in theotherdingybuffer.size():
-			
-			theotherthingy.push_back(theotherdingybuffer[abbagabba].physical_keycode)
+			if(!thingydingymalingypasingy[yhuib].contains("ui_") and !theotherdingybuffer[abbagabba] is InputEventJoypadButton and !theotherdingybuffer[abbagabba] is InputEventJoypadMotion):
+				theotherthingy.push_back(theotherdingybuffer[abbagabba].physical_keycode)
 	return theotherthingy
 func returnCurrentTickerPositions()->Array:
 	var deArray:Array = []
@@ -47,12 +48,32 @@ func returnCurrentTickerPositions()->Array:
 	for ygbhhuy in tickers.size():
 		deArray.push_back(tickers[ygbhhuy].value)
 	return deArray
-func reloadKeybindUI():
+func filterStockKeybinds():
+	#yippee more funny json stuff
+	var stuffToRemove:Array
+	var isCustom:bool
+	#if(!FileAccess.file_exists("user://keybinds.json")):
+	if(true):
+		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
+		userKeybindFile.store_string(defaultkeybinds.get_as_text())
+		userKeybindFile.close()
+	var keybindData = FileAccess.open("user://keybinds.json",FileAccess.READ)
+	for z in actions.size():
+		if(actions[z-1].contains("ui")):
+			stuffToRemove.append(z-1)
+	for i in stuffToRemove.size():
+		actions.pop_front()
+		
+	print("action filter finished")
+func reloadKeybindUI()->void:
+	filterStockKeybinds()
 	var tickerValues = getAllEvents()
 	var myChildren = get_children()
 	for knife in myChildren.size():
 		myChildren[knife].queue_free()
 	for retghghhvh in actions.size():
+		print("loop entered")
 		var newText = Label.new()
 		var newButton = $"../../../Templates/keybindButton".duplicate(15)
 		var newTicker = SpinBox.new()

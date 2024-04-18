@@ -22,6 +22,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	#texture needs to fit the hitbox
 	Global.newFood.get_node("Sprite2D").scale = Global.newFood.get_node("hitbox").shape.size/Global.newFood.get_node("Sprite2D").texture.get_size()
 	Global.newFood.foodTypeA = foodType
+	print(Global.newFood)
 	foodParent.add_child(Global.newFood)
 	Global.newFood.add_child(pickupSensor)
 	Global.newFood.get_node("pickupSensor").add_child(sensorHitbox)
