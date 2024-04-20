@@ -21,7 +21,6 @@ func _ready():
 	pass
 
 
-
 func _physics_process(delta):
 	action = (randi_range(1, 2))
 	
@@ -33,8 +32,6 @@ func _physics_process(delta):
 				close_range_attack()
 			else:
 				long_range_attack()
-	
-	
 
 
 func teleport():

@@ -121,7 +121,7 @@ func play_animation_sequence(animationName:ALL_ANIMATIONS):
 				_anim_sprite.rotation_degrees = _player.get_floor_angle_custom() * _player.player_sprite_direction
 			else:
 				_anim_sprite.rotation_degrees = 0
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().process_frame
 		_anim_sprite.rotation_degrees = 0
 		
 		

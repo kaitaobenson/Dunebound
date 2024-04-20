@@ -179,5 +179,6 @@ func is_attacking():
 
 func _on_attack_area_area_entered(area):
 	if area.is_in_group("Hurtbox"):
-		area.has_method("damage")
-		area.damage(current_attack)
+		if area.get_parent().name == "HealthComponent":
+			if area.get_parent().has_method("damage"):
+				area.get_parent().damage(current_attack)

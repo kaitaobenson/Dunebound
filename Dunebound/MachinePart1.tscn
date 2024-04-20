@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4n1ee5iiiiry"]
+
+[ext_resource type="Texture2D" uid="uid://yuud211ss8hw" path="res://Assets/Textures/MachineParts/MachinePart1.png" id="1_cbbat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4571r"]
+size = Vector2(128, 95.5)
+
+[node name="MachineParts" type="Node2D"]
+
+[node name="MachinePart1" type="Node2D" parent="."]
+position = Vector2(4865, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachinePart1"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("1_cbbat")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart1"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart1/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")
+
+[node name="MachinePart2" type="Node2D" parent="."]
+position = Vector2(4614, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachinePart2"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("1_cbbat")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart2"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")
+
+[node name="MachinePart3" type="Node2D" parent="."]
+position = Vector2(4409, 903)
+
+[node name="Sprite2D" type="Sprite2D" parent="MachinePart3"]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("1_cbbat")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart3"]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4571r")

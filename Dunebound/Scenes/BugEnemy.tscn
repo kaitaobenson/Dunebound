@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://djq52jicd1c67"]
+[gd_scene load_steps=17 format=3 uid="uid://djq52jicd1c67"]
 
 [ext_resource type="Texture2D" uid="uid://wx80ljwbnofb" path="res://Assets/Textures/BuggyRun.png" id="1_ca2u8"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_s2glg"]
-[ext_resource type="Script" path="res://Scenes/HitboxComponent.gd" id="3_sto7s"]
 
 [sub_resource type="GDScript" id="GDScript_b8wcj"]
 script/source = "extends CharacterBody2D
@@ -225,6 +224,15 @@ libraries = {
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_s2glg")]
 animation_sprite = NodePath("../AnimatedSprite2D")
 
+[node name="Hurtbox" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
+position = Vector2(-6, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Hurtbox"]
+position = Vector2(5, 6)
+shape = SubResource("RectangleShape2D_stxym")
+metadata/_edit_lock_ = true
+
 [node name="Raycasts" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -260,14 +268,4 @@ metadata/_edit_lock_ = true
 
 [node name="rightsidecheck" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(28, 0)
-metadata/_edit_lock_ = true
-
-[node name="HitboxComponent" type="Area2D" parent="." groups=["Hurtbox"]]
-position = Vector2(-6, 0)
-script = ExtResource("3_sto7s")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(5, 6)
-shape = SubResource("RectangleShape2D_stxym")
 metadata/_edit_lock_ = true
