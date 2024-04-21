@@ -62,9 +62,7 @@ func idle():
 	var rightfloorcheck = $"Collision_Checks/rightfloorcheck".is_colliding()
 	var leftsidecheck = $"Collision_Checks/leftsidecheck".is_colliding()
 	var rightsidecheck = $"Collision_Checks/rightsidecheck".is_colliding()
-	if (movement_direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck):
-		movement_direction = -movement_direction
-	if (movement_direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck):
+	if movement_direction == -1 and (leftwallcheck or !leftfloorcheck or leftsidecheck) or movement_direction == 1 and (rightwallcheck or !rightfloorcheck or rightsidecheck):
 		movement_direction = -movement_direction
 
 func following():
