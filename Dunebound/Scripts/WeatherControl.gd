@@ -9,23 +9,24 @@ var elapsedTime:float = 0.0
 var totalElapsedTime:float = 0.0
 
 @export var BEGIN_PHASE: float = 1
+
 @export var enabled: bool = true
 @export var sandstorm_is_on: bool = false
-
 @onready var _particles = $"CanvasLayer/CPUParticles2D"
 @onready var _storm_overlay  = $"CanvasLayer/StormOverlay"
 
 #Gradient for Night / Day
 var gradientResource = load("res://Assets/Textures/DayNightGradient.tres")
 
-func _init():
+
+func _ready():
 	update_temperature()
+	day_night_visuals()
 	Global.seconds_per_day = DAY_LENGTH
 	if enabled:
 		set_process(true)
 	else:
 		set_process(false)
-	
 
 func _process(delta):
 	sandstorm()
@@ -44,15 +45,20 @@ func new_day_phase():
 	else:
 		Global.TimeOfDay = 1
 		Global.DayCount += 1
-		
+
+
 func day_night_visuals():
 	var colorValue:float = (sin(2 * PI / DAY_LENGTH * (totalElapsedTime - DAY_LENGTH * (0.25 + BEGIN_PHASE / NUMBER_OF_PHASES) - 1)) + 1) / 2
 	$"../CanvasModulate".set_color(gradientResource.sample(colorValue))
 	$"../BackgroundContainer/ParallaxBackground/CanvasModulate".set_color(gradientResource.sample(colorValue))
+	print(colorValue)
+
 
 func update_temperature():
 	var heatValue:float = (sin(2 * PI / DAY_LENGTH * (totalElapsedTime - DAY_LENGTH * (0.25 + BEGIN_PHASE / NUMBER_OF_PHASES) - 1)) + 1) / 2
+	print(heatValue)
 	Global.temperature = heatValue * 100
+
 
 func sandstorm():
 	if sandstorm_is_on:

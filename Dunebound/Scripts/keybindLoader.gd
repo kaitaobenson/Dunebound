@@ -5,12 +5,14 @@ extends Node
 var Parse:JSON = JSON.new()
 func makeDefaultKeybinds()->void:
 	#uncomment the line below and delete the line below that line once its time to deploy to production
+	#also do the same in line 55 of UIGenerator.gd
 	#if(!FileAccess.file_exists("user://keybinds.json")):
 	if(true):
 		var parse:JSON = JSON.new()
 		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
 		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
+		userKeybindFile.close()
 func addInputAction(key:String,actionName:String):
 	var donger = OS.find_keycode_from_string(key)
 	var dingdongdingalongadingdongdee:InputEventKey = InputEventKey.new()
@@ -46,19 +48,14 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	return true
 	
 func reloadKeybinds():
-	if(!FileAccess.file_exists("user://keybinds.json")):
-		var g = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
-		var res = FileAccess.open("res://UserData/keybinds.json",FileAccess.READ)
-		g.store_string(res.get_as_text())
-		g.close()
-		res.close()
-		
+	makeDefaultKeybinds()
 	var keybindConfig = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var configText = keybindConfig.get_as_text()
 	actions = InputMap.get_actions()
 	
-	for d in actions.size():
-		InputMap.erase_action(actions[d])
+	#i just realized i have absolutely no reason to be deleting the entire stock inputmap
+	#for d in actions.size():
+		#InputMap.erase_action(actions[d])
 		
 	Parse.parse(configText)
 	var parseData = Parse.data

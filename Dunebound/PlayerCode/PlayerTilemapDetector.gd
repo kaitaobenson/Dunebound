@@ -16,11 +16,13 @@ func _process(delta):
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index) -> void:
 	if body is TileMap:
-		_process_tilemap_data(body, body_rid, true)
+		pass
+		#_process_tilemap_data(body, body_rid, true)
 
 func _on_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
-		_process_tilemap_data(body, body_rid, false)
+		pass
+		#_process_tilemap_data(body, body_rid, false)
 
 
 ### Takes data and adds/removes tilemap type from array ###
@@ -38,6 +40,7 @@ func _process_tilemap_data(body: Node2D, body_rid: RID, is_inside: bool) -> void
 		tile_types_in_area.append(tile_type)
 	if !is_inside && tile_types_in_area.has(tile_type):
 		tile_types_in_area.erase(tile_type)
+
 
 func spikes():
 	var attack = Attack.new()

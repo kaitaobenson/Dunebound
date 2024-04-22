@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var logo = $"Logo"
 @onready var title_screen = $"MainScreen"
+@onready var fader = $"Fader"
 
 var displayed_logo: bool = false
 var displayed_title_screen: bool = false
@@ -13,6 +14,9 @@ var fade_time: float = 2
 
 
 func _ready():
+	fader.set_modulate_a(1)
+	fader.fade_out()
+	
 	if do_display:
 		logo.visible = true
 		logo.modulate.a = 0

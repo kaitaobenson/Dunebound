@@ -8,6 +8,8 @@ var items_node:Array= []
 var total_tiles_per_scrollpos
 func newInfoGhost(source:Object):
 	var ghost = source.duplicate()
+	#for some dumbass reason duplicate is getting the variable itself but not its value
+	ghost.foodTypeA = source.foodTypeA
 	ghost.visible = false
 	ghost.get_node("hitbox").set_deferred("disabled",false)
 	ghost.position = Global.Player.position+Vector2(0,100)
@@ -36,13 +38,16 @@ func _process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		invToggle()
 func search():
+	print("search started omg ongod no cap")
 	var query:String = get_node("TextEdit").text
 	var itemFound:bool
 	var itemPos:Array = []
 	for x in items_node.size():
+		print(query)
 		if(items_node[x].foodTypeA==query):
 			itemFound = true
 			itemPos.push_back(x)
+			print("omg i found a food item no way no shot")
 			#il make the search work with non-food items later
 	var currentTileAmountOnPage:int = 0
 	var currentTileAMountOnRow:int = 0
@@ -51,6 +56,7 @@ func search():
 	for y in itemPos.size():
 		currentTileAmountOnPage+=1
 		var newTile = templateTile.duplicate(15)
+		
 		add_child(newTile)
 		newTile.get_node("Sprite2D").texture = items_node[itemPos[y]].get_node("Sprite2D").texture
 		newTile.get_node("Sprite2D").scale = Vector2(templateTile.size.x-1/newTile.get_node("Sprite2D").texture.get_size().x,templateTile.size.y-1/newTile.get_node("Sprite2D").texture.get_size().y)
