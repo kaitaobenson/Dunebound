@@ -12,6 +12,8 @@ var TimeOfDay = 1
 var DayCount = 1
 var seconds_per_day = 0
 
+var fader: Object
+
 var temperature
 
 #???? What is this
