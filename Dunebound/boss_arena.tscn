@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccaw8pyrnvjn"]
+[gd_scene load_steps=11 format=3 uid="uid://ccaw8pyrnvjn"]
 
 [ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Tilemap/Tilemap.png" id="1_hk2kx"]
 [ext_resource type="PackedScene" uid="uid://bhcvy0qd2gcto" path="res://boss.tscn" id="2_h35ct"]
+[ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="3_w6g00"]
+[ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="29_ax25u"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ulina"]
 tile_data = PackedInt32Array(0, 4, 1, 65536, 4, 2, 1, 65540, 1, 65537, 65540, 2, 2, 131076, 1, 65538, 65540, 2, 3, 196612, 1, 65539, 65540, 2)
@@ -416,15 +418,27 @@ pattern_3 = SubResource("TileMapPattern_e3ndv")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hg2sa")
 format = 2
+layer_0/tile_data = PackedInt32Array(917504, 196608, 1, 917505, 196608, 1, 917506, 196608, 1, 917507, 196608, 1, 917508, 196608, 1, 917509, 196608, 1, 917510, 196608, 1, 917511, 196608, 1, 917512, 196608, 1, 917513, 196608, 1, 917514, 196608, 1, 917515, 196608, 1, 917516, 196608, 1, 917517, 196608, 1, 917518, 196608, 1, 917519, 196608, 1, 917520, 196608, 1, 917521, 196608, 1, 917522, 196608, 1, 917523, 196608, 1, 917524, 196608, 1, 917525, 196608, 1, 917526, 196608, 1, 917527, 196608, 1, 917528, 196608, 1, 917529, 196608, 1, 917530, 196608, 1, 917531, 196608, 1, 917532, 196608, 1, 917533, 196608, 1, 917534, 196608, 1, 917535, 196608, 1, 917536, 196608, 1, 917537, 196608, 1, 917538, 196608, 1, 917539, 196608, 1)
 
 [node name="Boss" parent="." instance=ExtResource("2_h35ct")]
+position = Vector2(717, -155)
 
 [node name="TPContainer" type="Node" parent="."]
 
 [node name="Tp1" type="Node2D" parent="TPContainer"]
+position = Vector2(166, 267)
 
 [node name="Tp2" type="Node2D" parent="TPContainer"]
+position = Vector2(827, 256)
 
 [node name="Tp3" type="Node2D" parent="TPContainer"]
+position = Vector2(503, 40)
 
-[node name="Boss2" parent="." instance=ExtResource("2_h35ct")]
+[node name="PlayerContainer" parent="." instance=ExtResource("3_w6g00")]
+position = Vector2(374, 376)
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource("29_ax25u")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(917522, 1114115, 14, 983058, 1114115, 15, 1048594, 1114115, 16, 1114130, 1114115, 17, 917523, 1179651, 14, 983059, 1179651, 15, 1048595, 1179651, 16, 1114131, 1179651, 17, 917524, 1245187, 14, 983060, 1245187, 15, 1048596, 1245187, 16, 1114132, 1245187, 17, 917525, 1310723, 14, 983061, 1310723, 15, 1048597, 1310723, 16, 1114133, 1310723, 17, 917526, 1114115, 14, 983062, 1114115, 15, 1048598, 1114115, 16, 1114134, 1114115, 17, 917527, 1179651, 14, 983063, 1179651, 15, 1048599, 1179651, 16, 1114135, 1179651, 17, 917528, 1245187, 14, 983064, 1245187, 15, 1048600, 1245187, 16, 1114136, 1245187, 17, 917529, 1310723, 14, 983065, 1310723, 15, 1048601, 1310723, 16, 1114137, 1310723, 17, 917530, 1114115, 14, 983066, 1114115, 15, 1048602, 1114115, 16, 1114138, 1114115, 17, 917531, 1179651, 14, 983067, 1179651, 15, 1048603, 1179651, 16, 1114139, 1179651, 17, 917532, 1245187, 14, 983068, 1245187, 15, 1048604, 1245187, 16, 1114140, 1245187, 17, 917533, 1310723, 14, 983069, 1310723, 15, 1048605, 1310723, 16, 1114141, 1310723, 17, 917518, 1114115, 14, 983054, 1114115, 15, 1048590, 1114115, 16, 1114126, 1114115, 17, 917519, 1179651, 14, 983055, 1179651, 15, 1048591, 1179651, 16, 1114127, 1179651, 17, 917520, 1245187, 14, 983056, 1245187, 15, 1048592, 1245187, 16, 1114128, 1245187, 17, 917521, 1310723, 14, 983057, 1310723, 15, 1048593, 1310723, 16, 1114129, 1310723, 17)

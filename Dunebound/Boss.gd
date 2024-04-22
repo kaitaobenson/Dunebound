@@ -4,10 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var Player = Global.Player
 var action : int
 var can_action
 
+@onready var Player = Global.Player
 @onready var tp_container = $"../TPContainer"
 @onready var tp_spots = {
 	"1" = tp_container.get_node("Tp1").global_position,
@@ -18,13 +18,13 @@ var can_action
 
 
 func _ready():
-	pass
+	print(Player)
 
 
 func _physics_process(delta):
-	action = (randi_range(1, 2))
 	
 	if can_action:
+		action = (randi_range(1, 2))
 		if action == 1:
 			teleport()
 		elif action == 2:
@@ -37,7 +37,7 @@ func _physics_process(delta):
 func teleport():
 	can_action = false
 	var randomValue = randi_range(1, 3)
-	var tp_location = tp_spots[randomValue.randomize()]
+	var tp_location = tp_spots[randomValue]
 	global_position = tp_location
 	await get_tree().create_timer(1).timeout
 	can_action = true

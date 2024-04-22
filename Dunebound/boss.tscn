@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Boss.gd" id="1_47de6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebkaj"]
-size = Vector2(243.25, 275.5)
+size = Vector2(123.625, 142.75)
 
 [node name="Boss" type="CharacterBody2D"]
 position = Vector2(323, 252)
