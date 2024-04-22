@@ -1,52 +1,21 @@
-[gd_scene load_steps=39 format=3 uid="uid://fxqa7pqhii04"]
+[gd_scene load_steps=13 format=3 uid="uid://fxqa7pqhii04"]
 
 [ext_resource type="PackedScene" uid="uid://1hf6l50y1klk" path="res://AreaLabel.tscn" id="1_heyb0"]
 [ext_resource type="Script" path="res://World.gd" id="1_lmo8o"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_tcrbo"]
 [ext_resource type="PackedScene" uid="uid://c3ncso8po0iow" path="res://BreakableWall.tscn" id="2_77x75"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_gb38x"]
+[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://NecessaryStuff.tscn" id="2_ul36h"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="3_8bqa4"]
 [ext_resource type="Script" path="res://TutorialMachinePart.gd" id="3_vhbb0"]
-[ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="4_dyq37"]
 [ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/MachinePart2.png" id="4_fr86l"]
-[ext_resource type="Script" path="res://Scripts/SunMovement.gd" id="5_b414e"]
-[ext_resource type="Texture2D" uid="uid://cdmidcmhfbbf0" path="res://Assets/Textures/Clouds/Cloud1.png" id="6_wmpjw"]
-[ext_resource type="Texture2D" uid="uid://bv6wrf7kqtklh" path="res://Assets/Textures/Clouds/Cloud3.png" id="7_j4kdr"]
-[ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/BigBackground5.png" id="8_55h3f"]
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="8_kffj1"]
-[ext_resource type="Texture2D" uid="uid://en4ieyrseo6o" path="res://Assets/Textures/Clouds/Cloud2.png" id="9_etewm"]
-[ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="10_g8gq1"]
-[ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="11_h7tso"]
-[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/weather_control.tscn" id="12_77tqg"]
-[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="13_qsk7l"]
-[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="14_oafhj"]
-[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="15_wfsco"]
-[ext_resource type="Script" path="res://Scenes/TempUI.gd" id="16_ffsic"]
-[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="17_4egyr"]
-[ext_resource type="Script" path="res://Scripts/Main.gd" id="18_y3fai"]
-[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="19_lcn25"]
-[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="20_q6s3i"]
-[ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="21_8bbmo"]
-[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="22_ph3ym"]
-[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="23_xfyji"]
-[ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="24_qfru3"]
-[ext_resource type="Script" path="res://Scripts/inventoryHandler.gd" id="25_5cewy"]
-[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="26_1j3cw"]
-[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="27_tyg8b"]
-[ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="28_nqi7n"]
+[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Background1.tscn" id="9_fh8dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jydmc"]
 size = Vector2(116, 74)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl4fq"]
 radius = 113.0
-
-[sub_resource type="Gradient" id="Gradient_nj6uo"]
-offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
-colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_an4fa"]
-size = Vector2(20626, 111.25)
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_lmo8o")
@@ -88,6 +57,20 @@ metadata/_edit_lock_ = true
 position = Vector2(12, 2)
 shape = SubResource("CircleShape2D_kl4fq")
 metadata/_edit_lock_ = true
+
+[node name="Stuff" type="Node2D" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Stuff"]
+stream = ExtResource("2_gb38x")
+volume_db = -15.461
+autoplay = true
+
+[node name="BackgroundContainer" parent="Stuff" instance=ExtResource("9_fh8dy")]
+
+[node name="PlayerContainer" parent="Stuff" instance=ExtResource("3_8bqa4")]
+position = Vector2(714, 463)
+
+[node name="NecessaryStuff" parent="Stuff" instance=ExtResource("2_ul36h")]
 
 [node name="TutorialText" type="Node2D" parent="."]
 position = Vector2(-593, 44)
@@ -237,383 +220,10 @@ text = "[center]Find the machine parts to restore your ship and escape the plane
 modulate = Color(0, 0, 0, 1)
 position = Vector2(406.75, 0)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_gb38x")
-volume_db = -15.461
-autoplay = true
-
-[node name="PlayerContainer" parent="." instance=ExtResource("3_8bqa4")]
-position = Vector2(714, 463)
-
-[node name="NecessaryStuff" type="Node2D" parent="."]
-
-[node name="Fader" parent="NecessaryStuff" instance=ExtResource("8_kffj1")]
-position = Vector2(44, 37)
-fade_in_time = 5.0
-
-[node name="BackgroundContainer" type="Node2D" parent="NecessaryStuff"]
-position = Vector2(44, 37)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="NecessaryStuff/BackgroundContainer"]
-offset = Vector2(576, 324)
-transform = Transform2D(1, 1.04636e-15, -1.04636e-15, 1, 576, 324)
-follow_viewport_scale = 166.667
-
-[node name="CanvasModulate" type="CanvasModulate" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-
-[node name="BackgroundColor" type="ParallaxLayer" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-motion_scale = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="ColorRect" type="ColorRect" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/BackgroundColor"]
-offset_left = -1706.0
-offset_top = -772.0
-offset_right = 1664.0
-offset_bottom = 778.0
-color = Color(0.32549, 0.592157, 0.6, 1)
-metadata/_edit_lock_ = true
-
-[node name="Sun" type="ParallaxLayer" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-motion_scale = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="SunSprite" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/Sun"]
-position = Vector2(-945, -40)
-texture = ExtResource("4_dyq37")
-script = ExtResource("5_b414e")
-
-[node name="CloudsInBack" type="ParallaxLayer" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-motion_scale = Vector2(0.4, 2.08165e-12)
-motion_mirroring = Vector2(2000, 2.08165e-12)
-metadata/_edit_lock_ = true
-
-[node name="Container" type="Node2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInBack"]
-modulate = Color(0.847059, 0.847059, 0.847059, 1)
-metadata/_edit_lock_ = true
-
-[node name="Cloud1" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInBack/Container"]
-position = Vector2(-519, -325)
-texture = ExtResource("6_wmpjw")
-metadata/_edit_lock_ = true
-
-[node name="Cloud3" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInBack/Container"]
-position = Vector2(452, -389)
-texture = ExtResource("7_j4kdr")
-metadata/_edit_lock_ = true
-
-[node name="Dunes1" type="ParallaxLayer" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-motion_scale = Vector2(0.2, 2.08165e-12)
-motion_mirroring = Vector2(2700, 2.08165e-12)
-metadata/_edit_lock_ = true
-
-[node name="Container" type="Node2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/Dunes1"]
-modulate = Color(0.862745, 0.862745, 0.862745, 1)
-metadata/_edit_lock_ = true
-
-[node name="BigBackground6" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/Dunes1/Container"]
-position = Vector2(788, -114)
-texture = ExtResource("8_55h3f")
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/Dunes1/Container"]
-offset_left = -1046.0
-offset_top = 256.0
-offset_right = 1787.0
-offset_bottom = 750.0
-color = Color(0.803922, 0.717647, 0.372549, 1)
-metadata/_edit_lock_ = true
-
-[node name="CloudsInFront" type="ParallaxLayer" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground"]
-motion_scale = Vector2(0.4, 2.08165e-12)
-motion_mirroring = Vector2(2000, 2.08165e-12)
-metadata/_edit_lock_ = true
-
-[node name="Container" type="Node2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInFront"]
-modulate = Color(0.847059, 0.847059, 0.847059, 1)
-metadata/_edit_lock_ = true
-
-[node name="Cloud2" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInFront/Container"]
-position = Vector2(1, -211)
-texture = ExtResource("9_etewm")
-metadata/_edit_lock_ = true
-
-[node name="Cloud4" type="Sprite2D" parent="NecessaryStuff/BackgroundContainer/ParallaxBackground/CloudsInFront/Container"]
-position = Vector2(860, -170)
-texture = ExtResource("10_g8gq1")
-metadata/_edit_lock_ = true
-
-[node name="SaverLoader" type="Node" parent="NecessaryStuff"]
-unique_name_in_owner = true
-script = ExtResource("11_h7tso")
-turned_on = false
-
-[node name="WeatherControl" parent="NecessaryStuff" instance=ExtResource("12_77tqg")]
-BEGIN_PHASE = 1.5
-enabled = false
-sandstorm_is_on = false
-
-[node name="UI" type="CanvasLayer" parent="NecessaryStuff"]
-
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="NecessaryStuff/UI"]
-texture_filter = 1
-offset_left = 22.0
-offset_top = 21.0
-offset_right = 203.0
-offset_bottom = 61.0
-value = 100.0
-texture_over = ExtResource("13_qsk7l")
-texture_progress = ExtResource("14_oafhj")
-script = ExtResource("15_wfsco")
-metadata/_edit_use_anchors_ = true
-
-[node name="Temperature" type="Node2D" parent="NecessaryStuff/UI"]
-script = ExtResource("16_ffsic")
-gradientResource = SubResource("Gradient_nj6uo")
-
-[node name="TempLabel" type="RichTextLabel" parent="NecessaryStuff/UI/Temperature"]
-offset_left = 920.0
-offset_top = 10.0
-offset_right = 1143.0
-offset_bottom = 48.0
-theme_override_fonts/normal_font = ExtResource("17_4egyr")
-theme_override_font_sizes/normal_font_size = 40
-text = "Temperature:"
-scroll_active = false
-
-[node name="TempGauge" type="RichTextLabel" parent="NecessaryStuff/UI/Temperature"]
-offset_left = 935.0
-offset_top = 64.0
-offset_right = 1121.0
-offset_bottom = 143.0
-theme_override_fonts/normal_font = ExtResource("17_4egyr")
-theme_override_font_sizes/normal_font_size = 65
-text = "100. T "
-scroll_active = false
-
-[node name="tileTemplateHoverSensor" type="TextureButton" parent="NecessaryStuff"]
-visible = false
-z_index = 16
-offset_left = -262.0
-offset_top = -175.0
-offset_right = -192.0
-offset_bottom = -105.0
-script = ExtResource("18_y3fai")
-metadata/tileName = "itemTileTemplate"
-
-[node name="keybindHandler" type="Node" parent="NecessaryStuff"]
-script = ExtResource("19_lcn25")
-
-[node name="Templates" type="Node" parent="NecessaryStuff"]
-
-[node name="keybindButton" type="Button" parent="NecessaryStuff/Templates"]
-anchors_preset = -1
-anchor_right = 0.054
-anchor_bottom = 0.021
-offset_left = 40.0
-offset_top = -64.0
-offset_right = -14.208
-offset_bottom = -69.608
-theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
-script = ExtResource("20_q6s3i")
-metadata/action = &""
-metadata/_edit_use_anchors_ = true
-
-[node name="cancelButton" type="Button" parent="NecessaryStuff/Templates"]
-visible = false
-offset_right = 8.0
-offset_bottom = 8.0
-disabled = true
-text = "Cancel"
-script = ExtResource("21_8bbmo")
-
-[node name="Camera2D" type="Camera2D" parent="NecessaryStuff"]
-process_mode = 3
-position = Vector2(375, 374)
-zoom = Vector2(1.2, 1.2)
-position_smoothing_speed = 0.0
-script = ExtResource("22_ph3ym")
-
-[node name="uiContainer" type="Node2D" parent="NecessaryStuff/Camera2D"]
-process_mode = 3
-visible = false
-z_index = 60
-position = Vector2(-587, -317)
-
-[node name="ColorRect" type="ColorRect" parent="NecessaryStuff/Camera2D/uiContainer"]
-z_index = -2
-offset_left = -2310.0
-offset_top = -1174.0
-offset_right = 4086.0
-offset_bottom = 1994.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Control" type="Control" parent="NecessaryStuff/Camera2D/uiContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 100.0
-script = ExtResource("23_xfyji")
-
-[node name="ColorRect2" type="ColorRect" parent="NecessaryStuff/Camera2D/uiContainer"]
-z_index = 4095
-offset_left = 260.0
-offset_top = 458.0
-offset_right = 1418.0
-offset_bottom = 627.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="NecessaryStuff/Camera2D/uiContainer"]
-z_index = 4095
-offset_left = 257.0
-offset_top = -15.0
-offset_right = 1422.0
-offset_bottom = 207.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Label" type="Label" parent="NecessaryStuff/Camera2D/uiContainer"]
-z_index = 4096
-offset_left = 273.0
-offset_top = 472.0
-offset_right = 1419.0
-offset_bottom = 525.0
-text = "press button to change keybind, use ticker to cycle between alternate keybinds"
-
-[node name="PauseScreen" type="Node2D" parent="NecessaryStuff/Camera2D"]
-process_mode = 3
-visible = false
-z_index = 12
-position = Vector2(-87, 103)
-
-[node name="ColorRect" type="ColorRect" parent="NecessaryStuff/Camera2D/PauseScreen"]
-process_mode = 3
-visibility_layer = 512
-z_index = 38
-offset_left = -1957.0
-offset_top = -719.0
-offset_right = 2753.0
-offset_bottom = 911.0
-color = Color(0.223529, 0.223529, 0.223529, 0.968627)
-script = ExtResource("24_qfru3")
-
-[node name="Button" type="ColorRect" parent="NecessaryStuff/Camera2D/PauseScreen"]
-z_index = 4096
-offset_left = -29.0
-offset_top = -304.0
-offset_right = 253.0
-offset_bottom = -251.0
-color = Color(0.0862745, 0.0862745, 0.0862745, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NecessaryStuff/Camera2D/PauseScreen/Button"]
-layout_mode = 0
-offset_left = 70.0
-offset_right = 270.0
-offset_bottom = 55.0
-theme_override_font_sizes/normal_font_size = 30
-text = "controls"
-
-[node name="Button2" type="ColorRect" parent="NecessaryStuff/Camera2D/PauseScreen"]
-z_index = 40
-offset_left = -29.0
-offset_top = -199.0
-offset_right = 253.0
-offset_bottom = -146.0
-color = Color(0.0862745, 0.0862745, 0.0862745, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NecessaryStuff/Camera2D/PauseScreen/Button2"]
-layout_mode = 0
-offset_left = 70.0
-offset_right = 262.0
-offset_bottom = 51.0
-theme_override_font_sizes/normal_font_size = 30
-text = "save game
-"
-
-[node name="VScrollBar" type="VScrollBar" parent="NecessaryStuff/Camera2D/PauseScreen"]
-z_index = 4096
-z_as_relative = false
-offset_left = 449.0
-offset_top = -322.0
-offset_right = 467.0
-offset_bottom = 38.0
-
-[node name="inventoryContainer" type="Node2D" parent="NecessaryStuff/Camera2D"]
-process_mode = 3
-visible = false
-z_index = 45
-position = Vector2(-500, -300)
-script = ExtResource("25_5cewy")
-
-[node name="itemTileContainer" type="ColorRect" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-offset_left = 212.0
-offset_top = 97.0
-offset_right = 832.0
-offset_bottom = 482.0
-mouse_filter = 2
-color = Color(0.0117647, 0.117647, 0.156863, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="itemTileTemplate" type="ColorRect" parent="NecessaryStuff/Camera2D/inventoryContainer/itemTileContainer"]
-z_index = 1
-layout_mode = 0
-offset_left = 47.0
-offset_top = 126.0
-offset_right = 117.0
-offset_bottom = 196.0
-mouse_filter = 2
-color = Color(0.294118, 0.294118, 0.294118, 1)
-script = ExtResource("26_1j3cw")
-
-[node name="closeButton" type="Button" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-process_mode = 3
-offset_left = 723.0
-offset_top = 110.0
-offset_right = 822.0
-offset_bottom = 209.0
-disabled = true
-action_mode = 0
-icon = ExtResource("27_tyg8b")
-
-[node name="Sprite2D" type="Sprite2D" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-position = Vector2(256.5, 126.5)
-scale = Vector2(0.406249, 0.40625)
-texture = ExtResource("28_nqi7n")
-
-[node name="TextEdit" type="TextEdit" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-offset_left = 284.0
-offset_top = 108.0
-offset_right = 454.0
-offset_bottom = 142.0
-
-[node name="rawr~" type="ColorRect" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-offset_left = 251.0
-offset_top = 215.0
-offset_right = 679.0
-offset_bottom = 459.0
-mouse_filter = 2
-color = Color(0.0392157, 0.0392157, 0.0392157, 1)
-metadata/_edit_lock_ = true
-
-[node name="VScrollBar" type="VScrollBar" parent="NecessaryStuff/Camera2D/inventoryContainer"]
-offset_left = 659.0
-offset_top = 222.0
-offset_right = 677.0
-offset_bottom = 446.0
-
-[node name="BottomBarrierDeath" type="Area2D" parent="NecessaryStuff"]
-position = Vector2(-91, -211)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NecessaryStuff/BottomBarrierDeath"]
-position = Vector2(276, 1678.38)
-shape = SubResource("RectangleShape2D_an4fa")
-metadata/_edit_lock_ = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="NecessaryStuff"]
-position = Vector2(86, -31)
-rotation = 1.76802
-color = Color(0.533333, 0.521569, 0.666667, 1)
-
 [connection signal="body_entered" from="Foreground/MachinePart/Area2D" to="Foreground/MachinePart" method="_on_area_2d_body_entered"]
 
+[editable path="Stuff/BackgroundContainer"]
+[editable path="Stuff/NecessaryStuff"]
 [editable path="TutorialText/Move"]
 [editable path="TutorialText/Jump"]
 [editable path="TutorialText/Slide"]

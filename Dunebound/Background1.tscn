@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://crjj34tdloil2"]
+
+[ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="1_02nxn"]
+[ext_resource type="Script" path="res://Scripts/SunMovement.gd" id="2_pxkso"]
+[ext_resource type="Texture2D" uid="uid://cdmidcmhfbbf0" path="res://Assets/Textures/Clouds/Cloud1.png" id="3_3wljt"]
+[ext_resource type="Texture2D" uid="uid://bv6wrf7kqtklh" path="res://Assets/Textures/Clouds/Cloud3.png" id="4_d3ng0"]
+[ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/BigBackground5.png" id="5_6t0k0"]
+[ext_resource type="Texture2D" uid="uid://en4ieyrseo6o" path="res://Assets/Textures/Clouds/Cloud2.png" id="6_28asr"]
+[ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="7_hegn1"]
+
+[node name="BackgroundContainer" type="Node2D"]
+position = Vector2(44, 37)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 1.04636e-15, -1.04636e-15, 1, 576, 324)
+follow_viewport_scale = 166.667
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+
+[node name="BackgroundColor" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/BackgroundColor"]
+offset_left = -1706.0
+offset_top = -772.0
+offset_right = 1664.0
+offset_bottom = 778.0
+color = Color(0.32549, 0.592157, 0.6, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sun" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="SunSprite" type="Sprite2D" parent="ParallaxBackground/Sun"]
+position = Vector2(-945, -40)
+texture = ExtResource("1_02nxn")
+script = ExtResource("2_pxkso")
+
+[node name="CloudsInBack" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 2.08165e-12)
+motion_mirroring = Vector2(2000, 2.08165e-12)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="Node2D" parent="ParallaxBackground/CloudsInBack"]
+modulate = Color(0.847059, 0.847059, 0.847059, 1)
+metadata/_edit_lock_ = true
+
+[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/CloudsInBack/Container"]
+position = Vector2(-519, -325)
+texture = ExtResource("3_3wljt")
+metadata/_edit_lock_ = true
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/CloudsInBack/Container"]
+position = Vector2(452, -389)
+texture = ExtResource("4_d3ng0")
+metadata/_edit_lock_ = true
+
+[node name="Dunes1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 2.08165e-12)
+motion_mirroring = Vector2(2700, 2.08165e-12)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="Node2D" parent="ParallaxBackground/Dunes1"]
+modulate = Color(0.862745, 0.862745, 0.862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="BigBackground6" type="Sprite2D" parent="ParallaxBackground/Dunes1/Container"]
+position = Vector2(788, -114)
+texture = ExtResource("5_6t0k0")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Dunes1/Container"]
+offset_left = -1046.0
+offset_top = 256.0
+offset_right = 1787.0
+offset_bottom = 750.0
+color = Color(0.803922, 0.717647, 0.372549, 1)
+metadata/_edit_lock_ = true
+
+[node name="CloudsInFront" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 2.08165e-12)
+motion_mirroring = Vector2(2000, 2.08165e-12)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="Node2D" parent="ParallaxBackground/CloudsInFront"]
+modulate = Color(0.847059, 0.847059, 0.847059, 1)
+metadata/_edit_lock_ = true
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/CloudsInFront/Container"]
+position = Vector2(1, -211)
+texture = ExtResource("6_28asr")
+metadata/_edit_lock_ = true
+
+[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/CloudsInFront/Container"]
+position = Vector2(860, -170)
+texture = ExtResource("7_hegn1")
+metadata/_edit_lock_ = true

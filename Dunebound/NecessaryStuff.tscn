@@ -1,0 +1,306 @@
+[gd_scene load_steps=22 format=3 uid="uid://cihs0j2mxb0bc"]
+
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
+[ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
+[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/weather_control.tscn" id="3_6rqrq"]
+[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
+[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
+[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
+[ext_resource type="Script" path="res://Scenes/TempUI.gd" id="7_s8lrs"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
+[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
+[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
+[ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="12_ju0bm"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
+[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
+[ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="15_r2oti"]
+[ext_resource type="Script" path="res://Scripts/inventoryHandler.gd" id="16_j25vd"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
+[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
+[ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+
+[sub_resource type="Gradient" id="Gradient_nj6uo"]
+offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an4fa"]
+size = Vector2(20626, 111.25)
+
+[node name="NecessaryStuff" type="Node2D"]
+
+[node name="Fader" parent="." instance=ExtResource("1_o1xk2")]
+position = Vector2(44, 37)
+fade_in_time = 5.0
+
+[node name="SaverLoader" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_q58lg")
+turned_on = false
+
+[node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
+BEGIN_PHASE = 1.5
+enabled = false
+sandstorm_is_on = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+texture_filter = 1
+offset_left = 22.0
+offset_top = 21.0
+offset_right = 203.0
+offset_bottom = 61.0
+value = 100.0
+texture_over = ExtResource("4_qo76u")
+texture_progress = ExtResource("5_mps04")
+script = ExtResource("6_fibtu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Temperature" type="Node2D" parent="UI"]
+script = ExtResource("7_s8lrs")
+gradientResource = SubResource("Gradient_nj6uo")
+
+[node name="TempLabel" type="RichTextLabel" parent="UI/Temperature"]
+offset_left = 920.0
+offset_top = 10.0
+offset_right = 1143.0
+offset_bottom = 48.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Temperature:"
+scroll_active = false
+
+[node name="TempGauge" type="RichTextLabel" parent="UI/Temperature"]
+offset_left = 935.0
+offset_top = 64.0
+offset_right = 1121.0
+offset_bottom = 143.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 65
+text = "100. T "
+scroll_active = false
+
+[node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
+visible = false
+z_index = 16
+offset_left = -262.0
+offset_top = -175.0
+offset_right = -192.0
+offset_bottom = -105.0
+script = ExtResource("9_tce0e")
+metadata/tileName = "itemTileTemplate"
+
+[node name="keybindHandler" type="Node" parent="."]
+script = ExtResource("10_k55li")
+
+[node name="Templates" type="Node" parent="."]
+
+[node name="keybindButton" type="Button" parent="Templates"]
+anchors_preset = -1
+anchor_right = 0.054
+anchor_bottom = 0.021
+offset_left = 40.0
+offset_top = -64.0
+offset_right = -14.208
+offset_bottom = -69.608
+theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
+script = ExtResource("11_ileum")
+metadata/action = &""
+metadata/_edit_use_anchors_ = true
+
+[node name="cancelButton" type="Button" parent="Templates"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+text = "Cancel"
+script = ExtResource("12_ju0bm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(375, 374)
+zoom = Vector2(1.2, 1.2)
+position_smoothing_speed = 0.0
+script = ExtResource("13_uimac")
+
+[node name="uiContainer" type="Node2D" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 60
+position = Vector2(-587, -317)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = -2
+offset_left = -2310.0
+offset_top = -1174.0
+offset_right = 4086.0
+offset_bottom = 1994.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="Camera2D/uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("14_xgfq8")
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = 4095
+offset_left = 260.0
+offset_top = 458.0
+offset_right = 1418.0
+offset_bottom = 627.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Camera2D/uiContainer"]
+z_index = 4095
+offset_left = 257.0
+offset_top = -15.0
+offset_right = 1422.0
+offset_bottom = 207.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="Camera2D/uiContainer"]
+z_index = 4096
+offset_left = 273.0
+offset_top = 472.0
+offset_right = 1419.0
+offset_bottom = 525.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="PauseScreen" type="Node2D" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 12
+position = Vector2(-87, 103)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/PauseScreen"]
+process_mode = 3
+visibility_layer = 512
+z_index = 38
+offset_left = -1957.0
+offset_top = -719.0
+offset_right = 2753.0
+offset_bottom = 911.0
+color = Color(0.223529, 0.223529, 0.223529, 0.968627)
+script = ExtResource("15_r2oti")
+
+[node name="Button" type="ColorRect" parent="Camera2D/PauseScreen"]
+z_index = 4096
+offset_left = -29.0
+offset_top = -304.0
+offset_right = 253.0
+offset_bottom = -251.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/PauseScreen/Button"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 270.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 30
+text = "controls"
+
+[node name="Button2" type="ColorRect" parent="Camera2D/PauseScreen"]
+z_index = 40
+offset_left = -29.0
+offset_top = -199.0
+offset_right = 253.0
+offset_bottom = -146.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/PauseScreen/Button2"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 262.0
+offset_bottom = 51.0
+theme_override_font_sizes/normal_font_size = 30
+text = "save game
+"
+
+[node name="VScrollBar" type="VScrollBar" parent="Camera2D/PauseScreen"]
+z_index = 4096
+z_as_relative = false
+offset_left = 449.0
+offset_top = -322.0
+offset_right = 467.0
+offset_bottom = 38.0
+
+[node name="inventoryContainer" type="Node2D" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 45
+position = Vector2(-500, -300)
+script = ExtResource("16_j25vd")
+
+[node name="itemTileContainer" type="ColorRect" parent="Camera2D/inventoryContainer"]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 832.0
+offset_bottom = 482.0
+mouse_filter = 2
+color = Color(0.0117647, 0.117647, 0.156863, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="itemTileTemplate" type="ColorRect" parent="Camera2D/inventoryContainer/itemTileContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 126.0
+offset_right = 117.0
+offset_bottom = 196.0
+mouse_filter = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+script = ExtResource("17_gbn25")
+
+[node name="closeButton" type="Button" parent="Camera2D/inventoryContainer"]
+process_mode = 3
+offset_left = 723.0
+offset_top = 110.0
+offset_right = 822.0
+offset_bottom = 209.0
+disabled = true
+action_mode = 0
+icon = ExtResource("18_e5ahn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/inventoryContainer"]
+position = Vector2(256.5, 126.5)
+scale = Vector2(0.406249, 0.40625)
+texture = ExtResource("19_ebuym")
+
+[node name="TextEdit" type="TextEdit" parent="Camera2D/inventoryContainer"]
+offset_left = 284.0
+offset_top = 108.0
+offset_right = 454.0
+offset_bottom = 142.0
+
+[node name="rawr~" type="ColorRect" parent="Camera2D/inventoryContainer"]
+offset_left = 251.0
+offset_top = 215.0
+offset_right = 679.0
+offset_bottom = 459.0
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="Camera2D/inventoryContainer"]
+offset_left = 659.0
+offset_top = 222.0
+offset_right = 677.0
+offset_bottom = 446.0
+
+[node name="BottomBarrierDeath" type="Area2D" parent="."]
+position = Vector2(-91, -211)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
+position = Vector2(276, 1678.38)
+shape = SubResource("RectangleShape2D_an4fa")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(86, -31)
+rotation = 1.76802
+color = Color(0.533333, 0.521569, 0.666667, 1)
