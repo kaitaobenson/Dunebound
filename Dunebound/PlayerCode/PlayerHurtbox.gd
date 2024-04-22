@@ -9,6 +9,7 @@ const enemy_info = {
 	"Zombie Husk Guy": [0, true],
 	"TurretyMan": [10, true],
 	"TurretBullet": [40, true],
+	"CloseRangeExplosion": [60, true],
 }
 
 const i_frame_time: float = 0.5

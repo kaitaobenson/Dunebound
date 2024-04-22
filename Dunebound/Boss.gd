@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-
+const ExplosionPath = preload("res://Scenes/close_range_explosion.tscn")
+const MaxExplosionSize : float = 5.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
 
 var action : int
 var can_action
@@ -18,11 +20,10 @@ var can_action
 
 
 func _ready():
-	print(Player)
+	pass
 
 
 func _physics_process(delta):
-	
 	if can_action:
 		action = (randi_range(1, 2))
 		if action == 1:
@@ -44,7 +45,13 @@ func teleport():
 	
 
 func close_range_attack():
-	pass
+	var explosion = ExplosionPath.instantiate()
+	var explosion_size = 1.0
+	add_child(explosion)
+	while explosion_size < MaxExplosionSize:
+		explosion.get_node("ExplosionHitbox").shape.radius *= explosion_size
+		explosion_size += 0.01
+		await get_tree().create_timer(0.01).timeout
 
 func long_range_attack():
 	pass

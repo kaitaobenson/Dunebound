@@ -426,13 +426,13 @@ position = Vector2(717, -155)
 [node name="TPContainer" type="Node" parent="."]
 
 [node name="Tp1" type="Node2D" parent="TPContainer"]
-position = Vector2(166, 267)
+position = Vector2(204, 233)
 
 [node name="Tp2" type="Node2D" parent="TPContainer"]
 position = Vector2(827, 256)
 
 [node name="Tp3" type="Node2D" parent="TPContainer"]
-position = Vector2(503, 40)
+position = Vector2(502, -181)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("3_w6g00")]
 position = Vector2(374, 376)

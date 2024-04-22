@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cdmidcmhfbbf0" path="res://Assets/Textures/Clouds/Cloud1.png" id="6_wmpjw"]
 [ext_resource type="Texture2D" uid="uid://bv6wrf7kqtklh" path="res://Assets/Textures/Clouds/Cloud3.png" id="7_j4kdr"]
 [ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/BigBackground5.png" id="8_55h3f"]
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="8_kffj1"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="8_kffj1"]
 [ext_resource type="Texture2D" uid="uid://en4ieyrseo6o" path="res://Assets/Textures/Clouds/Cloud2.png" id="9_etewm"]
 [ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="10_g8gq1"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="11_h7tso"]
