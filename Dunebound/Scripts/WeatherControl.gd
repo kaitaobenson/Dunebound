@@ -4,27 +4,29 @@ extends Node
 const NUMBER_OF_PHASES : float = 6.0
 const DAY_LENGTH:float = 100
 const PHASE_LENGTH:float = DAY_LENGTH / NUMBER_OF_PHASES
+const DAYS_UNTIL_SANDSTORM: int = 10
 
 var elapsedTime:float = 0.0
 var totalElapsedTime:float = 0.0
 
 @export var BEGIN_PHASE: float = 1
-
 @export var enabled: bool = true
 @export var sandstorm_is_on: bool = false
 
 @onready var _particles = $"CanvasLayer/CPUParticles2D"
 @onready var _storm_overlay  = $"CanvasLayer/StormOverlay"
-
 @onready var canvas_layer1 = $"../CanvasModulate"
 @onready var canvas_layer2 = $"../../BackgroundContainer/ParallaxBackground/CanvasModulate"
 
 #Gradient for Night / Day
 var gradientResource = load("res://Assets/Textures/DayNightGradient.tres")
 
-
 func _ready():
-	update_temperature()
+	if enabled:
+		update_temperature()
+	else:
+		Global.temperature = 50
+	
 	day_night_visuals()
 	Global.seconds_per_day = DAY_LENGTH
 	if enabled:

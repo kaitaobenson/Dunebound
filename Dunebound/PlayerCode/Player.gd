@@ -8,7 +8,8 @@ const SPRINT_SPEED = 600
 var player_speed = WALK_SPEED
 
 const NORMAL_GRAVITY = 2000
-const SLIDING_GRAVITY = 10000
+const DASHING_GRAVITY = 5000
+const SLIDING_GRAVITY = 50000
 var gravity: int = NORMAL_GRAVITY
 var foodPickup 
 #1, 0, -1
@@ -110,14 +111,26 @@ func jump():
 		await get_tree().process_frame
 	jumping = false
 
-
+var has_reseted = true
 func apply_gravity(delta):
 	if _slide.is_move_locked() && !jumping:
 		gravity = SLIDING_GRAVITY
+	if _slide.is_jump_locked():
+		gravity = DASHING_GRAVITY
+	if !_slide.is_move_locked() && !_slide.is_jump_locked():
+		gravity = NORMAL_GRAVITY
+	if jumping:
+		gravity = NORMAL_GRAVITY
+		
+	if !is_on_floor_custom() && _slide.is_move_locked():
+		gravity = NORMAL_GRAVITY
+		if !has_reseted && !jumping:
+			has_reseted = true
+			velocity.y = 0
 	else:
-		gravity = NORMAL_GRAVITY
-	if is_on_floor_custom() && !_slide.is_move_locked():
-		gravity = NORMAL_GRAVITY
+		has_reseted = false
+	
+	
 	velocity.y += gravity * delta
 
 
