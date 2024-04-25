@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://c2e2hmw035cvv"]
+[gd_scene load_steps=97 format=3 uid="uid://c2e2hmw035cvv"]
 
 [ext_resource type="Script" path="res://PlayerCode/PlayerParticles.gd" id="1_kaien"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTemp.gd" id="2_nfs4v"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://cn8bwu11l2wj4" path="res://Assets/Textures/Player/Run1-Sheet.png" id="10_jlror"]
 [ext_resource type="AudioStream" uid="uid://bexs4y8v6dre6" path="res://Sound/slideRepeated.mp3" id="11_aiurh"]
 [ext_resource type="Texture2D" uid="uid://e7wjjkl53kx2" path="res://Assets/Textures/Player/Slash3-Sheet.png" id="11_jwwth"]
-[ext_resource type="AudioStream" uid="uid://ur11sfy8lgcu" path="res://Sound/slideBegin.mp3" id="12_e3ub4"]
 [ext_resource type="Texture2D" uid="uid://cq82x7ivekrg6" path="res://Assets/Textures/Player/PlayerSlide2.png" id="12_l81jy"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerHurtbox.gd" id="13_clvl7"]
 [ext_resource type="Script" path="res://PlayerCode/PlayerTilemapDetector.gd" id="14_p7wcr"]
@@ -883,12 +882,12 @@ script = ExtResource("3_tcyi7")
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
 position = Vector2(-1, 1)
 stream = ExtResource("4_ox184")
-volume_db = -3.435
+volume_db = 3.898
 pitch_scale = 0.83
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
 stream = ExtResource("7_ndnrg")
-volume_db = -52.919
+volume_db = -41.585
 pitch_scale = 2.74
 
 [node name="Attack1" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
@@ -905,14 +904,10 @@ stream = ExtResource("10_frqvc")
 volume_db = -8.433
 pitch_scale = 1.13
 
-[node name="SlideRepeat" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
+[node name="Slide" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
 stream = ExtResource("11_aiurh")
-volume_db = -36.54
+volume_db = -25.207
 pitch_scale = 0.27
-
-[node name="SlideBegin" type="AudioStreamPlayer2D" parent="Player/AudioManager"]
-stream = ExtResource("12_e3ub4")
-volume_db = -8.12
 
 [node name="GroundRaycasts" type="Node2D" parent="Player"]
 

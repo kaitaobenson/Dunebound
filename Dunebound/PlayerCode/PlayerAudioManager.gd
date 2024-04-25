@@ -6,7 +6,6 @@ enum ALL_SOUNDS {
 	SHORT_ATTACK,
 	ATTACK_CHARGED,
 	SLIDE,
-	
 }
 
 @onready var footsteps = $"Footsteps"
@@ -14,6 +13,8 @@ enum ALL_SOUNDS {
 @onready var attack_1 = $"Attack1"
 @onready var attack_2 = $"Attack2"
 @onready var attack_charge = $"AttackCharge"
+@onready var slide = $"Slide"
+
 @onready var player = $"../"
 
 var _footsteps_playing: bool = false
@@ -27,7 +28,12 @@ func _process(delta):
 		if footsteps.playing:
 			footsteps.stop()
 	
-	#if 
+	if _slide_playing:
+		if !slide.playing:
+			slide.play(0)
+	else:
+		if slide.playing:
+			slide.stop()
 
 
 func play(sound: ALL_SOUNDS):

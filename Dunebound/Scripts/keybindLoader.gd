@@ -66,6 +66,5 @@ func reloadKeybinds():
 	keybindConfig.close()
 
 func _ready():
-	pass
-	#makeDefaultKeybinds()
-	#reloadKeybinds()
+	makeDefaultKeybinds()
+	reloadKeybinds()

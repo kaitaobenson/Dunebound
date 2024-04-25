@@ -63,7 +63,6 @@ func player_take_damage():
 	if player_temp_status != TEMP_STATES.NORMAL:
 		if can_take_damage:
 			can_take_damage = false
-			print("dkjsflksd")
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			_health_component.damage_without_visuals(attack)

@@ -1,18 +1,21 @@
 extends Node
 
-var inventory
-var Player: Object
+
 var player_temp: float 
 
-var camera: Camera2D
+var inventory: Object
+var Player: Object
+var camera: Object
 var saver_loader: Object
 var temperature_ui: Object
-
-var TimeOfDay = 1
-var DayCount = 1
-var seconds_per_day = 0
-
 var fader: Object
+
+# 1-6 phase
+var current_phase: int
+var DAY_LENGTH: int
+var day_count = 1
+
+
 
 var temperature
 
