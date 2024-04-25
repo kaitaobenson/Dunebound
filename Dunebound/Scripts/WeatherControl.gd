@@ -102,7 +102,6 @@ func day_night_visuals():
 
 func update_color():
 	#Set canvas modulate color from gradient
-	print(day_night_color_value)
 	canvas_modulate1.color = gradientResource.sample(day_night_color_value)
 	canvas_modulate2.color = gradientResource.sample(day_night_color_value)
 

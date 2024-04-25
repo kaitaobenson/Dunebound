@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uahw0xonxo0j"
-path="res://.godot/imported/MachinePart2.png-ad15a767ffbea753ca6140b98915df77.ctex"
+uid="uid://cm623gl5afuk3"
+path="res://.godot/imported/Rock1.png-cfdf228f871cddcc69bbf6c7b3832c36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MachinePart2.png"
-dest_files=["res://.godot/imported/MachinePart2.png-ad15a767ffbea753ca6140b98915df77.ctex"]
+source_file="res://Assets/Textures/Rock1.png"
+dest_files=["res://.godot/imported/Rock1.png-cfdf228f871cddcc69bbf6c7b3832c36.ctex"]
 
 [params]
 

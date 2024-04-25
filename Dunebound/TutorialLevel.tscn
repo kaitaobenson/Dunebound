@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="3_8bqa4"]
 [ext_resource type="Script" path="res://TutorialMachinePart.gd" id="3_vhbb0"]
 [ext_resource type="TileSet" uid="uid://bl7siygu2y2hh" path="res://Assets/Tilemap/DecorTilemap.tres" id="3_xw2xj"]
-[ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/MachinePart2.png" id="4_fr86l"]
+[ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/Textures/MachineParts/MachinePart2.png" id="4_fr86l"]
 [ext_resource type="Texture2D" uid="uid://colsqwcdfi7c5" path="res://Assets/Textures/Sign.png" id="6_twbqo"]
 [ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Background1.tscn" id="9_fh8dy"]
 
@@ -81,7 +81,7 @@ texture = ExtResource("6_twbqo")
 metadata/_edit_lock_ = true
 
 [node name="PlayerContainer" parent="." instance=ExtResource("3_8bqa4")]
-position = Vector2(1150, 368)
+position = Vector2(855, 485)
 
 [node name="Stuff" type="Node2D" parent="."]
 

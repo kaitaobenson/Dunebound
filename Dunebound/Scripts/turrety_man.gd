@@ -108,3 +108,6 @@ func fighting():
 	else:
 		direction = 0
 		print("just right!")
+
+func die():
+	queue_free()

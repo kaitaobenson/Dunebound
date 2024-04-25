@@ -33,6 +33,7 @@ autoplay = true
 fade_in_time = 3.0
 
 [node name="WeatherControl" parent="Stuff/NecessaryStuff" index="2"]
+current_phase = 4.0
 enabled = true
 
 [editable path="Stuff/BackgroundContainer"]
