@@ -101,13 +101,10 @@ func fighting():
 	var player_left_or_right = distance_to_playerX / abs(distance_to_playerX)
 	if abs(distance_to_playerX) < 300:
 		direction = -player_left_or_right
-		print("too close!")
 	elif abs(distance_to_playerX) > 400:
 		direction = player_left_or_right
-		print("too far!")
 	else:
 		direction = 0
-		print("just right!")
 
 func die():
 	queue_free()

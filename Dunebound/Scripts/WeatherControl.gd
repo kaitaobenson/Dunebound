@@ -1,6 +1,6 @@
 extends Node
 
-@export var current_phase: float = 1
+@export var current_phase: float = 1.0
 @export var enabled: bool = true
 @export var sandstorm_is_on: bool = false
 
@@ -10,15 +10,15 @@ extends Node
 @onready var canvas_modulate2 = $"../../BackgroundContainer/ParallaxBackground/CanvasModulate"
 
 #Daylength in Seconds
-const DAY_LENGTH: float = 100
+const DAY_LENGTH: float = 10
 const PHASE_LENGTH: float = DAY_LENGTH / 6.0
 const DAYS_UNTIL_SANDSTORM: int = 10
 
 #Elapsed time this new day phase
-var today_elapsed_time:float = 0.0
+@onready var today_elapsed_time:float = (current_phase - 1) * PHASE_LENGTH + 0.01
 
 #Total elapsed time while playing game
-var total_elapsed_time:float = 0.0
+@onready var total_elapsed_time:float = (current_phase - 1) * PHASE_LENGTH + 0.01
 
 #Phase shizz
 var can_change_phase: bool = true
@@ -27,29 +27,28 @@ var can_change_phase: bool = true
 var gradientResource: Gradient = load("res://Assets/Textures/DayNightGradient.tres")
 var day_night_color_value: float = 0.0
 
-
 func _ready():
 	Global.DAY_LENGTH = DAY_LENGTH
+	Global.phase_length = PHASE_LENGTH
+	Global.begin_phase = current_phase
 	
-	if enabled:
-		update_temperature()
-		set_process(true)
-	else:
+	update_temperature()
+	
+	if !enabled:
 		Global.temperature = 50
 		await get_tree().process_frame
 		await get_tree().process_frame
 		set_process(false)
 		Global.temperature = 50
-	
-	day_night_visuals()
 
 
 func _process(delta):
+	#print("PHASE:  " + str(current_phase))
+	#print("VALUE:  " + str(day_night_color_value))
 	day_night_visuals()
 	update_color()
 	update_temperature()
 	sandstorm()
-	
 	today_elapsed_time += delta
 	total_elapsed_time += delta
 	
@@ -59,7 +58,7 @@ func _process(delta):
 	
 	# / 6 round up to get current phase number
 	current_phase = ceil(today_elapsed_time / PHASE_LENGTH)
-
+	
 
 func day_night_visuals():
 	if can_change_phase:
@@ -67,36 +66,36 @@ func day_night_visuals():
 		if current_phase == 1:
 			can_change_phase = false
 			day_night_color_value = 0.5
-			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0, PHASE_LENGTH).set_trans(Tween.TRANS_LINEAR).finished
+			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0, PHASE_LENGTH - 0.1).set_trans(Tween.TRANS_LINEAR).finished
 			can_change_phase = true
 		#Stay at 0
 		if current_phase == 2:
 			can_change_phase = false
 			day_night_color_value = 0
-			await get_tree().create_timer(PHASE_LENGTH).timeout 
+			await get_tree().create_timer(PHASE_LENGTH - 0.1).timeout 
 		#Go to 0.5
 		if current_phase == 3:
 			can_change_phase = false
 			day_night_color_value = 0
-			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0.5, PHASE_LENGTH).set_trans(Tween.TRANS_LINEAR).finished
+			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0.5, PHASE_LENGTH - 0.1).set_trans(Tween.TRANS_LINEAR).finished
 			can_change_phase = true
 		#Go to 1
 		if current_phase == 4:
 			can_change_phase = false
 			day_night_color_value = 0.5
-			await get_tree().create_tween().tween_property(self, "day_night_color_value", 1, PHASE_LENGTH).set_trans(Tween.TRANS_LINEAR).finished
+			await get_tree().create_tween().tween_property(self, "day_night_color_value", 1, PHASE_LENGTH - 0.1).set_trans(Tween.TRANS_LINEAR).finished
 			can_change_phase = true
 		#Stay at 1
 		if current_phase == 5:
 			can_change_phase = false
 			day_night_color_value = 1
-			await get_tree().create_timer(PHASE_LENGTH).timeout
+			await get_tree().create_timer(PHASE_LENGTH - 0.1).timeout
 			can_change_phase = true
 		#Go to 0.5
 		if current_phase == 6:
 			can_change_phase = false
 			day_night_color_value = 1
-			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0.5, PHASE_LENGTH).set_trans(Tween.TRANS_LINEAR).finished
+			await get_tree().create_tween().tween_property(self, "day_night_color_value", 0.5, PHASE_LENGTH - 0.1).set_trans(Tween.TRANS_LINEAR).finished
 			can_change_phase = true
 
 

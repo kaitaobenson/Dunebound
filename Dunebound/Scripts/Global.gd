@@ -12,6 +12,8 @@ var fader: Object
 
 # 1-6 phase
 var current_phase: int
+var begin_phase: int
+var phase_length: float
 var DAY_LENGTH: int
 var day_count = 1
 

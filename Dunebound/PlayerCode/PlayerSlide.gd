@@ -97,8 +97,6 @@ func slide():
 		new_speed = _player.velocity.x + (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG / _player.velocity.x)
 		if (floor_angle > 0 && new_speed < 0) || (floor_angle < 0 && new_speed > 0):
 			new_speed = 0
-		print((SLIDE_DRAG / _player.velocity.x))
-		#print(new_speed)
 		if (new_speed > MAX_SPEED) || (new_speed < MAX_SPEED * -1):
 			new_speed = MAX_SPEED * _player.player_sprite_direction
 		if _player.is_on_floor_custom() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
