@@ -67,7 +67,11 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, 0.2)
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.RUN, false)
 		_audio_manager.stop(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
-	
+		
+	elif _slide.move_is_locked:
+		_audio_manager.stop(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
+		
+		
 	### JUMP ###
 	if is_on_floor_custom():
 		_can_jump = true

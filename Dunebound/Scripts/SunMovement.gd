@@ -15,6 +15,6 @@ func _process(delta):
 	position.x = radius * cos(angle) + central_pos.x
 	position.y = radius * sin(angle) + central_pos.y
 	
-	angle = deg_to_rad(timer / Global.seconds_per_day * 360)
+	angle = deg_to_rad(timer / Global.DAY_LENGTH * 360)
 	if angle == 2 * PI:
 		angle = 0
