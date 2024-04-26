@@ -6,7 +6,7 @@ func _init():
 	Global.camera = self
 
 func _ready():
-	get_node("PauseScreen/Button").connect("button_down",openthatthing)
+	get_parent().get_node("UI/PauseScreen/Button").connect("button_down",openthatthing)
 
 #THIS SHOULD NOT BE HEREREeEE
 func openthatthing():

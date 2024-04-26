@@ -5,12 +5,12 @@
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_tcrbo"]
 [ext_resource type="PackedScene" uid="uid://c3ncso8po0iow" path="res://BreakableWall.tscn" id="2_77x75"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_gb38x"]
-[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://NecessaryStuff.tscn" id="2_ul36h"]
+[ext_resource type="PackedScene" uid="uid://b5c8riiwk77o5" path="res://NecessaryStuff.tscn" id="2_ul36h"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="3_8bqa4"]
 [ext_resource type="Script" path="res://TutorialMachinePart.gd" id="3_vhbb0"]
 [ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/MachinePart2.png" id="4_fr86l"]
 [ext_resource type="Texture2D" uid="uid://colsqwcdfi7c5" path="res://Assets/Textures/Sign.png" id="6_twbqo"]
-[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Background1.tscn" id="9_fh8dy"]
+[ext_resource type="PackedScene" path="res://Background1.tscn" id="9_fh8dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jydmc"]
 size = Vector2(116, 74)
@@ -90,6 +90,34 @@ autoplay = true
 
 [node name="Fader" parent="Stuff/NecessaryStuff" index="0"]
 fade_in_time = 3.0
+
+[node name="uiContainer" parent="Stuff/NecessaryStuff/UI" index="2"]
+position = Vector2(-247, 111)
+
+[node name="ColorRect" parent="Stuff/NecessaryStuff/UI/uiContainer" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" parent="Stuff/NecessaryStuff/UI/uiContainer" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" parent="Stuff/NecessaryStuff/UI/uiContainer" index="2"]
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" parent="Stuff/NecessaryStuff/UI/uiContainer" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="Stuff/NecessaryStuff/UI/uiContainer" index="4"]
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseScreen" parent="Stuff/NecessaryStuff/UI" index="3"]
+position = Vector2(381, 502)
+
+[node name="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen" index="0"]
+offset_left = -1701.0
+offset_top = -687.0
+offset_right = 3009.0
+offset_bottom = 943.0
+metadata/_edit_use_anchors_ = true
 
 [node name="TutorialText" type="Node2D" parent="."]
 position = Vector2(-593, 44)
