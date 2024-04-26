@@ -8,7 +8,7 @@ func _ready():
 
 
 func _process(delta):
-	if tile_types_in_area.has("spike"):
+	if tile_types_in_area.has("death"):
 		spikes()
 
 
@@ -16,13 +16,11 @@ func _process(delta):
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index) -> void:
 	if body is TileMap:
-		pass
-		#_process_tilemap_data(body, body_rid, true)
+		_process_tilemap_data(body, body_rid, true)
 
 func _on_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
-		pass
-		#_process_tilemap_data(body, body_rid, false)
+		_process_tilemap_data(body, body_rid, false)
 
 
 ### Takes data and adds/removes tilemap type from array ###

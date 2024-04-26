@@ -55,7 +55,7 @@ func regen_health(delta):
 		if health_component.health <= 95:
 			make_attack(-5)
 		elif health_component.health < 100:
-			make_attack(100 - health_component.health)
+			make_attack((100 - health_component.health) * -1)
 
 
 func check_for_enemies():

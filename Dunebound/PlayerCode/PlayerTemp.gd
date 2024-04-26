@@ -28,14 +28,15 @@ var can_take_damage: bool = true
 
 
 func _ready():
-	pass
+	await get_tree().process_frame
+	player_temp = Global.temperature
 
 
 func _process(delta):
-	update_player_temp_status()
-	player_take_damage()
-	keep_player_temp_within_boundries()
 	Global.player_temp = player_temp
+	update_player_temp_status()
+	keep_player_temp_within_boundries()
+	player_take_damage()
 	
 	_temperature_label.text = str(round(player_temp)) + ". F"
 	
@@ -59,10 +60,9 @@ func _process(delta):
 
 
 func player_take_damage():
-	if (player_temp_status == TEMP_STATES.HOT) || (player_temp_status == TEMP_STATES.COLD):
+	if player_temp_status != TEMP_STATES.NORMAL:
 		if can_take_damage:
 			can_take_damage = false
-			
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			_health_component.damage_without_visuals(attack)
@@ -106,7 +106,7 @@ func update_player_temp_status():
 		player_temp_status = TEMP_STATES.HOT
 	if player_temp < player_cold_limit:
 		player_temp_status = TEMP_STATES.COLD
-	if !(player_temp > player_heat_limit) && !(player_temp < player_cold_limit):
+	if (player_temp < player_heat_limit) && (player_temp > player_cold_limit):
 		player_temp_status = TEMP_STATES.NORMAL
 
 

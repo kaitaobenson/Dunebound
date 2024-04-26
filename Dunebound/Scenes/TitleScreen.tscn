@@ -45,7 +45,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 80
 action_mode = 0
-text = "Play"
+text = "Tutorial"
 
 [node name="Options" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2

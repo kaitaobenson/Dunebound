@@ -16,7 +16,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sensor" type="Node2D" parent="."]
 visible = false
-position = Vector2(604, 4066)
+position = Vector2(581, 4244)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sensor"]
 texture = ExtResource("3_bqrqm")
@@ -27,7 +27,7 @@ metadata/_edit_lock_ = true
 [node name="Decorations" type="Node2D" parent="."]
 
 [node name="Jimmy" type="Sprite2D" parent="Decorations"]
-position = Vector2(602, 3807)
+position = Vector2(602, 4023)
 scale = Vector2(23.4688, 9.1875)
 texture = ExtResource("3_bqrqm")
 
@@ -52,7 +52,7 @@ Kai Benson
 [b]Programmer[/b]
 [b]Artist[/b]
 
-Sequoia Hanes
+Sequoia Haynes
 [b]Lead Programmer[/b]
 
 Xavier Jin
@@ -68,6 +68,9 @@ Francesca Wrobel
 [b]Adult Coach[/b]
 
 Carson Bates
+[b]Playtester[/b]
+
+Noah
 [b]Playtester[/b]
 
 Flowlab Community

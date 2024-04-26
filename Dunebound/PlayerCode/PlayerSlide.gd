@@ -1,12 +1,14 @@
 extends Node
 
-const MAX_SPEED = 1200
+const MAX_SPEED = 1600
 
-const SLIDE_SPEED_MULTIPLIER = 2.0
-const SLIDE_DRAG = 100
+const SLIDE_SPEED_MULTIPLIER = 5
+const SLIDE_DRAG = 50000
 
 const DASH_TIME = 0.05
 const DASH_SPEED = 600
+
+const DELAY_BETWEEN_SLIDES = 1
 
 var previous_slide_done: bool = true
 var slide_is_pressed: bool = false
@@ -19,8 +21,11 @@ var can_stop_slide: bool = false
 
 var sliding_in_air: bool = false
 
+var sliding_gravity: bool = false
+
 @onready var _player = $"../"
 @onready var _anim_manager = $"../AnimationManager/"
+@onready var _raycast = $"../FloorAngleRaycast"
 
 func _process(delta):
 	if Input.is_action_just_pressed("slide"):
@@ -46,6 +51,7 @@ func handle_slide():
 		await dash()
 		jump_is_locked = false
 		
+		sliding_gravity = true
 		slide_has_moved = true
 		sliding_in_air = false
 		
@@ -53,11 +59,12 @@ func handle_slide():
 		
 		slide_is_pressed = false
 		
+		sliding_gravity = false
 		can_stop_slide = true
 		move_is_locked = false
 		
 		
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(DELAY_BETWEEN_SLIDES).timeout
 		previous_slide_done = true
 		
 		
@@ -81,32 +88,36 @@ func dash():
 
 
 func slide():
-	var floor_angle = rad_to_deg(atan2(_player.get_floor_normal().y, _player.get_floor_normal().x)) + 90
-	var new_speed = 100 + (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG)
+	var floor_angle = rad_to_deg(atan2(_raycast.get_collision_normal().y, _raycast.get_collision_normal().x)) + 90
+	
+	var new_speed = (floor_angle * SLIDE_SPEED_MULTIPLIER)
+	
 	while slide_is_pressed && slide_has_moved && _player.is_on_floor_custom() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
-		floor_angle = rad_to_deg(atan2(_player.get_floor_normal().y, _player.get_floor_normal().x)) + 90
-		new_speed += _player.velocity.x + (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG)
+		floor_angle = rad_to_deg(atan2(_raycast.get_collision_normal().y, _raycast.get_collision_normal().x)) + 90
+		new_speed = _player.velocity.x + (floor_angle * SLIDE_SPEED_MULTIPLIER) - (SLIDE_DRAG / _player.velocity.x)
+		if (floor_angle > 0 && new_speed < 0) || (floor_angle < 0 && new_speed > 0):
+			new_speed = 0
+		print((SLIDE_DRAG / _player.velocity.x))
+		#print(new_speed)
 		if (new_speed > MAX_SPEED) || (new_speed < MAX_SPEED * -1):
 			new_speed = MAX_SPEED * _player.player_sprite_direction
 		if _player.is_on_floor_custom() && ((_player.player_sprite_direction > 0 && new_speed > 0) || (_player.player_sprite_direction < 0 && new_speed < 0)):
 			_player.velocity.x = new_speed
 		
 		slide_has_moved = await check_if_moved()
-		await get_tree().create_timer(0.001).timeout
 		
-	while slide_is_pressed && !_player.is_on_floor_custom():
+	#slide_is_presed
+	while !_player.is_on_floor_custom():
 		sliding_in_air = true
 		
 		slide_has_moved = await check_if_moved()
-		#await get_tree().create_timer(0.001).timeout
-
 
 
 func check_if_moved() -> bool:
-	var first_pos: Vector2 = _player.position
+	var first_pos: Vector2 = _player.global_position
 	var second_pos: Vector2
 	await get_tree().create_timer(0.1).timeout
-	second_pos = _player.position
+	second_pos = _player.global_position
 	
 	if first_pos.distance_squared_to(second_pos) >= 0.01:
 		return true
@@ -122,3 +133,6 @@ func is_jump_locked() -> bool:
 
 func is_sliding() -> bool:
 	return !previous_slide_done
+
+func is_sliding_gravity() -> bool:
+	return sliding_gravity

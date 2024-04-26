@@ -2,38 +2,39 @@
 
 [ext_resource type="Script" path="res://BreakableWall.gd" id="1_myqgn"]
 [ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_2fa55"]
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="3_nbgri"]
+[ext_resource type="Texture2D" uid="uid://d13pid7rtyej3" path="res://Assets/Textures/BigSucculent.png" id="2_kf7mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cwr5"]
-size = Vector2(246, 286)
+size = Vector2(400, 957)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy6gi"]
-size = Vector2(276.5, 313.5)
+size = Vector2(468, 1024)
 
 [node name="BreakableWall" type="Node2D"]
 position = Vector2(-1, -6)
 script = ExtResource("1_myqgn")
 
+[node name="BigSucculent" type="Sprite2D" parent="."]
+position = Vector2(-36, -91)
+texture = ExtResource("2_kf7mg")
+metadata/_edit_lock_ = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 3)
+position = Vector2(-36, -89.5)
 shape = SubResource("RectangleShape2D_6cwr5")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_2fa55")]
-animation_sprite = NodePath("../Sprite2D")
+animation_sprite = NodePath("../BigSucculent")
+metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
 position = Vector2(-1, 1)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Hurtbox"]
-position = Vector2(-1.25, 0.25)
+position = Vector2(-34, -91)
 shape = SubResource("RectangleShape2D_iy6gi")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 3)
-scale = Vector2(7.75, 8.98437)
-texture = ExtResource("3_nbgri")
 metadata/_edit_lock_ = true
