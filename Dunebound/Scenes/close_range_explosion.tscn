@@ -9,5 +9,6 @@ script = ExtResource("1_2geye")
 
 [node name="ExplosionHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ka2pe")
+debug_color = Color(0.941176, 0, 0.603922, 0.419608)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

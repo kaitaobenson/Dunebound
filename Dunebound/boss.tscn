@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhcvy0qd2gcto"]
+[gd_scene load_steps=6 format=3 uid="uid://bhcvy0qd2gcto"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_47de6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebkaj"]
 size = Vector2(123.625, 142.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yp5yy"]
+radius = 147.014
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5eb51"]
+radius = 323.076
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7vqt"]
+radius = 473.714
 
 [node name="Boss" type="CharacterBody2D"]
 position = Vector2(323, 252)
@@ -13,3 +22,18 @@ script = ExtResource("1_47de6")
 shape = SubResource("RectangleShape2D_ebkaj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Small" type="Area2D" parent="."]
+
+[node name="Small" type="CollisionShape2D" parent="Small"]
+shape = SubResource("CircleShape2D_yp5yy")
+
+[node name="Medium" type="Area2D" parent="."]
+
+[node name="Medium" type="CollisionShape2D" parent="Medium"]
+shape = SubResource("CircleShape2D_5eb51")
+
+[node name="Large" type="Area2D" parent="."]
+
+[node name="Large" type="CollisionShape2D" parent="Large"]
+shape = SubResource("CircleShape2D_v7vqt")
