@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl5k3gjm2ufo6"]
+
+[ext_resource type="Script" path="res://Birdle.gd" id="1_1voxa"]
+[ext_resource type="Texture2D" uid="uid://bfeafvoas8tsk" path="res://Birdie-Sheet.png" id="2_mspr4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22yf2"]
+atlas = ExtResource("2_mspr4")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8qgk"]
+atlas = ExtResource("2_mspr4")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r77ud"]
+atlas = ExtResource("2_mspr4")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5dxo"]
+atlas = ExtResource("2_mspr4")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g67c2"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_22yf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8qgk")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5dxo")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0duuh"]
+radius = 121.0
+
+[node name="Birdle" type="Node2D"]
+script = ExtResource("1_1voxa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 100
+sprite_frames = SubResource("SpriteFrames_g67c2")
+animation = &"Walk"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_0duuh")
+
+[node name="RightSide" type="RayCast2D" parent="."]
+target_position = Vector2(46, 0)
+
+[node name="LeftSide" type="RayCast2D" parent="."]
+target_position = Vector2(-52, 0)
+
+[node name="RightDown" type="RayCast2D" parent="."]
+position = Vector2(44, 0)
+
+[node name="LeftDown" type="RayCast2D" parent="."]
+position = Vector2(-51, 0)
