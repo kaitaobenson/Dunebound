@@ -59,12 +59,12 @@ func _physics_process(delta):
 				fly_direction = -1
 		
 		_anim.play("Fly")
-		position.y -= 5
+		position.y -= 7
 		if fly_direction == 1:
-			position.x += 5
+			position.x += 7
 			_anim.flip_h = false
 		if fly_direction == -1:
-			position.x -= 5
+			position.x -= 7
 			_anim.flip_h = true
 			
 			
@@ -76,8 +76,6 @@ func _physics_process(delta):
 			walk_once_trigger = false
 			previous_walk_done = false
 			
-			wait()
-			
 			var random = randi_range(1,2)
 			if random == 1:
 				walk_direction = 1
@@ -85,6 +83,8 @@ func _physics_process(delta):
 				walk_direction = -1
 			
 			walk_time = randi_range(1 , 4)
+			
+			wait()
 		
 		walk_timer += delta
 		if walk_timer >= walk_time:
@@ -95,18 +95,20 @@ func _physics_process(delta):
 			if _right_side.is_colliding() || !_right_down.is_colliding():
 				walk_direction = -1
 			position.x += 1
+			_anim.play("Walk")
 			_anim.flip_h = false
 		if walk_direction == -1:
 			if _left_side.is_colliding() || !_left_down.is_colliding():
 					walk_direction = 1
 			position.x -= 1
+			_anim.play("Walk")
 			_anim.flip_h = true
 
 
 func wait():
 	var direction = walk_direction
 	walk_direction = 0
-	
+	_anim.stop()
 	await get_tree().create_timer(randi_range(2,2)).timeout
 	
 	walk_direction = direction
