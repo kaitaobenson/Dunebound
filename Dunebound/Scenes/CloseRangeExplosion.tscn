@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2bnpqgp3vawj"]
 
-[ext_resource type="Script" path="res://Scenes/close_range_explosion.gd" id="1_2geye"]
+[ext_resource type="Script" path="res://Scripts/close_range_explosion.gd" id="1_2geye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ka2pe"]
 

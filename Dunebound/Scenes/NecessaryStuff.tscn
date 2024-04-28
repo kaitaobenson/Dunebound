@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
-[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/weather_control.tscn" id="3_6rqrq"]
+[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
-[ext_resource type="Script" path="res://Scenes/TempUI.gd" id="7_s8lrs"]
+[ext_resource type="Script" path="res://Scripts/TempUI.gd" id="7_s8lrs"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]

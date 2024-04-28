@@ -1,22 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://bl5k3gjm2ufo6"]
 
-[ext_resource type="Script" path="res://Birdle.gd" id="1_1voxa"]
-[ext_resource type="Texture2D" uid="uid://bfeafvoas8tsk" path="res://Birdie-Sheet.png" id="2_mspr4"]
+[ext_resource type="Script" path="res://Scripts/Birdle.gd" id="1_1voxa"]
+[ext_resource type="Texture2D" uid="uid://bfeafvoas8tsk" path="res://Assets/Textures/Creatures/Birdie-Sheet.png" id="2_vk4t4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22yf2"]
-atlas = ExtResource("2_mspr4")
+atlas = ExtResource("2_vk4t4")
 region = Rect2(160, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8qgk"]
-atlas = ExtResource("2_mspr4")
+atlas = ExtResource("2_vk4t4")
 region = Rect2(240, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r77ud"]
-atlas = ExtResource("2_mspr4")
+atlas = ExtResource("2_vk4t4")
 region = Rect2(0, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5dxo"]
-atlas = ExtResource("2_mspr4")
+atlas = ExtResource("2_vk4t4")
 region = Rect2(80, 0, 80, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g67c2"]

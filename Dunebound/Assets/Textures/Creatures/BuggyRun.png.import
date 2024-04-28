@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg5vwtp6egk26"
-path="res://.godot/imported/Dune1.png-dc7c9967b0dc6dfdeeb23c1fc4e86205.ctex"
+uid="uid://wx80ljwbnofb"
+path="res://.godot/imported/BuggyRun.png-d6e8722a93ed5823844a911b5ad346e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Dune1.png"
-dest_files=["res://.godot/imported/Dune1.png-dc7c9967b0dc6dfdeeb23c1fc4e86205.ctex"]
+source_file="res://Assets/Textures/Creatures/BuggyRun.png"
+dest_files=["res://.godot/imported/BuggyRun.png-d6e8722a93ed5823844a911b5ad346e6.ctex"]
 
 [params]
 

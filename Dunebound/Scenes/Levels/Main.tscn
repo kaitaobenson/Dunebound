@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_qrex5"]
-[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Background1.tscn" id="3_hwpk2"]
-[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://NecessaryStuff.tscn" id="4_p1kj3"]
+[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="3_hwpk2"]
+[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://Scenes/NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 
 [node name="WORLD" type="Node2D"]

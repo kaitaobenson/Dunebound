@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mvnnge410l8k"
-path="res://.godot/imported/white_sun1-pixilart.png-e8aa3dce01f7fffab716031fd1f29ff0.ctex"
+uid="uid://b4fkck4nifekb"
+path="res://.godot/imported/TitleScreen.png-d1cf0e0c505444fe9c11761f656f18a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/white_sun1-pixilart.png"
-dest_files=["res://.godot/imported/white_sun1-pixilart.png-e8aa3dce01f7fffab716031fd1f29ff0.ctex"]
+source_file="res://Assets/TitleScreen.png"
+dest_files=["res://.godot/imported/TitleScreen.png-d1cf0e0c505444fe9c11761f656f18a1.ctex"]
 
 [params]
 

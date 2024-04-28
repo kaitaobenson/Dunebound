@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="1_2ummm"]
 [ext_resource type="Script" path="res://Scripts/turrety_man.gd" id="1_dv6c4"]
-[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="3_a173j"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_a173j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uklvo"]
 size = Vector2(45, 132)

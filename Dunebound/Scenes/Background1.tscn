@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://crjj34tdloil2"]
 
-[ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/white_sun1-pixilart.png" id="1_02nxn"]
+[ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/WhiteSun.png" id="1_02nxn"]
 [ext_resource type="Script" path="res://Scripts/SunMovement.gd" id="2_pxkso"]
 [ext_resource type="Texture2D" uid="uid://cdmidcmhfbbf0" path="res://Assets/Textures/Clouds/Cloud1.png" id="3_3wljt"]
 [ext_resource type="Texture2D" uid="uid://bv6wrf7kqtklh" path="res://Assets/Textures/Clouds/Cloud3.png" id="4_d3ng0"]
-[ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/BigBackground5.png" id="5_6t0k0"]
+[ext_resource type="Texture2D" uid="uid://b6sb32opr60rw" path="res://Assets/Textures/Backgrounds/BigBackground5.png" id="5_6t0k0"]
 [ext_resource type="Texture2D" uid="uid://en4ieyrseo6o" path="res://Assets/Textures/Clouds/Cloud2.png" id="6_28asr"]
 [ext_resource type="Texture2D" uid="uid://b7ydwu6p4vyop" path="res://Assets/Textures/Clouds/Cloud4.png" id="7_hegn1"]
 

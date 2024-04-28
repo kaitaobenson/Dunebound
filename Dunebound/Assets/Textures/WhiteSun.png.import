@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13pid7rtyej3"
-path="res://.godot/imported/BigSucculent.png-f3d3e7392f3b63facfdb563721320521.ctex"
+uid="uid://mvnnge410l8k"
+path="res://.godot/imported/WhiteSun.png-be0c1d4a91ef7b6059c371eec8a767be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/BigSucculent.png"
-dest_files=["res://.godot/imported/BigSucculent.png-f3d3e7392f3b63facfdb563721320521.ctex"]
+source_file="res://Assets/Textures/WhiteSun.png"
+dest_files=["res://.godot/imported/WhiteSun.png-be0c1d4a91ef7b6059c371eec8a767be.ctex"]
 
 [params]
 

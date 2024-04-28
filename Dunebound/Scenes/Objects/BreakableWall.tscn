@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3ncso8po0iow"]
 
-[ext_resource type="Script" path="res://BreakableWall.gd" id="1_myqgn"]
-[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/health_component.tscn" id="2_2fa55"]
-[ext_resource type="Texture2D" uid="uid://d13pid7rtyej3" path="res://Assets/Textures/BigSucculent.png" id="2_kf7mg"]
+[ext_resource type="Script" path="res://Scripts/BreakableWall.gd" id="1_myqgn"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="2_2fa55"]
+[ext_resource type="Texture2D" uid="uid://d13pid7rtyej3" path="res://Assets/Textures/RockWall.png" id="2_kf7mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cwr5"]
 size = Vector2(400, 957)

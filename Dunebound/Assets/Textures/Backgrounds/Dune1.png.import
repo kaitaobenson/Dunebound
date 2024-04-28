@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btub72b04vmnj"
-path="res://.godot/imported/Big Background2.png-a265ad9a852914d99bf6cb0447d3de9a.ctex"
+uid="uid://dg5vwtp6egk26"
+path="res://.godot/imported/Dune1.png-107443a958ef1232c517f2cd349df0aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Big Background2.png"
-dest_files=["res://.godot/imported/Big Background2.png-a265ad9a852914d99bf6cb0447d3de9a.ctex"]
+source_file="res://Assets/Textures/Backgrounds/Dune1.png"
+dest_files=["res://.godot/imported/Dune1.png-107443a958ef1232c517f2cd349df0aa.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d047ch3olrmo1"]
 
-[ext_resource type="Script" path="res://Scenes/Zombie Husk Guy.gd" id="1_siswa"]
+[ext_resource type="Script" path="res://Scripts/Zombie Husk Guy.gd" id="1_siswa"]
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="2_caee5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0e4b"]

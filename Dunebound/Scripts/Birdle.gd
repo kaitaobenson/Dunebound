@@ -37,7 +37,7 @@ func _physics_process(delta):
 		previous_fly_done = true
 		previous_walk_done = true
 		can_walk = true
-		#position = begin_position
+		position = begin_position
 		modulate.a = 1
 		_anim.stop()
 		

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfeafvoas8tsk"
-path="res://.godot/imported/Birdie-Sheet.png-34526892df94a9c6481faef139b449cc.ctex"
+uid="uid://d13pid7rtyej3"
+path="res://.godot/imported/RockWall.png-3a8d41a86c96646a4e79f5f54fc86b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Birdie-Sheet.png"
-dest_files=["res://.godot/imported/Birdie-Sheet.png-34526892df94a9c6481faef139b449cc.ctex"]
+source_file="res://Assets/Textures/RockWall.png"
+dest_files=["res://.godot/imported/RockWall.png-3a8d41a86c96646a4e79f5f54fc86b75.ctex"]
 
 [params]
 
