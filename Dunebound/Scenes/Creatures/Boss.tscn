@@ -40,6 +40,7 @@ shape = SubResource("CircleShape2D_5eb51")
 [node name="Large" type="Area2D" parent="."]
 
 [node name="Large" type="CollisionShape2D" parent="Large"]
+position = Vector2(8, -26)
 shape = SubResource("CircleShape2D_v7vqt")
 
 [node name="laser_pivot" type="Node2D" parent="."]
@@ -51,3 +52,29 @@ position = Vector2(435.5, 0)
 shape = SubResource("RectangleShape2D_f2dbw")
 disabled = true
 debug_color = Color(0.941176, 0, 0.615686, 0.419608)
+
+[node name="laser_control" type="Control" parent="laser_pivot"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 44.0
+offset_top = -46.0
+offset_right = 826.0
+offset_bottom = 46.0
+
+[node name="Outerlazerlayer" type="ColorRect" parent="laser_pivot/laser_control"]
+visible = false
+offset_right = 780.0
+offset_bottom = 92.0
+color = Color(1, 0, 0, 0.686275)
+
+[node name="Innerlazerlayer" type="ColorRect" parent="laser_pivot/laser_control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 780.0
+offset_bottom = 30.0
+grow_vertical = 2
+color = Color(1, 0.345098, 0, 0.686275)

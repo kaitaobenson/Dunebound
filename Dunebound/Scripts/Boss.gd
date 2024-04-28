@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal laser_rect_phase_1
+signal laser_rect_phase_2
+signal laser_rect_done
 
 const ExplosionPath = preload("res://Scenes/CloseRangeExplosion.tscn")
 const MaxExplosionSize : float = 400.0
@@ -7,11 +10,10 @@ const explosion_expand_rate : float = 3.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
 var can_action = true
 var explosion_is_active = false
 var laser_is_shooting = false
-var laser_track_speed : float = 1.0
+var laser_track_speed : float = .8
 
 
 @onready var Player = Global.Player
@@ -19,6 +21,8 @@ var laser_track_speed : float = 1.0
 @onready var AttackAreas = $"AttackDetectionContainer"
 @onready var laser_pivot = $"laser_pivot"
 @onready var laser_hitbox = $"laser_pivot/laser_area/laser_hitbox"
+@onready var laser_colorRect_outer = $"laser_pivot/laser_control/Outerlazerlayer"
+@onready var laser_colorRect_inner = $"laser_pivot/laser_control/Innerlazerlayer"
 
 @onready var tp_spots = [
 	tp_container.get_node("Tp1").global_position,
@@ -39,7 +43,6 @@ var ranges = {
 
 func _ready():
 	pass
-
 
 func _physics_process(delta):
 	attack_range_finder()
@@ -64,7 +67,8 @@ func attack_manager():
 		if ranges["SMALL"]:
 			await close_range_explosion()
 		elif ranges["MEDIUM"]:
-			await long_range_laser_attack()
+			long_range_laser_attack()
+			await laser_rect_done
 	can_action = true
 
 func teleport():
@@ -104,13 +108,18 @@ func mid_range_attack():
 	pass
 
 func long_range_laser_attack():
+	laser_colorect_handler()
 	var laser_track_tween : Tween = get_tree().create_tween()
 	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 3.0)
 	await get_tree().create_timer(3.0).timeout
+	laser_colorRect_inner.visible = true
+	emit_signal("laser_rect_phase_1")
 	laser_hitbox.disabled = false
 	await get_tree().create_timer(1.0).timeout
 	laser_hitbox.disabled = true
-	laser_track_speed = 1.0
+	emit_signal("laser_rect_phase_2")
+	await laser_rect_done
+	laser_track_speed = .8
 
 func attack_range_finder():
 	if $"Small".get_overlapping_bodies().has(Player):
@@ -126,5 +135,30 @@ func attack_range_finder():
 			else:
 				ranges["LARGE"] = false
 
-
-
+func laser_colorect_handler():
+	laser_colorRect_inner.size = Vector2(780, 0)
+	laser_colorRect_outer.size = Vector2(780, 0)
+	laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+	laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+	
+	await laser_rect_phase_1
+	var laser_inner_rect_expand_tween : Tween = get_tree().create_tween()
+	laser_inner_rect_expand_tween.tween_property(laser_colorRect_inner, "size", Vector2(780, 60), .5)
+	var laser_outer_rect_expand_tween : Tween = get_tree().create_tween()
+	laser_outer_rect_expand_tween.tween_property(laser_colorRect_outer, "size", Vector2(780, 90), .5)
+	while laser_colorRect_outer.size.y < 90.0:
+		laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+		laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+		await get_tree().create_timer(.001).timeout
+	
+	await laser_rect_phase_2
+	var laser_inner_rect_shrink_tween : Tween = get_tree().create_tween()
+	laser_inner_rect_shrink_tween.tween_property(laser_colorRect_inner, "size", Vector2(780, 0), .5)
+	var laser_outer_rect_shrink_tween : Tween = get_tree().create_tween()
+	laser_outer_rect_shrink_tween.tween_property(laser_colorRect_outer, "size", Vector2(780, 0), .5)
+	while laser_colorRect_outer.size.y > 0.0:
+		laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+		laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+		await get_tree().create_timer(.001).timeout
+	laser_colorRect_inner.visible = false
+	emit_signal("laser_rect_done")
