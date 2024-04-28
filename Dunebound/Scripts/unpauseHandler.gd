@@ -6,8 +6,11 @@ func _process(delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
 		get_tree().paused = !get_tree().paused
 		get_parent().visible = !get_parent().visible
+		get_parent().get_parent().visible = !get_parent().get_parent().visible
+		get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = !get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible
 		if(!get_parent().visible):
-			get_parent().get_parent().get_node("uiContainer").visible = false
+			get_parent().get_parent().visible = false
+			get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = false
 #handle the buttons in the pause menu through script, because i dont feel like finding whats blocking them
 func _ready():
 	controls = get_parent().get_node("Button")
@@ -20,6 +23,7 @@ func _input(event):
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
+				get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = !get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible
 				get_parent().get_parent().get_node("uiContainer").visible = !get_parent().get_parent().get_node("uiContainer").visible
 		else:
 			controls.color = Color("4b4b4b")

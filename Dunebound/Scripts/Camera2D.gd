@@ -10,8 +10,9 @@ func _ready():
 
 #THIS SHOULD NOT BE HEREREeEE
 func openthatthing():
+	print("go screw yourself stupid ah code")
 	$uiContainer.visible=true
-	
+	get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visible= !get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visibl
 func _physics_process(delta):
 	var player_direction = Global.Player.player_sprite_direction
 	
