@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d047ch3olrmo1"]
+[gd_scene load_steps=6 format=3 uid="uid://d047ch3olrmo1"]
 
 [ext_resource type="Script" path="res://Scripts/Zombie Husk Guy.gd" id="1_siswa"]
 [ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="2_caee5"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_3iumi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0e4b"]
 size = Vector2(30.5, 61.7813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36ep"]
+size = Vector2(40, 70)
 
 [node name="ZombieHusk" type="CharacterBody2D"]
 script = ExtResource("1_siswa")
@@ -56,4 +60,13 @@ metadata/_edit_lock_ = true
 [node name="LineOfSightPivot" type="Node2D" parent="."]
 
 [node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
-target_position = Vector2(134, 0)
+target_position = Vector2(199, 0)
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("3_3iumi")]
+animation_sprite = NodePath("../Sprite2D")
+
+[node name="Area2D" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_w36ep")

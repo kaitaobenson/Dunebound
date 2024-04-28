@@ -8,7 +8,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_njds6"]
-colors = PackedColorArray(0.65834, 0.65834, 0.65834, 1, 1, 1, 1, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y2xcw"]
 radius = 11.0
@@ -24,10 +24,13 @@ gravity = Vector2(2.08165e-12, 2.08165e-12)
 scale_amount_min = 0.3
 scale_amount_curve = SubResource("Curve_sjatd")
 color_ramp = SubResource("Gradient_njds6")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 1)
 texture = ExtResource("2_2hnmn")
+metadata/_edit_lock_ = true
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y2xcw")
+metadata/_edit_lock_ = true

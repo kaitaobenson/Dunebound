@@ -1,50 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4n1ee5iiiiry"]
+[gd_scene load_steps=4 format=3 uid="uid://b4n1ee5iiiiry"]
 
-[ext_resource type="Texture2D" uid="uid://yuud211ss8hw" path="res://Assets/Textures/MachineParts/MachinePart1.png" id="1_cbbat"]
+[ext_resource type="Script" path="res://Scenes/Objects/MachinePart.gd" id="1_d0ocm"]
+[ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/Textures/MachineParts/MachinePart2.png" id="1_xt5ng"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4571r"]
-size = Vector2(128, 95.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3tn86"]
+radius = 93.0484
 
 [node name="MachineParts" type="Node2D"]
+script = ExtResource("1_d0ocm")
 
-[node name="MachinePart1" type="Node2D" parent="."]
-position = Vector2(4865, 903)
+[node name="MachinePart2" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("1_xt5ng")
 
-[node name="Sprite2D" type="Sprite2D" parent="MachinePart1"]
-position = Vector2(0, -11)
-scale = Vector2(2, 2)
-texture = ExtResource("1_cbbat")
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart1"]
-position = Vector2(0, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart1/StaticBody2D"]
-shape = SubResource("RectangleShape2D_4571r")
-
-[node name="MachinePart2" type="Node2D" parent="."]
-position = Vector2(4614, 903)
-
-[node name="Sprite2D" type="Sprite2D" parent="MachinePart2"]
-position = Vector2(0, -11)
-scale = Vector2(2, 2)
-texture = ExtResource("1_cbbat")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart2"]
-position = Vector2(0, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart2/StaticBody2D"]
-shape = SubResource("RectangleShape2D_4571r")
-
-[node name="MachinePart3" type="Node2D" parent="."]
-position = Vector2(4409, 903)
-
-[node name="Sprite2D" type="Sprite2D" parent="MachinePart3"]
-position = Vector2(0, -11)
-scale = Vector2(2, 2)
-texture = ExtResource("1_cbbat")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MachinePart3"]
-position = Vector2(0, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachinePart3/StaticBody2D"]
-shape = SubResource("RectangleShape2D_4571r")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3tn86")

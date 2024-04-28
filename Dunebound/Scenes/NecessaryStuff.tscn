@@ -1,16 +1,19 @@
-[gd_scene load_steps=22 format=3 uid="uid://cihs0j2mxb0bc"]
+[gd_scene load_steps=25 format=3 uid="uid://cihs0j2mxb0bc"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
 [ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
+[ext_resource type="Script" path="res://Scenes/KaiUI.gd" id="4_aj7jy"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
 [ext_resource type="Script" path="res://Scripts/TempUI.gd" id="7_s8lrs"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
+[ext_resource type="Script" path="res://Scenes/MachinePartsUI.gd" id="9_id1mm"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
+[ext_resource type="Texture2D" uid="uid://dagsnoxidgb3c" path="res://Assets/Icon.png" id="11_u6v8y"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="12_ju0bm"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
@@ -39,47 +42,113 @@ script = ExtResource("2_q58lg")
 turned_on = false
 
 [node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
-BEGIN_PHASE = 1.5
 enabled = false
 sandstorm_is_on = false
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_aj7jy")
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+[node name="HealthBar" type="Node2D" parent="UI"]
+position = Vector2(100, 22)
+
+[node name="ColorRect" type="ColorRect" parent="UI/HealthBar"]
+offset_left = -87.0
+offset_top = -9.0
+offset_right = 114.0
+offset_bottom = 100.0
+color = Color(0.219608, 0.243137, 0.215686, 0.843137)
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI/HealthBar"]
 texture_filter = 1
-offset_left = 22.0
-offset_top = 21.0
-offset_right = 203.0
-offset_bottom = 61.0
+offset_left = -64.0
+offset_top = 43.0
+offset_right = 117.0
+offset_bottom = 83.0
 value = 100.0
 texture_over = ExtResource("4_qo76u")
 texture_progress = ExtResource("5_mps04")
 script = ExtResource("6_fibtu")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/HealthBar"]
+offset_left = -83.0
+offset_top = -3.0
+offset_right = 112.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Health:[/center]"
+metadata/_edit_lock_ = true
 
 [node name="Temperature" type="Node2D" parent="UI"]
+position = Vector2(1054, 11)
 script = ExtResource("7_s8lrs")
 gradientResource = SubResource("Gradient_nj6uo")
 
+[node name="ColorRect" type="ColorRect" parent="UI/Temperature"]
+offset_left = -117.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 111.0
+color = Color(0.219608, 0.243137, 0.215686, 0.843137)
+metadata/_edit_lock_ = true
+
 [node name="TempLabel" type="RichTextLabel" parent="UI/Temperature"]
-offset_left = 920.0
-offset_top = 10.0
-offset_right = 1143.0
-offset_bottom = 48.0
+offset_left = -127.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 46.0
 theme_override_fonts/normal_font = ExtResource("8_egkwl")
-theme_override_font_sizes/normal_font_size = 40
-text = "Temperature:"
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Temperature:[/center]"
 scroll_active = false
+metadata/_edit_lock_ = true
 
 [node name="TempGauge" type="RichTextLabel" parent="UI/Temperature"]
-offset_left = 935.0
-offset_top = 64.0
-offset_right = 1121.0
-offset_bottom = 143.0
+offset_left = -85.0
+offset_top = 46.0
+offset_right = 101.0
+offset_bottom = 125.0
 theme_override_fonts/normal_font = ExtResource("8_egkwl")
-theme_override_font_sizes/normal_font_size = 65
+theme_override_font_sizes/normal_font_size = 55
 text = "100. T "
 scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="MachineParts" type="Node2D" parent="UI"]
+position = Vector2(566, 23)
+script = ExtResource("9_id1mm")
+
+[node name="ColorRect" type="ColorRect" parent="UI/MachineParts"]
+offset_left = -242.0
+offset_top = 2.0
+offset_right = 254.0
+offset_bottom = 82.0
+color = Color(0.219608, 0.243137, 0.215686, 0.843137)
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MachineParts"]
+offset_left = -204.0
+offset_top = 9.0
+offset_right = 272.0
+offset_bottom = 145.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_fonts/bold_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center]Machine Parts: [b]0/7[/b][/center]"
+metadata/_edit_lock_ = true
+
+[node name="MachinePartsIcon" type="Sprite2D" parent="UI/MachineParts"]
+position = Vector2(-208, 45)
+texture = ExtResource("11_u6v8y")
+metadata/_edit_lock_ = true
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 visible = false
@@ -302,5 +371,4 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(86, -31)
-rotation = 1.76802
 color = Color(0.533333, 0.521569, 0.666667, 1)
