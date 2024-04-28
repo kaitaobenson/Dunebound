@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const ExplosionPath = preload("res://Scenes/close_range_explosion.tscn")
+const ExplosionPath = preload("res://Scenes/CloseRangeExplosion.tscn")
 const MaxExplosionSize : float = 400.0
 const explosion_expand_rate : float = 3.0
 const SPEED = 300.0
