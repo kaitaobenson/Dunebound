@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhcvy0qd2gcto"]
+[gd_scene load_steps=7 format=3 uid="uid://bhcvy0qd2gcto"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_47de6"]
 
@@ -6,13 +6,16 @@
 size = Vector2(123.625, 142.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yp5yy"]
-radius = 147.014
+radius = 265.68
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5eb51"]
-radius = 323.076
+radius = 570.014
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7vqt"]
-radius = 473.714
+radius = 832.049
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dbw"]
+size = Vector2(783, 92.5)
 
 [node name="Boss" type="CharacterBody2D"]
 position = Vector2(323, 252)
@@ -20,6 +23,7 @@ script = ExtResource("1_47de6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ebkaj")
+debug_color = Color(0, 0.6, 0.713726, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -36,4 +40,41 @@ shape = SubResource("CircleShape2D_5eb51")
 [node name="Large" type="Area2D" parent="."]
 
 [node name="Large" type="CollisionShape2D" parent="Large"]
+position = Vector2(8, -26)
 shape = SubResource("CircleShape2D_v7vqt")
+
+[node name="laser_pivot" type="Node2D" parent="."]
+
+[node name="laser_area" type="Area2D" parent="laser_pivot"]
+
+[node name="laser_hitbox" type="CollisionShape2D" parent="laser_pivot/laser_area"]
+position = Vector2(435.5, 0)
+shape = SubResource("RectangleShape2D_f2dbw")
+disabled = true
+debug_color = Color(0.941176, 0, 0.615686, 0.419608)
+
+[node name="laser_control" type="Control" parent="laser_pivot"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 44.0
+offset_top = -46.0
+offset_right = 826.0
+offset_bottom = 46.0
+
+[node name="Outerlazerlayer" type="ColorRect" parent="laser_pivot/laser_control"]
+visible = false
+offset_right = 780.0
+offset_bottom = 92.0
+color = Color(1, 0, 0, 0.686275)
+
+[node name="Innerlazerlayer" type="ColorRect" parent="laser_pivot/laser_control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 780.0
+offset_bottom = 30.0
+grow_vertical = 2
+color = Color(1, 0.345098, 0, 0.686275)

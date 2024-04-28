@@ -16,7 +16,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(0, 1114115, 14, 65536, 1114115, 15, 131072, 1114115, 16, 196608, 1114115, 17, 1, 1179651, 14, 65537, 1179651, 15, 131073, 1179651, 16, 196609, 1179651, 17, 2, 1245187, 14, 65538, 1245187, 15, 131074, 1245187, 16, 196610, 1245187, 17, 3, 1310723, 14, 65539, 1310723, 15, 131075, 1310723, 16, 196611, 1310723, 17, 4, 1114115, 14, 65540, 1114115, 15, 131076, 1114115, 16, 196612, 1114115, 17, 5, 1179651, 14, 65541, 1179651, 15, 131077, 1179651, 16, 196613, 1179651, 17, 6, 1245187, 14, 65542, 1245187, 15, 131078, 1245187, 16, 196614, 1245187, 17, 7, 1310723, 14, 65543, 1310723, 15, 131079, 1310723, 16, 196615, 1310723, 17, 8, 1114115, 14, 65544, 1114115, 15, 131080, 1114115, 16, 196616, 1114115, 17, 9, 1179651, 14, 65545, 1179651, 15, 131081, 1179651, 16, 196617, 1179651, 17, 10, 1245187, 14, 65546, 1245187, 15, 131082, 1245187, 16, 196618, 1245187, 17, 11, 1310723, 14, 65547, 1310723, 15, 131083, 1310723, 16, 196619, 1310723, 17, 12, 1114115, 14, 65548, 1114115, 15, 131084, 1114115, 16, 196620, 1114115, 17, 13, 1179651, 14, 65549, 1179651, 15, 131085, 1179651, 16, 196621, 1179651, 17, 14, 1245187, 14, 65550, 1245187, 15, 131086, 1245187, 16, 196622, 1245187, 17, 15, 1310723, 14, 65551, 1310723, 15, 131087, 1310723, 16, 196623, 1310723, 17, 16, 1114115, 14, 65552, 1114115, 15, 131088, 1114115, 16, 196624, 1114115, 17, 17, 1179651, 14, 65553, 1179651, 15, 131089, 1179651, 16, 196625, 1179651, 17, 18, 1245187, 14, 65554, 1245187, 15, 131090, 1245187, 16, 196626, 1245187, 17, 19, 1310723, 14, 65555, 1310723, 15, 131091, 1310723, 16, 196627, 1310723, 17, 20, 1114115, 14, 65556, 1114115, 15, 131092, 1114115, 16, 196628, 1114115, 17, 21, 1179651, 14, 65557, 1179651, 15, 131093, 1179651, 16, 196629, 1179651, 17, 22, 1245187, 14, 65558, 1245187, 15, 131094, 1245187, 16, 196630, 1245187, 17, 23, 1310723, 14, 65559, 1310723, 15, 131095, 1310723, 16, 196631, 1310723, 17, 24, 1114115, 14, 65560, 1114115, 15, 131096, 1114115, 16, 196632, 1114115, 17, 25, 1179651, 14, 65561, 1179651, 15, 131097, 1179651, 16, 196633, 1179651, 17, 26, 1245187, 14, 65562, 1245187, 15, 131098, 1245187, 16, 196634, 1245187, 17, 27, 1310723, 14, 65563, 1310723, 15, 131099, 1310723, 16, 196635, 1310723, 17, 28, 1114115, 14, 65564, 1114115, 15, 131100, 1114115, 16, 196636, 1114115, 17, 29, 1179651, 14, 65565, 1179651, 15, 131101, 1179651, 16, 196637, 1179651, 17, 30, 1245187, 14, 65566, 1245187, 15, 131102, 1245187, 16, 196638, 1245187, 17, 31, 1310723, 14, 65567, 1310723, 15, 131103, 1310723, 16, 196639, 1310723, 17)
 
 [node name="Boss" parent="." instance=ExtResource("2_0foxx")]
-position = Vector2(-182, -147)
+position = Vector2(93, -216)
 
 [node name="TPContainer" type="Node" parent="."]
 
@@ -29,6 +29,9 @@ position = Vector2(880, -100)
 [node name="Tp3" type="Node2D" parent="TPContainer"]
 position = Vector2(512, -300)
 
+[node name="PlayerContainer" parent="." instance=ExtResource("5_xq28t")]
+position = Vector2(552, -69)
+
 [node name="Stuff" type="Node2D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Stuff"]
@@ -38,56 +41,5 @@ autoplay = true
 
 [node name="BackgroundContainer" parent="Stuff" instance=ExtResource("4_mounp")]
 
-[node name="CanvasModulate" parent="Stuff/BackgroundContainer/ParallaxBackground" index="0"]
-position = Vector2(-420, -424)
-metadata/_edit_lock_ = true
-
-[node name="BackgroundColor" parent="Stuff/BackgroundContainer/ParallaxBackground" index="1"]
-position = Vector2(-420, -424)
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" parent="Stuff/BackgroundContainer/ParallaxBackground/BackgroundColor" index="0"]
-offset_left = -1577.0
-offset_top = -704.0
-offset_right = 1793.0
-offset_bottom = 846.0
-
-[node name="Sun" parent="Stuff/BackgroundContainer/ParallaxBackground" index="2"]
-position = Vector2(-420, -424)
-metadata/_edit_lock_ = true
-
-[node name="SunSprite" parent="Stuff/BackgroundContainer/ParallaxBackground/Sun" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="CloudsInBack" parent="Stuff/BackgroundContainer/ParallaxBackground" index="3"]
-position = Vector2(-420, -424)
-
-[node name="Dunes1" parent="Stuff/BackgroundContainer/ParallaxBackground" index="4"]
-position = Vector2(-420, -424)
-
-[node name="CloudsInFront" parent="Stuff/BackgroundContainer/ParallaxBackground" index="5"]
-position = Vector2(-420, -424)
-
-[node name="PlayerContainer" parent="Stuff" instance=ExtResource("5_xq28t")]
-position = Vector2(552, -69)
-
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("6_7imby")]
-
-[node name="PlayerHealthBar" parent="Stuff/NecessaryStuff/UI" index="0"]
-offset_left = -341.0
-offset_top = -285.0
-offset_right = -160.0
-offset_bottom = -245.0
-
-[node name="Camera2D" parent="Stuff/NecessaryStuff" index="7"]
-position = Vector2(552, -69)
-
-[node name="BottomBarrierDeath" parent="Stuff/NecessaryStuff" index="8"]
-position = Vector2(-145, -840)
-
-[node name="CanvasModulate" parent="Stuff/NecessaryStuff" index="9"]
-position = Vector2(-62, -141)
-rotation = 0.0
-
-[editable path="Stuff/BackgroundContainer"]
-[editable path="Stuff/NecessaryStuff"]
+metadata/_edit_lock_ = true

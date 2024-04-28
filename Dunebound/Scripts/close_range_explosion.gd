@@ -2,4 +2,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		get_node("ExplosionHitbox").queue_free()
+		get_node("ExplosionHitbox").disabled = true

@@ -30,3 +30,4 @@ autoplay = true
 [node name="BackgroundContainer" parent="Stuff" instance=ExtResource("3_hwpk2")]
 
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("4_p1kj3")]
+position = Vector2(190, 5)
