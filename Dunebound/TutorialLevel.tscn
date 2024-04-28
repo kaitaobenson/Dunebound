@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://fxqa7pqhii04"]
+[gd_scene load_steps=14 format=3 uid="uid://fxqa7pqhii04"]
 
 [ext_resource type="PackedScene" uid="uid://1hf6l50y1klk" path="res://AreaLabel.tscn" id="1_heyb0"]
-[ext_resource type="Script" path="res://World.gd" id="1_lmo8o"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_tcrbo"]
 [ext_resource type="PackedScene" uid="uid://c3ncso8po0iow" path="res://BreakableWall.tscn" id="2_77x75"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_gb38x"]
@@ -20,7 +19,6 @@ size = Vector2(116, 74)
 radius = 113.0
 
 [node name="WORLD" type="Node2D"]
-script = ExtResource("1_lmo8o")
 
 [node name="Foreground" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -124,6 +122,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" parent="Stuff/NecessaryStuff/UI/uiContainer" index="4"]
 metadata/_edit_use_anchors_ = true
+
+[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="5"]
+visible = true
 
 [node name="BottomBarrierDeath" parent="Stuff/NecessaryStuff" index="9"]
 position = Vector2(-67, 707)

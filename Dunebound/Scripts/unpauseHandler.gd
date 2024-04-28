@@ -4,17 +4,18 @@ var controls
 #this script handles unpausing
 func _process(delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
-		get_tree().paused = !get_tree().paused
+		print("game paused")
+		print(get_tree().paused)
 		get_parent().visible = !get_parent().visible
 		get_parent().get_parent().visible = !get_parent().get_parent().visible
 		get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = !get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible
-		if(!get_parent().visible):
-			get_parent().get_parent().visible = false
-			get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = false
+		get_tree().paused = !get_tree().paused		
+		
 #handle the buttons in the pause menu through script, because i dont feel like finding whats blocking them
 func _ready():
 	controls = get_parent().get_node("Button")
 	save = get_parent().get_node("Button2")
+	#get.tree().paused
 func isHovering(size,pos):
 	return Rect2(pos, size).has_point(get_global_mouse_position())
 func _input(event):

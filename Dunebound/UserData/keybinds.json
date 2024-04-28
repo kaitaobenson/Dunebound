@@ -23,12 +23,6 @@
 				"Up"
 			]
 		},
-		{
-			"actionName": "ui_cancel",
-			"key": [
-				"Escape"
-			]
-		},
 				{
 			"actionName": "slide",
 			"key": [ 

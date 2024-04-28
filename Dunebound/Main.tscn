@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=6 format=3 uid="uid://b25nb48bdhenh"]
 
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_qrex5"]
-[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Background1.tscn" id="3_hwpk2"]
-[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://NecessaryStuff.tscn" id="4_p1kj3"]
+[ext_resource type="PackedScene" path="res://Background1.tscn" id="3_hwpk2"]
+[ext_resource type="PackedScene" uid="uid://b5c8riiwk77o5" path="res://NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 
 [node name="WORLD" type="Node2D"]
@@ -34,6 +34,9 @@ fade_in_time = 3.0
 
 [node name="WeatherControl" parent="Stuff/NecessaryStuff" index="2"]
 enabled = true
+
+[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="5"]
+visible = true
 
 [editable path="Stuff/BackgroundContainer"]
 [editable path="Stuff/NecessaryStuff"]

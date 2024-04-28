@@ -2,6 +2,7 @@ extends RigidBody2D
 var foodTypeA:String
 const pickupSensorSize=1.5
 func newFoodObject(foodType:String,pos:Vector2,foodParent):
+	print("omg chat i made a food object this is so cool")
 	var file = FileAccess.open("res://internalConfig/food.json",FileAccess.READ)
 	var food = JSON.parse_string(file.get_as_text())["food"][foodType]
 	var hitbox = RectangleShape2D.new()
@@ -27,6 +28,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	Global.newFood.add_child(pickupSensor)
 	Global.newFood.get_node("pickupSensor").add_child(sensorHitbox)
 	Global.newFood.position = pos
+	print(Global.newFood.get_node("Sprite2D").texture)
 func _process(delta):
 	if(self.get_children().size()!=2):
 		if(self.get_node("pickupSensor").has_overlapping_bodies()and self.get_parent()!=null):

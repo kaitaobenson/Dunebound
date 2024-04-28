@@ -6,5 +6,6 @@
 script = ExtResource("1_bw6jq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 18
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
