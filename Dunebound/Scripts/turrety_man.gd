@@ -9,8 +9,8 @@ var can_fire = true
 var direction = 1
 
 @onready var Player = Global.Player
-@onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
 @onready var line_of_sight_pivot = $"LineOfSightPivot" as Node2D
+@onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
 
 func _ready():
 	pass

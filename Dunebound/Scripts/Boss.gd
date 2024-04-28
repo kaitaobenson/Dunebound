@@ -1,17 +1,24 @@
 extends CharacterBody2D
 
+
 const ExplosionPath = preload("res://Scenes/CloseRangeExplosion.tscn")
 const MaxExplosionSize : float = 400.0
 const explosion_expand_rate : float = 3.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+
 var can_action = true
 var explosion_is_active = false
+var laser_is_shooting = false
+var laser_track_speed : float = 1.0
+
 
 @onready var Player = Global.Player
 @onready var tp_container = $"../TPContainer"
 @onready var AttackAreas = $"AttackDetectionContainer"
+@onready var laser_pivot = $"laser_pivot"
+@onready var laser_hitbox = $"laser_pivot/laser_area/laser_hitbox"
 
 @onready var tp_spots = [
 	tp_container.get_node("Tp1").global_position,
@@ -35,7 +42,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	attack_range_finder()
+	laser_tracking()
 	action_manager()
+	
 	tp_distance_to_player = [
 		tp_spots[0].distance_to(Player.global_position),
 		tp_spots[1].distance_to(Player.global_position),
@@ -49,9 +59,12 @@ func action_manager():
 		attack_manager()
 
 func attack_manager():
-	var amount_of_attacks = 3
+	var amount_of_attacks = 3.0
 	for i in amount_of_attacks:
-		await close_range_explosion()
+		if ranges["SMALL"]:
+			await close_range_explosion()
+		elif ranges["MEDIUM"]:
+			await long_range_laser_attack()
 	can_action = true
 
 func teleport():
@@ -82,13 +95,22 @@ func close_range_explosion():
 		await get_tree().create_timer(0.25).timeout
 	explosion_container_node.queue_free()
 
-
+func laser_tracking():
+	var angle_to_player = atan2(Player.global_position.y - laser_pivot.global_position.y, Player.global_position.x - laser_pivot.global_position.x)
+	var lerp = lerp(laser_pivot.rotation, angle_to_player, laser_track_speed)
+	laser_pivot.rotation = lerp
 
 func mid_range_attack():
 	pass
 
-func long_range_attack():
-	pass
+func long_range_laser_attack():
+	var laser_track_tween : Tween = get_tree().create_tween()
+	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 3.0)
+	await get_tree().create_timer(3.0).timeout
+	laser_hitbox.disabled = false
+	await get_tree().create_timer(1.0).timeout
+	laser_hitbox.disabled = true
+	laser_track_speed = 1.0
 
 func attack_range_finder():
 	if $"Small".get_overlapping_bodies().has(Player):
