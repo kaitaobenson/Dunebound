@@ -1,16 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c374iml6q4wds"]
+[gd_scene load_steps=6 format=3 uid="uid://c374iml6q4wds"]
 
 [ext_resource type="Script" path="res://Scripts/turret_bullet.gd" id="1_3wafu"]
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="1_ss44d"]
+[ext_resource type="Texture2D" uid="uid://c5pe5wqhbomqp" path="res://Assets/Textures/AcidBall.png" id="2_2hnmn"]
+
+[sub_resource type="Curve" id="Curve_sjatd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_njds6"]
+colors = PackedColorArray(0.65834, 0.65834, 0.65834, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y2xcw"]
-radius = 17.1172
+radius = 11.0
 
 [node name="TurretBullet" type="CharacterBody2D"]
 script = ExtResource("1_3wafu")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1000
+lifetime = 0.5
+texture = ExtResource("2_2hnmn")
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+scale_amount_min = 0.3
+scale_amount_curve = SubResource("Curve_sjatd")
+color_ramp = SubResource("Gradient_njds6")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ss44d")
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("2_2hnmn")
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y2xcw")

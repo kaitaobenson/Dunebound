@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0e4b"]
 size = Vector2(30.5, 61.7813)
 
-[node name="Zombie Husk Guy" type="CharacterBody2D"]
+[node name="ZombieHusk" type="CharacterBody2D"]
 script = ExtResource("1_siswa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

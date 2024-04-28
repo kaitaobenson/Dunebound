@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=7 format=3 uid="uid://bp4snm0w7slu"]
 
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_8qnig"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_qrex5"]
 [ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="3_hwpk2"]
@@ -7,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 
 [node name="WORLD" type="Node2D"]
+script = ExtResource("1_8qnig")
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -28,13 +30,3 @@ autoplay = true
 [node name="BackgroundContainer" parent="Stuff" instance=ExtResource("3_hwpk2")]
 
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("4_p1kj3")]
-
-[node name="Fader" parent="Stuff/NecessaryStuff" index="0"]
-fade_in_time = 3.0
-
-[node name="WeatherControl" parent="Stuff/NecessaryStuff" index="2"]
-current_phase = 4.0
-enabled = true
-
-[editable path="Stuff/BackgroundContainer"]
-[editable path="Stuff/NecessaryStuff"]

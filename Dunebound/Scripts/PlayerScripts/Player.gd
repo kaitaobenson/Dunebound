@@ -159,6 +159,7 @@ func die():
 			child.set_process(false)
 		_hitbox.disabled = true
 		await get_tree().create_timer(1).timeout
+		get_tree().reload_current_scene()
 
 
 func flip(isRight : bool):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crfahjwefomnd"]
+[gd_scene load_steps=9 format=3 uid="uid://crfahjwefomnd"]
 
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_6cawc"]
 [ext_resource type="PackedScene" uid="uid://bl5k3gjm2ufo6" path="res://Scenes/Creatures/Birdle.tscn" id="2_4c6u5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="2_ijtau"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="3_kj6io"]
 [ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="4_87h4m"]
+[ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://Scenes/Creatures/ZombieHusk.tscn" id="4_ddais"]
 [ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://Scenes/NecessaryStuff.tscn" id="5_5pdcs"]
 
 [node name="WORLD" type="Node2D"]
@@ -33,8 +34,11 @@ position = Vector2(2183, -65)
 [node name="TurretyMan3" parent="Foreground" instance=ExtResource("2_ijtau")]
 position = Vector2(5831, 476)
 
+[node name="ZombieHusk" parent="Foreground" instance=ExtResource("4_ddais")]
+position = Vector2(672, 513)
+
 [node name="PlayerContainer" parent="." instance=ExtResource("2_ekbe4")]
-position = Vector2(1303, 208)
+position = Vector2(129, 480)
 
 [node name="Stuff" type="Node2D" parent="."]
 

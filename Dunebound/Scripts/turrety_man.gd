@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const bulletPath = preload("res://Scenes/turret_bullet.tscn")
+const bulletPath = preload("res://Scenes/TurretBullet.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var SPEED
 var can_see : bool = false
