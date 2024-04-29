@@ -63,6 +63,7 @@ offset_bottom = 46.0
 
 [node name="Outerlazerlayer" type="ColorRect" parent="laser_pivot/laser_control"]
 visible = false
+layout_mode = 0
 offset_right = 780.0
 offset_bottom = 92.0
 color = Color(1, 0, 0, 0.686275)

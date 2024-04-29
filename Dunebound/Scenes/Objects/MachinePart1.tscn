@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tn86"]
 radius = 93.0484
 
-[node name="MachineParts" type="Node2D"]
+[node name="MachinePart" type="Node2D"]
 script = ExtResource("1_d0ocm")
 
 [node name="MachinePart2" type="Sprite2D" parent="."]

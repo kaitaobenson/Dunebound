@@ -9,25 +9,35 @@ var can_see : bool = false
 @onready var Player = Global.Player
 @onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
 @onready var line_of_sight_pivot = $"LineOfSightPivot" as Node2D
+@onready var anim = $"AnimatedSprite2D"
 
 func _ready():
-	pass
+	anim.play("Run")
+
 
 func _physics_process(delta):
 	if  can_see == true:
 		following()
 		check_if_jump()
+		anim.speed_scale = 1
 	else:
 		idle()
+		anim.speed_scale = 0.5
+	
 	is_in_range()
 	raycast_direction()
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	
 	velocity.x = movement_direction * SPEED
+	
+	if movement_direction == 1:
+		anim.flip_h = false
+	if movement_direction == -1:
+		anim.flip_h = true
+	
 	move_and_slide()
-func _process(delta):
-	pass
 
 
 func is_in_range():
@@ -42,10 +52,12 @@ func is_in_range():
 			can_see = true
 		else:
 			can_see = false
-	
+
+
 func raycast_direction():
 	var direction_to_player : Vector2 = Vector2(Global.Player.global_position.x, Global.Player.global_position.y - 8) - line_of_sight.position
 	line_of_sight_pivot.look_at(direction_to_player)
+
 
 func check_if_jump():
 	if timerIsOver && await check_if_moved() == false:
@@ -54,6 +66,7 @@ func check_if_jump():
 		if get_tree() != null:
 			await get_tree().create_timer(1).timeout
 		timerIsOver = true
+
 
 func idle():
 	SPEED = 100
@@ -66,6 +79,7 @@ func idle():
 	if movement_direction == -1 and (leftwallcheck or !leftfloorcheck or leftsidecheck) or movement_direction == 1 and (rightwallcheck or !rightfloorcheck or rightsidecheck):
 		movement_direction = -movement_direction
 
+
 func following():
 	SPEED = 300
 	if abs(Global.Player.global_position.x - position.x) < 10:
@@ -74,6 +88,7 @@ func following():
 		movement_direction = -1
 	elif Global.Player.global_position.y > position.x:
 		movement_direction = 1
+
 
 func check_if_moved():
 	var x1 = global_position.x
@@ -85,6 +100,7 @@ func check_if_moved():
 		return false
 	else:
 		return true
+
 
 func die():
 	queue_free()
