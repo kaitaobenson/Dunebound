@@ -1,16 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=11 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_8qnig"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
+[ext_resource type="PackedScene" uid="uid://b6hgca02kocak" path="res://Scenes/Levels/BirdlePlane.tscn" id="2_a3rp7"]
+[ext_resource type="PackedScene" uid="uid://b4n1ee5iiiiry" path="res://Scenes/Objects/MachinePart1.tscn" id="2_hh6im"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_qrex5"]
 [ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="3_hwpk2"]
+[ext_resource type="PackedScene" uid="uid://crfahjwefomnd" path="res://Scenes/Levels/ScorpionHill.tscn" id="3_narih"]
+[ext_resource type="PackedScene" uid="uid://bl5k3gjm2ufo6" path="res://Scenes/Creatures/Birdle.tscn" id="3_t6qky"]
 [ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://Scenes/NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_8qnig")
 
+[node name="MachinePart" parent="." instance=ExtResource("2_hh6im")]
+position = Vector2(674, 473)
+
+[node name="MachinePart2" parent="." instance=ExtResource("2_hh6im")]
+position = Vector2(1182, 490)
+
+[node name="WORLD" parent="." instance=ExtResource("2_a3rp7")]
+position = Vector2(1913, -2)
+
+[node name="WORLD2" parent="." instance=ExtResource("3_narih")]
+position = Vector2(-6943, 32)
+
 [node name="Foreground" type="Node2D" parent="."]
+
+[node name="Birdle7" parent="Foreground" instance=ExtResource("3_t6qky")]
+position = Vector2(849, 552)
 
 [node name="TileMap" type="TileMap" parent="Foreground"]
 tile_set = ExtResource("5_xx5dr")

@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6hgca02kocak"]
+[gd_scene load_steps=5 format=3 uid="uid://b6hgca02kocak"]
 
 [ext_resource type="TileSet" uid="uid://bl7siygu2y2hh" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_cdcop"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_dil0s"]
 [ext_resource type="Texture2D" uid="uid://d1wq287rmaq8l" path="res://Assets/Textures/BigTree.png" id="3_rqfiu"]
 [ext_resource type="PackedScene" uid="uid://bl5k3gjm2ufo6" path="res://Scenes/Creatures/Birdle.tscn" id="4_ofq3n"]
-[ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="5_dqx64"]
-[ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="6_40qd2"]
-[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="7_2dave"]
-[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://Scenes/NecessaryStuff.tscn" id="8_yyrwv"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -56,19 +52,3 @@ position = Vector2(-194, 520)
 
 [node name="Birdle7" parent="Foreground" instance=ExtResource("4_ofq3n")]
 position = Vector2(55, 520)
-
-[node name="PlayerContainer" parent="." instance=ExtResource("5_dqx64")]
-position = Vector2(646, 394)
-
-[node name="Stuff" type="Node2D" parent="."]
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Stuff"]
-stream = ExtResource("6_40qd2")
-volume_db = -15.461
-autoplay = true
-
-[node name="BackgroundContainer" parent="Stuff" instance=ExtResource("7_2dave")]
-metadata/_edit_lock_ = true
-
-[node name="NecessaryStuff" parent="Stuff" instance=ExtResource("8_yyrwv")]
-metadata/_edit_lock_ = true

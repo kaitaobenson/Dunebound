@@ -27,7 +27,7 @@ var walk_timer = 0
 var fly_direction
 
 func _ready(): 
-	begin_position = position
+	begin_position = global_position
 
 
 func _physics_process(delta):
@@ -37,7 +37,7 @@ func _physics_process(delta):
 		previous_fly_done = true
 		previous_walk_done = true
 		can_walk = true
-		position = begin_position
+		global_position = begin_position
 		modulate.a = 1
 		_anim.stop()
 		
@@ -52,19 +52,19 @@ func _physics_process(delta):
 			fly_once_trigger = false
 			previous_fly_done = false
 			
-			if Global.Player.global_position.x < position.x:
+			if Global.Player.global_position.x < global_position.x:
 				fly_direction = 1
 				
-			elif Global.Player.global_position.x > position.x:
+			elif Global.Player.global_position.x > global_position.x:
 				fly_direction = -1
 		
 		_anim.play("Fly")
-		position.y -= 7
+		global_position.y -= 7
 		if fly_direction == 1:
-			position.x += 7
+			global_position.x += 7
 			_anim.flip_h = false
 		if fly_direction == -1:
-			position.x -= 7
+			global_position.x -= 7
 			_anim.flip_h = true
 			
 			
@@ -94,13 +94,13 @@ func _physics_process(delta):
 		if walk_direction == 1:
 			if _right_side.is_colliding() || !_right_down.is_colliding():
 				walk_direction = -1
-			position.x += 1
+			global_position.x += 1
 			_anim.play("Walk")
 			_anim.flip_h = false
 		if walk_direction == -1:
 			if _left_side.is_colliding() || !_left_down.is_colliding():
 					walk_direction = 1
-			position.x -= 1
+			global_position.x -= 1
 			_anim.play("Walk")
 			_anim.flip_h = true
 

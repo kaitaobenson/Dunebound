@@ -40,19 +40,19 @@ theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 20
 script = ExtResource("4_t51x1")
 
-[node name="Play" type="Button" parent="MainScreen/GridContainer"]
+[node name="Tutorial" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 80
 action_mode = 0
 text = "Tutorial"
 
-[node name="Options" type="Button" parent="MainScreen/GridContainer"]
+[node name="Play" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 80
 action_mode = 0
-text = "Options"
+text = "Play"
 
 [node name="Credits" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
@@ -76,7 +76,3 @@ texture = ExtResource("4_jmfyh")
 
 [node name="WindController" type="Node" parent="."]
 script = ExtResource("6_vpbns")
-
-[connection signal="pressed" from="MainScreen/GridContainer/Play" to="MainScreen/GridContainer" method="_on_play_pressed"]
-[connection signal="pressed" from="MainScreen/GridContainer/Options" to="MainScreen/GridContainer" method="_on_options_pressed"]
-[connection signal="pressed" from="MainScreen/GridContainer/Credits" to="MainScreen/GridContainer" method="_on_credits_pressed"]

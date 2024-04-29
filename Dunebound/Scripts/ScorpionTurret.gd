@@ -12,16 +12,20 @@ var direction = 1
 @onready var line_of_sight_pivot = $"LineOfSightPivot" as Node2D
 @onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
 
+@export var yez = false
+
 func _ready():
 	pass
 
-func _physics_process(delta):	
+
+func _physics_process(delta):
 	move_and_slide()
 	raycast_direction()
 	is_in_range()
 	
 	if can_see && can_fire:
 		fire_bullet()
+		pass
 	
 	if !can_see:
 		idle()
@@ -31,8 +35,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	velocity.x = direction * SPEED
-	
-	
+
 
 func is_in_range():
 	var who_i_see = line_of_sight.get_collider()
@@ -46,9 +49,11 @@ func is_in_range():
 		else:
 			can_see = false
 
+
 func raycast_direction():
 	var direction_to_player : Vector2 = Vector2(Player.global_position.x, Player.global_position.y - 8) - line_of_sight.position
 	line_of_sight_pivot.look_at(direction_to_player)
+
 
 func fire_bullet():
 	can_fire = false
@@ -74,7 +79,7 @@ func fire_bullet():
 	await get_tree().create_timer(1).timeout
 	
 	can_fire = true
-	
+
 
 func idle():
 	SPEED = 50.0
@@ -95,6 +100,7 @@ func idle():
 		await get_tree().create_timer(2.0).timeout
 		can_random_flip = true
 
+
 func fighting():
 	SPEED = 100
 	var distance_to_playerX = Player.global_position.x - global_position.x
@@ -105,6 +111,7 @@ func fighting():
 		direction = player_left_or_right
 	else:
 		direction = 0
+
 
 func die():
 	queue_free()
