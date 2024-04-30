@@ -69,6 +69,7 @@ offset_bottom = 92.0
 color = Color(1, 0, 0, 0.686275)
 
 [node name="Innerlaserlayer" type="ColorRect" parent="laser_pivot/laser_control"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5

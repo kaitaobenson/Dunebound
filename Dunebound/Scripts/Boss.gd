@@ -102,6 +102,8 @@ func close_range_explosion():
 
 func laser_tracking():
 	var angle_to_player = atan2(Player.global_position.y - laser_pivot.global_position.y, Player.global_position.x - laser_pivot.global_position.x)
+	if angle_to_player < 0:
+		angle_to_player = deg_to_rad(360) + angle_to_player
 	var lerp = lerp(laser_pivot.rotation, angle_to_player, laser_track_speed)
 	laser_pivot.rotation = lerp
 
