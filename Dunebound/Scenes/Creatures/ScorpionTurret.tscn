@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkduxmrjthkt3"]
+[gd_scene load_steps=6 format=3 uid="uid://dkduxmrjthkt3"]
 
 [ext_resource type="Script" path="res://Scripts/ScorpionTurret.gd" id="1_wqh60"]
 [ext_resource type="Texture2D" uid="uid://dd4fn06aat85t" path="res://Assets/Textures/Scorpion_2.png" id="3_8o2fx"]
-[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_a173j"]
-[ext_resource type="Texture2D" uid="uid://j8ejylhfjkyi" path="res://Assets/Textures/ScorpionTail.png" id="4_rnbwy"]
+[ext_resource type="PackedScene" path="res://Scenes/HealthComponent.tscn" id="3_a173j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ho5dy"]
 radius = 28.0
@@ -65,7 +64,8 @@ metadata/_edit_lock_ = true
 target_position = Vector2(28, 0)
 metadata/_edit_lock_ = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_a173j")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("3_a173j")]
+animation_sprite = NodePath("../Scorpion2")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
@@ -79,8 +79,3 @@ metadata/_edit_lock_ = true
 [node name="Scorpion2" type="Sprite2D" parent="."]
 position = Vector2(-8, -8)
 texture = ExtResource("3_8o2fx")
-
-[node name="ScorpionTail" type="Sprite2D" parent="."]
-position = Vector2(33, 4)
-texture = ExtResource("4_rnbwy")
-offset = Vector2(6, -24)

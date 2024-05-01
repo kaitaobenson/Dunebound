@@ -92,11 +92,9 @@ func close_range_explosion():
 		explosion.get_node("ExplosionHitbox").shape.radius = explosion_size
 		explosion_size += explosion_expand_rate
 		
-		if get_tree() != null:
-			await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.01).timeout
 	
-	if get_tree() != null:
-		await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.25).timeout
 	explosion_container_node.queue_free()
 
 func laser_tracking():
@@ -113,6 +111,7 @@ func long_range_laser_attack():
 	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 3.0)
 	await get_tree().create_timer(3.0).timeout
 	laser_colorRect_inner.visible = true
+	laser_colorRect_outer.visible = true
 	emit_signal("laser_rect_phase_1")
 	laser_hitbox.disabled = false
 	await get_tree().create_timer(1.0).timeout

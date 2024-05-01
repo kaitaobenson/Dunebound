@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dunebound"
-run/main_scene="res://Scenes/TitleScreen.tscn"
+run/main_scene="res://Root.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
 boot_splash/image="res://Assets/Textures/Jimmy.png"

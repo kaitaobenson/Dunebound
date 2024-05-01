@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerScripts/PlayerAudioManager.gd" id="5_fchgs"]
 [ext_resource type="Texture2D" uid="uid://b2gmrkvmxi80a" path="res://Assets/Textures/Player/Jump-Sheet.png" id="6_0xsnr"]
 [ext_resource type="Texture2D" uid="uid://cjrb3f03ig5fo" path="res://Assets/Textures/Player/PlayerDeath.png" id="6_cl80o"]
-[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="7_jbvia"]
+[ext_resource type="PackedScene" path="res://Scenes/HealthComponent.tscn" id="7_jbvia"]
 [ext_resource type="AudioStream" uid="uid://djh0v3juw4uax" path="res://Sound/Jump.mp3" id="7_ndnrg"]
 [ext_resource type="Texture2D" uid="uid://b3rytiu1p4kxu" path="res://Assets/Textures/Player/Idle1.png" id="7_povkh"]
 [ext_resource type="AudioStream" uid="uid://bcxheha2d8618" path="res://Sound/attackWhoosh.mp3" id="8_6r18x"]
@@ -961,7 +961,7 @@ metadata/_edit_lock_ = true
 [node name="HealthComponent" parent="Player" node_paths=PackedStringArray("animation_sprite") instance=ExtResource("7_jbvia")]
 position = Vector2(8, -59)
 animation_sprite = NodePath("../AnimationManager/AnimatedSprite2D")
-health_bar_path = "../../../Stuff/NecessaryStuff/UI/HealthBar/Bar"
+health_bar_path = "../../../Stuff/NecessaryStuff/KaiUI/HealthBar/Bar"
 
 [node name="AttackManager" type="Node2D" parent="Player"]
 position = Vector2(3, -3)

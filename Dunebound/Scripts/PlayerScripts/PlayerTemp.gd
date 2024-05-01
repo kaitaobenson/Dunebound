@@ -8,7 +8,7 @@ enum TEMP_STATES {
 const player_heat_limit: float = 65
 const player_cold_limit: float = 35
 
-const time_before_damage: float = 1
+const time_before_damage: float = 0.1
 const damage: float = 1
 
 var ease_to_outside_temp_value: float = 3
@@ -41,26 +41,13 @@ func _process(delta):
 	_temperature_label.text = str(round(player_temp)) + ". F"
 	
 	if _hurtbox_component.is_in_water():
-		if outside_temp_status == TEMP_STATES.HOT:
-			player_temp = 50
-			ease_to_outside_temp_value = 0
-			
-		elif outside_temp_status == TEMP_STATES.COLD:
-			player_temp -= 7
-			
-	elif _hurtbox_component.is_in_fire():
-		if outside_temp_status == TEMP_STATES.COLD:
-			player_temp = 50
-			ease_to_outside_temp_value = 0
-			
-		elif outside_temp_status == TEMP_STATES.HOT:
-			player_temp += 7
+		player_temp -= 1
 	else:
 		ease_toward_outside_temp()
 
 
 func player_take_damage():
-	if player_temp_status != TEMP_STATES.NORMAL:
+	if player_temp_status == TEMP_STATES.HOT:
 		if can_take_damage:
 			can_take_damage = false
 			var attack = Attack.new()

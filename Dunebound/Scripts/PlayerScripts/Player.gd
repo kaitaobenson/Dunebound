@@ -146,22 +146,6 @@ func push_other_bodies():
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * PUSH_FORCE)
 
 
-func die():
-	if !is_dead:
-		is_dead = true
-		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.DEATH, true)
-		
-		await get_tree().create_timer(1).timeout
-		set_physics_process(false)
-		set_process(false)
-		for child in get_children():
-			child.set_physics_process(false)
-			child.set_process(false)
-		_hitbox.disabled = true
-		await get_tree().create_timer(1).timeout
-		get_tree().reload_current_scene()
-
-
 func flip(isRight : bool):
 	var nodes_to_flip = [
 		$PlayerHitbox,
@@ -195,3 +179,26 @@ func get_floor_angle_custom() -> float:
 	if is_on_floor():
 		floor_angle = rad_to_deg(atan2(get_floor_normal().y, get_floor_normal().x)) + 90
 	return floor_angle
+
+
+func die():
+	if !is_dead:
+		is_dead = true
+		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.DEATH, true)
+		
+		await get_tree().create_timer(1).timeout
+		
+		set_physics_process(false)
+		set_process(false)
+		_hitbox.disabled = true
+		
+		await get_tree().create_timer(1).timeout
+		Global.death_ui.turn_on()
+		
+		while true:
+			if Global.death_ui.is_play_again_pressed():
+				Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
+			elif Global.death_ui.is_quit_pressed():
+				Global.root_node.change_level_to_scene("res://Scenes/TitleScreen.tscn")
+				
+			await get_tree().process_frame

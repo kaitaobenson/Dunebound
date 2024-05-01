@@ -46,8 +46,7 @@ func is_in_range():
 	if who_i_see == Player:
 		can_see = true
 	else:
-		if get_tree() != null:
-			await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.25).timeout
 		if who_i_see == Player:
 			can_see = true
 		else:
@@ -63,8 +62,7 @@ func check_if_jump():
 	if timerIsOver && await check_if_moved() == false:
 		timerIsOver = false
 		velocity.y = JUMP_VELOCITY
-		if get_tree() != null:
-			await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1).timeout
 		timerIsOver = true
 
 
@@ -93,8 +91,7 @@ func following():
 func check_if_moved():
 	var x1 = global_position.x
 	var x2
-	if get_tree() != null:
-		await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	x2 = global_position.x
 	if abs(abs(x1) - abs(x2)) < 7:
 		return false

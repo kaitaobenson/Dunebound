@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cihs0j2mxb0bc"]
+[gd_scene load_steps=28 format=3 uid="uid://bnye0xrcav7s1"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
-[ext_resource type="PackedScene" uid="uid://bfpip6ipg0f6m" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
+[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Script" path="res://Scenes/KaiUI.gd" id="4_aj7jy"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
@@ -12,9 +12,12 @@
 [ext_resource type="Script" path="res://Scenes/MachinePartsUI.gd" id="9_id1mm"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
+[ext_resource type="Script" path="res://Scripts/SanstormUI.gd" id="11_bchxt"]
+[ext_resource type="Script" path="res://Scenes/DeathScreen.gd" id="11_h2yia"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
-[ext_resource type="Texture2D" uid="uid://dagsnoxidgb3c" path="res://Assets/Icon.png" id="11_u6v8y"]
+[ext_resource type="Texture2D" uid="uid://c6mfnmj34l6k0" path="res://Assets/Textures/SandOUter.png" id="12_igf2u"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="12_ju0bm"]
+[ext_resource type="Texture2D" uid="uid://j56uvsawdblh" path="res://Assets/Textures/Sandstorm.png" id="13_pi55h"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="15_r2oti"]
@@ -32,19 +35,6 @@ size = Vector2(20626, 111.25)
 
 [node name="NecessaryStuff" type="Node2D"]
 
-[node name="Fader" parent="." instance=ExtResource("1_o1xk2")]
-position = Vector2(44, 37)
-fade_in_time = 5.0
-
-[node name="SaverLoader" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_q58lg")
-turned_on = false
-
-[node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
-enabled = false
-sandstorm_is_on = false
-
 [node name="KaiUI" type="CanvasLayer" parent="."]
 script = ExtResource("4_aj7jy")
 
@@ -54,7 +44,7 @@ offset_bottom = 121.0
 color = Color(0.313726, 0.313726, 0.313726, 0.52549)
 
 [node name="HealthBar" type="Node2D" parent="KaiUI"]
-position = Vector2(80, 19)
+position = Vector2(81, 11)
 
 [node name="Bar" type="TextureProgressBar" parent="KaiUI/HealthBar"]
 texture_filter = 1
@@ -81,7 +71,7 @@ text = "[center]Health:[/center]"
 metadata/_edit_lock_ = true
 
 [node name="Temperature" type="Node2D" parent="KaiUI"]
-position = Vector2(306, 9)
+position = Vector2(306, -1)
 script = ExtResource("7_s8lrs")
 gradientResource = SubResource("Gradient_nj6uo")
 
@@ -126,10 +116,87 @@ bbcode_enabled = true
 text = "[center]Machine Parts: [b]0/7[/b][/center]"
 metadata/_edit_lock_ = true
 
-[node name="MachinePartsIcon" type="Sprite2D" parent="KaiUI/MachineParts"]
-position = Vector2(-208, 45)
-texture = ExtResource("11_u6v8y")
+[node name="Sandstorm" type="Node2D" parent="KaiUI"]
+position = Vector2(483, 36)
+script = ExtResource("11_bchxt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="KaiUI/Sandstorm"]
+offset_top = 9.0
+offset_right = 85.0
+offset_bottom = 92.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("12_igf2u")
+texture_progress = ExtResource("13_pi55h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/Sandstorm"]
+offset_left = -67.0
+offset_top = -27.0
+offset_right = 128.0
+offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Sandstorm:[/center]"
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+script = ExtResource("11_h2yia")
+
+[node name="Container" type="Node2D" parent="DeathScreen"]
+
+[node name="Front" type="ColorRect" parent="DeathScreen/Container"]
+offset_left = 82.0
+offset_top = 124.0
+offset_right = 1108.0
+offset_bottom = 326.0
+color = Color(0.615686, 0.509804, 0.341176, 0.921569)
+
+[node name="Back" type="ColorRect" parent="DeathScreen/Container"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.615686, 0.509804, 0.341176, 0.364706)
 metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DeathScreen/Container"]
+offset_top = 125.0
+offset_right = 1152.0
+offset_bottom = 352.0
+theme_override_colors/default_color = Color(0.501961, 0.219608, 0.176471, 1)
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center]YOU DIED[/center]"
+
+[node name="PlayAgain" type="Button" parent="DeathScreen/Container"]
+offset_left = 227.0
+offset_top = 459.0
+offset_right = 508.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("8_egkwl")
+theme_override_font_sizes/font_size = 50
+text = "Respawn"
+
+[node name="Quit" type="Button" parent="DeathScreen/Container"]
+offset_left = 615.0
+offset_top = 460.0
+offset_right = 895.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("8_egkwl")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="Fader" parent="." instance=ExtResource("1_o1xk2")]
+position = Vector2(44, 37)
+fade_in_time = 5.0
+
+[node name="SaverLoader" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_q58lg")
+turned_on = false
+
+[node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
+enabled = false
+sandstorm_is_on = false
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 visible = false

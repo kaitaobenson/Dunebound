@@ -9,10 +9,9 @@ var can_fire = true
 var direction = 1
 
 @onready var Player = Global.Player
-@onready var line_of_sight_pivot = $"LineOfSightPivot" as Node2D
+@onready var line_of_sight_pivot: Node2D = $"LineOfSightPivot" as Node2D
 @onready var line_of_sight = $"LineOfSightPivot/LineOfSight" as RayCast2D
-
-@export var yez = false
+@onready var anim = $"Scorpion2"
 
 func _ready():
 	pass
@@ -64,9 +63,9 @@ func fire_bullet():
 	# Offsets spawn position depending on if you are to the right or to the left
 	# so it doesnt spawn inside the turret
 	if Player.global_position.x - global_position.x > 0:
-		bullet_pos = Vector2(global_position.x + 60, global_position.y - 30)
+		bullet_pos = Vector2(global_position.x + 20, global_position.y - 50)
 	else:
-		bullet_pos = Vector2(global_position.x - 60, global_position.y - 30)
+		bullet_pos = Vector2(global_position.x - 20, global_position.y - 50)
 	
 	var bullet_container = Node2D.new()
 	add_child(bullet_container)
@@ -105,6 +104,10 @@ func fighting():
 	SPEED = 100
 	var distance_to_playerX = Player.global_position.x - global_position.x
 	var player_left_or_right = distance_to_playerX / abs(distance_to_playerX)
+	if distance_to_playerX < 0:
+		anim.flip_h = false
+	else:
+		anim.flip_h = true
 	if abs(distance_to_playerX) < 300:
 		direction = -player_left_or_right
 	elif abs(distance_to_playerX) > 400:

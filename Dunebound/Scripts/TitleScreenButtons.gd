@@ -18,12 +18,12 @@ func _process(delta):
 
 func _on_tutorial_pressed():
 	await fader.fade_in()
-	get_tree().change_scene_to_file("res://Scenes/Levels/TutorialLevel.tscn")
+	Global.root_node.change_level_to_scene("res://Scenes/Levels/TutorialLevel.tscn")
 
 func _on_play_pressed():
 	await fader.fade_in()
-	get_tree().change_scene_to_file("res://Scenes/Levels/Main.tscn")
+	Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
 
 func _on_credits_pressed():
 	await fader.fade_in()
-	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
+	Global.root_node.change_level_to_scene("res://Scenes/Credits.tscn")

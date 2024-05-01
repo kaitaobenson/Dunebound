@@ -105,7 +105,7 @@ func play_animation_sequence(animationName:ALL_ANIMATIONS):
 		play_custom(ALL_ANIMATIONS.JUMP_DOWN)
 		
 		while _player.is_on_floor_custom() == false:
-			await get_tree().process_frame
+				await get_tree().process_frame
 			
 		change_animation(ALL_ANIMATIONS.JUMP, false)
 		

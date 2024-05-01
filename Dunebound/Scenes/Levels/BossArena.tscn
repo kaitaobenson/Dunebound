@@ -3,9 +3,9 @@
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_qladc"]
 [ext_resource type="PackedScene" uid="uid://bhcvy0qd2gcto" path="res://Scenes/Creatures/Boss.tscn" id="2_0foxx"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="3_ax30p"]
-[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="4_mounp"]
+[ext_resource type="PackedScene" path="res://Scenes/Background1.tscn" id="4_mounp"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="5_xq28t"]
-[ext_resource type="PackedScene" uid="uid://cihs0j2mxb0bc" path="res://Scenes/NecessaryStuff.tscn" id="6_7imby"]
+[ext_resource type="PackedScene" path="res://Scenes/NecessaryStuff.tscn" id="6_7imby"]
 
 [node name="BossArena" type="Node2D"]
 

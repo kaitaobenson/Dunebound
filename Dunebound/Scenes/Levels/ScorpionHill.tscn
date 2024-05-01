@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bl5k3gjm2ufo6" path="res://Scenes/Creatures/Birdle.tscn" id="2_4c6u5"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="2_ijtau"]
 
-[node name="WORLD" type="Node2D"]
+[node name="ScorpionHill" type="Node2D"]
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -22,7 +22,6 @@ position = Vector2(731, 520)
 
 [node name="TurretyMan1" parent="Foreground" instance=ExtResource("2_ijtau")]
 position = Vector2(1508, 478)
-yez = true
 
 [node name="TurretyMan2" parent="Foreground" instance=ExtResource("2_ijtau")]
 position = Vector2(2183, -65)
