@@ -3,7 +3,7 @@ var scrollbarMax
 var actions = []
 var ignoreThisVar:Vector2
 var Parse:JSON = JSON.new()
-@onready var scrollbar = get_parent().get_parent().get_node("PauseScreen").get_node("VScrollBar")
+@onready var scrollbar = get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar")
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
 const uiCrapOffsetQuickFix:int = 300
 const TEXT_OFFSET_THINGYMABOBBER:int = 100

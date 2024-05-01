@@ -1,5 +1,5 @@
 extends Button
-@onready var keybindHandler = get_tree().get_root().get_node("Node2D/keybindHandler")
+@onready var keybindHandler = get_tree().get_root().get_node("WORLD/Stuff/NecessaryStuff/keybindHandler")
 var onStandby:bool
 var receivedKeypress:String
 var joob

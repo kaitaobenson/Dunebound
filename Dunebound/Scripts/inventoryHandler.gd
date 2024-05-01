@@ -33,10 +33,13 @@ func invClose():
 	closeButton.disabled = true
 func invToggle():
 	self.visible = !self.visible
+	#get_parent().get_node("PauseScreen").visible=!get_parent().get_node("PauseScreen").visibl
 	closeButton.disabled = !closeButton.disabled
+
 func _process(delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		invToggle()
+		print("funny button pressed ongod fr")
 func search():
 	print("search started omg ongod no cap")
 	var query:String = get_node("TextEdit").text

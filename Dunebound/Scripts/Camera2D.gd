@@ -6,12 +6,13 @@ func _init():
 	Global.camera = self
 
 func _ready():
-	get_node("PauseScreen/Button").connect("button_down",openthatthing)
+	get_parent().get_node("UI/PauseScreen/Button").connect("button_down",openthatthing)
 
 #THIS SHOULD NOT BE HEREREeEE
 func openthatthing():
+	print("go screw yourself stupid ah code")
 	$uiContainer.visible=true
-	
+	get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visible= !get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visibl
 func _physics_process(delta):
 	var player_direction = Global.Player.player_sprite_direction
 	
