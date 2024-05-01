@@ -8,7 +8,7 @@ class_name HealthComponent
 
 var finished_death: bool = false
 var done_tweening: bool = true
-var health : int
+var health : float
 
 @onready var _text_label = $RichTextLabel
 
@@ -28,14 +28,24 @@ func _process(delta):
 func damage(attack: Attack):
 	if (attack.attack_damage != 0) && (attack.attack_damage != null):
 		health -= attack.attack_damage
-		damaged_visuals(attack.attack_damage)
+		keep_health_within_bounds()
 		update_health_bar()
+		
+		damaged_visuals(attack.attack_damage)
 
 
 func damage_without_visuals(attack: Attack):
 	if (attack.attack_damage != 0) && (attack.attack_damage != null):
 		health -= attack.attack_damage
+		keep_health_within_bounds()
 		update_health_bar()
+
+
+func keep_health_within_bounds():
+	if health < 0:
+		health = 0
+	if health > max_health:
+		health = max_health
 
 
 func damaged_visuals(attack_damage: float):

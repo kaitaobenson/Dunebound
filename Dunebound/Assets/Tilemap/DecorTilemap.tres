@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cy53ery357d1c"]
 
-[ext_resource type="Texture2D" uid="uid://c35b2yn5fudg8" path="res://DecorTilemap.png" id="1_pbafu"]
+[ext_resource type="Texture2D" uid="uid://h2iiffhi712n" path="res://Assets/Tilemap/DecorTilemap.png" id="1_pbafu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmftg"]
 texture = ExtResource("1_pbafu")
@@ -940,6 +940,12 @@ texture_region_size = Vector2i(32, 32)
 24:17/0 = 0
 24:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 24:17/0/physics_layer_0/angular_velocity = 0.0
+21:13/0 = 0
+21:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+21:13/0/physics_layer_0/angular_velocity = 0.0
+21:12/0 = 0
+21:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+21:12/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 tile_size = Vector2i(32, 32)

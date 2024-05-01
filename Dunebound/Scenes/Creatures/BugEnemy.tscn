@@ -1,0 +1,271 @@
+[gd_scene load_steps=17 format=3 uid="uid://djq52jicd1c67"]
+
+[ext_resource type="Texture2D" uid="uid://wx80ljwbnofb" path="res://Assets/Textures/Creatures/BuggyRun.png" id="1_ca2u8"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="2_s2glg"]
+
+[sub_resource type="GDScript" id="GDScript_b8wcj"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 100.0
+var direction = 0
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+var rigidBody:bool
+
+@export var starting_direction: int = -1
+
+@onready var _anim_sprite = $\"AnimatedSprite2D\"
+@onready var _anim_player = $\"AnimationPlayer\"
+
+func _ready():
+	name = \"BugEnemy\"
+	direction = starting_direction
+	flip()
+	
+	_anim_player.play(\"Run\")
+
+func _physics_process(delta):
+	var leftwallcheck = $\"Raycasts/leftwallcheck\".is_colliding()
+	var rightwallcheck = $\"Raycasts/rightwallcheck\".is_colliding()
+	var leftfloorcheck = $\"Raycasts/leftfloorcheck\".is_colliding()
+	var rightfloorcheck = $\"Raycasts/rightfloorcheck\".is_colliding()
+	var leftsidecheck = $\"Raycasts/leftsidecheck\".is_colliding()
+	var rightsidecheck = $\"Raycasts/rightsidecheck\".is_colliding()
+	
+	var rigidBodyOther:bool = $Raycasts/leftwallcheck.get_collider() is RigidBody2D or $Raycasts/rightwallcheck.get_collider() is RigidBody2D or $Raycasts/leftfloorcheck.get_collider() is RigidBody2D or $Raycasts/rightfloorcheck.get_collider() is RigidBody2D or $Raycasts/leftsidecheck.get_collider() is RigidBody2D or $Raycasts/rightsidecheck.get_collider() is RigidBody2D
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision && collision.get_collider() is RigidBody2D:
+			rigidBody = true
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * Global.Player.PUSH_FORCE)
+	if(rigidBody):
+		velocity.x = -direction * SPEED
+		move_and_slide()
+	else:
+		if ((direction == 1 and rightwallcheck or !rightfloorcheck or rightsidecheck) and !rigidBodyOther):
+				direction = -direction
+				
+		if ((direction == -1 and leftwallcheck or !leftfloorcheck or leftsidecheck) and !rigidBodyOther):
+				direction = -direction
+				
+	rigidBody = false
+	velocity.x = direction * SPEED
+	flip()
+	move_and_slide()
+
+
+func flip():
+	if direction == 1:
+		_anim_sprite.flip_h = true
+	if direction == -1:
+		_anim_sprite.flip_h = false
+
+
+func die():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wumi7"]
+size = Vector2(44, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqho2"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtiv3"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6p2k"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wppkl"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utsjf"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_purwa"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wehcs"]
+atlas = ExtResource("1_ca2u8")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elhfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtiv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6p2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utsjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_purwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wehcs")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_p1t32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_i6a76"]
+resource_name = "Run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfeqm"]
+_data = {
+"RESET": SubResource("Animation_p1t32"),
+"Run": SubResource("Animation_i6a76")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stxym"]
+size = Vector2(76, 54)
+
+[node name="BugEnemy" type="CharacterBody2D"]
+position = Vector2(0, 1)
+script = SubResource("GDScript_b8wcj")
+
+[node name="Square" type="CollisionShape2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_wumi7")
+metadata/_edit_lock_ = true
+
+[node name="Circle" type="CollisionShape2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_dqho2")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_elhfk")
+animation = &"Run"
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Raycasts/leftwallcheck")
+libraries = {
+"": SubResource("AnimationLibrary_nfeqm")
+}
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_s2glg")]
+animation_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="Hurtbox" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
+position = Vector2(-6, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Hurtbox"]
+position = Vector2(5, 6)
+shape = SubResource("RectangleShape2D_stxym")
+metadata/_edit_lock_ = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="leftwallcheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-24, 16)
+metadata/_edit_lock_ = true
+
+[node name="rightwallcheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(23, 14)
+metadata/_edit_lock_ = true
+
+[node name="leftfloorcheck" type="RayCast2D" parent="Raycasts"]
+position = Vector2(-21, 0)
+target_position = Vector2(0, 31)
+metadata/_edit_lock_ = true
+
+[node name="rightfloorcheck" type="RayCast2D" parent="Raycasts"]
+position = Vector2(21, 0)
+target_position = Vector2(0, 31)
+metadata/_edit_lock_ = true
+
+[node name="leftabovecheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-23, -13)
+metadata/_edit_lock_ = true
+
+[node name="rightabovecheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(24, -13)
+metadata/_edit_lock_ = true
+
+[node name="leftsidecheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-28, 0)
+metadata/_edit_lock_ = true
+
+[node name="rightsidecheck" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(28, 0)
+metadata/_edit_lock_ = true

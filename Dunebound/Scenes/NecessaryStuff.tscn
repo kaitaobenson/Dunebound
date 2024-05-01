@@ -1,0 +1,465 @@
+
+[gd_scene load_steps=28 format=3 uid="uid://bnye0xrcav7s1"]
+
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
+[ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
+[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
+[ext_resource type="Script" path="res://Scenes/KaiUI.gd" id="4_aj7jy"]
+[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
+[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
+[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
+[ext_resource type="Script" path="res://Scripts/TempUI.gd" id="7_s8lrs"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
+[ext_resource type="Script" path="res://Scenes/MachinePartsUI.gd" id="9_id1mm"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
+[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
+[ext_resource type="Script" path="res://Scripts/SanstormUI.gd" id="11_bchxt"]
+[ext_resource type="Script" path="res://Scenes/DeathScreen.gd" id="11_h2yia"]
+[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
+[ext_resource type="Texture2D" uid="uid://c6mfnmj34l6k0" path="res://Assets/Textures/SandOUter.png" id="12_igf2u"]
+[ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="12_ju0bm"]
+[ext_resource type="Texture2D" uid="uid://j56uvsawdblh" path="res://Assets/Textures/Sandstorm.png" id="13_pi55h"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
+[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
+[ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="15_r2oti"]
+[ext_resource type="Script" path="res://Scripts/inventoryHandler.gd" id="16_j25vd"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
+[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
+[ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+
+[sub_resource type="Gradient" id="Gradient_nj6uo"]
+offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an4fa"]
+size = Vector2(20626, 111.25)
+
+[node name="NecessaryStuff" type="Node2D"]
+
+[node name="KaiUI" type="CanvasLayer" parent="."]
+script = ExtResource("4_aj7jy")
+
+[node name="ColorRect" type="ColorRect" parent="KaiUI"]
+offset_right = 1152.0
+offset_bottom = 121.0
+color = Color(0.313726, 0.313726, 0.313726, 0.52549)
+
+[node name="HealthBar" type="Node2D" parent="KaiUI"]
+position = Vector2(81, 11)
+
+[node name="Bar" type="TextureProgressBar" parent="KaiUI/HealthBar"]
+texture_filter = 1
+offset_left = -64.0
+offset_top = 43.0
+offset_right = 117.0
+offset_bottom = 83.0
+value = 100.0
+texture_over = ExtResource("4_qo76u")
+texture_progress = ExtResource("5_mps04")
+script = ExtResource("6_fibtu")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/HealthBar"]
+offset_left = -83.0
+offset_top = -3.0
+offset_right = 112.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Health:[/center]"
+metadata/_edit_lock_ = true
+
+[node name="Temperature" type="Node2D" parent="KaiUI"]
+position = Vector2(306, -1)
+script = ExtResource("7_s8lrs")
+gradientResource = SubResource("Gradient_nj6uo")
+
+[node name="TempLabel" type="RichTextLabel" parent="KaiUI/Temperature"]
+offset_left = -127.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 46.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Temperature:[/center]"
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="TempGauge" type="RichTextLabel" parent="KaiUI/Temperature"]
+offset_left = -85.0
+offset_top = 46.0
+offset_right = 101.0
+offset_bottom = 125.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 55
+text = "100. T "
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="MachineParts" type="Node2D" parent="KaiUI"]
+position = Vector2(875, 24)
+script = ExtResource("9_id1mm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/MachineParts"]
+offset_left = -204.0
+offset_top = 9.0
+offset_right = 272.0
+offset_bottom = 145.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_fonts/bold_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center]Machine Parts: [b]0/7[/b][/center]"
+metadata/_edit_lock_ = true
+
+[node name="Sandstorm" type="Node2D" parent="KaiUI"]
+position = Vector2(483, 36)
+script = ExtResource("11_bchxt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="KaiUI/Sandstorm"]
+offset_top = 9.0
+offset_right = 85.0
+offset_bottom = 92.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("12_igf2u")
+texture_progress = ExtResource("13_pi55h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/Sandstorm"]
+offset_left = -67.0
+offset_top = -27.0
+offset_right = 128.0
+offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Sandstorm:[/center]"
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+script = ExtResource("11_h2yia")
+
+[node name="Container" type="Node2D" parent="DeathScreen"]
+
+[node name="Front" type="ColorRect" parent="DeathScreen/Container"]
+offset_left = 82.0
+offset_top = 124.0
+offset_right = 1108.0
+offset_bottom = 326.0
+color = Color(0.615686, 0.509804, 0.341176, 0.921569)
+
+[node name="Back" type="ColorRect" parent="DeathScreen/Container"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.615686, 0.509804, 0.341176, 0.364706)
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DeathScreen/Container"]
+offset_top = 125.0
+offset_right = 1152.0
+offset_bottom = 352.0
+theme_override_colors/default_color = Color(0.501961, 0.219608, 0.176471, 1)
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center]YOU DIED[/center]"
+
+[node name="PlayAgain" type="Button" parent="DeathScreen/Container"]
+offset_left = 227.0
+offset_top = 459.0
+offset_right = 508.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("8_egkwl")
+theme_override_font_sizes/font_size = 50
+text = "Respawn"
+
+[node name="Quit" type="Button" parent="DeathScreen/Container"]
+offset_left = 615.0
+offset_top = 460.0
+offset_right = 895.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("8_egkwl")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="Fader" parent="." instance=ExtResource("1_o1xk2")]
+position = Vector2(44, 37)
+fade_in_time = 5.0
+
+[node name="SaverLoader" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_q58lg")
+turned_on = false
+
+[node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
+enabled = false
+sandstorm_is_on = false
+
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+texture_filter = 1
+offset_left = 22.0
+offset_top = 21.0
+offset_right = 203.0
+offset_bottom = 61.0
+value = 100.0
+texture_over = ExtResource("4_qo76u")
+texture_progress = ExtResource("5_mps04")
+script = ExtResource("6_fibtu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Temperature" type="Node2D" parent="UI"]
+script = ExtResource("7_s8lrs")
+gradientResource = SubResource("Gradient_nj6uo")
+
+[node name="TempLabel" type="RichTextLabel" parent="UI/Temperature"]
+offset_left = 920.0
+offset_top = 10.0
+offset_right = 1143.0
+offset_bottom = 48.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Temperature:"
+scroll_active = false
+
+[node name="TempGauge" type="RichTextLabel" parent="UI/Temperature"]
+offset_left = 935.0
+offset_top = 64.0
+offset_right = 1121.0
+offset_bottom = 143.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 65
+text = "100. T "
+scroll_active = false
+
+[node name="PauseScreen" type="Node2D" parent="UI"]
+process_mode = 3
+z_index = 12
+position = Vector2(-87, 103)
+
+[node name="ColorRect" type="ColorRect" parent="UI/PauseScreen"]
+process_mode = 3
+visibility_layer = 512
+z_index = 38
+offset_left = -1957.0
+offset_top = -719.0
+offset_right = 2753.0
+offset_bottom = 911.0
+color = Color(0.223529, 0.223529, 0.223529, 0.968627)
+script = ExtResource("15_r2oti")
+
+[node name="Button" type="ColorRect" parent="UI/PauseScreen"]
+z_index = 4096
+offset_left = -207.0
+offset_top = -407.0
+offset_right = 72.0
+offset_bottom = -351.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 270.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 30
+text = "controls"
+
+[node name="Button2" type="ColorRect" parent="UI/PauseScreen"]
+z_index = 40
+offset_left = -207.0
+offset_top = -290.0
+offset_right = 75.0
+offset_bottom = -237.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button2"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 262.0
+offset_bottom = 51.0
+theme_override_font_sizes/normal_font_size = 30
+text = "save game
+"
+
+[node name="uiContainer" type="Node2D" parent="UI"]
+process_mode = 3
+z_index = 60
+position = Vector2(-587, -317)
+
+[node name="ColorRect" type="ColorRect" parent="UI/uiContainer"]
+z_index = -2
+offset_left = -2570.0
+offset_top = -1469.0
+offset_right = 3826.0
+offset_bottom = 1699.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="UI/uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("14_xgfq8")
+
+[node name="ColorRect2" type="ColorRect" parent="UI/uiContainer"]
+z_index = 4095
+offset_left = 260.0
+offset_top = 458.0
+offset_right = 1418.0
+offset_bottom = 627.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/uiContainer"]
+z_index = 4095
+offset_left = 746.0
+offset_top = 1249.0
+offset_right = 1911.0
+offset_bottom = 1471.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="UI/uiContainer"]
+z_index = 4096
+offset_left = 273.0
+offset_top = 472.0
+offset_right = 1419.0
+offset_bottom = 525.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="inventoryContainer" type="Node2D" parent="UI"]
+process_mode = 3
+visible = false
+z_index = 45
+position = Vector2(-500, -300)
+script = ExtResource("16_j25vd")
+
+[node name="itemTileContainer" type="ColorRect" parent="UI/inventoryContainer"]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 832.0
+offset_bottom = 482.0
+mouse_filter = 2
+color = Color(0.0117647, 0.117647, 0.156863, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="itemTileTemplate" type="ColorRect" parent="UI/inventoryContainer/itemTileContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 126.0
+offset_right = 117.0
+offset_bottom = 196.0
+mouse_filter = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+script = ExtResource("17_gbn25")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/inventoryContainer/itemTileContainer/itemTileTemplate"]
+
+[node name="closeButton" type="Button" parent="UI/inventoryContainer"]
+process_mode = 3
+offset_left = 723.0
+offset_top = 110.0
+offset_right = 822.0
+offset_bottom = 209.0
+disabled = true
+action_mode = 0
+icon = ExtResource("18_e5ahn")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/inventoryContainer"]
+position = Vector2(256.5, 126.5)
+scale = Vector2(0.406249, 0.40625)
+texture = ExtResource("19_ebuym")
+
+[node name="TextEdit" type="TextEdit" parent="UI/inventoryContainer"]
+offset_left = 284.0
+offset_top = 108.0
+offset_right = 454.0
+offset_bottom = 142.0
+
+[node name="rawr~" type="ColorRect" parent="UI/inventoryContainer"]
+offset_left = 251.0
+offset_top = 215.0
+offset_right = 679.0
+offset_bottom = 459.0
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="UI/inventoryContainer"]
+offset_left = 659.0
+offset_top = 222.0
+offset_right = 677.0
+offset_bottom = 446.0
+
+[node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="."]
+
+[node name="VScrollBar" type="VScrollBar" parent="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis"]
+visible = false
+z_index = 4096
+z_as_relative = false
+offset_left = 528.0
+offset_top = 131.0
+offset_right = 546.0
+offset_bottom = 491.0
+
+[node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
+visible = false
+z_index = 16
+offset_left = -262.0
+offset_top = -175.0
+offset_right = -192.0
+offset_bottom = -105.0
+script = ExtResource("9_tce0e")
+metadata/tileName = "itemTileTemplate"
+
+[node name="keybindHandler" type="Node" parent="."]
+script = ExtResource("10_k55li")
+
+[node name="Templates" type="Node" parent="."]
+
+[node name="keybindButton" type="Button" parent="Templates"]
+anchors_preset = -1
+anchor_right = 0.054
+anchor_bottom = 0.021
+offset_left = 40.0
+offset_top = -64.0
+offset_right = -14.208
+offset_bottom = -69.608
+theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
+script = ExtResource("11_ileum")
+metadata/action = &""
+metadata/_edit_use_anchors_ = true
+
+[node name="cancelButton" type="Button" parent="Templates"]
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+text = "Cancel"
+script = ExtResource("12_ju0bm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(375, 374)
+zoom = Vector2(0.29, 0.29)
+position_smoothing_speed = 0.0
+script = ExtResource("13_uimac")
+
+[node name="BottomBarrierDeath" type="Area2D" parent="."]
+position = Vector2(-91, -211)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
+position = Vector2(276, 1678.38)
+shape = SubResource("RectangleShape2D_an4fa")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(86, -31)
+color = Color(0.533333, 0.521569, 0.666667, 1)

@@ -73,7 +73,6 @@ func reloadKeybindUI()->void:
 	for knife in myChildren.size():
 		myChildren[knife].queue_free()
 	for retghghhvh in actions.size():
-		#print("loop entered")
 		var newText = Label.new()
 		var newButton = $"../../../Templates/keybindButton".duplicate(15)
 		var newTicker = SpinBox.new()

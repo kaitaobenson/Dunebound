@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://d047ch3olrmo1"]
+
+[ext_resource type="Script" path="res://Scripts/Zombie Husk Guy.gd" id="1_siswa"]
+[ext_resource type="Texture2D" uid="uid://dj7d0w1o07vjt" path="res://Assets/Textures/Creatures/Zombie-Sheet.png" id="2_8liba"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_3iumi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qo7hb"]
+radius = 15.0
+height = 66.9453
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvh46"]
+atlas = ExtResource("2_8liba")
+region = Rect2(0, 0, 76, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rts5a"]
+atlas = ExtResource("2_8liba")
+region = Rect2(76, 0, 76, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohtcg"]
+atlas = ExtResource("2_8liba")
+region = Rect2(152, 0, 76, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d56cu"]
+atlas = ExtResource("2_8liba")
+region = Rect2(228, 0, 76, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aix3f"]
+atlas = ExtResource("2_8liba")
+region = Rect2(304, 0, 76, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs5l1"]
+atlas = ExtResource("2_8liba")
+region = Rect2(380, 0, 76, 114)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qf3br"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pvh46")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_rts5a")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ohtcg")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_d56cu")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_aix3f")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gs5l1")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36ep"]
+size = Vector2(40, 70)
+
+[node name="ZombieHusk" type="CharacterBody2D"]
+script = ExtResource("1_siswa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_qo7hb")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22)
+sprite_frames = SubResource("SpriteFrames_qf3br")
+animation = &"Run"
+frame_progress = 0.147953
+
+[node name="Collision_Checks" type="Node2D" parent="."]
+visible = false
+
+[node name="leftwallcheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(-17, 30)
+metadata/_edit_lock_ = true
+
+[node name="rightwallcheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(17, 30)
+metadata/_edit_lock_ = true
+
+[node name="leftfloorcheck" type="RayCast2D" parent="Collision_Checks"]
+position = Vector2(-17, 0)
+target_position = Vector2(0, 60)
+metadata/_edit_lock_ = true
+
+[node name="rightfloorcheck" type="RayCast2D" parent="Collision_Checks"]
+position = Vector2(17, 0)
+target_position = Vector2(0, 60)
+metadata/_edit_lock_ = true
+
+[node name="leftabovecheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(-17, -25)
+metadata/_edit_lock_ = true
+
+[node name="rightabovecheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(17, -25)
+metadata/_edit_lock_ = true
+
+[node name="leftsidecheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(-17, 0)
+metadata/_edit_lock_ = true
+
+[node name="rightsidecheck" type="RayCast2D" parent="Collision_Checks"]
+target_position = Vector2(17, 0)
+metadata/_edit_lock_ = true
+
+[node name="LineOfSightPivot" type="Node2D" parent="."]
+visible = false
+
+[node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
+target_position = Vector2(199, 0)
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_3iumi")]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent/Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_w36ep")
