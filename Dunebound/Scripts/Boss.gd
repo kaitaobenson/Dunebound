@@ -70,13 +70,16 @@ func attack_manager():
 		elif ranges["MEDIUM"]:
 			long_range_laser_attack()
 			await laser_rect_done
+	if get_tree() != null:
+		await get_tree().create_timer(3.0).timeout
 	can_action = true
 
 func teleport():
 	var randomValue = randi_range(0, 2)
 	var tp_location = tp_spots[randomValue]
 	global_position = tp_location
-	await get_tree().create_timer(1).timeout
+	if get_tree() != null:
+		await get_tree().create_timer(1).timeout
 	
 
 func close_range_explosion():
@@ -102,8 +105,10 @@ func close_range_explosion():
 
 func laser_tracking():
 	var angle_to_player = atan2(Player.global_position.y - laser_pivot.global_position.y, Player.global_position.x - laser_pivot.global_position.x)
-	if angle_to_player < 0:
-		angle_to_player = deg_to_rad(360) + angle_to_player
+	
+	if abs(angle_to_player - laser_pivot.rotation) > deg_to_rad(180):
+		laser_pivot.rotation += deg_to_rad(360) * abs(angle_to_player) / angle_to_player
+	
 	var lerp = lerp(laser_pivot.rotation, angle_to_player, laser_track_speed)
 	laser_pivot.rotation = lerp
 
@@ -165,6 +170,7 @@ func laser_colorect_handler():
 	while laser_colorRect_outer.size.y > 0.0:
 		laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
 		laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
-		await get_tree().create_timer(.001).timeout
+		if get_tree() != null:
+			await get_tree().create_timer(.001).timeout
 	laser_colorRect_inner.visible = false
 	emit_signal("laser_rect_done")
