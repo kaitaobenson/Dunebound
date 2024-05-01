@@ -1,20 +1,20 @@
-[gd_scene load_steps=28 format=3 uid="uid://bnye0xrcav7s1"]
+[gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
 
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
+[ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
-[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
-[ext_resource type="Script" path="res://Scenes/KaiUI.gd" id="4_aj7jy"]
+[ext_resource type="PackedScene" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
+[ext_resource type="Script" path="res://Scripts/MachinePartsUI.gd" id="7_jj25h"]
 [ext_resource type="Script" path="res://Scripts/TempUI.gd" id="7_s8lrs"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
-[ext_resource type="Script" path="res://Scenes/MachinePartsUI.gd" id="9_id1mm"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
 [ext_resource type="Script" path="res://Scripts/SanstormUI.gd" id="11_bchxt"]
-[ext_resource type="Script" path="res://Scenes/DeathScreen.gd" id="11_h2yia"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
+[ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="11_jopgn"]
 [ext_resource type="Texture2D" uid="uid://c6mfnmj34l6k0" path="res://Assets/Textures/SandOUter.png" id="12_igf2u"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="12_ju0bm"]
 [ext_resource type="Texture2D" uid="uid://j56uvsawdblh" path="res://Assets/Textures/Sandstorm.png" id="13_pi55h"]
@@ -36,7 +36,7 @@ size = Vector2(20626, 111.25)
 [node name="NecessaryStuff" type="Node2D"]
 
 [node name="KaiUI" type="CanvasLayer" parent="."]
-script = ExtResource("4_aj7jy")
+script = ExtResource("1_trsck")
 
 [node name="ColorRect" type="ColorRect" parent="KaiUI"]
 offset_right = 1152.0
@@ -100,7 +100,7 @@ metadata/_edit_lock_ = true
 
 [node name="MachineParts" type="Node2D" parent="KaiUI"]
 position = Vector2(875, 24)
-script = ExtResource("9_id1mm")
+script = ExtResource("7_jj25h")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/MachineParts"]
 offset_left = -204.0
@@ -140,7 +140,7 @@ bbcode_enabled = true
 text = "[center]Sandstorm:[/center]"
 
 [node name="DeathScreen" type="CanvasLayer" parent="."]
-script = ExtResource("11_h2yia")
+script = ExtResource("11_jopgn")
 
 [node name="Container" type="Node2D" parent="DeathScreen"]
 
@@ -237,7 +237,7 @@ script = ExtResource("12_ju0bm")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
 position = Vector2(375, 374)
-zoom = Vector2(0.29, 0.29)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 0.0
 script = ExtResource("13_uimac")
 

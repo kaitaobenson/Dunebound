@@ -5,7 +5,7 @@ func _init():
 
 
 func _ready():
-	change_level_to_scene("res://Scenes/TitleScreen.tscn")
+	change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 	pass
 
 func _process(delta):
