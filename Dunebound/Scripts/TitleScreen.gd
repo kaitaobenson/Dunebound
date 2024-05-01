@@ -33,4 +33,4 @@ func _ready():
 		await get_tree().create_tween().tween_property(title_screen, "modulate:a", 1, fade_time)
 		
 	else:
-		get_tree().change_scene_to_file("res://Scenes/Main.tscn")
+		Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")

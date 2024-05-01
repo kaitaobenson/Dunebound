@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgpc43bh1ayvs"]
+
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="1_2woqi"]
+[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="2_fsskr"]
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 105.0
+offset_top = 94.0
+offset_right = 1056.0
+offset_bottom = 318.0
+theme_override_fonts/normal_font = ExtResource("1_2woqi")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]this is what happens when you win ig [/center]"
+
+[node name="Jimmy" type="Sprite2D" parent="."]
+position = Vector2(555, 482)
+scale = Vector2(7.0625, 2.125)
+texture = ExtResource("2_fsskr")
