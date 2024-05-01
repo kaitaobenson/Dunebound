@@ -203,6 +203,8 @@ mouse_filter = 2
 color = Color(0.294118, 0.294118, 0.294118, 1)
 script = ExtResource("17_gbn25")
 
+[node name="Sprite2D" type="Sprite2D" parent="UI/inventoryContainer/itemTileContainer/itemTileTemplate"]
+
 [node name="closeButton" type="Button" parent="UI/inventoryContainer"]
 process_mode = 3
 offset_left = 723.0

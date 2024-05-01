@@ -95,7 +95,11 @@ autoplay = true
 [node name="Fader" parent="Stuff/NecessaryStuff" index="0"]
 fade_in_time = 3.0
 
+[node name="UI" parent="Stuff/NecessaryStuff" index="3"]
+visible = true
+
 [node name="PauseScreen" parent="Stuff/NecessaryStuff/UI" index="2"]
+visible = false
 position = Vector2(381, 502)
 
 [node name="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen" index="0"]
@@ -106,6 +110,7 @@ offset_bottom = 943.0
 metadata/_edit_use_anchors_ = true
 
 [node name="uiContainer" parent="Stuff/NecessaryStuff/UI" index="3"]
+visible = false
 position = Vector2(-247, 111)
 
 [node name="ColorRect" parent="Stuff/NecessaryStuff/UI/uiContainer" index="0"]
@@ -122,6 +127,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" parent="Stuff/NecessaryStuff/UI/uiContainer" index="4"]
 metadata/_edit_use_anchors_ = true
+
+[node name="inventoryContainer" parent="Stuff/NecessaryStuff/UI" index="4"]
+visible = true
+position = Vector2(-163, -43)
+
+[node name="itemTileTemplate" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate" index="0"]
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate" index="1"]
 
 [node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="5"]
 visible = true
