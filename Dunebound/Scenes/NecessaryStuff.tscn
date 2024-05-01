@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://bnye0xrcav7s1"]
 
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
 [ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Script" path="res://Scenes/KaiUI.gd" id="4_aj7jy"]
@@ -237,7 +237,7 @@ script = ExtResource("12_ju0bm")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
 position = Vector2(375, 374)
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(0.29, 0.29)
 position_smoothing_speed = 0.0
 script = ExtResource("13_uimac")
 

@@ -21,8 +21,9 @@ var laser_track_speed : float = .8
 @onready var AttackAreas = $"AttackDetectionContainer"
 @onready var laser_pivot = $"laser_pivot"
 @onready var laser_hitbox = $"laser_pivot/laser_area/laser_hitbox"
-@onready var laser_colorRect_outer = $"laser_pivot/laser_control/Outerlazerlayer"
-@onready var laser_colorRect_inner = $"laser_pivot/laser_control/Innerlazerlayer"
+@onready var laser_colorRect_outer = $"laser_pivot/laser_control/Outerlaserlayer"
+@onready var laser_colorRect_inner = $"laser_pivot/laser_control/Innerlaserlayer"
+@onready var Laser_Warning = $"laser_pivot/laser_control/LaserWarning"
 
 @onready var tp_spots = [
 	tp_container.get_node("Tp1").global_position,
@@ -69,13 +70,16 @@ func attack_manager():
 		elif ranges["MEDIUM"]:
 			long_range_laser_attack()
 			await laser_rect_done
+	if get_tree() != null:
+		await get_tree().create_timer(3.0).timeout
 	can_action = true
 
 func teleport():
 	var randomValue = randi_range(0, 2)
 	var tp_location = tp_spots[randomValue]
 	global_position = tp_location
-	await get_tree().create_timer(1).timeout
+	if get_tree() != null:
+		await get_tree().create_timer(1).timeout
 	
 
 func close_range_explosion():
@@ -99,6 +103,10 @@ func close_range_explosion():
 
 func laser_tracking():
 	var angle_to_player = atan2(Player.global_position.y - laser_pivot.global_position.y, Player.global_position.x - laser_pivot.global_position.x)
+	
+	if abs(angle_to_player - laser_pivot.rotation) > deg_to_rad(180):
+		laser_pivot.rotation += deg_to_rad(360) * abs(angle_to_player) / angle_to_player
+	
 	var lerp = lerp(laser_pivot.rotation, angle_to_player, laser_track_speed)
 	laser_pivot.rotation = lerp
 
@@ -110,8 +118,7 @@ func long_range_laser_attack():
 	var laser_track_tween : Tween = get_tree().create_tween()
 	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 3.0)
 	await get_tree().create_timer(3.0).timeout
-	laser_colorRect_inner.visible = true
-	laser_colorRect_outer.visible = true
+
 	emit_signal("laser_rect_phase_1")
 	laser_hitbox.disabled = false
 	await get_tree().create_timer(1.0).timeout
@@ -139,10 +146,14 @@ func laser_colorect_handler():
 	laser_colorRect_outer.size = Vector2(780, 0)
 	laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
 	laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
+	Laser_Warning.visible = true
 	
 	await laser_rect_phase_1
+	Laser_Warning.visible = false
+	laser_colorRect_inner.visible = true
+	laser_colorRect_outer.visible = true
 	var laser_inner_rect_expand_tween : Tween = get_tree().create_tween()
-	laser_inner_rect_expand_tween.tween_property(laser_colorRect_inner, "size", Vector2(780, 60), .5)
+	laser_inner_rect_expand_tween.tween_property(laser_colorRect_inner, "size", Vector2(780, 40), .5)
 	var laser_outer_rect_expand_tween : Tween = get_tree().create_tween()
 	laser_outer_rect_expand_tween.tween_property(laser_colorRect_outer, "size", Vector2(780, 90), .5)
 	while laser_colorRect_outer.size.y < 90.0:
@@ -158,6 +169,7 @@ func laser_colorect_handler():
 	while laser_colorRect_outer.size.y > 0.0:
 		laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
 		laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
-		await get_tree().create_timer(.001).timeout
+		if get_tree() != null:
+			await get_tree().create_timer(.001).timeout
 	laser_colorRect_inner.visible = false
 	emit_signal("laser_rect_done")
