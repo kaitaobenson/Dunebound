@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
+[gd_scene load_steps=29 format=3 uid="uid://cc338i60editu"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+[ext_resource type="Script" path="res://Scenes/BottomBarrierDeath.gd" id="26_uq2vp"]
 
 [sub_resource type="Gradient" id="Gradient_nj6uo"]
 offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
@@ -416,6 +417,7 @@ script = ExtResource("13_uimac")
 
 [node name="BottomBarrierDeath" type="Area2D" parent="."]
 position = Vector2(-91, -211)
+script = ExtResource("26_uq2vp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
 position = Vector2(276, 1678.38)

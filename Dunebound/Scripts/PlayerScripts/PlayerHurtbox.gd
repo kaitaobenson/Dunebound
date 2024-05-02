@@ -3,11 +3,10 @@ extends Area2D
 #first is damage, second is if it stops for i frames
 #spikes and bottom barrier don't care about i frames
 const enemy_info = {
-	"Spikes": [100, false],
 	"BottomBarrierDeath" : [100, false],
+	"ScorpionTurret": [10, true],
 	"BugEnemy": [20, true],
-	"Zombie Husk Guy": [0, true],
-	"TurretyMan": [10, true],
+	"ZombieHusk": [0, true],
 	"TurretBullet": [40, true],
 	"CloseRangeExplosion": [0, true],
 }
@@ -33,23 +32,31 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if bodies_in_hurtbox.has(body.name) == false:
-		bodies_in_hurtbox.append(body.name)
+	if body.has_method("get_damage_id"):
+		var damage_id = body.get_damage_id()
+		if !bodies_in_hurtbox.has(damage_id):
+			bodies_in_hurtbox.append(damage_id)
 
 
 func _on_body_exited(body):
-	if bodies_in_hurtbox.has(body.name):
-		bodies_in_hurtbox.erase(body.name)
+	if body.has_method("get_damage_id"):
+		var damage_id = body.get_damage_id()
+		if bodies_in_hurtbox.has(damage_id):
+			bodies_in_hurtbox.erase(damage_id)
 
 
 func _on_area_entered(area):
-	if areas_in_hurtbox.has(area.name) == false:
-		areas_in_hurtbox.append(area.name)
+	if area.has_method("get_damage_id"):
+		var damage_id = area.get_damage_id()
+		if !areas_in_hurtbox.has(damage_id):
+			areas_in_hurtbox.append(damage_id)
 
 
 func _on_area_exited(area):
-	if areas_in_hurtbox.has(area.name):
-		areas_in_hurtbox.erase(area.name)
+	if area.has_method("get_damage_id"):
+		var damage_id = area.get_damage_id()
+		if areas_in_hurtbox.has(damage_id):
+			areas_in_hurtbox.erase(damage_id)
 
 
 

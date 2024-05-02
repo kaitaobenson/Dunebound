@@ -12,3 +12,6 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.1).timeout
 		$"../".queue_free()
 		queue_free()
+
+func get_damage_id():
+	return "TurretBullet"

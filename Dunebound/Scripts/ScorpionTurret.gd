@@ -116,5 +116,9 @@ func fighting():
 		direction = 0
 
 
+func get_damage_id():
+	return "ScorpionTurret"
+
+
 func die():
 	queue_free()

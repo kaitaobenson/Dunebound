@@ -31,32 +31,32 @@ text = "Dunebound"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 43.0
-offset_top = 286.0
-offset_right = 293.0
-offset_bottom = 596.0
-theme_override_constants/h_separation = 200
+offset_left = 53.0
+offset_top = 301.0
+offset_right = 581.0
+offset_bottom = 721.0
+theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 script = ExtResource("4_t51x1")
 
 [node name="Tutorial" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Tutorial"
 
 [node name="Play" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Play"
 
 [node name="Credits" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nq5fw")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Credits"
 
