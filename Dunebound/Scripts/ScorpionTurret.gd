@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var SPEED
 var can_see : bool = false
 var can_fire = true
-var direction = 1
+var direction = -1
 
 @onready var Player = Global.Player
 @onready var line_of_sight_pivot: Node2D = $"LineOfSightPivot" as Node2D
@@ -94,6 +94,7 @@ func idle():
 	if direction == -1 and (leftwallcheck or !leftfloorcheck or leftsidecheck) or direction == 1 and (rightwallcheck or !rightfloorcheck or rightsidecheck):
 		flip = true
 	if (random_flip == 1 && can_random_flip) or flip:
+		anim.flip_h = !anim.flip_h
 		can_random_flip = false
 		direction = -direction
 		await get_tree().create_timer(2.0).timeout
