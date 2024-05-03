@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c374iml6q4wds"]
+[gd_scene load_steps=6 format=3 uid="uid://c6dxgqx0ki5gf"]
 
 [ext_resource type="Script" path="res://Scripts/turret_bullet.gd" id="1_3wafu"]
 [ext_resource type="Texture2D" uid="uid://c5pe5wqhbomqp" path="res://Assets/Textures/AcidBall.png" id="2_2hnmn"]

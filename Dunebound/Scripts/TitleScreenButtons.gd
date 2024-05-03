@@ -5,6 +5,7 @@ extends GridContainer
 @onready var tutorial = $"Tutorial"
 @onready var play = $"Play"
 @onready var credits = $"Credits"
+@onready var boss = $"Boss"
 
 
 func _process(delta):

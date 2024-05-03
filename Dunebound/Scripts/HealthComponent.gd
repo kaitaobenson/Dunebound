@@ -79,5 +79,5 @@ func flash_white(attack_damage):
 
 
 func update_health_bar():
-	if get_tree().get_root().get_node(health_bar_path) != null:
-		get_tree().get_root().get_node(health_bar_path).set_health(health)
+	if get_node(health_bar_path) != null:
+		get_node(health_bar_path).set_health(health)

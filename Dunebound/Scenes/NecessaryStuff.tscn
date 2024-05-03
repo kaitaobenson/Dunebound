@@ -1,4 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
+
+[gd_scene load_steps=29 format=3 uid="uid://cc338i60editu"]
+
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -25,6 +27,7 @@
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+[ext_resource type="Script" path="res://Scenes/BottomBarrierDeath.gd" id="26_uq2vp"]
 
 [sub_resource type="Gradient" id="Gradient_nj6uo"]
 offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
@@ -200,42 +203,6 @@ sandstorm_is_on = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 visible = false
-
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
-texture_filter = 1
-offset_left = 22.0
-offset_top = 21.0
-offset_right = 203.0
-offset_bottom = 61.0
-value = 100.0
-texture_over = ExtResource("4_qo76u")
-texture_progress = ExtResource("5_mps04")
-script = ExtResource("6_fibtu")
-metadata/_edit_use_anchors_ = true
-
-[node name="Temperature" type="Node2D" parent="UI"]
-script = ExtResource("7_s8lrs")
-gradientResource = SubResource("Gradient_nj6uo")
-
-[node name="TempLabel" type="RichTextLabel" parent="UI/Temperature"]
-offset_left = 920.0
-offset_top = 10.0
-offset_right = 1143.0
-offset_bottom = 48.0
-theme_override_fonts/normal_font = ExtResource("8_egkwl")
-theme_override_font_sizes/normal_font_size = 40
-text = "Temperature:"
-scroll_active = false
-
-[node name="TempGauge" type="RichTextLabel" parent="UI/Temperature"]
-offset_left = 935.0
-offset_top = 64.0
-offset_right = 1121.0
-offset_bottom = 143.0
-theme_override_fonts/normal_font = ExtResource("8_egkwl")
-theme_override_font_sizes/normal_font_size = 65
-text = "100. T "
-scroll_active = false
 
 [node name="PauseScreen" type="Node2D" parent="UI"]
 process_mode = 3
@@ -452,6 +419,7 @@ script = ExtResource("13_uimac")
 
 [node name="BottomBarrierDeath" type="Area2D" parent="."]
 position = Vector2(-91, -211)
+script = ExtResource("26_uq2vp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
 position = Vector2(276, 1678.38)

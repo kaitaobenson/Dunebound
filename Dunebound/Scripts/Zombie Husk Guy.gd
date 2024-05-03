@@ -99,5 +99,9 @@ func check_if_moved():
 		return true
 
 
+func get_damage_id():
+	return "ZombieHusk"
+
+
 func die():
 	queue_free()
