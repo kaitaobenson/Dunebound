@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://crfahjwefomnd" path="res://Scenes/Levels/ScorpionHill.tscn" id="3_r7sqk"]
 [ext_resource type="PackedScene" uid="uid://cc338i60editu" path="res://Scenes/NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
-
 [ext_resource type="PackedScene" uid="uid://dsgad8uh1aksj" path="res://Scenes/Levels/PlatformLevel.tscn" id="7_smvfv"]
 
 [node name="WORLD" type="Node2D"]
@@ -51,8 +50,7 @@ layer_0/tile_data = PackedInt32Array(1114122, 1114115, 14, 1179658, 1114115, 15,
 position = Vector2(-2465, 336)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("1_26q2k")]
-
-position = Vector2(-2016, 856)
+position = Vector2(-2061, 564)
 
 [node name="Stuff" type="Node2D" parent="."]
 
@@ -71,8 +69,5 @@ layer = 128
 
 [node name="WeatherControl" parent="Stuff/NecessaryStuff" index="4"]
 enabled = true
-
-[node name="Level Stinky" parent="." instance=ExtResource("11_3ajdg")]
-position = Vector2(-4883, 588)
 
 [editable path="Stuff/NecessaryStuff"]
