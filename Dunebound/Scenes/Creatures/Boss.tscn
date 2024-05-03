@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhcvy0qd2gcto"]
+[gd_scene load_steps=8 format=3 uid="uid://bhcvy0qd2gcto"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_47de6"]
 
@@ -14,8 +14,17 @@ radius = 570.014
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7vqt"]
 radius = 832.049
 
+[sub_resource type="GDScript" id="GDScript_524sb"]
+script/source = "extends Area2D
+
+
+
+func _on_body_entered(body):
+	pass # Replace with function body.
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dbw"]
-size = Vector2(783, 92.5)
+size = Vector2(780, 74)
 
 [node name="Boss" type="CharacterBody2D"]
 position = Vector2(323, 252)
@@ -46,9 +55,10 @@ shape = SubResource("CircleShape2D_v7vqt")
 [node name="laser_pivot" type="Node2D" parent="."]
 
 [node name="laser_area" type="Area2D" parent="laser_pivot"]
+script = SubResource("GDScript_524sb")
 
 [node name="laser_hitbox" type="CollisionShape2D" parent="laser_pivot/laser_area"]
-position = Vector2(435.5, 0)
+position = Vector2(434, 0)
 shape = SubResource("RectangleShape2D_f2dbw")
 disabled = true
 debug_color = Color(0.941176, 0, 0.615686, 0.419608)
@@ -56,10 +66,11 @@ debug_color = Color(0.941176, 0, 0.615686, 0.419608)
 [node name="laser_control" type="Control" parent="laser_pivot"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 44.0
-offset_top = -46.0
-offset_right = 826.0
-offset_bottom = 46.0
+offset_left = 44.0078
+offset_top = -37.0078
+offset_right = 826.008
+offset_bottom = 54.9922
+scale = Vector2(1, 0.8)
 
 [node name="Outerlaserlayer" type="ColorRect" parent="laser_pivot/laser_control"]
 visible = false
@@ -83,6 +94,8 @@ color = Color(1, 0.345098, 0, 0.686275)
 [node name="LaserWarning" type="ColorRect" parent="laser_pivot/laser_control"]
 visible = false
 layout_mode = 0
-offset_right = 783.0
+offset_right = 780.0
 offset_bottom = 92.0
 color = Color(1, 1, 0.313726, 0.156863)
+
+[connection signal="body_entered" from="laser_pivot/laser_area" to="." method="_on_laser_area_body_entered"]
