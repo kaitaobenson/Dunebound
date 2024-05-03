@@ -1,5 +1,6 @@
 extends Node
 
+var current_scene_path: String
 
 # NODES
 var root_node: Object

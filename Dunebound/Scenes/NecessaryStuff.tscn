@@ -1,11 +1,9 @@
-
 [gd_scene load_steps=29 format=3 uid="uid://cc338i60editu"]
 
-
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
 [ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_q58lg"]
-[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
+[ext_resource type="PackedScene" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
 [ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
