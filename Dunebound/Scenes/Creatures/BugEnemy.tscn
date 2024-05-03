@@ -225,6 +225,7 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("2_s2glg")]
+max_health = 30
 animation_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="Hurtbox" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]

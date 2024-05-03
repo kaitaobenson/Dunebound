@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
-[ext_resource type="Script" path="res://Scenes/BottomBarrierDeath.gd" id="26_uq2vp"]
+[ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="26_b56ym"]
 
 [sub_resource type="Gradient" id="Gradient_nj6uo"]
 offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
@@ -43,9 +43,11 @@ script = ExtResource("1_trsck")
 offset_right = 1152.0
 offset_bottom = 121.0
 color = Color(0.313726, 0.313726, 0.313726, 0.52549)
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="Node2D" parent="KaiUI"]
 position = Vector2(81, 11)
+metadata/_edit_lock_ = true
 
 [node name="Bar" type="TextureProgressBar" parent="KaiUI/HealthBar"]
 texture_filter = 1
@@ -75,6 +77,7 @@ metadata/_edit_lock_ = true
 position = Vector2(306, -1)
 script = ExtResource("7_s8lrs")
 gradientResource = SubResource("Gradient_nj6uo")
+metadata/_edit_lock_ = true
 
 [node name="TempLabel" type="RichTextLabel" parent="KaiUI/Temperature"]
 offset_left = -127.0
@@ -102,6 +105,7 @@ metadata/_edit_lock_ = true
 [node name="MachineParts" type="Node2D" parent="KaiUI"]
 position = Vector2(875, 24)
 script = ExtResource("7_jj25h")
+metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/MachineParts"]
 offset_left = -204.0
@@ -120,6 +124,7 @@ metadata/_edit_lock_ = true
 [node name="Sandstorm" type="Node2D" parent="KaiUI"]
 position = Vector2(483, 36)
 script = ExtResource("11_bchxt")
+metadata/_edit_lock_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="KaiUI/Sandstorm"]
 offset_top = 9.0
@@ -129,6 +134,8 @@ value = 100.0
 fill_mode = 3
 texture_over = ExtResource("12_igf2u")
 texture_progress = ExtResource("13_pi55h")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/Sandstorm"]
 offset_left = -67.0
@@ -139,8 +146,11 @@ theme_override_fonts/normal_font = ExtResource("8_egkwl")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Sandstorm:[/center]"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="DeathScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("11_jopgn")
 
 [node name="Container" type="Node2D" parent="DeathScreen"]
@@ -407,6 +417,7 @@ offset_bottom = 8.0
 disabled = true
 text = "Cancel"
 script = ExtResource("12_ju0bm")
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -417,7 +428,7 @@ script = ExtResource("13_uimac")
 
 [node name="BottomBarrierDeath" type="Area2D" parent="."]
 position = Vector2(-91, -211)
-script = ExtResource("26_uq2vp")
+script = ExtResource("26_b56ym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
 position = Vector2(276, 1678.38)

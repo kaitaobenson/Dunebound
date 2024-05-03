@@ -149,6 +149,8 @@ func do_attack() -> void:
 			is_charged = false
 		
 		_anim_manager.change_animation(_anim_manager.ALL_ANIMATIONS.LONG_ATTACK_END_1, true)
+		_audio_manager.play(_audio_manager.ALL_SOUNDS.SHORT_ATTACK)
+		
 		long_spear_collision.disabled = false
 		await get_tree().create_timer(0.05).timeout
 		long_spear_collision.disabled = true

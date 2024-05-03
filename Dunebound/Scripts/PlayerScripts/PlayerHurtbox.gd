@@ -98,7 +98,7 @@ func make_attack(damage: float):
 
 
 func is_in_water() -> bool:
-	if areas_in_hurtbox.has("WaterArea"):
+	if areas_in_hurtbox.has("Water"):
 		return true
 	else:
 		return false
