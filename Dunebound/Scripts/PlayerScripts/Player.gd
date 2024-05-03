@@ -199,6 +199,6 @@ func die():
 			if Global.death_ui.is_play_again_pressed():
 				Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
 			elif Global.death_ui.is_quit_pressed():
-				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
+				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.wwwwwwwwtscn")
 				
 			await get_tree().process_frame
