@@ -11,9 +11,9 @@ extends Node
 @onready var canvas_modulate2 = $"../../BackgroundContainer/ParallaxBackground/CanvasModulate"
 
 #Daylength in Seconds
-const DAY_LENGTH: float = 100
+const DAY_LENGTH: float = 10
 const PHASE_LENGTH: float = DAY_LENGTH / 6.0
-const DAYS_UNTIL_SANDSTORM: int = 5
+const DAYS_UNTIL_SANDSTORM: int = 1
 const SANDSTORM_TIME: float = 10
 
 #Elapsed time this new day phase
