@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_47de6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebkaj"]
-size = Vector2(123.625, 142.75)
+size = Vector2(124.813, 121.375)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yp5yy"]
 radius = 265.68
@@ -40,22 +40,27 @@ debug_color = Color(0, 0.6, 0.713726, 0.419608)
 
 [node name="Small" type="CollisionShape2D" parent="Small"]
 shape = SubResource("CircleShape2D_yp5yy")
+metadata/_edit_lock_ = true
 
 [node name="Medium" type="Area2D" parent="."]
 
 [node name="Medium" type="CollisionShape2D" parent="Medium"]
 shape = SubResource("CircleShape2D_5eb51")
+metadata/_edit_lock_ = true
 
 [node name="Large" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Large" type="CollisionShape2D" parent="Large"]
-position = Vector2(8, -26)
 shape = SubResource("CircleShape2D_v7vqt")
+metadata/_edit_lock_ = true
 
 [node name="laser_pivot" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="laser_area" type="Area2D" parent="laser_pivot"]
 script = SubResource("GDScript_524sb")
+metadata/_edit_lock_ = true
 
 [node name="laser_hitbox" type="CollisionShape2D" parent="laser_pivot/laser_area"]
 position = Vector2(434, 0)
@@ -97,5 +102,8 @@ layout_mode = 0
 offset_right = 780.0
 offset_bottom = 92.0
 color = Color(1, 1, 0.313726, 0.156863)
+
+[node name="BulletSpawnPosition" type="Node2D" parent="laser_pivot"]
+position = Vector2(125, 0)
 
 [connection signal="body_entered" from="laser_pivot/laser_area" to="." method="_on_laser_area_body_entered"]

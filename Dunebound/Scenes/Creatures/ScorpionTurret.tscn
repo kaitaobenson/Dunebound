@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/ScorpionTurret.gd" id="1_wqh60"]
 [ext_resource type="Texture2D" uid="uid://dd4fn06aat85t" path="res://Assets/Textures/Scorpion_2.png" id="3_8o2fx"]
-[ext_resource type="PackedScene" path="res://Scenes/HealthComponent.tscn" id="3_a173j"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_a173j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ho5dy"]
 radius = 28.0

@@ -58,6 +58,8 @@ func fire_bullet():
 	can_fire = false
 	var bullet = bulletPath.instantiate()
 	var bullet_pos : Vector2
+	add_child(bullet)
+	
 	# Prevents bullets from blocking line of sight
 	line_of_sight.add_exception(bullet)
 	# Offsets spawn position depending on if you are to the right or to the left
@@ -67,12 +69,6 @@ func fire_bullet():
 	else:
 		bullet_pos = Vector2(global_position.x - 20, global_position.y - 50)
 	
-	var bullet_container = Node2D.new()
-	add_child(bullet_container)
-	var bullet_container_node = get_node(str(bullet_container.name))
-	
-	
-	bullet_container_node.add_child(bullet)
 	bullet.global_position = bullet_pos
 	bullet.velociter = Player.global_position - bullet.global_position
 	await get_tree().create_timer(1).timeout
@@ -94,11 +90,14 @@ func idle():
 	if direction == -1 and (leftwallcheck or !leftfloorcheck or leftsidecheck) or direction == 1 and (rightwallcheck or !rightfloorcheck or rightsidecheck):
 		flip = true
 	if (random_flip == 1 && can_random_flip) or flip:
-		anim.flip_h = !anim.flip_h
 		can_random_flip = false
 		direction = -direction
 		await get_tree().create_timer(2.0).timeout
 		can_random_flip = true
+	if direction == 1:
+		anim.flip_h = true
+	else:
+		anim.flip_h = false
 
 
 func fighting():

@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=29 format=3 uid="uid://cc338i60editu"]
-
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -143,6 +141,7 @@ bbcode_enabled = true
 text = "[center]Sandstorm:[/center]"
 
 [node name="DeathScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("11_jopgn")
 
 [node name="Container" type="Node2D" parent="DeathScreen"]

@@ -4,6 +4,7 @@ signal laser_rect_phase_1
 signal laser_rect_phase_2
 signal laser_rect_done
 
+const bulletPath = preload("res://Scenes/boss_bullet.tscn")
 const ExplosionPath = preload("res://Scenes/CloseRangeExplosion.tscn")
 const MaxExplosionSize : float = 300.0
 const explosion_expand_rate : float = 3.0
@@ -24,11 +25,20 @@ var laser_track_speed : float = .8
 @onready var laser_colorRect_outer = $"laser_pivot/laser_control/Outerlaserlayer"
 @onready var laser_colorRect_inner = $"laser_pivot/laser_control/Innerlaserlayer"
 @onready var Laser_Warning = $"laser_pivot/laser_control/LaserWarning"
+@onready var bulletSpawn = $"laser_pivot/BulletSpawnPosition"
+
 
 @onready var tp_spots = [
 	tp_container.get_node("Tp1").global_position,
 	tp_container.get_node("Tp2").global_position,
 	tp_container.get_node("Tp3").global_position,
+	tp_container.get_node("Tp4").global_position,
+	tp_container.get_node("Tp5").global_position,
+	tp_container.get_node("Tp6").global_position,
+	tp_container.get_node("Tp7").global_position,
+	tp_container.get_node("Tp8").global_position,
+	tp_container.get_node("Tp9").global_position,
+	tp_container.get_node("Tp10").global_position,
 ]
 @onready var tp_distance_to_player = [
 ]
@@ -60,6 +70,7 @@ func action_manager():
 	if can_action:
 		can_action = false
 		teleport()
+		await get_tree().create_timer(.5).timeout
 		attack_manager()
 
 func attack_manager():
@@ -68,10 +79,11 @@ func attack_manager():
 		if ranges["SMALL"]:
 			await close_range_explosion()
 		elif ranges["MEDIUM"]:
-			long_range_laser_attack()
-			await laser_rect_done
-	if get_tree() != null:
-		await get_tree().create_timer(3.0).timeout
+			await mid_range_laser_attack()
+		elif ranges["LARGE"]:
+			await long_range_attack()
+		await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	can_action = true
 
 func teleport():
@@ -84,10 +96,7 @@ func teleport():
 
 func close_range_explosion():
 	var explosion = ExplosionPath.instantiate()
-	var explosion_container = Node2D.new()
-	add_child(explosion_container)
-	var explosion_container_node = get_node(str(explosion_container.name))
-	explosion_container_node.add_child(explosion)
+	add_child(explosion)
 	
 	var explosion_size = 0.0
 	explosion.get_node("ExplosionHitbox").shape.radius = explosion_size
@@ -99,16 +108,12 @@ func close_range_explosion():
 		await get_tree().create_timer(0.01).timeout
 	
 	await get_tree().create_timer(0.25).timeout
-	explosion_container_node.queue_free()
+	explosion.queue_free()
 
 
 
-func mid_range_attack():
-	pass
 
-
-
-func long_range_laser_attack():
+func mid_range_laser_attack():
 	laser_colorect_handler()
 	var laser_track_tween : Tween = get_tree().create_tween()
 	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 5.0)
@@ -172,6 +177,16 @@ func laser_colorect_handler():
 	emit_signal("laser_rect_done")
 
 
+func long_range_attack():
+	var bullet = bulletPath.instantiate()
+	var bullet_pos = bulletSpawn.global_position
+	add_child(bullet)
+	bullet.global_position = bullet_pos
+	bullet.velociter = Player.global_position - bullet.global_position
+	await get_tree().create_timer(.25).timeout
+
+
+
 func attack_range_finder():
 	if $"Small".get_overlapping_bodies().has(Player):
 		ranges["SMALL"] = true
@@ -187,6 +202,10 @@ func attack_range_finder():
 				ranges["LARGE"] = false
 				
 				
+
+
+
+
 
 
 func _on_laser_area_body_entered(body):

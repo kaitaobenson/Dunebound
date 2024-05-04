@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6hgca02kocak" path="res://Scenes/Levels/BirdlePlane.tscn" id="2_ouvyc"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="2_qrex5"]
 [ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Scenes/Objects/Water.tscn" id="2_rdkkn"]
-[ext_resource type="PackedScene" path="res://Scenes/Background1.tscn" id="3_hwpk2"]
+[ext_resource type="PackedScene" uid="uid://crjj34tdloil2" path="res://Scenes/Background1.tscn" id="3_hwpk2"]
 [ext_resource type="PackedScene" uid="uid://crfahjwefomnd" path="res://Scenes/Levels/ScorpionHill.tscn" id="3_r7sqk"]
 [ext_resource type="PackedScene" uid="uid://cc338i60editu" path="res://Scenes/NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
