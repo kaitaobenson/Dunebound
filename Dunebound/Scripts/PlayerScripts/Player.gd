@@ -197,8 +197,11 @@ func die():
 		
 		while true:
 			if Global.death_ui.is_play_again_pressed():
-				Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
+				if Global.current_scene_path == "res://Scenes/Levels/TutorialLevel.tscn":
+					Global.root_node.change_level_to_scene("res://Scenes/Levels/TutorialLevel.tscn")
+				if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+					Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
 			elif Global.death_ui.is_quit_pressed():
-				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
+				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.wwwwwwwwtscn")
 				
 			await get_tree().process_frame

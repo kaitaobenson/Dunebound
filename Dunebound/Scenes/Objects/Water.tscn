@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsbwa3l44tpqa"]
+[gd_scene load_steps=6 format=3 uid="uid://bsbwa3l44tpqa"]
 
+[ext_resource type="Script" path="res://Scripts/Water.gd" id="1_1jlv2"]
 [ext_resource type="Texture2D" uid="uid://otd8qlcg5ndg" path="res://Assets/Textures/WaterSide.png" id="1_pkpxx"]
 
 [sub_resource type="Curve" id="Curve_encn0"]
@@ -30,6 +31,7 @@ color = Color(0.32549, 0.592157, 0.6, 1)
 color_ramp = SubResource("Gradient_dyx8i")
 
 [node name="WaterArea" type="Area2D" parent="."]
+script = ExtResource("1_1jlv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
 position = Vector2(-46.9837, -9.25)

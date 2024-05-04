@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4n1ee5iiiiry"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/MachinePart.gd" id="1_d0ocm"]
+[ext_resource type="Script" path="res://Scripts/MachinePart.gd" id="1_d0ocm"]
 [ext_resource type="Texture2D" uid="uid://uahw0xonxo0j" path="res://Assets/Textures/MachineParts/MachinePart2.png" id="1_xt5ng"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tn86"]

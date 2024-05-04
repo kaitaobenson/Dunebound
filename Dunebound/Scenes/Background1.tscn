@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crjj34tdloil2"]
+[gd_scene load_steps=8 format=3 uid="uid://cm2naaay46o88"]
 
 [ext_resource type="Texture2D" uid="uid://mvnnge410l8k" path="res://Assets/Textures/WhiteSun.png" id="1_02nxn"]
 [ext_resource type="Script" path="res://Scripts/SunMovement.gd" id="2_pxkso"]
@@ -47,14 +47,12 @@ modulate = Color(0.847059, 0.847059, 0.847059, 1)
 metadata/_edit_lock_ = true
 
 [node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/CloudsInBack/Container"]
-position = Vector2(-519, -325)
+position = Vector2(-526, -426)
 texture = ExtResource("3_3wljt")
-metadata/_edit_lock_ = true
 
 [node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/CloudsInBack/Container"]
-position = Vector2(452, -389)
+position = Vector2(476, -507)
 texture = ExtResource("4_d3ng0")
-metadata/_edit_lock_ = true
 
 [node name="Dunes1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 2.08165e-12)
@@ -88,11 +86,9 @@ modulate = Color(0.847059, 0.847059, 0.847059, 1)
 metadata/_edit_lock_ = true
 
 [node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/CloudsInFront/Container"]
-position = Vector2(1, -211)
+position = Vector2(-8, -351)
 texture = ExtResource("6_28asr")
-metadata/_edit_lock_ = true
 
 [node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/CloudsInFront/Container"]
-position = Vector2(860, -170)
+position = Vector2(908, -346)
 texture = ExtResource("7_hegn1")
-metadata/_edit_lock_ = true

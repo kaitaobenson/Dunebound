@@ -26,4 +26,4 @@ func _physics_process(delta):
 	var YtoPlayer = (Global.Player.global_position.y - position.y) * 0.1
 	
 	position.x +=  XtoPlayer + (Global.Player.global_position.x + _bufferX - position.x) * 0.1
-	position.y +=  YtoPlayer
+	position.y +=  YtoPlayer - 8.5

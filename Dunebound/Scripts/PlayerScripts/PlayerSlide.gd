@@ -26,6 +26,7 @@ var sliding_gravity: bool = false
 @onready var _player = $"../"
 @onready var _anim_manager = $"../AnimationManager/"
 @onready var _raycast = $"../FloorAngleRaycast"
+@onready var _audio = $"../AudioManager"
 
 func _process(delta):
 	if Input.is_action_just_pressed("slide"):
@@ -49,6 +50,7 @@ func handle_slide():
 		move_is_locked = true
 		
 		await dash()
+		_audio.play(_audio.ALL_SOUNDS.SLIDE)
 		jump_is_locked = false
 		
 		sliding_gravity = true
@@ -56,6 +58,7 @@ func handle_slide():
 		sliding_in_air = false
 		
 		await slide()
+		_audio.stop(_audio.ALL_SOUNDS.SLIDE)
 		
 		slide_is_pressed = false
 		
