@@ -70,4 +70,13 @@ layer = 128
 [node name="WeatherControl" parent="Stuff/NecessaryStuff" index="4"]
 enabled = true
 
+[node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
+position = Vector2(-3344, 581)
+
+[node name="Right" parent="Stuff/NecessaryStuff/WorldBarrier" index="1"]
+position = Vector2(6028, 493)
+
+[node name="Bottom" parent="Stuff/NecessaryStuff/WorldBarrier" index="3"]
+position = Vector2(279, 1466)
+
 [editable path="Stuff/NecessaryStuff"]

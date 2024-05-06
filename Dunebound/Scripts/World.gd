@@ -11,6 +11,6 @@ func _process(delta):
 	#WIN
 	if Global.collected_machine_parts == Global.total_machine_parts:
 		Global.fader.fade_in_time = 1
-		await Global.fader.fade_in()
+		await Global.fader.fade_in()    
 		Global.root_node.change_level_to_scene("res://Scenes/Levels/WinScreen.tscn")
 
