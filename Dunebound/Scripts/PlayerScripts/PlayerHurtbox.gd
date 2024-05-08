@@ -24,11 +24,11 @@ var timer : float = 0
 func _process(delta):
 	check_for_enemies()
 	
-	if is_in_water():
-		make_attack(-100)
-		
 	if Global.is_storming && !is_in_water():
 		make_attack(0.1)
+	
+	if areas_in_hurtbox.has("BottomBarrierDeath"):
+		Global.camera.shake(20)
 
 
 func _on_body_entered(body):

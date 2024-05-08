@@ -425,14 +425,27 @@ zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 0.0
 script = ExtResource("13_uimac")
 
-[node name="BottomBarrierDeath" type="Area2D" parent="."]
+[node name="WorldBarrier" type="Area2D" parent="."]
 position = Vector2(-91, -211)
 script = ExtResource("26_b56ym")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBarrierDeath"]
+[node name="Left" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2(4305, 655)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Right" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2(-3163, 338)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Top" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2(276, -333)
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Bottom" type="CollisionShape2D" parent="WorldBarrier"]
 position = Vector2(276, 1678.38)
 shape = SubResource("RectangleShape2D_an4fa")
-metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(86, -31)

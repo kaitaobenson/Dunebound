@@ -1000,13 +1000,13 @@ material = SubResource("CanvasItemMaterial_6fyo6")
 texture = ExtResource("18_o8h7w")
 metadata/_edit_lock_ = true
 
-[node name="PressE" type="Node2D" parent="Player" node_paths=PackedStringArray("_sprite")]
+[node name="PressQ" type="Node2D" parent="Player" node_paths=PackedStringArray("_sprite")]
 material = SubResource("CanvasItemMaterial_ku7qv")
 position = Vector2(4, -82)
 script = ExtResource("15_rrqr5")
 _sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/PressE"]
+[node name="Sprite2D" type="Sprite2D" parent="Player/PressQ"]
 texture = ExtResource("16_7tdrr")
 metadata/_edit_lock_ = true
 

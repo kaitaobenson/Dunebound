@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=13 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_8qnig"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cc338i60editu" path="res://Scenes/NecessaryStuff.tscn" id="4_p1kj3"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 [ext_resource type="PackedScene" uid="uid://dsgad8uh1aksj" path="res://Scenes/Levels/PlatformLevel.tscn" id="7_smvfv"]
+[ext_resource type="PackedScene" uid="uid://b7l7ujxugaw4b" path="res://Scenes/Objects/Rocket.tscn" id="12_nxgar"]
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_8qnig")
@@ -50,7 +51,7 @@ layer_0/tile_data = PackedInt32Array(1114122, 1114115, 14, 1179658, 1114115, 15,
 position = Vector2(-2465, 336)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("1_26q2k")]
-position = Vector2(1053, 367)
+position = Vector2(1504, 452)
 
 [node name="Stuff" type="Node2D" parent="."]
 
@@ -69,5 +70,35 @@ layer = 128
 
 [node name="WeatherControl" parent="Stuff/NecessaryStuff" index="4"]
 enabled = true
+
+[node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
+position = Vector2(-3344, 581)
+
+[node name="Right" parent="Stuff/NecessaryStuff/WorldBarrier" index="1"]
+position = Vector2(6028, 493)
+
+[node name="Top" parent="Stuff/NecessaryStuff/WorldBarrier" index="2"]
+position = Vector2(-39, -2610)
+
+[node name="Bottom" parent="Stuff/NecessaryStuff/WorldBarrier" index="3"]
+position = Vector2(279, 1466)
+
+[node name="MachinePart5" parent="." instance=ExtResource("2_2ar2j")]
+position = Vector2(874, 479)
+
+[node name="MachinePart4" parent="." instance=ExtResource("2_2ar2j")]
+position = Vector2(881, 485)
+
+[node name="MachinePart3" parent="." instance=ExtResource("2_2ar2j")]
+position = Vector2(875, 479)
+
+[node name="MachinePart2" parent="." instance=ExtResource("2_2ar2j")]
+position = Vector2(877, 474)
+
+[node name="MachinePart" parent="." instance=ExtResource("2_2ar2j")]
+position = Vector2(896, 481)
+
+[node name="Rocket" parent="." instance=ExtResource("12_nxgar")]
+position = Vector2(1384, 344)
 
 [editable path="Stuff/NecessaryStuff"]

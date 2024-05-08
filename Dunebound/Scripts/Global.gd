@@ -12,6 +12,7 @@ var temperature_ui: Object
 var fader: Object
 var kai_ui_container: Object
 var death_ui: Object
+var rocket: Object
 
 # TIME
 var current_phase: int
@@ -23,7 +24,7 @@ var is_storming = false
 
 # MACHINE PARTS
 var collected_machine_parts: int = 0
-var total_machine_parts: int = 0
+var total_machine_parts: int = 5
 
 var temperature: float
 var player_temp: float 
