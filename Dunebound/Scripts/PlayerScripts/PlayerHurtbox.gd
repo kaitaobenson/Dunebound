@@ -9,6 +9,7 @@ const enemy_info = {
 	"ZombieHusk": [0, true],
 	"TurretBullet": [40, true],
 	"CloseRangeExplosion": [0, true],
+	"Healer" : [-100, true],
 }
 
 const i_frame_time: float = 0.5

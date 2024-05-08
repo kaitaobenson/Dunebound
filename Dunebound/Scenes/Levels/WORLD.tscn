@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=14 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_8qnig"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
@@ -12,6 +12,7 @@
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="5_xx5dr"]
 [ext_resource type="PackedScene" uid="uid://dsgad8uh1aksj" path="res://Scenes/Levels/PlatformLevel.tscn" id="7_smvfv"]
 [ext_resource type="PackedScene" uid="uid://b7l7ujxugaw4b" path="res://Scenes/Objects/Rocket.tscn" id="12_nxgar"]
+[ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="13_c8a8r"]
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_8qnig")
@@ -51,7 +52,7 @@ layer_0/tile_data = PackedInt32Array(1114122, 1114115, 14, 1179658, 1114115, 15,
 position = Vector2(-2465, 336)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("1_26q2k")]
-position = Vector2(1504, 452)
+position = Vector2(-2184, 523)
 
 [node name="Stuff" type="Node2D" parent="."]
 
@@ -100,5 +101,8 @@ position = Vector2(896, 481)
 
 [node name="Rocket" parent="." instance=ExtResource("12_nxgar")]
 position = Vector2(1384, 344)
+
+[node name="Healer" parent="." instance=ExtResource("13_c8a8r")]
+position = Vector2(-1925, 611)
 
 [editable path="Stuff/NecessaryStuff"]

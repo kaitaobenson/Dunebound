@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc8ip2b5hjo67"]
+[gd_scene load_steps=3 format=3 uid="uid://cc8ip2b5hjo67"]
+
+[ext_resource type="Script" path="res://Scripts/Healer.gd" id="1_celx7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5tf2"]
 radius = 36.0139
@@ -12,6 +14,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_celx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_c5tf2")
