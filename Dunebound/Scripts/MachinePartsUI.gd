@@ -1,13 +1,13 @@
 extends Node2D
 
-const total_machine_parts = 4
+var total_machine_parts = 0
 
 var machine_part_count = 0
 @onready var label = $"RichTextLabel"
 
 func _ready():
 	set_count(machine_part_count)
-	Global.total_machine_parts = total_machine_parts
+	total_machine_parts = Global.total_machine_parts
 
 func set_count(count: int):
 	machine_part_count = count

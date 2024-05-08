@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7l7ujxugaw4b"]
+
+[ext_resource type="Script" path="res://Scripts/Rocket.gd" id="1_8p07b"]
+[ext_resource type="Texture2D" uid="uid://wx2rupx658k0" path="res://Assets/Textures/SmokeParticle.png" id="2_dwt3q"]
+[ext_resource type="Texture2D" uid="uid://c07w8m7uj6obg" path="res://Assets/Textures/ShipSheet.png" id="2_spgdc"]
+[ext_resource type="Texture2D" uid="uid://bsxoyd7gprip3" path="res://Assets/Textures/FireParticle.png" id="3_tivah"]
+
+[sub_resource type="Curve" id="Curve_6i5i4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.46, 0.665408), -1.8231, -1.8231, 0, 0, Vector2(1, 0.513727), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oe7js"]
+
+[sub_resource type="Gradient" id="Gradient_2ona4"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpcog"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soxxe"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqu2r"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gqod"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x60t1"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6jsk"]
+atlas = ExtResource("2_spgdc")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plf0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpcog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soxxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqu2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gqod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x60t1")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_n6jsk")
+}],
+"loop": true,
+"name": &"Build",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svxqh"]
+size = Vector2(409, 263.5)
+
+[node name="Rocket" type="Node2D"]
+z_index = -10
+script = ExtResource("1_8p07b")
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+position = Vector2(-98, 148)
+emitting = false
+amount = 1000
+lifetime = 2.0
+texture = ExtResource("2_dwt3q")
+spread = 180.0
+gravity = Vector2(2.08165e-12, -100)
+initial_velocity_max = 30.0
+scale_amount_min = 0.0
+scale_amount_max = 1.22
+scale_amount_curve = SubResource("Curve_6i5i4")
+color_ramp = SubResource("Gradient_oe7js")
+
+[node name="Fire1" type="CPUParticles2D" parent="."]
+position = Vector2(71, 150)
+amount = 1000
+texture = ExtResource("3_tivah")
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+color_ramp = SubResource("Gradient_2ona4")
+
+[node name="Fire2" type="CPUParticles2D" parent="."]
+position = Vector2(-70, 152)
+amount = 1000
+texture = ExtResource("3_tivah")
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+color_ramp = SubResource("Gradient_2ona4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_plf0k")
+animation = &"Build"
+frame = 5
+frame_progress = 0.339009
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 68.25)
+shape = SubResource("RectangleShape2D_svxqh")

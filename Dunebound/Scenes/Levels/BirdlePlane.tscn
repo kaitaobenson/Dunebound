@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6hgca02kocak"]
 
-[ext_resource type="TileSet" uid="uid://bl7siygu2y2hh" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_cdcop"]
+[ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_cdcop"]
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_miuwf"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_dil0s"]
 [ext_resource type="Texture2D" uid="uid://d1wq287rmaq8l" path="res://Assets/Textures/BigTree.png" id="3_rqfiu"]

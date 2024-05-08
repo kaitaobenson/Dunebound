@@ -14,4 +14,4 @@ func _process(delta):
 		if !has_been_collected:
 			has_been_collected = true
 			machine_part_ui.set_count(machine_part_ui.get_count() + 1)
-		
+			queue_free()
