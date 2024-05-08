@@ -27,7 +27,7 @@ func var_update(value, var_name):
 func save() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_dict)
-	
+
 
 func loader():
 	if FileAccess.file_exists(save_path):

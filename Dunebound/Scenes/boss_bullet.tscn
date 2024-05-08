@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c45xdoceqfrgt"]
+[gd_scene load_steps=6 format=3 uid="uid://c45xdoceqfrgt"]
 
-[ext_resource type="Texture2D" uid="uid://bv056h1kioqs5" path="res://Assets/Textures/Jimmy.png" id="1_cn2ix"]
 [ext_resource type="Script" path="res://Scenes/boss_bullet.gd" id="1_mrx5t"]
+[ext_resource type="Texture2D" uid="uid://c5pe5wqhbomqp" path="res://Assets/Textures/AcidBall.png" id="2_0la02"]
+
+[sub_resource type="Curve" id="Curve_fhsgm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0wkgf"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jitvt"]
 radius = 16.0312
@@ -10,7 +17,19 @@ radius = 16.0312
 script = ExtResource("1_mrx5t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cn2ix")
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("2_0la02")
+metadata/_edit_lock_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1000
+lifetime = 0.5
+texture = ExtResource("2_0la02")
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+scale_amount_min = 0.3
+scale_amount_curve = SubResource("Curve_fhsgm")
+color_ramp = SubResource("Gradient_0wkgf")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

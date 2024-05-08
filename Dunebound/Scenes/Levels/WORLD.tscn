@@ -50,7 +50,7 @@ layer_0/tile_data = PackedInt32Array(1114122, 1114115, 14, 1179658, 1114115, 15,
 position = Vector2(-2465, 336)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("1_26q2k")]
-position = Vector2(-2061, 564)
+position = Vector2(1053, 367)
 
 [node name="Stuff" type="Node2D" parent="."]
 
