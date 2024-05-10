@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=15 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_8qnig"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="1_26q2k"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dsgad8uh1aksj" path="res://Scenes/Levels/PlatformLevel.tscn" id="7_smvfv"]
 [ext_resource type="PackedScene" uid="uid://b7l7ujxugaw4b" path="res://Scenes/Objects/Rocket.tscn" id="12_nxgar"]
 [ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="13_c8a8r"]
+[ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="14_i3rsv"]
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_8qnig")
@@ -52,7 +53,7 @@ layer_0/tile_data = PackedInt32Array(1114122, 1114115, 14, 1179658, 1114115, 15,
 position = Vector2(-2465, 336)
 
 [node name="PlayerContainer" parent="." instance=ExtResource("1_26q2k")]
-position = Vector2(-2184, 523)
+position = Vector2(2431, 362)
 
 [node name="Stuff" type="Node2D" parent="."]
 
@@ -69,7 +70,7 @@ position = Vector2(190, 5)
 [node name="DeathScreen" parent="Stuff/NecessaryStuff" index="1"]
 layer = 128
 
-[node name="WeatherControl" parent="Stuff/NecessaryStuff" index="4"]
+[node name="WeatherControl" parent="Stuff/NecessaryStuff" index="3"]
 enabled = true
 
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
@@ -104,5 +105,11 @@ position = Vector2(1384, 344)
 
 [node name="Healer" parent="." instance=ExtResource("13_c8a8r")]
 position = Vector2(-1925, 611)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("14_i3rsv")]
+position = Vector2(4220, 378)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("14_i3rsv")]
+position = Vector2(3023, 344)
 
 [editable path="Stuff/NecessaryStuff"]

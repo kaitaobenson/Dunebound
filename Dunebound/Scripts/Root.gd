@@ -6,6 +6,7 @@ func _init():
 
 func _ready():
 	change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
+	
 
 func _process(delta):
 	pass
@@ -13,6 +14,7 @@ func _process(delta):
 
 func change_level_to_scene(path: String):
 	for children in get_children():
-		children.queue_free()
+		if children != Global.saver_loader:
+			children.queue_free()
 	add_child(load(path).instantiate())
 	Global.current_scene_path = path

@@ -9,13 +9,16 @@ var save_dict: Dictionary = {
 }
 
 var default_dict: Dictionary = {
-	"PlayerPos" = Global.Player.global_position,
+	"SpawnPos" = Vector2(0,0),
 	"Health" = 100
 }
+func _process(delta):
+	pass
 
 func _init():
 	loader()
 	Global.saver_loader = self
+
 
 func var_update(value, var_name):
 	save_dict[var_name] = value

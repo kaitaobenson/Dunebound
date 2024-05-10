@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfqju61glhseg"]
+[gd_scene load_steps=3 format=3 uid="uid://bfqju61glhseg"]
 
 [ext_resource type="Script" path="res://Scripts/Root.gd" id="1_e5vhh"]
+[ext_resource type="Script" path="res://Scripts/SaverLoader.gd" id="2_lh3wi"]
 
 [node name="RootNode" type="Node2D"]
 script = ExtResource("1_e5vhh")
+
+[node name="SaverLoader" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_lh3wi")

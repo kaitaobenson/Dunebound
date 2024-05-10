@@ -39,15 +39,17 @@ func _init():
 
 func _ready():
 	Global.saver_loader.find_saved_value("Health")
-	global_position = Global.saver_loader.find_saved_value("PlayerPos")
+	if Global.saver_loader.find_saved_value("SpawnPos") != null:
+		global_position = Global.saver_loader.find_saved_value("SpawnPos")
 
 
 func _physics_process(delta):
-	
 	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
 		Global.inventory.newInfoGhost(foodPickup)
 		foodPickup.queue_free()
-		
+	
+	Global.saver_loader.var_update(global_position, "SpawnPos")
+	
 	move_and_slide()
 	push_other_bodies()
 	var inventory_is_on
@@ -71,7 +73,7 @@ func _physics_process(delta):
 	elif _slide.move_is_locked:
 		_audio_manager.stop(_audio_manager.ALL_SOUNDS.FOOTSTEPS)
 		
-		
+	
 	### JUMP ###
 	if is_on_floor_custom():
 		_can_jump = true
@@ -191,7 +193,7 @@ func die():
 		set_physics_process(false)
 		set_process(false)
 		_hitbox.disabled = true
-		
+		Global.saver_loader.var_update(Global.saver_loader.find_saved_value("RespawnPos"), "SpawnPos")
 		await get_tree().create_timer(1).timeout
 		Global.death_ui.turn_on()
 		
