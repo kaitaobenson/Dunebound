@@ -67,3 +67,17 @@ metadata/_edit_lock_ = true
 
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("6_7imby")]
 metadata/_edit_lock_ = true
+
+[node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
+position = Vector2(-2471, 525)
+
+[node name="Right" parent="Stuff/NecessaryStuff/WorldBarrier" index="1"]
+position = Vector2(2760, 316)
+
+[node name="Top" parent="Stuff/NecessaryStuff/WorldBarrier" index="2"]
+position = Vector2(341, -787)
+
+[node name="Bottom" parent="Stuff/NecessaryStuff/WorldBarrier" index="3"]
+position = Vector2(287, 1095)
+
+[editable path="Stuff/NecessaryStuff"]

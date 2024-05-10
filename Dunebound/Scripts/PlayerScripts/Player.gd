@@ -205,3 +205,12 @@ func die():
 				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.wwwwwwwwtscn")
 				
 			await get_tree().process_frame
+
+
+func turn_off():
+	set_process(false)
+	set_physics_process(false)
+	
+	for child in get_children():
+		child.set_process(false)
+		child.set_physics_process(false)
