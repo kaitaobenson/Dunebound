@@ -16,7 +16,7 @@ func _init():
 
 
 func _ready():
-	begin_position = position
+	begin_position = global_position
 	
 	fire1.emitting = false
 	fire2.emitting = false
@@ -41,10 +41,10 @@ func visuals():
 		var x_offset = randi_range(-shakey, shakey)
 		var y_offset = randi_range(-shakey, shakey)
 		
-		position = Vector2(begin_position.x + x_offset, begin_position.y + y_offset)
+		global_position = Vector2(begin_position.x + x_offset, begin_position.y + y_offset)
 		await get_tree().create_timer(0.02).timeout
 	
-	position = begin_position
+	global_position = begin_position
 	
 	anim.frame = machine_parts_returned
 	
@@ -53,6 +53,7 @@ func visuals():
 
 
 func takeoff():
+	Global.Player.turn_off()
 	await get_tree().create_timer(1).timeout
 	Global.camera.is_in_rocket_mode = true
 	
@@ -68,9 +69,9 @@ func takeoff():
 	fire2.emitting = true
 	
 	var speed = 3
-	while position.y > -3000:
+	while global_position.y > -3000:
 		#Global.camera.shake(20)
-		position.y -= speed
+		global_position.y -= speed
 		speed += 0.1
 		await get_tree().create_timer(0.02).timeout
 	

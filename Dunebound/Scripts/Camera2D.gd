@@ -42,17 +42,17 @@ func _physics_process(delta):
 	else:
 		var offset_x = randi_range(-5, 5)
 		var offset_y = randi_range(-5, 5)
-		global_position = Vector2(Global.rocket.position.x + offset_x, Global.rocket.position.y + offset_y)
+		global_position = Vector2(Global.rocket.global_position.x + offset_x, Global.rocket.global_position.y + offset_y)
 		await get_tree().create_timer(0.02).timeout
 
 
 func set_bounds():
 	#screen height / 2 = 324
 	#screen width  / 2 = 576
-	limit_bottom = bottom.position.y - 324
-	limit_top = top.position.y + 324
-	limit_right = right.position.x - 324
-	limit_left = left.position.x + 324
+	limit_bottom = bottom.global_position.y - 324
+	limit_top = top.global_position.y + 324
+	limit_right = right.global_position.x - 324
+	limit_left = left.global_position.x + 324
 
 
 func shake(intensity: int):
