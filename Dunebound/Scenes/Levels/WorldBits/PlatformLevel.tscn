@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsgad8uh1aksj"]
+[gd_scene load_steps=6 format=3 uid="uid://dsgad8uh1aksj"]
 
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_425dx"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_1bhtp"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/Creatures/BugEnemy.tscn" id="3_f0mu8"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="4_if618"]
+[ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="5_vidxx"]
 
 [node name="PlatformLevel" type="Node2D"]
 
@@ -32,3 +33,9 @@ position = Vector2(1842, -39)
 
 [node name="ScorpionTurret" parent="." instance=ExtResource("4_if618")]
 position = Vector2(1839, 256)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("5_vidxx")]
+position = Vector2(2317, -16)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("5_vidxx")]
+position = Vector2(302, 201)

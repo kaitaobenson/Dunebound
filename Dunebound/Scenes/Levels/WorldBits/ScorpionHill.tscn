@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://crfahjwefomnd"]
+[gd_scene load_steps=6 format=3 uid="uid://crfahjwefomnd"]
 
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_6cawc"]
 [ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="1_ypn6n"]
 [ext_resource type="PackedScene" uid="uid://bl5k3gjm2ufo6" path="res://Scenes/Creatures/Birdle.tscn" id="2_4c6u5"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="2_ijtau"]
+[ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="5_ihnwj"]
 
 [node name="ScorpionHill" type="Node2D"]
 
@@ -30,3 +31,9 @@ position = Vector2(2183, -65)
 
 [node name="TurretyMan3" parent="." instance=ExtResource("2_ijtau")]
 position = Vector2(5831, 476)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("5_ihnwj")]
+position = Vector2(116, 450)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("5_ihnwj")]
+position = Vector2(6388, 460)
