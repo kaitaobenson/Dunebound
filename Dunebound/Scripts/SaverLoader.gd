@@ -12,20 +12,31 @@ var default_dict: Dictionary = {
 	"SpawnPos" = Vector2(0,0),
 	"Health" = 100
 }
+
+
+
 func _process(delta):
 	pass
 
 func _init():
-	loader()
 	Global.saver_loader = self
+	loader()
+	
+	if save_dict.get("KillList") == null:
+		save_dict["KillList"] = []
+	
+	if save_dict.get("RespawnPos") == null:
+		save_dict["RespawnPos"] = Vector2(0,0)
 
 
 func var_update(value, var_name):
-	save_dict[var_name] = value
 	if turned_on:
+		if var_name == "KillList":
+			save_dict[var_name].append(value)
+		else:
+			save_dict[var_name] = value
 		save()
-	else:
-		clear_save()
+
 
 func save() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -37,11 +48,11 @@ func loader():
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		save_dict = file.get_var()
 
-func find_saved_value(desired_var): 
-	save_dict.get(desired_var)
-	if save_dict.get(desired_var) == null:
-		save_dict[desired_var] = default_dict[desired_var]
-	return save_dict[desired_var]
+func find_saved_value(desired_var):
+	if turned_on:
+		if save_dict.get(desired_var) == null:
+			save_dict[desired_var] = default_dict[desired_var]
+		return save_dict[desired_var]
 
 func clear_save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)

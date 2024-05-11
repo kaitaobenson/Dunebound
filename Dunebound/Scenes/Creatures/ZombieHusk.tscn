@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Zombie Husk Guy.gd" id="1_siswa"]
 [ext_resource type="Texture2D" uid="uid://dj7d0w1o07vjt" path="res://Assets/Textures/Creatures/Zombie-Sheet.png" id="2_8liba"]
-[ext_resource type="PackedScene" path="res://Scenes/HealthComponent.tscn" id="3_3iumi"]
+[ext_resource type="PackedScene" uid="uid://cddpy8wn110kt" path="res://Scenes/HealthComponent.tscn" id="3_3iumi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qo7hb"]
 radius = 15.0
@@ -113,7 +113,6 @@ target_position = Vector2(17, 0)
 metadata/_edit_lock_ = true
 
 [node name="LineOfSightPivot" type="Node2D" parent="."]
-visible = false
 
 [node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
 target_position = Vector2(199, 0)

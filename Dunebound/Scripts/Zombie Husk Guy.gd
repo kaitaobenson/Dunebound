@@ -80,11 +80,11 @@ func idle():
 
 func following():
 	SPEED = 300
-	if abs(Global.Player.global_position.x - position.x) < 10:
+	if abs(Player.global_position.x - global_position.x) < 10:
 		movement_direction = 0
-	elif Global.Player.global_position.x < position.x:
+	elif Player.global_position.x < global_position.x:
 		movement_direction = -1
-	elif Global.Player.global_position.y > position.x:
+	elif Player.global_position.x > global_position.x:
 		movement_direction = 1
 
 
