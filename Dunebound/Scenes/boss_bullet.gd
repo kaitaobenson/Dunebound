@@ -45,7 +45,6 @@ func track_stop():
 	var angle_rotation_difference = angle - rotation
 	if abs(angle_rotation_difference) > deg_to_rad(180):
 		rotation += deg_to_rad(360) * abs(angle) / angle
-	print(rad_to_deg(angle_rotation_difference))
 	if abs(rad_to_deg(angle_rotation_difference)) > 15.0:
 		is_tracking = false
 		track_stop_rotation_direction = (angle_rotation_difference) / abs(angle_rotation_difference)

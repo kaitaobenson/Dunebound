@@ -193,8 +193,8 @@ func die():
 		set_physics_process(false)
 		set_process(false)
 		_hitbox.disabled = true
-		Global.saver_loader.var_update(Global.saver_loader.find_saved_value("RespawnPos"), "SpawnPos")
 		await get_tree().create_timer(1).timeout
+		Global.saver_loader.var_update(Global.saver_loader.find_saved_value("RespawnPos"), "SpawnPos")
 		Global.death_ui.turn_on()
 		
 		while true:

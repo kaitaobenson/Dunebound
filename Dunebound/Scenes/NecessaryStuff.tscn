@@ -1,15 +1,15 @@
 [gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
 
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
-[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
+[ext_resource type="PackedScene" path="res://Scenes/WeatherControl.tscn" id="3_6rqrq"]
 [ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="4_qo76u"]
 [ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="5_mps04"]
-[ext_resource type="Script" path="res://Scripts/TextureProgressBar.gd" id="6_fibtu"]
 [ext_resource type="Script" path="res://Scripts/MachinePartsUI.gd" id="7_jj25h"]
 [ext_resource type="Script" path="res://Scripts/TempUI.gd" id="7_s8lrs"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="8_egkwl"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="9_tce0e"]
+[ext_resource type="Script" path="res://Scripts/CheckpointUI.gd" id="10_5400q"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="10_k55li"]
 [ext_resource type="Script" path="res://Scripts/SanstormUI.gd" id="11_bchxt"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="11_ileum"]
@@ -57,7 +57,6 @@ offset_bottom = 83.0
 value = 100.0
 texture_over = ExtResource("4_qo76u")
 texture_progress = ExtResource("5_mps04")
-script = ExtResource("6_fibtu")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -147,6 +146,21 @@ bbcode_enabled = true
 text = "[center]Sandstorm:[/center]"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="Checkpoint" type="Node2D" parent="KaiUI"]
+script = ExtResource("10_5400q")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KaiUI/Checkpoint"]
+offset_left = 18.0
+offset_top = 597.0
+offset_right = 306.0
+offset_bottom = 634.0
+theme_override_fonts/normal_font = ExtResource("8_egkwl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Checkpoint Reached"
+scroll_active = false
 
 [node name="DeathScreen" type="CanvasLayer" parent="."]
 script = ExtResource("11_jopgn")
@@ -424,12 +438,12 @@ position = Vector2(-91, -211)
 script = ExtResource("26_b56ym")
 
 [node name="Left" type="CollisionShape2D" parent="WorldBarrier"]
-position = Vector2(4305, 655)
+position = Vector2(-3327, 601)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_an4fa")
 
 [node name="Right" type="CollisionShape2D" parent="WorldBarrier"]
-position = Vector2(-3163, 338)
+position = Vector2(5562, 488)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_an4fa")
 

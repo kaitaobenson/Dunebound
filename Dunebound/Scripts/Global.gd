@@ -29,6 +29,10 @@ var total_machine_parts: int = 5
 var temperature: float
 var player_temp: float 
 
+# SETTINGS
+var volume: float = -100
+
+
 #???? What is this
 var newFood
 
