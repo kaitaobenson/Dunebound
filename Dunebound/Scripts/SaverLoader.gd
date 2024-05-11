@@ -10,7 +10,8 @@ var save_dict: Dictionary = {
 
 var default_dict: Dictionary = {
 	"SpawnPos" = Vector2(0,0),
-	"Health" = 100
+	"Health" = 100,
+	"RespawnPos" = Vector2(0,0),
 }
 func _process(delta):
 	pass
