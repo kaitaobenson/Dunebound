@@ -39,8 +39,8 @@ func _init():
 
 func _ready():
 	Global.saver_loader.find_saved_value("Health")
-	#if Global.saver_loader.find_saved_value("SpawnPos") != null:
-	#	global_position = Global.saver_loader.find_saved_value("SpawnPos")
+	if Global.saver_loader.find_saved_value("SpawnPos") != null:
+		global_position = Global.saver_loader.find_saved_value("SpawnPos")
 
 
 func _physics_process(delta):

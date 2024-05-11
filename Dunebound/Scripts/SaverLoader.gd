@@ -17,7 +17,7 @@ var default_dict: Dictionary = {
 
 
 func _process(delta):
-	pass
+	print(save_dict)
 
 func _init():
 	Global.saver_loader = self
