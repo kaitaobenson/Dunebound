@@ -8,7 +8,7 @@ func _process(delta):
 		print(get_tree().paused)
 		get_parent().visible = !get_parent().visible
 		get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = !get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible
-		get_tree().paused = !get_tree().paused		
+		get_tree().paused = !get_tree().paused
 		get_parent().get_parent().get_node("uiContainer").visible = false
 		
 #handle the buttons in the pause menu through script, because i dont feel like finding whats blocking them

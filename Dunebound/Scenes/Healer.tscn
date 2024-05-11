@@ -1,20 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc8ip2b5hjo67"]
+[gd_scene load_steps=6 format=3 uid="uid://cc8ip2b5hjo67"]
 
 [ext_resource type="Script" path="res://Scripts/Healer.gd" id="1_celx7"]
+[ext_resource type="Script" path="res://Scenes/Healer1.gd" id="1_wrahe"]
+[ext_resource type="Texture2D" uid="uid://c6hps88kthajw" path="res://Assets/Textures/HealerPlantGlow.png" id="3_c1iax"]
+[ext_resource type="Texture2D" uid="uid://bjq35lk3md4xl" path="res://Assets/Textures/HealPlant.png" id="4_en4tn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5tf2"]
 radius = 36.0139
 
 [node name="Healer" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+script = ExtResource("1_wrahe")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_celx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_c5tf2")
+
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("3_c1iax")
+
+[node name="Plant" type="Sprite2D" parent="."]
+texture = ExtResource("4_en4tn")

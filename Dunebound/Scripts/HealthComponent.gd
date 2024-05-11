@@ -16,7 +16,9 @@ var health : float
 func _ready():
 	_text_label.modulate.a = 0
 	health = max_health
+	
 	update_health_bar()
+	
 
 
 func _process(delta):
@@ -80,4 +82,4 @@ func flash_white(attack_damage):
 
 func update_health_bar():
 	if get_node(health_bar_path) != null:
-		get_node(health_bar_path).set_health(health)
+		get_node(health_bar_path).set_value_no_signal(health)

@@ -10,6 +10,7 @@ const enemy_info = {
 	"TurretBullet": [40, true],
 	"CloseRangeExplosion": [0, true],
 	"Healer" : [-100, true],
+	"Checkpoint" : [0, false],
 }
 
 const i_frame_time: float = 0.5
@@ -28,8 +29,10 @@ func _process(delta):
 	if Global.is_storming && !is_in_water():
 		make_attack(0.1)
 	
-	if areas_in_hurtbox.has("BottomBarrierDeath"):
+	if is_in_barrier():
 		Global.camera.shake(20)
+	if is_in_checkpoint():
+		Global.kai_ui_container.get_node("Checkpoint").checkpoint()
 
 
 func _on_body_entered(body):
@@ -100,6 +103,18 @@ func make_attack(damage: float):
 
 func is_in_water() -> bool:
 	if areas_in_hurtbox.has("Water"):
+		return true
+	else:
+		return false
+
+func is_in_checkpoint() -> bool:
+	if areas_in_hurtbox.has("Checkpoint"):
+		return true
+	else:
+		return false
+
+func is_in_barrier() -> bool:
+	if areas_in_hurtbox.has("BottomBarrierDeath"):
 		return true
 	else:
 		return false
