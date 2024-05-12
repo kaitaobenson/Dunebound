@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsgad8uh1aksj"]
+[gd_scene load_steps=9 format=3 uid="uid://dsgad8uh1aksj"]
 
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_425dx"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_1bhtp"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/Creatures/BugEnemy.tscn" id="3_f0mu8"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="4_if618"]
 [ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="5_vidxx"]
+[ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="6_sgsjo"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="7_eot03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bfyp"]
+size = Vector2(2848, 1265.25)
 
 [node name="PlatformLevel" type="Node2D"]
 
@@ -39,3 +44,32 @@ position = Vector2(2317, -16)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("5_vidxx")]
 position = Vector2(302, 201)
+
+[node name="AreaLabel1" type="Node2D" parent="."]
+visible = false
+position = Vector2(223, 208)
+script = ExtResource("6_sgsjo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="AreaLabel1"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AreaLabel1/CanvasLayer"]
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 195.0
+offset_right = 1152.0
+offset_bottom = 275.0
+theme_override_fonts/normal_font = ExtResource("7_eot03")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]The big phat mountain full of goats[/center]"
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="AreaLabel1"]
+position = Vector2(116, -312)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLabel1/Area2D"]
+position = Vector2(1168, 705.375)
+shape = SubResource("RectangleShape2D_1bfyp")
+metadata/_edit_lock_ = true
