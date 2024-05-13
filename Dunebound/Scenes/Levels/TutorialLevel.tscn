@@ -97,7 +97,7 @@ autoplay = true
 [node name="Fader" parent="Stuff/NecessaryStuff" index="2"]
 fade_in_time = 3.0
 
-[node name="UI" parent="Stuff/NecessaryStuff" index="5"]
+[node name="UI" parent="Stuff/NecessaryStuff" index="4"]
 visible = true
 
 [node name="PauseScreen" parent="Stuff/NecessaryStuff/UI" index="0"]
@@ -141,7 +141,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate" index="1"]
 
-[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="7"]
+[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="6"]
 visible = true
 
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
@@ -161,7 +161,6 @@ position = Vector2(-593, 44)
 metadata/_edit_lock_ = true
 
 [node name="Move" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(0, -3)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -182,7 +181,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(1798.5, 364.5)
 
 [node name="Jump" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(0, 0)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -203,7 +201,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(3777, 367)
 
 [node name="Slide" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(0, 0)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -224,7 +221,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(7188, -226)
 
 [node name="Attack1" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(3476, 324)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -246,7 +242,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(7188, -226)
 
 [node name="ChargeAttack" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(8383, -1192)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -270,7 +265,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(7188, -226)
 
 [node name="ChangeWeapon" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(15142, 95)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -291,7 +285,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 0)
 
 [node name="MachinePart" parent="TutorialText" node_paths=PackedStringArray("area_node") instance=ExtResource("1_heyb0")]
-visible = true
 position = Vector2(17152, 94)
 area_node = NodePath("Area2D")
 metadata/_edit_lock_ = true
@@ -305,7 +298,6 @@ offset_top = 198.0
 offset_right = 996.0
 offset_bottom = 314.0
 theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
 text = "[center]Find the machine parts to restore your ship and escape the planet.[/center]"
 
 [node name="CollisionShape2D" parent="TutorialText/MachinePart/Area2D" index="0"]
