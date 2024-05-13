@@ -43,10 +43,11 @@ position = Vector2(116, 450)
 [node name="Checkpoint2" parent="." instance=ExtResource("5_ihnwj")]
 position = Vector2(6388, 460)
 
-[node name="AreaLabel1" type="Node2D" parent="."]
+[node name="AreaLabel1" type="Node2D" parent="." node_paths=PackedStringArray("area_node")]
 visible = false
 position = Vector2(2187, 114)
 script = ExtResource("6_gbsm5")
+area_node = NodePath("Area2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AreaLabel1"]
 
@@ -59,7 +60,7 @@ offset_bottom = 275.0
 theme_override_fonts/normal_font = ExtResource("7_ctk4x")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]The big phat mountain full of goats[/center]"
+text = "[center]Scorpion Hill[/center]"
 scroll_active = false
 metadata/_edit_lock_ = true
 
