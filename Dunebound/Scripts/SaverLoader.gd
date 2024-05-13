@@ -1,7 +1,7 @@
 class_name SaveGame
 extends Node
 
-@export var turned_on: bool = true
+var clear_current_save: bool = false
 
 const save_path = "user://savegame.tres"
 var loaded
@@ -9,19 +9,18 @@ var save_dict: Dictionary = {
 }
 
 var default_dict: Dictionary = {
-	"SpawnPos" = Vector2(0,0),
+	"SpawnPos" = Vector2(12500,0),
 	"Health" = 100,
 	"RespawnPos" = Vector2(0,0),
 }
 
 
-
-func _process(delta):
-	print(save_dict)
-
 func _init():
 	Global.saver_loader = self
 	loader()
+	
+	if clear_current_save:
+		clear_save()
 	
 	if save_dict.get("KillList") == null:
 		save_dict["KillList"] = []
@@ -30,13 +29,16 @@ func _init():
 		save_dict["RespawnPos"] = Vector2(0,0)
 
 
+func _process(delta):
+	print(save_dict)
+
+
 func var_update(value, var_name):
-	if turned_on:
-		if var_name == "KillList":
-			save_dict[var_name].append(value)
-		else:
-			save_dict[var_name] = value
-		save()
+	if var_name == "KillList":
+		save_dict[var_name].append(value)
+	else:
+		save_dict[var_name] = value
+	save()
 
 
 func save() -> void:
@@ -49,11 +51,12 @@ func loader():
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		save_dict = file.get_var()
 
+
 func find_saved_value(desired_var):
-	if turned_on:
-		if save_dict.get(desired_var) == null:
-			save_dict[desired_var] = default_dict[desired_var]
-		return save_dict[desired_var]
+	if save_dict.get(desired_var) == null:
+		save_dict[desired_var] = default_dict[desired_var]
+	return save_dict[desired_var]
+
 
 func clear_save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
