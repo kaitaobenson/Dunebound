@@ -80,4 +80,11 @@ position = Vector2(341, -787)
 [node name="Bottom" parent="Stuff/NecessaryStuff/WorldBarrier" index="3"]
 position = Vector2(287, 1095)
 
+[node name="Label" parent="Stuff/NecessaryStuff/proFix/uiContainer/ColorRect2" index="0"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1146.0
+offset_bottom = 53.0
+
 [editable path="Stuff/NecessaryStuff"]

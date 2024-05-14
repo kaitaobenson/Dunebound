@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cuoerosfps357"]
 
 [ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_b1i4c"]
-[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/Fader.tscn" id="2_ko86x"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="2_ko86x"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="2_nq5fw"]
 [ext_resource type="Texture2D" uid="uid://b4fkck4nifekb" path="res://Assets/TitleScreen.png" id="3_3aerd"]
 [ext_resource type="Texture2D" uid="uid://dj5kf2os228eu" path="res://Assets/ogpc-team-logo.svg" id="4_jmfyh"]
@@ -32,9 +32,9 @@ scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
 offset_left = 53.0
-offset_top = 301.0
+offset_top = 238.0
 offset_right = 581.0
-offset_bottom = 721.0
+offset_bottom = 658.0
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 script = ExtResource("4_t51x1")
@@ -52,6 +52,13 @@ theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Play"
+
+[node name="Boss" type="Button" parent="MainScreen/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nq5fw")
+theme_override_font_sizes/font_size = 70
+action_mode = 0
+text = "Boss"
 
 [node name="Credits" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2

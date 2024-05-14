@@ -36,7 +36,7 @@ func bullet_tracking():
 	if abs(angle_to_player - rotation) > deg_to_rad(180):
 		rotation += deg_to_rad(360) * abs(angle_to_player) / angle_to_player
 	
-	var lerp = lerp(rotation, angle_to_player, .4)
+	var lerp = lerp(rotation, angle_to_player, .2)
 	rotation = lerp
 
 func track_stop():
@@ -45,7 +45,7 @@ func track_stop():
 	var angle_rotation_difference = angle - rotation
 	if abs(angle_rotation_difference) > deg_to_rad(180):
 		rotation += deg_to_rad(360) * abs(angle) / angle
-	if abs(rad_to_deg(angle_rotation_difference)) > 15.0:
+	if abs(rad_to_deg(angle_rotation_difference)) > 20.0:
 		is_tracking = false
 		track_stop_rotation_direction = (angle_rotation_difference) / abs(angle_rotation_difference)
 		emit_signal("tracking_done")
