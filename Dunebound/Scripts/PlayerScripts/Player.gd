@@ -11,13 +11,13 @@ const NORMAL_GRAVITY = 2000
 const DASHING_GRAVITY = 5000
 const SLIDING_GRAVITY = 50000
 var gravity: int = NORMAL_GRAVITY
+
 var foodPickup 
 #1, 0, -1
 var player_movement_direction: int = 0
 #1, -1
 var player_sprite_direction: int = 1
 
-var health: int = 100 
 var is_dead: bool = false
 
 var jumping: bool = false
@@ -30,6 +30,7 @@ var _coyote_time = 0.2
 @onready var _particle_manager = $"../ParticleManager"
 @onready var _attack_manager = $"AttackManager"
 @onready var _audio_manager = $"AudioManager"
+@onready var _health_component = $"HealthComponent"
 
 @onready var _slide = $"Slide/"
 @onready var _hitbox = $"PlayerHitbox"
@@ -38,13 +39,20 @@ func _init():
 	Global.Player = self
 
 func _ready():
-	Global.saver_loader.find_saved_value("Health")
+	if Global.saver_loader.find_saved_value("Health") != null:
+		if Global.saver_loader.find_saved_value("Health") <= 0:
+			_health_component.health = 100 
+		else:
+			_health_component.health = Global.saver_loader.find_saved_value("Health")
+	
 	if Global.saver_loader.find_saved_value("SpawnPos") != null && Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
 		global_position = Global.saver_loader.find_saved_value("SpawnPos")
 
 
 func _physics_process(delta):
-	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
+	Global.saver_loader.var_update(_health_component.health, "Health")
+	
+	if(Input.is_action_just_pressed("interact") && foodPickup is Object):
 		Global.inventory.newInfoGhost(foodPickup)
 		foodPickup.queue_free()
 	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":

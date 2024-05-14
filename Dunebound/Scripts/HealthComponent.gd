@@ -16,12 +16,11 @@ var health : float
 func _ready():
 	_text_label.modulate.a = 0
 	health = max_health
-	
-	update_health_bar()
-	
 
 
 func _process(delta):
+	update_health_bar()
+	
 	if health <= 0:
 		await get_tree().create_timer(0.2).timeout
 		$"../".die()

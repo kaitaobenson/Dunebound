@@ -439,6 +439,7 @@ color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Label" type="Label" parent="proFix/uiContainer/ColorRect2"]
 z_index = 4096
+layout_mode = 0
 offset_left = 13.0
 offset_top = 3.0
 offset_right = 1159.0

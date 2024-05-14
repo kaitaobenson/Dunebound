@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cc8ip2b5hjo67"]
 
 [ext_resource type="Script" path="res://Scripts/Healer.gd" id="1_celx7"]
-[ext_resource type="Script" path="res://Scenes/Healer1.gd" id="1_wrahe"]
+[ext_resource type="Script" path="res://Scripts/Healer1.gd" id="1_wrahe"]
 [ext_resource type="Texture2D" uid="uid://c6hps88kthajw" path="res://Assets/Textures/HealerPlantGlow.png" id="3_c1iax"]
 [ext_resource type="Texture2D" uid="uid://bjq35lk3md4xl" path="res://Assets/Textures/HealPlant.png" id="4_en4tn"]
 

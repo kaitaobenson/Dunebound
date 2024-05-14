@@ -7,9 +7,9 @@ func checkpoint():
 	if previous_fade_done:
 		previous_fade_done = false
 		
-		get_tree().create_tween().tween_property(text, "modulate:a", 1, 2)
-		await get_tree().create_timer(2).timeout
-		get_tree().create_tween().tween_property(text, "modulate:a", 0, 0.2)
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_tween().tween_property(text, "modulate:a", 1, 1).finished
+		await get_tree().create_tween().tween_property(text, "modulate:a", 0, 0.2).finished
+		
+		await get_tree().create_timer(5).timeout
 		
 		previous_fade_done = true

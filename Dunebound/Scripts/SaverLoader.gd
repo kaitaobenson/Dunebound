@@ -8,12 +8,6 @@ var loaded
 var save_dict: Dictionary = {
 }
 
-var default_dict: Dictionary = {
-	"SpawnPos" = Vector2(12500,0),
-	"Health" = 100,
-	"RespawnPos" = Vector2(0,0),
-}
-
 
 func _init():
 	Global.saver_loader = self
@@ -53,9 +47,7 @@ func loader():
 
 
 func find_saved_value(desired_var):
-	if save_dict.get(desired_var) == null:
-		save_dict[desired_var] = default_dict[desired_var]
-	return save_dict[desired_var]
+	return save_dict.get(desired_var)
 
 
 func clear_save():

@@ -31,9 +31,10 @@ func _process(delta):
 	
 	if is_in_barrier():
 		Global.camera.shake(20)
+	
 	if is_in_checkpoint():
 		Global.kai_ui_container.get_node("Checkpoint").checkpoint()
-
+		
 
 func _on_body_entered(body):
 	if body.has_method("get_damage_id"):
@@ -99,7 +100,6 @@ func make_attack(damage: float):
 	var attack = Attack.new()
 	attack.attack_damage = damage
 	health_component.damage(attack)
-
 
 func is_in_water() -> bool:
 	if areas_in_hurtbox.has("Water"):
