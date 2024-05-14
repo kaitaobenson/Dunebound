@@ -121,4 +121,5 @@ func get_damage_id():
 
 
 func die():
+	Global.saver_loader.var_update(get_path(), "KillList")
 	queue_free()
