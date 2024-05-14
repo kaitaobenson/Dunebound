@@ -217,10 +217,10 @@ enabled = false
 sandstorm_is_on = false
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseScreen" type="Node2D" parent="UI"]
 process_mode = 3
+visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -238,9 +238,9 @@ script = ExtResource("15_r2oti")
 [node name="Button" type="ColorRect" parent="UI/PauseScreen"]
 z_index = 4096
 offset_left = -207.0
-offset_top = -407.0
+offset_top = -490.0
 offset_right = 72.0
-offset_bottom = -351.0
+offset_bottom = -434.0
 color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button"]
@@ -254,9 +254,9 @@ text = "controls"
 [node name="Button2" type="ColorRect" parent="UI/PauseScreen"]
 z_index = 40
 offset_left = -207.0
-offset_top = -290.0
+offset_top = -395.0
 offset_right = 75.0
-offset_bottom = -237.0
+offset_bottom = -342.0
 color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button2"]
@@ -267,51 +267,6 @@ offset_bottom = 51.0
 theme_override_font_sizes/normal_font_size = 30
 text = "save game
 "
-
-[node name="uiContainer" type="Node2D" parent="UI"]
-process_mode = 3
-z_index = 60
-position = Vector2(-587, -317)
-
-[node name="ColorRect" type="ColorRect" parent="UI/uiContainer"]
-z_index = -2
-offset_left = -2570.0
-offset_top = -1469.0
-offset_right = 3826.0
-offset_bottom = 1699.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Control" type="Control" parent="UI/uiContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 100.0
-script = ExtResource("14_xgfq8")
-
-[node name="ColorRect2" type="ColorRect" parent="UI/uiContainer"]
-z_index = 4095
-offset_left = 260.0
-offset_top = 458.0
-offset_right = 1418.0
-offset_bottom = 627.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="UI/uiContainer"]
-z_index = 4095
-offset_left = 746.0
-offset_top = 1249.0
-offset_right = 1911.0
-offset_bottom = 1471.0
-color = Color(0.14902, 0.14902, 0.14902, 1)
-
-[node name="Label" type="Label" parent="UI/uiContainer"]
-z_index = 4096
-offset_left = 273.0
-offset_top = 472.0
-offset_right = 1419.0
-offset_bottom = 525.0
-text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
 [node name="inventoryContainer" type="Node2D" parent="UI"]
 process_mode = 3
@@ -378,17 +333,6 @@ offset_left = 659.0
 offset_top = 222.0
 offset_right = 677.0
 offset_bottom = 446.0
-
-[node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="."]
-
-[node name="VScrollBar" type="VScrollBar" parent="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis"]
-visible = false
-z_index = 4096
-z_as_relative = false
-offset_left = 528.0
-offset_top = 131.0
-offset_right = 546.0
-offset_bottom = 491.0
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 visible = false
@@ -458,3 +402,56 @@ shape = SubResource("RectangleShape2D_an4fa")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(86, -31)
 color = Color(0.533333, 0.521569, 0.666667, 1)
+
+[node name="proFix" type="CanvasLayer" parent="."]
+
+[node name="uiContainer" type="Node2D" parent="proFix"]
+process_mode = 3
+visible = false
+z_index = 60
+position = Vector2(-587, -317)
+
+[node name="ColorRect" type="ColorRect" parent="proFix/uiContainer"]
+z_index = -2
+offset_left = -2570.0
+offset_top = -1469.0
+offset_right = 3826.0
+offset_bottom = 1699.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="proFix/uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 472.0
+offset_top = 136.0
+offset_right = 572.0
+offset_bottom = 236.0
+script = ExtResource("14_xgfq8")
+
+[node name="ColorRect2" type="ColorRect" parent="proFix/uiContainer"]
+z_index = 4095
+offset_left = 648.0
+offset_top = 867.0
+offset_right = 1806.0
+offset_bottom = 1067.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="proFix/uiContainer/ColorRect2"]
+z_index = 4096
+offset_left = 13.0
+offset_top = 3.0
+offset_right = 1159.0
+offset_bottom = 56.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="."]
+
+[node name="VScrollBar" type="VScrollBar" parent="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis"]
+visible = false
+z_index = 4096
+z_as_relative = false
+offset_left = 822.0
+offset_top = 131.0
+offset_right = 840.0
+offset_bottom = 491.0

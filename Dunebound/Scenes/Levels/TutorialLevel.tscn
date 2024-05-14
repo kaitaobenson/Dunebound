@@ -112,7 +112,6 @@ offset_bottom = 943.0
 metadata/_edit_use_anchors_ = true
 
 [node name="uiContainer" parent="Stuff/NecessaryStuff/UI" index="1"]
-visible = false
 position = Vector2(-247, 111)
 
 [node name="ColorRect" parent="Stuff/NecessaryStuff/UI/uiContainer" index="0"]
