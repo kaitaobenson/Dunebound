@@ -47,8 +47,8 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("interact")&&foodPickup is Object):
 		Global.inventory.newInfoGhost(foodPickup)
 		foodPickup.queue_free()
-	
-	Global.saver_loader.var_update(global_position, "SpawnPos")
+	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+		Global.saver_loader.var_update(global_position, "SpawnPos")
 	
 	move_and_slide()
 	push_other_bodies()
