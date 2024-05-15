@@ -39,6 +39,15 @@ var six = true
 
 
 func _ready():
+	if Global.saver_loader.find_saved_value("TodayElapsedTime") != null:
+		total_elapsed_time = Global.saver_loader.find_saved_value("TodayElapsedTime")
+	if Global.saver_loader.find_saved_value("TotalElapsedTime") != null:
+		total_elapsed_time = Global.saver_loader.find_saved_value("TotalElapsedTime")
+	if Global.saver_loader.find_saved_value("CurrentPhase") != null:
+		total_elapsed_time = Global.saver_loader.find_saved_value("CurrentPhase")
+	if Global.saver_loader.find_saved_value("DayNightColorValue") != null:
+		total_elapsed_time = Global.saver_loader.find_saved_value("DayNightColorValue")
+	
 	Global.DAY_LENGTH = DAY_LENGTH
 	Global.phase_length = PHASE_LENGTH
 	Global.begin_phase = current_phase
@@ -70,6 +79,13 @@ func _process(delta):
 	
 	# / 6 round up to get current phase number
 	current_phase = ceil(today_elapsed_time / PHASE_LENGTH)
+	
+	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+		Global.saver_loader.var_update(today_elapsed_time, "TodayElapsedTime")
+		Global.saver_loader.var_update(total_elapsed_time, "TotalElapsedTime")
+		Global.saver_loader.var_update(current_phase, "CurrentPhase")
+		Global.saver_loader.var_update(day_night_color_value, "DayNightColorValue")
+
 
 
 func day_night_visuals():

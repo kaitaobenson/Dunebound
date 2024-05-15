@@ -18,9 +18,6 @@ func _init():
 	
 	if save_dict.get("KillList") == null:
 		save_dict["KillList"] = []
-	
-	if save_dict.get("RespawnPos") == null:
-		save_dict["RespawnPos"] = Vector2(0,0)
 
 
 func _process(delta):
