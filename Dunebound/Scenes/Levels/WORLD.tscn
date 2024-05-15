@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=18 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
 [ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="7_1l2ox"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://Scenes/Creatures/ZombieHusk.tscn" id="14_idqgg"]
 [ext_resource type="PackedScene" uid="uid://c2kno0vi816i6" path="res://Scenes/Levels/WorldBits/FallLevel.tscn" id="15_5y0xm"]
 [ext_resource type="PackedScene" uid="uid://b4n1ee5iiiiry" path="res://Scenes/Objects/MachinePart1.tscn" id="16_iipkg"]
+[ext_resource type="PackedScene" uid="uid://bassgtgl0te2m" path="res://Scenes/Creatures/Eagle.tscn" id="17_6618u"]
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_xb268")
@@ -96,5 +97,8 @@ position = Vector2(13508, 232)
 
 [node name="MachinePart" parent="." instance=ExtResource("16_iipkg")]
 position = Vector2(12903, 258)
+
+[node name="Eagle" parent="." instance=ExtResource("17_6618u")]
+position = Vector2(12766, 149)
 
 [editable path="Stuff/NecessaryStuff"]

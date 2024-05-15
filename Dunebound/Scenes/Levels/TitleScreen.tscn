@@ -31,23 +31,19 @@ text = "Dunebound"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 53.0
-offset_top = 238.0
-offset_right = 581.0
-offset_bottom = 658.0
+offset_left = 37.0
+offset_top = 433.0
+offset_right = 557.0
+offset_bottom = 630.0
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
+columns = 2
 script = ExtResource("4_t51x1")
-
-[node name="Tutorial" type="Button" parent="MainScreen/GridContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nq5fw")
-theme_override_font_sizes/font_size = 70
-action_mode = 0
-text = "Tutorial"
 
 [node name="Play" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 70
 action_mode = 0
@@ -55,13 +51,26 @@ text = "Play"
 
 [node name="Boss" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Boss"
 
+[node name="Tutorial" type="Button" parent="MainScreen/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_nq5fw")
+theme_override_font_sizes/font_size = 70
+action_mode = 0
+text = "Tutorial"
+
 [node name="Credits" type="Button" parent="MainScreen/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 70
 action_mode = 0

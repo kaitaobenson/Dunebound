@@ -94,14 +94,16 @@ autoplay = true
 
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("2_ul36h")]
 
+[node name="MachineParts" parent="Stuff/NecessaryStuff/KaiUI" index="3"]
+visible = false
+
+[node name="Sandstorm" parent="Stuff/NecessaryStuff/KaiUI" index="4"]
+visible = false
+
 [node name="Fader" parent="Stuff/NecessaryStuff" index="2"]
 fade_in_time = 3.0
 
-[node name="UI" parent="Stuff/NecessaryStuff" index="4"]
-visible = true
-
 [node name="PauseScreen" parent="Stuff/NecessaryStuff/UI" index="0"]
-visible = false
 position = Vector2(381, 502)
 
 [node name="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen" index="0"]
@@ -111,25 +113,7 @@ offset_right = 3009.0
 offset_bottom = 943.0
 metadata/_edit_use_anchors_ = true
 
-[node name="uiContainer" parent="Stuff/NecessaryStuff/UI" index="1"]
-position = Vector2(-247, 111)
-
-[node name="ColorRect" parent="Stuff/NecessaryStuff/UI/uiContainer" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="Control" parent="Stuff/NecessaryStuff/UI/uiContainer" index="1"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect2" parent="Stuff/NecessaryStuff/UI/uiContainer" index="2"]
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect3" parent="Stuff/NecessaryStuff/UI/uiContainer" index="3"]
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" parent="Stuff/NecessaryStuff/UI/uiContainer" index="4"]
-metadata/_edit_use_anchors_ = true
-
-[node name="inventoryContainer" parent="Stuff/NecessaryStuff/UI" index="2"]
+[node name="inventoryContainer" parent="Stuff/NecessaryStuff/UI" index="1"]
 visible = true
 position = Vector2(-163, -43)
 
@@ -140,7 +124,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate" index="1"]
 
-[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="6"]
+[node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="5"]
 visible = true
 
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]

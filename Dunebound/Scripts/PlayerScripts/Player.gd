@@ -212,7 +212,7 @@ func die():
 				if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
 					Global.root_node.change_level_to_scene("res://Scenes/Levels/WORLD.tscn")
 			elif Global.death_ui.is_quit_pressed():
-				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.wwwwwwwwtscn")
+				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 				
 			await get_tree().process_frame
 
