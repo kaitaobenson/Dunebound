@@ -39,11 +39,8 @@ func _init():
 	Global.Player = self
 
 func _ready():
-	if Global.saver_loader.find_saved_value("Health") != null:
-		if Global.saver_loader.find_saved_value("Health") <= 0:
-			_health_component.health = 100 
-		else:
-			_health_component.health = Global.saver_loader.find_saved_value("Health")
+	if Global.saver_loader.find_saved_value("Health") != null && Global.saver_loader.find_saved_value("Health") > 0:
+		_health_component.health = Global.saver_loader.find_saved_value("Health")
 	
 	if Global.saver_loader.find_saved_value("SpawnPos") != null && Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
 		global_position = Global.saver_loader.find_saved_value("SpawnPos")
