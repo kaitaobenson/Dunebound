@@ -14,6 +14,9 @@ func _init():
 
 func _ready():
 	set_bounds()
+	global_position = Global.Player.global_position
+	
+	
 	get_parent().get_node("UI/PauseScreen/Button").connect("button_down",openthatthing)
 
 
@@ -29,16 +32,14 @@ func _physics_process(_delta):
 		var player_direction = Global.Player.player_sprite_direction
 		
 		if player_direction == 1:
-			_bufferX = 20
+			_bufferX = 200
 		if player_direction == -1:
-			_bufferX = -20
+			_bufferX = -200
 		if player_direction == 0:
 			_bufferX = 0
-		var XtoPlayer = (Global.Player.global_position.x - global_position.x) * 0.1
-		var YtoPlayer = (Global.Player.global_position.y - global_position.y) * 0.1
 		
-		global_position.x +=  XtoPlayer + _bufferX
-		global_position.y +=  YtoPlayer #- 8.5
+		global_position.x = lerp(global_position.x ,Global.Player.global_position.x + _bufferX, 0.1)
+		global_position.y = lerp(global_position.y, Global.Player.global_position.y - 8.5, 0.1)
 	else:
 		var offset_x = randi_range(-5, 5)
 		var offset_y = randi_range(-5, 5)

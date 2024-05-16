@@ -950,8 +950,9 @@ position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_mviau")
 metadata/_edit_lock_ = true
 
-[node name="TilemapDetector" type="Area2D" parent="Player"]
+[node name="TilemapDetector" type="Area2D" parent="Player" node_paths=PackedStringArray("_health_component")]
 script = ExtResource("21_lriwc")
+_health_component = NodePath("../HealthComponent")
 
 [node name="TileDetectionArea" type="CollisionShape2D" parent="Player/TilemapDetector"]
 position = Vector2(0, -3.75)

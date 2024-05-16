@@ -42,9 +42,6 @@ metadata/_edit_lock_ = true
 [node name="DeathScreen" parent="Stuff/NecessaryStuff" index="1"]
 layer = 128
 
-[node name="WeatherControl" parent="Stuff/NecessaryStuff" index="3"]
-enabled = true
-
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
 position = Vector2(-9908, 129)
 

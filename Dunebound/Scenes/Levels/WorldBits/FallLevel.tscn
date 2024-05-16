@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2kno0vi816i6"]
+[gd_scene load_steps=8 format=3 uid="uid://c2kno0vi816i6"]
 
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_j2wmb"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_40kff"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4n1ee5iiiiry" path="res://Scenes/Objects/MachinePart1.tscn" id="4_xbi3g"]
 [ext_resource type="PackedScene" uid="uid://dkduxmrjthkt3" path="res://Scenes/Creatures/ScorpionTurret.tscn" id="5_18hh2"]
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://Scenes/Creatures/ZombieHusk.tscn" id="6_4hchx"]
+[ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="7_nqkkh"]
 
 [node name="Fall" type="Node2D"]
 
@@ -99,3 +100,11 @@ offset_right = 1676.0
 offset_bottom = 3193.0
 color = Color(0.0862745, 0.0745098, 0.0705882, 1)
 metadata/_edit_lock_ = true
+
+[node name="Checkpoint1" parent="." instance=ExtResource("7_nqkkh")]
+position = Vector2(201, 3136)
+
+[node name="CollisionShape2D" parent="Checkpoint1" index="0"]
+position = Vector2(130, 0)
+
+[editable path="Checkpoint1"]

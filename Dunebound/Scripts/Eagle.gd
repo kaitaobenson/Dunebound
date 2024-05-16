@@ -17,8 +17,6 @@ func _physics_process(delta):
 	dist_from_begin_pos = position.distance_to(begin_pos)
 	angle_to_begin_pos = rad_to_deg(position.angle_to(begin_pos))
 	
-	print(dist_from_begin_pos)
-	
 	if area.get_overlapping_bodies().has(Global.Player):
 		# ATTACK
 		pass
