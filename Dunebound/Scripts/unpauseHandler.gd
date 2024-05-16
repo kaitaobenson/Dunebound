@@ -2,7 +2,7 @@ extends ColorRect
 var save
 var controls
 #this script handles unpausing
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
 		print("game paused")
 		print(get_tree().paused)

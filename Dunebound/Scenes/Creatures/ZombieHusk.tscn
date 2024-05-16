@@ -117,8 +117,9 @@ metadata/_edit_lock_ = true
 [node name="LineOfSight" type="RayCast2D" parent="LineOfSightPivot"]
 target_position = Vector2(199, 0)
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_3iumi")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animation_sprite") instance=ExtResource("3_3iumi")]
 visible = false
+animation_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="Area2D" type="Area2D" parent="HealthComponent" groups=["Hurtbox"]]
 

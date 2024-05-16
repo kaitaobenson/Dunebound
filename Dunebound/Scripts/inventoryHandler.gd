@@ -36,7 +36,7 @@ func invToggle():
 	#get_parent().get_node("PauseScreen").visible=!get_parent().get_node("PauseScreen").visibl
 	closeButton.disabled = !closeButton.disabled
 
-func _process(delta):
+func _process(_delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		invToggle()
 		print("funny button pressed ongod fr")

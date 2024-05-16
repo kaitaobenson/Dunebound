@@ -10,28 +10,32 @@ var angle_to_begin_pos = 0
 
 var wander_speed = 2
 var wander_angle = 45
+var wander_time = 0
 
 
 func _physics_process(delta):
 	dist_from_begin_pos = position.distance_to(begin_pos)
 	angle_to_begin_pos = rad_to_deg(position.angle_to(begin_pos))
 	
+	print(dist_from_begin_pos)
+	
 	if area.get_overlapping_bodies().has(Global.Player):
 		# ATTACK
 		pass
 	else:
 		# WANDER
-		if dist_from_begin_pos > 100:
+		if dist_from_begin_pos > 400:
 			pass
 			# GO BACK
-			move_towards(wander_angle, wander_speed)
 			
 		else:
 			pass
 			# GO FORWARDS
+			wander_time = randi_range(20, 500)
+			move_towards(wander_angle, wander_speed, wander_time)
 
 
-func move_towards(angle: int, speed: int):
+func move_towards(angle: int, speed: int, time: int):
 	var x_speed
 	var y_speed
 	

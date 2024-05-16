@@ -1,7 +1,7 @@
 extends ColorRect
 
 @onready var thingy = get_tree().get_root().get_node("WORLD/Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate")
-func _process(delta):
+func _process(_delta):
 	var local_mouse_pos = get_global_mouse_position()
 	var hovering = Rect2(self.global_position, self.size).has_point(local_mouse_pos)
 	if(hovering):

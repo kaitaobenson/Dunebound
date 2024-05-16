@@ -20,7 +20,7 @@ func _init():
 		save_dict["KillList"] = []
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 

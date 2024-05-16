@@ -18,7 +18,7 @@ func _ready():
 	health = max_health
 
 
-func _process(delta):
+func _process(_delta):
 	update_health_bar()
 	
 	if health <= 0:
@@ -80,6 +80,6 @@ func flash_white(attack_damage):
 
 
 func update_health_bar():
-	if health_bar_path != null:
+	if !health_bar_path.is_empty():
 		if get_node(health_bar_path) != null:
 			get_node(health_bar_path).set_value_no_signal(health)

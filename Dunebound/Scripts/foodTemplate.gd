@@ -29,7 +29,7 @@ func newFoodObject(foodType:String,pos:Vector2,foodParent):
 	Global.newFood.get_node("pickupSensor").add_child(sensorHitbox)
 	Global.newFood.position = pos
 	print(Global.newFood.get_node("Sprite2D").texture)
-func _process(delta):
+func _process(_delta):
 	if(self.get_children().size()!=2):
 		if(self.get_node("pickupSensor").has_overlapping_bodies()and self.get_parent()!=null):
 			var bodies = self.get_node("pickupSensor").get_overlapping_bodies()

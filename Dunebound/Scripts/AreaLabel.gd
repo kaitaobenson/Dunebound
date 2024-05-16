@@ -21,7 +21,7 @@ func _ready():
 	text.modulate.a = 0
 
 
-func _process(delta):
+func _process(_delta):
 	if area_node.body_entered:
 		if area_node.get_overlapping_bodies().has(Global.Player):
 			player_is_inside_area = true

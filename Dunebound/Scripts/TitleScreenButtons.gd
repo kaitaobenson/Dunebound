@@ -8,7 +8,7 @@ extends GridContainer
 @onready var boss = $"Boss"
 
 
-func _process(delta):
+func _process(_delta):
 	if tutorial.is_pressed():
 		_on_tutorial_pressed()
 	if play.is_pressed():

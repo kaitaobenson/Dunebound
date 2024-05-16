@@ -9,7 +9,7 @@ func _init():
 	Global.fader = self
 
 
-func _process(delta):
+func _process(_delta):
 	if color_rect.modulate.a > 0:
 		color_rect.visible = true
 	else:

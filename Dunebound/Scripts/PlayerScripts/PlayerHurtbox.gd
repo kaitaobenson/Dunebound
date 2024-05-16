@@ -6,7 +6,7 @@ const enemy_info = {
 	"BottomBarrierDeath" : [100, false],
 	"ScorpionTurret": [10, true],
 	"BugEnemy": [20, true],
-	"ZombieHusk": [0, true],
+	"ZombieHusk": [10, true],
 	"TurretBullet": [40, true],
 	"CloseRangeExplosion": [0, true],
 	"Healer" : [-100, true],

@@ -36,6 +36,6 @@ func _ready():
 func cancelKeybindChange():
 	onStandby = false
 	myCancelButton.cancelKeybindChange()
-func _process(delta):
+func _process(_delta):
 	if(!onStandby&&joob!=null):
 		self.text = InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text()

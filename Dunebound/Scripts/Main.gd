@@ -12,5 +12,5 @@ func _ready():
 	var foodHandler = get_node("foodHandler")
 	
 	foodHandler.newFoodObject("exampleFood",pos(375,375),self)
-func _process(delta):
+func _process(_delta):
 	pass

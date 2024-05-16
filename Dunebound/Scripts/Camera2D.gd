@@ -24,7 +24,7 @@ func openthatthing():
 	get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visible= !get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").Visibl
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !is_in_rocket_mode:
 		var player_direction = Global.Player.player_sprite_direction
 		

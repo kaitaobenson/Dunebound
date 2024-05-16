@@ -8,7 +8,7 @@ func _ready():
 	change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 	
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 

@@ -31,10 +31,10 @@ text = "Dunebound"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 37.0
-offset_top = 433.0
-offset_right = 557.0
-offset_bottom = 630.0
+offset_left = 27.0
+offset_top = 343.0
+offset_right = 547.0
+offset_bottom = 540.0
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2

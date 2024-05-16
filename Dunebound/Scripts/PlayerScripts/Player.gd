@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 const PUSH_FORCE = 100
-const JUMP_VELOCITY = 900
+const JUMP_VELOCITY = 1050
 
 const WALK_SPEED = 380
 const SPRINT_SPEED = 600
 var player_speed = WALK_SPEED
 
-const NORMAL_GRAVITY = 2000
+const NORMAL_GRAVITY = 2500
 const DASHING_GRAVITY = 5000
 const SLIDING_GRAVITY = 50000
 var gravity: int = NORMAL_GRAVITY
@@ -39,21 +39,26 @@ func _init():
 	Global.Player = self
 
 func _ready():
-	if Global.saver_loader.find_saved_value("Health") != null && Global.saver_loader.find_saved_value("Health") > 0:
-		_health_component.health = Global.saver_loader.find_saved_value("Health")
-	
-	if Global.saver_loader.find_saved_value("SpawnPos") != null && Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
-		global_position = Global.saver_loader.find_saved_value("SpawnPos")
+	if get_parent().name != "TutorialPlayerContainer":
+		if Global.saver_loader.find_saved_value("Health") != null && Global.saver_loader.find_saved_value("Health") > 0:
+			_health_component.health = Global.saver_loader.find_saved_value("Health")
+			
+		if Global.saver_loader.find_saved_value("SpawnPos") != null && Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+			global_position = Global.saver_loader.find_saved_value("SpawnPos")
 
 
 func _physics_process(delta):
-	Global.saver_loader.var_update(_health_component.health, "Health")
+	if get_parent().name != "TutorialPlayerContainer":
+		Global.saver_loader.var_update(_health_component.health, "Health")
+		
+		if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+			Global.saver_loader.var_update(global_position, "SpawnPos")
+	
+	
 	
 	if(Input.is_action_just_pressed("interact") && foodPickup is Object):
 		Global.inventory.newInfoGhost(foodPickup)
 		foodPickup.queue_free()
-	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
-		Global.saver_loader.var_update(global_position, "SpawnPos")
 	
 	move_and_slide()
 	push_other_bodies()
@@ -122,6 +127,7 @@ func jump():
 		await get_tree().process_frame
 	jumping = false
 
+
 var has_reseted = true
 func apply_gravity(delta):
 	if _slide.is_move_locked() && !jumping:
@@ -140,7 +146,6 @@ func apply_gravity(delta):
 			velocity.y = 0
 	else:
 		has_reseted = false
-	
 	
 	velocity.y += gravity * delta
 
@@ -199,7 +204,9 @@ func die():
 		set_process(false)
 		_hitbox.disabled = true
 		await get_tree().create_timer(1).timeout
-		Global.saver_loader.var_update(Global.saver_loader.find_saved_value("RespawnPos"), "SpawnPos")
+		
+		if get_parent().name != "TutorialPlayerContainer":
+			Global.saver_loader.var_update(Global.saver_loader.find_saved_value("RespawnPos"), "SpawnPos")
 		Global.death_ui.turn_on()
 		
 		while true:
