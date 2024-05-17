@@ -21,6 +21,8 @@ var color_value: float = 0.0
 
 func _ready():
 	_storm_overlay.visible = false
+	if Global.saver_loader.find_saved_value("TotalElapsedTime") != null:
+		total_elapsed_time = Global.saver_loader.find_saved_value("TotalElapsedTime")
 
 
 func _process(delta):
@@ -32,6 +34,8 @@ func _process(delta):
 	color_value = (sin(PI / DAY_LENGTH * (total_elapsed_time - DAY_LENGTH)) + 1) / 2
 	canvas_modulate1.color = gradientResource.sample(color_value)
 	canvas_modulate2.color = gradientResource.sample(color_value)
+	
+	Global.saver_loader.var_update(total_elapsed_time, "TotalElapsedTime")
 
 
 func sandstorm():

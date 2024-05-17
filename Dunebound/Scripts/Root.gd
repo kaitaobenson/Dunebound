@@ -11,7 +11,6 @@ func _ready():
 func _process(_delta):
 	pass
 
-
 func change_level_to_scene(path: String):
 	for child in get_children():
 		if child != Global.saver_loader:

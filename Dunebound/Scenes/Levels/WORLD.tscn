@@ -22,7 +22,7 @@
 script = ExtResource("1_xb268")
 
 [node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
-position = Vector2(12470, 282)
+position = Vector2(12611, 301)
 
 [node name="Stuff" type="Node2D" parent="."]
 
@@ -100,6 +100,7 @@ position = Vector2(5885, 317)
 
 [node name="ScorpionHill" parent="Foreground" instance=ExtResource("13_kp53q")]
 position = Vector2(6083, -180)
+metadata/_edit_lock_ = true
 
 [node name="Fall" parent="Foreground" instance=ExtResource("15_5y0xm")]
 position = Vector2(12930, 492)
