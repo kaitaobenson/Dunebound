@@ -5,7 +5,8 @@ extends Node2D
 var has_been_collected: bool = false
 
 func _ready():
-	Global.collected_machine_parts = Global.saver_loader.find_saved_value("CollectedMachineParts")
+	if Global.saver_loader.find_saved_value("CollectedMachineParts") != null:
+		Global.collected_machine_parts = Global.saver_loader.find_saved_value("CollectedMachineParts")
 
 
 func _process(delta):

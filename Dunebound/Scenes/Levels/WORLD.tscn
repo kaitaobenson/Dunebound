@@ -570,3 +570,12 @@ position = Vector2(696, 386)
 
 [node name="Eagle" parent="." instance=ExtResource("17_6618u")]
 position = Vector2(12109, -63)
+
+[node name="Water" parent="." instance=ExtResource("8_d5mjs")]
+position = Vector2(11299, 348)
+
+[node name="Water2" parent="." instance=ExtResource("8_d5mjs")]
+position = Vector2(14436, 3612)
+
+[node name="Water3" parent="." instance=ExtResource("8_d5mjs")]
+position = Vector2(5554, 348)

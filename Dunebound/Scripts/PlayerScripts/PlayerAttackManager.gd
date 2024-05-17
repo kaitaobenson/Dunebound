@@ -128,7 +128,7 @@ func do_attack() -> void:
 		await get_tree().create_timer(0.05).timeout
 		short_knife_collision.disabled = true
 		
-		await _anim_player.animation_finished
+		await get_tree().create_timer(0.2).timeout
 		if is_charged:
 			await get_tree().create_timer(short_knife_charge_recover_time).timeout
 		else:

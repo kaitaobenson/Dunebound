@@ -11,7 +11,7 @@ const player_cold_limit: float = 35
 const time_before_damage: float = 1
 const damage: float = 1
 
-var ease_to_outside_temp_value: float = 3
+var ease_to_outside_temp_value: float = 0.2
 var can_ease_to_outside_temp: bool = true
 
 var outside_temp_status: TEMP_STATES

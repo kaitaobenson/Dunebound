@@ -20,7 +20,8 @@ func _init():
 
 
 func _process(_delta):
-	print(save_dict)
+	pass
+	#print(save_dict)
 
 
 func var_update(value, var_name):
