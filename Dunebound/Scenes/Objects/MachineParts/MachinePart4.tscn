@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk2ixhkstuqfi"]
+
+[ext_resource type="Texture2D" uid="uid://btuxe82relqb5" path="res://Assets/Textures/MachineParts/MachinePart5.png" id="1_1y446"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu2jp"]
+radius = 93.0484
+
+[node name="MachinePart" type="Node2D"]
+
+[node name="MachinePart2" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("1_1y446")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fu2jp")

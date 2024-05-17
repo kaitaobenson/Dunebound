@@ -1,7 +1,7 @@
 class_name SaveGame
 extends Node
 
-var clear_current_save: bool = false
+var clear_current_save: bool = true
 
 const save_path = "user://savegame.tres"
 var loaded

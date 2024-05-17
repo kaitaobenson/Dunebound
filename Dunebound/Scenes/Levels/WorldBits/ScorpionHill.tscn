@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crfahjwefomnd"]
+[gd_scene load_steps=10 format=3 uid="uid://crfahjwefomnd"]
 
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_6cawc"]
 [ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="1_ypn6n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="5_ihnwj"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="6_gbsm5"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="7_ctk4x"]
+[ext_resource type="PackedScene" uid="uid://b4n1ee5iiiiry" path="res://Scenes/Objects/MachineParts/MachinePart1.tscn" id="8_qyiwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bfyp"]
 size = Vector2(6319, 1395.75)
@@ -35,7 +36,7 @@ position = Vector2(1508, 478)
 position = Vector2(2183, -65)
 
 [node name="TurretyMan3" parent="." instance=ExtResource("2_ijtau")]
-position = Vector2(5831, 476)
+position = Vector2(5697, 484)
 
 [node name="Checkpoint1" parent="." instance=ExtResource("5_ihnwj")]
 position = Vector2(116, 450)
@@ -72,3 +73,6 @@ metadata/_edit_lock_ = true
 position = Vector2(931.5, 417.875)
 shape = SubResource("RectangleShape2D_1bfyp")
 metadata/_edit_lock_ = true
+
+[node name="MachinePart" parent="." instance=ExtResource("8_qyiwd")]
+position = Vector2(5967, 480)

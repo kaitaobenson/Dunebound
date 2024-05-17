@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsgad8uh1aksj"]
+[gd_scene load_steps=10 format=3 uid="uid://dsgad8uh1aksj"]
 
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_425dx"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_1bhtp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="5_vidxx"]
 [ext_resource type="Script" path="res://Scripts/AreaLabel.gd" id="6_sgsjo"]
 [ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="7_eot03"]
+[ext_resource type="PackedScene" uid="uid://h0spvmrwrsgh" path="res://Scenes/Objects/MachineParts/MachinePart3.tscn" id="8_jru33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bfyp"]
 size = Vector2(2848, 1265.25)
@@ -74,3 +75,7 @@ metadata/_edit_lock_ = true
 position = Vector2(1168, 705.375)
 shape = SubResource("RectangleShape2D_1bfyp")
 metadata/_edit_lock_ = true
+
+[node name="MachinePart" parent="." instance=ExtResource("8_jru33")]
+position = Vector2(185, 267)
+rotation = 0.177741
