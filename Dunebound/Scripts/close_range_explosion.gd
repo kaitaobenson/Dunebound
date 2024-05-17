@@ -1,8 +1,14 @@
 extends Area2D
 
+
+
+func _process(delta):
+	pass
+
+
 func _on_body_entered(body):
 	if body.name == "Player":
-		get_node("ExplosionHitbox").disabled = true
+		set_deferred("monitorable", false)
 
 func get_damage_id():
 	return "CloseRangeExplosion"

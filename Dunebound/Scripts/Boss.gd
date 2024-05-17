@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -400.0
 var can_action = true
 var explosion_is_active = false
 var laser_is_shooting = false
-var laser_track_speed : float = .8
+var laser_track_speed : float = .6
 
 
 @onready var Player = Global.Player
@@ -60,11 +60,7 @@ func _physics_process(delta):
 	laser_tracking()
 	action_manager()
 	
-	tp_distance_to_player = [
-		tp_spots[0].distance_to(Player.global_position),
-		tp_spots[1].distance_to(Player.global_position),
-		tp_spots[2].distance_to(Player.global_position),
-	]
+
 
 func action_manager():
 	if can_action:
@@ -74,7 +70,7 @@ func action_manager():
 		attack_manager()
 
 func attack_manager():
-	var amount_of_attacks = 3.0
+	var amount_of_attacks = randi_range(0, 5)
 	for i in amount_of_attacks:
 		if ranges["SMALL"]:
 			await close_range_explosion()
@@ -82,16 +78,16 @@ func attack_manager():
 			await mid_range_laser_attack()
 		elif ranges["LARGE"]:
 			await long_range_attack()
-		await get_tree().create_timer(1.0).timeout
+		if i != amount_of_attacks:
+			await get_tree().create_timer(1.0).timeout
 	await get_tree().create_timer(5.0).timeout
 	can_action = true
 
 func teleport():
-	var randomValue = randi_range(0, 2)
-	var tp_location = tp_spots[randomValue]
+	var tpRandomness = randi_range(1, 10)
+	var tp_location = tp_spots[tpRandomness]
 	global_position = tp_location
-	if get_tree() != null:
-		await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1).timeout
 	
 
 func close_range_explosion():
@@ -104,8 +100,7 @@ func close_range_explosion():
 	while explosion.get_node("ExplosionHitbox") != null && explosion.get_node("ExplosionHitbox").shape.radius < MaxExplosionSize:
 		explosion.get_node("ExplosionHitbox").shape.radius = explosion_size
 		explosion_size += explosion_expand_rate
-		
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.001).timeout
 	
 	await get_tree().create_timer(0.25).timeout
 	explosion.queue_free()
@@ -116,8 +111,8 @@ func close_range_explosion():
 func mid_range_laser_attack():
 	laser_colorect_handler()
 	var laser_track_tween : Tween = get_tree().create_tween()
-	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 5.0)
-	await get_tree().create_timer(5.0).timeout
+	laser_track_tween.tween_property(self, "laser_track_speed", 0.0, 3.0)
+	await get_tree().create_timer(3.0).timeout
 	
 	emit_signal("laser_rect_phase_1")
 	laser_hitbox.disabled = false
@@ -130,7 +125,7 @@ func mid_range_laser_attack():
 	await get_tree().create_timer(.5).timeout
 	laser_hitbox.disabled = true
 	await laser_rect_done
-	laser_track_speed = .8
+	laser_track_speed = .6
 
 func laser_tracking():
 	var angle_to_player = atan2(Player.global_position.y - laser_pivot.global_position.y, Player.global_position.x - laser_pivot.global_position.x)
@@ -171,8 +166,7 @@ func laser_colorect_handler():
 	while laser_colorRect_outer.size.y > 0.0:
 		laser_colorRect_inner.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
 		laser_colorRect_outer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT, Control.PRESET_MODE_KEEP_SIZE)
-		if get_tree() != null:
-			await get_tree().create_timer(.001).timeout
+		await get_tree().create_timer(.001).timeout
 	laser_colorRect_inner.visible = false
 	emit_signal("laser_rect_done")
 
@@ -183,7 +177,6 @@ func long_range_attack():
 	add_child(bullet)
 	bullet.global_position = bullet_pos
 	bullet.velociter = Player.global_position - bullet.global_position
-	await get_tree().create_timer(.25).timeout
 
 
 
