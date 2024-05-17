@@ -8,7 +8,7 @@ const enemy_info = {
 	"BugEnemy": [20, true],
 	"ZombieHusk": [10, true],
 	"TurretBullet": [40, true],
-	"CloseRangeExplosion": [0, true],
+	"CloseRangeExplosion": [10, true],
 	"Healer" : [-100, true],
 	"Checkpoint" : [0, false],
 }
