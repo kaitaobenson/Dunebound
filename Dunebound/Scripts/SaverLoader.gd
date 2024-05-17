@@ -1,7 +1,7 @@
 class_name SaveGame
 extends Node
 
-var clear_current_save: bool = true
+var clear_current_save: bool = false
 
 const save_path = "user://savegame.tres"
 var loaded
@@ -12,7 +12,6 @@ var save_dict: Dictionary = {
 func _init():
 	Global.saver_loader = self
 	loader()
-	
 	if clear_current_save:
 		clear_save()
 	
@@ -21,7 +20,7 @@ func _init():
 
 
 func _process(_delta):
-	pass
+	print(save_dict)
 
 
 func var_update(value, var_name):

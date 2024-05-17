@@ -50,10 +50,6 @@ position = Vector2(3201, 2847)
 [node name="BugEnemy" parent="." instance=ExtResource("8_rw5vv")]
 position = Vector2(1184, -170)
 
-[node name="BugEnemy2" parent="." instance=ExtResource("8_rw5vv")]
-position = Vector2(1514, -176)
-starting_direction = 1
-
 [node name="Spikey6" type="ColorRect" parent="."]
 z_index = -1
 offset_left = 3267.0

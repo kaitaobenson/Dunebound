@@ -30,6 +30,7 @@ func _process(delta):
 	day_count = floor(total_elapsed_time / DAY_LENGTH / 2)
 	
 	sandstorm()
+	update_temperature()
 	
 	color_value = (sin(PI / DAY_LENGTH * (total_elapsed_time - DAY_LENGTH)) + 1) / 2
 	canvas_modulate1.color = gradientResource.sample(color_value)
@@ -48,6 +49,8 @@ func sandstorm():
 		await get_tree().create_timer(SANDSTORM_TIME).timeout
 		sandstorm_is_on = false
 
+func update_temperature():
+	Global.temperature = color_value * 100
 
 func sandstorm_visuals():
 	if sandstorm_is_on:

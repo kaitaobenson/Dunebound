@@ -8,7 +8,7 @@ enum TEMP_STATES {
 const player_heat_limit: float = 65
 const player_cold_limit: float = 35
 
-const time_before_damage: float = 0.1
+const time_before_damage: float = 1
 const damage: float = 1
 
 var ease_to_outside_temp_value: float = 3
