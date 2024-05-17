@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbgktjrc4u4om"]
+[gd_scene load_steps=19 format=3 uid="uid://dbgktjrc4u4om"]
 
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_fdnc6"]
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="2_3b4le"]
 [ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Scenes/Objects/Water.tscn" id="3_sw1k1"]
 [ext_resource type="Texture2D" uid="uid://d1wq287rmaq8l" path="res://Assets/Textures/BigTree.png" id="4_u674e"]
 [ext_resource type="Script" path="res://Scripts/InvisibleWalls.gd" id="5_lkl2n"]
+[ext_resource type="PackedScene" uid="uid://bk2ixhkstuqfi" path="res://Scenes/Objects/MachineParts/MachinePart4.tscn" id="6_h22gu"]
 [ext_resource type="Texture2D" uid="uid://c7yu5r8m0qgie" path="res://Assets/Tilemap/Tilemap.png" id="6_ll5so"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1vvvo"]
@@ -912,8 +913,8 @@ pattern_5 = SubResource("TileMapPattern_3krp1")
 pattern_6 = SubResource("TileMapPattern_r727u")
 pattern_7 = SubResource("TileMapPattern_ljo5i")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nd4gl"]
-radius = 137.131
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr30f"]
+size = Vector2(482, 160)
 
 [node name="EndOfTheWorld" type="Node2D"]
 
@@ -934,10 +935,13 @@ position = Vector2(-406, 976)
 position = Vector2(-462, 752)
 texture = ExtResource("4_u674e")
 
-[node name="Invisible" type="Node" parent="." node_paths=PackedStringArray("area", "sprite")]
+[node name="Invisible" type="Node" parent="." node_paths=PackedStringArray("area", "tilemap")]
 script = ExtResource("5_lkl2n")
 area = NodePath("../Area2D")
-sprite = NodePath("../SecretWall")
+tilemap = NodePath("../SecretWall")
+
+[node name="MachinePart" parent="." instance=ExtResource("6_h22gu")]
+position = Vector2(522, 928)
 
 [node name="SecretWall" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_78oea")
@@ -948,4 +952,5 @@ layer_0/tile_data = PackedInt32Array(1900548, 1179651, 1610612750, 1835012, 1245
 position = Vector2(96, 896)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_nd4gl")
+position = Vector2(303, 16)
+shape = SubResource("RectangleShape2D_gr30f")

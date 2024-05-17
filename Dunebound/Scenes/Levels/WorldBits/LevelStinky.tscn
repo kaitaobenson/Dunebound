@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4q637tyxijkn"]
+[gd_scene load_steps=8 format=3 uid="uid://4q637tyxijkn"]
 
 [ext_resource type="TileSet" uid="uid://cy53ery357d1c" path="res://Assets/Tilemap/DecorTilemap.tres" id="1_in6ma"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="2_ix0ee"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Scenes/Objects/Water.tscn" id="4_8rx73"]
 [ext_resource type="PackedScene" uid="uid://djq52jicd1c67" path="res://Scenes/Creatures/BugEnemy.tscn" id="5_j0fn0"]
 [ext_resource type="PackedScene" uid="uid://cw6xm10eqhbo6" path="res://Scenes/Objects/Checkpoint1.tscn" id="6_pdbby"]
+[ext_resource type="PackedScene" uid="uid://bk2ixhkstuqfi" path="res://Scenes/Objects/MachineParts/MachinePart4.tscn" id="7_r8my2"]
 
 [node name="Level Stinky" type="Node2D"]
 metadata/_edit_vertical_guides_ = [5036.0]
@@ -32,3 +33,6 @@ position = Vector2(3173, -4)
 
 [node name="Checkpoint1" parent="." instance=ExtResource("6_pdbby")]
 position = Vector2(2844, 557)
+
+[node name="MachinePart" parent="." instance=ExtResource("7_r8my2")]
+position = Vector2(2525, 576)

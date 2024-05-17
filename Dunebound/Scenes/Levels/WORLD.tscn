@@ -1,32 +1,60 @@
-[gd_scene load_steps=19 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=45 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
+[ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="6_33g03"]
 [ext_resource type="PackedScene" uid="uid://cc8ip2b5hjo67" path="res://Scenes/Healer.tscn" id="7_1l2ox"]
+[ext_resource type="Texture2D" uid="uid://b3mbwkpmg8ycu" path="res://Assets/Textures/Player/HealthBarTop.png" id="7_bfvmb"]
 [ext_resource type="PackedScene" uid="uid://dsgad8uh1aksj" path="res://Scenes/Levels/WorldBits/PlatformLevel.tscn" id="7_eb1y7"]
 [ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="8_72nur"]
 [ext_resource type="PackedScene" uid="uid://bsbwa3l44tpqa" path="res://Scenes/Objects/Water.tscn" id="8_d5mjs"]
+[ext_resource type="Texture2D" uid="uid://cmhbro3us7ukd" path="res://Assets/Textures/Player/HealthBarBottom.png" id="8_thp31"]
 [ext_resource type="PackedScene" uid="uid://b6hgca02kocak" path="res://Scenes/Levels/WorldBits/BirdlePlane.tscn" id="9_qb1p4"]
+[ext_resource type="FontFile" uid="uid://yd45jxoj3doe" path="res://Assets/Fonts/Windswept.ttf" id="9_qful1"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="9_sgg20"]
 [ext_resource type="PackedScene" uid="uid://cm2naaay46o88" path="res://Scenes/Background1.tscn" id="10_888xx"]
+[ext_resource type="Script" path="res://Scripts/TempUI.gd" id="10_dqixd"]
 [ext_resource type="PackedScene" uid="uid://4q637tyxijkn" path="res://Scenes/Levels/WorldBits/LevelStinky.tscn" id="10_eonso"]
 [ext_resource type="Script" path="res://Scripts/BackgroundMusic.gd" id="10_k5c1o"]
-[ext_resource type="PackedScene" uid="uid://cc338i60editu" path="res://Scenes/NecessaryStuff.tscn" id="11_vbtql"]
+[ext_resource type="Script" path="res://Scripts/MachinePartsUI.gd" id="11_2bilb"]
+[ext_resource type="Script" path="res://Scripts/SanstormUI.gd" id="12_vcsaw"]
 [ext_resource type="PackedScene" uid="uid://b1gvirvi05mqg" path="res://Scenes/Levels/WorldBits/TheCrater.tscn" id="13_1h6j4"]
+[ext_resource type="Texture2D" uid="uid://c6mfnmj34l6k0" path="res://Assets/Textures/SandOUter.png" id="13_fsc62"]
 [ext_resource type="PackedScene" uid="uid://crfahjwefomnd" path="res://Scenes/Levels/WorldBits/ScorpionHill.tscn" id="13_kp53q"]
 [ext_resource type="PackedScene" uid="uid://d047ch3olrmo1" path="res://Scenes/Creatures/ZombieHusk.tscn" id="14_idqgg"]
+[ext_resource type="Texture2D" uid="uid://j56uvsawdblh" path="res://Assets/Textures/Sandstorm.png" id="14_rmjth"]
+[ext_resource type="Script" path="res://Scripts/CheckpointUI.gd" id="15_1rx83"]
 [ext_resource type="PackedScene" uid="uid://c2kno0vi816i6" path="res://Scenes/Levels/WorldBits/FallLevel.tscn" id="15_5y0xm"]
-[ext_resource type="PackedScene" uid="uid://bk2ixhkstuqfi" path="res://Scenes/Objects/MachineParts/MachinePart4.tscn" id="17_604qv"]
+[ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="16_2cfps"]
 [ext_resource type="PackedScene" uid="uid://bassgtgl0te2m" path="res://Scenes/Creatures/Eagle.tscn" id="17_6618u"]
+[ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="17_rx3lt"]
+[ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="18_n1jda"]
 [ext_resource type="PackedScene" uid="uid://dbgktjrc4u4om" path="res://Scenes/Levels/WorldBits/EndOfTheWorld.tscn" id="18_pq8rb"]
+[ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="19_smkee"]
+[ext_resource type="Script" path="res://Scripts/inventoryHandler.gd" id="20_nmfp7"]
+[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="21_he2ew"]
+[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="22_lbx4y"]
+[ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="23_mcabd"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="24_4fwo4"]
+[ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="25_05r5l"]
+[ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="26_rkl74"]
+[ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="27_1bqp8"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="28_oe1qk"]
+[ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="29_8jjmo"]
+[ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="30_2bim5"]
+[ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="31_hh07d"]
+
+[sub_resource type="Gradient" id="Gradient_nj6uo"]
+offsets = PackedFloat32Array(0, 0.388889, 0.597222, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an4fa"]
+size = Vector2(28748, 231.435)
 
 [node name="WORLD" type="Node2D"]
 script = ExtResource("1_xb268")
 
-[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
-
-position = Vector2(-7766, 418)
-
 [node name="Stuff" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Stuff"]
 stream = ExtResource("9_sgg20")
@@ -37,44 +65,470 @@ script = ExtResource("10_k5c1o")
 [node name="BackgroundContainer" parent="Stuff" instance=ExtResource("10_888xx")]
 metadata/_edit_lock_ = true
 
-[node name="NecessaryStuff" parent="Stuff" instance=ExtResource("11_vbtql")]
+[node name="HoleBackground" type="ParallaxBackground" parent="Stuff"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Stuff/HoleBackground"]
+
+[node name="Light" type="ColorRect" parent="Stuff/HoleBackground/ParallaxLayer"]
+offset_left = 13041.0
+offset_top = 364.0
+offset_right = 16198.0
+offset_bottom = 494.0
+color = Color(0.243137, 0.231373, 0.192157, 0.631373)
+
+[node name="Dark" type="ColorRect" parent="Stuff/HoleBackground/ParallaxLayer"]
+anchors_preset = -1
+anchor_top = 0.194444
+anchor_bottom = 0.194444
+offset_left = 12611.0
+offset_top = 492.0
+offset_right = 17171.0
+offset_bottom = 4238.0
+color = Color(0.243137, 0.231373, 0.192157, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="NecessaryStuff" type="Node2D" parent="Stuff"]
 position = Vector2(190, 5)
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Checkpoint" index="0"]
+[node name="KaiUI" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
+script = ExtResource("6_33g03")
+
+[node name="ColorRect" type="ColorRect" parent="Stuff/NecessaryStuff/KaiUI"]
+offset_right = 1152.0
+offset_bottom = 121.0
+color = Color(0.313726, 0.313726, 0.313726, 0.52549)
 metadata/_edit_use_anchors_ = true
 
-[node name="DeathScreen" parent="Stuff/NecessaryStuff" index="1"]
+[node name="HealthBar" type="Node2D" parent="Stuff/NecessaryStuff/KaiUI"]
+position = Vector2(81, 11)
+metadata/_edit_lock_ = true
+
+[node name="Bar" type="TextureProgressBar" parent="Stuff/NecessaryStuff/KaiUI/HealthBar"]
+texture_filter = 1
+offset_left = -64.0
+offset_top = 43.0
+offset_right = 117.0
+offset_bottom = 83.0
+value = 100.0
+texture_over = ExtResource("7_bfvmb")
+texture_progress = ExtResource("8_thp31")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/HealthBar"]
+offset_left = -83.0
+offset_top = -3.0
+offset_right = 112.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Health:[/center]"
+metadata/_edit_lock_ = true
+
+[node name="Temperature" type="Node2D" parent="Stuff/NecessaryStuff/KaiUI"]
+position = Vector2(306, -1)
+script = ExtResource("10_dqixd")
+gradientResource = SubResource("Gradient_nj6uo")
+metadata/_edit_lock_ = true
+
+[node name="TempLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Temperature"]
+offset_left = -127.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 46.0
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Temperature:[/center]"
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="TempGauge" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Temperature"]
+offset_left = -85.0
+offset_top = 46.0
+offset_right = 101.0
+offset_bottom = 125.0
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 55
+text = "100. T "
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="MachineParts" type="Node2D" parent="Stuff/NecessaryStuff/KaiUI"]
+position = Vector2(875, 24)
+script = ExtResource("11_2bilb")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/MachineParts"]
+offset_left = -204.0
+offset_top = 9.0
+offset_right = 272.0
+offset_bottom = 145.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_fonts/bold_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center]Machine Parts: [b]0/7[/b][/center]"
+metadata/_edit_lock_ = true
+
+[node name="Sandstorm" type="Node2D" parent="Stuff/NecessaryStuff/KaiUI"]
+position = Vector2(483, 36)
+script = ExtResource("12_vcsaw")
+metadata/_edit_lock_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Stuff/NecessaryStuff/KaiUI/Sandstorm"]
+offset_top = 9.0
+offset_right = 85.0
+offset_bottom = 92.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("13_fsc62")
+texture_progress = ExtResource("14_rmjth")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Sandstorm"]
+offset_left = -67.0
+offset_top = -27.0
+offset_right = 128.0
+offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Sandstorm:[/center]"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Checkpoint" type="Node2D" parent="Stuff/NecessaryStuff/KaiUI"]
+script = ExtResource("15_1rx83")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Checkpoint"]
+offset_left = 18.0
+offset_top = 597.0
+offset_right = 306.0
+offset_bottom = 634.0
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Checkpoint Reached"
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathScreen" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
 layer = 128
+script = ExtResource("16_2cfps")
 
-[node name="Front" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="0"]
+[node name="Container" type="Node2D" parent="Stuff/NecessaryStuff/DeathScreen"]
+
+[node name="Front" type="ColorRect" parent="Stuff/NecessaryStuff/DeathScreen/Container"]
+offset_left = 82.0
+offset_top = 124.0
+offset_right = 1108.0
+offset_bottom = 326.0
+color = Color(0.615686, 0.509804, 0.341176, 0.921569)
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="2"]
+[node name="Back" type="ColorRect" parent="Stuff/NecessaryStuff/DeathScreen/Container"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.615686, 0.509804, 0.341176, 0.364706)
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/DeathScreen/Container"]
+offset_top = 125.0
+offset_right = 1152.0
+offset_bottom = 352.0
+theme_override_colors/default_color = Color(0.501961, 0.219608, 0.176471, 1)
+theme_override_fonts/normal_font = ExtResource("9_qful1")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center]YOU DIED[/center]"
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayAgain" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="3"]
+[node name="PlayAgain" type="Button" parent="Stuff/NecessaryStuff/DeathScreen/Container"]
+offset_left = 227.0
+offset_top = 459.0
+offset_right = 508.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("9_qful1")
+theme_override_font_sizes/font_size = 50
+text = "Respawn"
 metadata/_edit_use_anchors_ = true
 
-[node name="Quit" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="4"]
+[node name="Quit" type="Button" parent="Stuff/NecessaryStuff/DeathScreen/Container"]
+offset_left = 615.0
+offset_top = 460.0
+offset_right = 895.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("9_qful1")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
 metadata/_edit_use_anchors_ = true
 
-[node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
-position = Vector2(-9908, 129)
+[node name="Fader" parent="Stuff/NecessaryStuff" instance=ExtResource("17_rx3lt")]
+position = Vector2(44, 37)
+fade_in_time = 5.0
 
-[node name="Right" parent="Stuff/NecessaryStuff/WorldBarrier" index="1"]
-position = Vector2(21714, 315)
+[node name="WeatherControl" parent="Stuff/NecessaryStuff" instance=ExtResource("18_n1jda")]
+sandstorm_is_on = false
 
-[node name="Top" parent="Stuff/NecessaryStuff/WorldBarrier" index="2"]
-position = Vector2(-39, -2610)
+[node name="UI" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
 
-[node name="Bottom" parent="Stuff/NecessaryStuff/WorldBarrier" index="3"]
-position = Vector2(385, 6466)
+[node name="PauseScreen" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
+process_mode = 3
+visible = false
+z_index = 12
+position = Vector2(-87, 103)
+
+[node name="ColorRect" type="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen"]
+process_mode = 3
+visibility_layer = 512
+z_index = 38
+offset_left = -1957.0
+offset_top = -719.0
+offset_right = 2753.0
+offset_bottom = 911.0
+color = Color(0.223529, 0.223529, 0.223529, 0.968627)
+script = ExtResource("19_smkee")
+
+[node name="Button" type="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen"]
+z_index = 4096
+offset_left = -207.0
+offset_top = -490.0
+offset_right = 72.0
+offset_bottom = -434.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/UI/PauseScreen/Button"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 270.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 30
+text = "controls"
+
+[node name="Button2" type="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen"]
+z_index = 40
+offset_left = -207.0
+offset_top = -395.0
+offset_right = 75.0
+offset_bottom = -342.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/UI/PauseScreen/Button2"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 262.0
+offset_bottom = 51.0
+theme_override_font_sizes/normal_font_size = 30
+text = "save game
+"
+
+[node name="inventoryContainer" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
+process_mode = 3
+visible = false
+z_index = 45
+position = Vector2(-500, -300)
+script = ExtResource("20_nmfp7")
+
+[node name="itemTileContainer" type="ColorRect" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 832.0
+offset_bottom = 482.0
+mouse_filter = 2
+color = Color(0.0117647, 0.117647, 0.156863, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="itemTileTemplate" type="ColorRect" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 126.0
+offset_right = 117.0
+offset_bottom = 196.0
+mouse_filter = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+script = ExtResource("21_he2ew")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer/itemTileContainer/itemTileTemplate"]
+
+[node name="closeButton" type="Button" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+process_mode = 3
+offset_left = 723.0
+offset_top = 110.0
+offset_right = 822.0
+offset_bottom = 209.0
+disabled = true
+action_mode = 0
+icon = ExtResource("22_lbx4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+position = Vector2(256.5, 126.5)
+scale = Vector2(0.406249, 0.40625)
+texture = ExtResource("23_mcabd")
+
+[node name="TextEdit" type="TextEdit" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+offset_left = 284.0
+offset_top = 108.0
+offset_right = 454.0
+offset_bottom = 142.0
+
+[node name="rawr~" type="ColorRect" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+offset_left = 251.0
+offset_top = 215.0
+offset_right = 679.0
+offset_bottom = 459.0
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="Stuff/NecessaryStuff/UI/inventoryContainer"]
+offset_left = 659.0
+offset_top = 222.0
+offset_right = 677.0
+offset_bottom = 446.0
+
+[node name="tileTemplateHoverSensor" type="TextureButton" parent="Stuff/NecessaryStuff"]
+visible = false
+z_index = 16
+offset_left = -262.0
+offset_top = -175.0
+offset_right = -192.0
+offset_bottom = -105.0
+script = ExtResource("24_4fwo4")
+metadata/tileName = "itemTileTemplate"
+
+[node name="keybindHandler" type="Node" parent="Stuff/NecessaryStuff"]
+script = ExtResource("25_05r5l")
+
+[node name="Templates" type="Node" parent="Stuff/NecessaryStuff"]
+
+[node name="keybindButton" type="Button" parent="Stuff/NecessaryStuff/Templates"]
+anchors_preset = -1
+anchor_right = 0.054
+anchor_bottom = 0.021
+offset_left = 40.0
+offset_top = -64.0
+offset_right = -14.208
+offset_bottom = -69.608
+theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
+script = ExtResource("26_rkl74")
+metadata/action = &""
+metadata/_edit_use_anchors_ = true
+
+[node name="cancelButton" type="Button" parent="Stuff/NecessaryStuff/Templates"]
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+text = "Cancel"
+script = ExtResource("27_1bqp8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Stuff/NecessaryStuff"]
+process_mode = 3
+position = Vector2(375, 374)
+zoom = Vector2(1.2, 1.2)
+position_smoothing_speed = 0.0
+script = ExtResource("28_oe1qk")
+
+[node name="WorldBarrier" type="Area2D" parent="Stuff/NecessaryStuff"]
+position = Vector2(-91, -211)
+script = ExtResource("29_8jjmo")
+
+[node name="Left" type="CollisionShape2D" parent="Stuff/NecessaryStuff/WorldBarrier"]
+position = Vector2(-9209, 1613)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Right" type="CollisionShape2D" parent="Stuff/NecessaryStuff/WorldBarrier"]
+position = Vector2(17493, 1196)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Top" type="CollisionShape2D" parent="Stuff/NecessaryStuff/WorldBarrier"]
+position = Vector2(3609, -1410)
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="Bottom" type="CollisionShape2D" parent="Stuff/NecessaryStuff/WorldBarrier"]
+position = Vector2(3753, 6499.28)
+shape = SubResource("RectangleShape2D_an4fa")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stuff/NecessaryStuff"]
+position = Vector2(86, -31)
+color = Color(0.533333, 0.521569, 0.666667, 1)
+
+[node name="proFix" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
+
+[node name="uiContainer" type="Node2D" parent="Stuff/NecessaryStuff/proFix"]
+process_mode = 3
+visible = false
+z_index = 60
+position = Vector2(-587, -317)
+
+[node name="ColorRect" type="ColorRect" parent="Stuff/NecessaryStuff/proFix/uiContainer"]
+z_index = -2
+offset_left = -2570.0
+offset_top = -1469.0
+offset_right = 3826.0
+offset_bottom = 1699.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Control" type="Control" parent="Stuff/NecessaryStuff/proFix/uiContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 472.0
+offset_top = 136.0
+offset_right = 572.0
+offset_bottom = 236.0
+script = ExtResource("30_2bim5")
+
+[node name="ColorRect2" type="ColorRect" parent="Stuff/NecessaryStuff/proFix/uiContainer"]
+z_index = 4095
+offset_left = 648.0
+offset_top = 867.0
+offset_right = 1806.0
+offset_bottom = 1067.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="Stuff/NecessaryStuff/proFix/uiContainer/ColorRect2"]
+z_index = 4096
+layout_mode = 0
+offset_left = 13.0
+offset_top = 3.0
+offset_right = 1159.0
+offset_bottom = 56.0
+text = "press button to change keybind, use ticker to cycle between alternate keybinds"
+
+[node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
+
+[node name="VScrollBar" type="VScrollBar" parent="Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis"]
+visible = false
+z_index = 4096
+z_as_relative = false
+offset_left = 822.0
+offset_top = 131.0
+offset_right = 840.0
+offset_bottom = 491.0
 
 [node name="Foreground" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="EndOfTheWorld" parent="Foreground" instance=ExtResource("18_pq8rb")]
 position = Vector2(-7837, 556)
+
+[node name="TileMap" type="TileMap" parent="Foreground"]
+position = Vector2(-7837, 556)
+tile_set = ExtResource("31_hh07d")
+format = 2
+layer_0/tile_data = PackedInt32Array(1703955, 1048579, 2, 1769491, 1048579, 2, 1835027, 1048579, 2, 1900563, 1048579, 2, 1966099, 1048579, 2, 2031635, 1048579, 2, 2228251, 1048579, 2, 2228250, 1048579, 2, 2228249, 1048579, 2, 2228248, 1048579, 2, 2228247, 1048579, 2, 2228246, 1048579, 2, 2228245, 1048579, 2, 2228244, 1048579, 2, 2228243, 1048579, 2, 2228242, 1048579, 2, 2228241, 1048579, 2, 2228240, 1048579, 2, 2097172, 1048579, 2, 2162709, 1048579, 2, 2162708, 1048579, 2, 2162710, 1048579, 2, 2162711, 1048579, 2, 2097174, 1048579, 2, 2031638, 1048579, 2, 1966102, 1048579, 2, 1900566, 1048579, 2, 1835030, 1048579, 2, 1769494, 1048579, 2, 1703958, 1048579, 2, 1638422, 1048579, 2, 1572886, 1048579, 2, 1507350, 1048579, 2, 1441814, 1048579, 2, 1376278, 1048579, 2, 1310742, 1048579, 2, 1245206, 1048579, 2, 1179670, 1048579, 2, 1114134, 1048579, 2, 1048598, 1048579, 2, 786453, 1048579, 2, 851989, 1048579, 2, 917525, 1048579, 2, 983061, 1048579, 2, 1048597, 1048579, 2, 1114133, 1048579, 2, 1179669, 1048579, 2, 1245205, 1048579, 2, 1310741, 1048579, 2, 1376277, 1048579, 2, 1441813, 1048579, 2, 1507349, 1048579, 2, 1572885, 1048579, 2, 1638421, 1048579, 2, 1703957, 1048579, 2, 1769493, 1048579, 2, 1835029, 1048579, 2, 1900565, 1048579, 2, 1966101, 1048579, 2, 2031637, 1048579, 2, 2097173, 1048579, 2, 2031636, 1048579, 2, 1966100, 1048579, 2, 1900564, 1048579, 2, 1835028, 1048579, 2, 1769492, 1048579, 2, 1703956, 1048579, 2, 1638420, 1048579, 2, 1572884, 1048579, 2, 1507348, 1048579, 2, 1441812, 1048579, 2, 1376276, 1048579, 2, 1310740, 1048579, 2, 1245204, 1048579, 2, 1179668, 1048579, 2, 1114132, 1048579, 2, 1048596, 1048579, 2, 983060, 1048579, 2, 917524, 1048579, 2, 851988, 1048579, 2, 786452, 1048579, 2, 720916, 1048579, 2, 983062, 1048579, 2, 917526, 1048579, 2, 851990, 1048579, 2, 786454, 1048579, 2, 720918, 1048579, 2, 655382, 1048579, 2, 589846, 1048579, 2, 524310, 1048579, 2, 458774, 1048579, 2, 393238, 1048579, 2, 327702, 1048579, 2, 327701, 1048579, 2, 327700, 1048579, 2, 327699, 1048579, 2, 327698, 1048579, 2, 327697, 1048579, 2, 327696, 1048579, 2, 327695, 1048579, 2, 327694, 1048579, 2, 327693, 1048579, 2, 393231, 1048579, 2, 393232, 1048579, 2, 393233, 1048579, 2, 393234, 1048579, 2, 393235, 1048579, 2, 393236, 1048579, 2, 393237, 1048579, 2, 393239, 1048579, 2, 393240, 1048579, 2, 393241, 1048579, 2, 458773, 1048579, 2, 524309, 1048579, 2, 589845, 1048579, 2, 655381, 1048579, 2, 720917, 1048579, 2, 655380, 1048579, 2, 589844, 1048579, 2, 524308, 1048579, 2, 458772, 1048579, 2, 458771, 1048579, 2, 458770, 1048579, 2, 2949140, 1048579, 2, 2949141, 1048579, 2, 2949142, 1048579, 2, 2949143, 1048579, 2, 2949144, 1048579, 2, 2949145, 1048579, 2, 2949146, 1048579, 2, 2949147, 1048579, 2, 2949148, 1048579, 2, 2949149, 1048579, 2, 2949150, 1048579, 2, 2949151, 1048579, 2, 2949152, 1048579, 2, 2949153, 1048579, 2, 2949154, 1048579, 2, 2949155, 1048579, 2, 2949156, 1048579, 2, 2949157, 1048579, 2, 2949158, 1048579, 2, 2949159, 1048579, 2, 2883623, 1048579, 2, 2818087, 1048579, 2, 2752551, 1048579, 2, 2687015, 1048579, 2, 2621479, 1048579, 2, 2555943, 1048579, 2, 2490407, 1048579, 2, 2424871, 1048579, 2, 2359335, 1048579, 2, 2293799, 1048579, 2, 2228263, 1048579, 2, 2162727, 1048579, 2, 2097191, 1048579, 2, 2883604, 1048579, 2, 2883605, 1048579, 2, 2883606, 1048579, 2, 2883607, 1048579, 2, 2883608, 1048579, 2, 2883609, 1048579, 2, 2883610, 1048579, 2, 2883611, 1048579, 2, 2883612, 1048579, 2, 2883613, 1048579, 2, 2883614, 1048579, 2, 2883615, 1048579, 2, 2883616, 1048579, 2, 2883617, 1048579, 2, 2883618, 1048579, 2, 2883619, 1048579, 2, 2883620, 1048579, 2, 2883621, 1048579, 2, 2818085, 1048579, 2, 2818086, 1048579, 2, 2752550, 1048579, 2, 2687014, 1048579, 2, 2621478, 1048579, 2, 2555942, 1048579, 2, 2490406, 1048579, 2, 2424870, 1048579, 2, 2359334, 1048579, 2, 2293798, 1048579, 2, 2228262, 1048579, 2, 2424869, 1048579, 2, 2490405, 1048579, 2, 2555941, 1048579, 2, 2621477, 1048579, 2, 2687013, 1048579, 2, 2752549, 1048579, 2, 2752548, 1048579, 2, 2687012, 1048579, 2, 2621476, 1048579, 2, 2555940, 1048579, 2, 2490404, 1048579, 2, 2424868, 1048579, 2, 2359332, 1048579, 2, 2293796, 1048579, 2, 2293795, 1048579, 2, 2293794, 1048579, 2, 2359330, 1048579, 2, 2424867, 1048579, 2, 2359333, 1048579, 2, 2293797, 1048579, 2, 2228261, 1048579, 2, 2228260, 1048579, 2, 2228259, 1048579, 2, 2359331, 1048579, 2, 2490403, 1048579, 2, 2883622, 1048579, 2, 2818084, 1048579, 2, 2752547, 1048579, 2, 2687011, 1048579, 2, 2687010, 1048579, 2, 2621474, 1048579, 2, 2555938, 1048579, 2, 2490402, 1048579, 2, 2424866, 1048579, 2, 2228258, 1048579, 2, 2555939, 1048579, 2, 2621475, 1048579, 2, 2818083, 1048579, 2, 2818082, 1048579, 2, 2752546, 1048579, 2, 2687009, 1048579, 2, 2621473, 1048579, 2, 2555937, 1048579, 2, 2490401, 1048579, 2, 2424865, 1048579, 2, 2359329, 1048579, 2, 2293793, 1048579, 2, 2228257, 1048579, 2, 2228256, 1048579, 2, 2293792, 1048579, 2, 2359328, 1048579, 2, 2424864, 1048579, 2, 2490400, 1048579, 2, 2555936, 1048579, 2, 2621472, 1048579, 2, 2752545, 1048579, 2, 2818081, 1048579, 2, 2752544, 1048579, 2, 2687008, 1048579, 2, 2818080, 1048579, 2, 2818079, 1048579, 2, 2752543, 1048579, 2, 2687007, 1048579, 2, 2621471, 1048579, 2, 2555935, 1048579, 2, 2490399, 1048579, 2, 2424863, 1048579, 2, 2359327, 1048579, 2, 2293791, 1048579, 2, 2228254, 1048579, 2, 2228255, 1048579, 2, 2228253, 1048579, 2, 2228252, 1048579, 2, 2293789, 1048579, 2, 2359325, 1048579, 2, 2424861, 1048579, 2, 2490397, 1048579, 2, 2555933, 1048579, 2, 2621469, 1048579, 2, 2687005, 1048579, 2, 2752541, 1048579, 2, 2752542, 1048579, 2, 2818078, 1048579, 2, 2621470, 1048579, 2, 2555934, 1048579, 2, 2490398, 1048579, 2, 2424862, 1048579, 2, 2293790, 1048579, 2, 2359326, 1048579, 2, 2687006, 1048579, 2, 2818076, 1048579, 2, 2818073, 1048579, 2, 2818072, 1048579, 2, 2818071, 1048579, 2, 2818070, 1048579, 2, 2818069, 1048579, 2, 2818068, 1048579, 2, 2752532, 1048579, 2, 2686996, 1048579, 2, 2621460, 1048579, 2, 2555924, 1048579, 2, 2490388, 1048579, 2, 2424852, 1048579, 2, 2359316, 1048579, 2, 2293780, 1048579, 2, 2293781, 1048579, 2, 2293782, 1048579, 2, 2293783, 1048579, 2, 2359319, 1048579, 2, 2359320, 1048579, 2, 2359321, 1048579, 2, 2359322, 1048579, 2, 2359323, 1048579, 2, 2359324, 1048579, 2, 2293787, 1048579, 2, 2293786, 1048579, 2, 2293784, 1048579, 2, 2293785, 1048579, 2, 2424860, 1048579, 2, 2490396, 1048579, 2, 2555932, 1048579, 2, 2621468, 1048579, 2, 2555931, 1048579, 2, 2490395, 1048579, 2, 2424859, 1048579, 2, 2162715, 1048579, 2, 2293788, 1048579, 2, 2818077, 1048579, 2, 2818075, 1048579, 2, 2818074, 1048579, 2, 2752536, 1048579, 2, 2752537, 1048579, 2, 2752538, 1048579, 2, 2687003, 1048579, 2, 2687004, 1048579, 2, 2687002, 1048579, 2, 2752539, 1048579, 2, 2752540, 1048579, 2, 2621467, 1048579, 2, 2555930, 1048579, 2, 2490394, 1048579, 2, 2490393, 1048579, 2, 2424857, 1048579, 2, 2424858, 1048579, 2, 2424856, 1048579, 2, 2424855, 1048579, 2, 2359318, 1048579, 2, 2359317, 1048579, 2, 2424854, 1048579, 2, 2490391, 1048579, 2, 2490392, 1048579, 2, 2555928, 1048579, 2, 2555929, 1048579, 2, 2621465, 1048579, 2, 2621466, 1048579, 2, 2621464, 1048579, 2, 2555927, 1048579, 2, 2490390, 1048579, 2, 2490389, 1048579, 2, 2424853, 1048579, 2, 2687001, 1048579, 2, 2687000, 1048579, 2, 2621463, 1048579, 2, 2555926, 1048579, 2, 2555925, 1048579, 2, 2621462, 1048579, 2, 2686999, 1048579, 2, 2752535, 1048579, 2, 2686998, 1048579, 2, 2621461, 1048579, 2, 2686997, 1048579, 2, 2752533, 1048579, 2, 2752534, 1048579, 2)
 
 [node name="Healer" parent="Foreground" instance=ExtResource("7_1l2ox")]
 position = Vector2(-7282, 536)
@@ -110,10 +564,8 @@ metadata/_edit_lock_ = true
 [node name="Fall" parent="Foreground" instance=ExtResource("15_5y0xm")]
 position = Vector2(12930, 492)
 
+[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
+position = Vector2(-7336, 357)
+
 [node name="Eagle" parent="." instance=ExtResource("17_6618u")]
 position = Vector2(12109, -63)
-
-[node name="MachinePart" parent="." instance=ExtResource("17_604qv")]
-position = Vector2(-2246, 973)
-
-[editable path="Stuff/NecessaryStuff"]
