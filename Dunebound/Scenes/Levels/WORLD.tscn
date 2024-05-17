@@ -39,11 +39,23 @@ metadata/_edit_lock_ = true
 position = Vector2(190, 5)
 metadata/_edit_lock_ = true
 
+[node name="RichTextLabel" parent="Stuff/NecessaryStuff/KaiUI/Checkpoint" index="0"]
+metadata/_edit_use_anchors_ = true
+
 [node name="DeathScreen" parent="Stuff/NecessaryStuff" index="1"]
 layer = 128
 
-[node name="WeatherControl" parent="Stuff/NecessaryStuff" index="3"]
-enabled = true
+[node name="Front" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="2"]
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayAgain" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" parent="Stuff/NecessaryStuff/DeathScreen/Container" index="4"]
+metadata/_edit_use_anchors_ = true
 
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
 position = Vector2(-9908, 129)

@@ -31,13 +31,13 @@ func _process_tilemap_data(body: Node2D, body_rid: RID, is_inside: bool) -> void
 	#0 is tilemap layer
 	var tile_data = current_tilemap.get_cell_tile_data(0, tile_coords)
 	#0 is first data property element in tilemap
-	#var tile_type = tile_data.get_custom_data_by_layer_id(0)
-	
-	
-	#if is_inside && !tile_types_in_area.has(tile_type):
-	#	tile_types_in_area.append(tile_type)
-	#if !is_inside && tile_types_in_area.has(tile_type):
-	#	tile_types_in_area.erase(tile_type)
+	if tile_data.get_custom_data_by_layer_id(0) != null:
+		var tile_type = tile_data.get_custom_data_by_layer_id(0)
+		
+		if is_inside && !tile_types_in_area.has(tile_type):
+			tile_types_in_area.append(tile_type)
+		if !is_inside && tile_types_in_area.has(tile_type):
+			tile_types_in_area.erase(tile_type)
 
 
 func spikes():

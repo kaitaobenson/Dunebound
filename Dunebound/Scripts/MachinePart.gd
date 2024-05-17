@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var area = $Area2D
-@onready var machine_part_ui = Global.kai_ui_container.get_node("MachineParts")
 
 var has_been_collected: bool = false
 
@@ -13,6 +12,8 @@ func _process(delta):
 	if area.get_overlapping_bodies().has(Global.Player):
 		if !has_been_collected:
 			has_been_collected = true
-			machine_part_ui.set_count(machine_part_ui.get_count() + 1)
+			Global.collected_machine_parts += 1
+			Global.saver_loader.var_update(Global.collected_machine_parts, "CollectedMachineParts")
 			Global.saver_loader.var_update(get_path(), "KillList")
+			
 			queue_free()
