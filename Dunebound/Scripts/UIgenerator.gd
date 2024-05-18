@@ -31,15 +31,14 @@ func generateZeroArray(size):
 	for xyzballshbihbhbugvbhu in size:
 		leArray.push_back(0)
 	return leArray
+#i dont even remember why i made this function wtf
 func getAllEvents():
 	var thingydingymalingypasingy:Array = InputMap.get_actions()
 	var theotherthingy:Array = []
 	var theotherdingybuffer
 	for yhuib in thingydingymalingypasingy.size():
 		theotherdingybuffer = InputMap.action_get_events(thingydingymalingypasingy[yhuib])
-		for abbagabba in theotherdingybuffer.size():
-			if(!thingydingymalingypasingy[yhuib].contains("ui_") and !theotherdingybuffer[abbagabba] is InputEventJoypadButton and !theotherdingybuffer[abbagabba] is InputEventJoypadMotion):
-				theotherthingy.push_back(theotherdingybuffer[abbagabba].physical_keycode)
+		theotherthingy.push_back(theotherdingybuffer.size())
 	return theotherthingy
 func returnCurrentTickerPositions()->Array:
 	var deArray:Array = []
@@ -75,13 +74,13 @@ func reloadKeybindUI()->void:
 	for retghghhvh in actions.size():
 		var newText = Label.new()
 		var newButton = $"../../../Templates/keybindButton".duplicate(15)
-		var newTicker = SpinBox.new()
+		var newTicker = $"../../../Templates/fakeTicker".duplicate(15)
 		var newCancelButton = $"../../../Templates/cancelButton".duplicate(15)
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
-		newTicker.value = tickerValues[retghghhvh]
+		newTicker.value = 0
 		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
@@ -94,7 +93,7 @@ func reloadKeybindUI()->void:
 		newButton.visible = true
 		newCancelButton.visible = false
 		newText.add_theme_font_size_override("font_size",66)
-		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
+		newText.text = replaceWithSpaces(actions[retghghhvh]).capitalize()+" :"
 		newButton.position.x = ((newText.position.x+150)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix+newText.text.length()*10
 		newCancelButton.position.x = ((newButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
 		newTicker.position.x = ((newCancelButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix

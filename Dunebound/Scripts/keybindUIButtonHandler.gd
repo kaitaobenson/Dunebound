@@ -1,5 +1,5 @@
 extends ColorRect
-@onready var keybindHandler = get_tree().get_root().get_node("WORLD/Stuff/NecessaryStuff/keybindHandler")
+@onready var keybindHandler = get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/keybindHandler")
 var onStandby:bool
 var receivedKeypress:String
 var joob
@@ -48,4 +48,5 @@ func cancelKeybindChange():
 	myCancelButton.cancelKeybindChange()
 func _process(_delta):
 	if(!onStandby&&joob!=null):
-		self.get_node("RichTextLabel").text= InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text()
+		var debug = InputMap.action_get_events(self.get_meta("action"))
+		self.get_node("RichTextLabel").text= debug[int(joob.value)-1].as_text()

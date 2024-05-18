@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
+[gd_scene load_steps=29 format=3 uid="uid://cc338i60editu"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+[ext_resource type="PackedScene" uid="uid://d16tp5irv6eiy" path="res://fake_ticker.tscn" id="23_mnfnp"]
 [ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="26_b56ym"]
 
 [sub_resource type="Gradient" id="Gradient_nj6uo"]
@@ -219,7 +220,6 @@ sandstorm_is_on = false
 
 [node name="PauseScreen" type="Node2D" parent="UI"]
 process_mode = 3
-visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -248,7 +248,7 @@ offset_left = 70.0
 offset_right = 270.0
 offset_bottom = 55.0
 theme_override_font_sizes/normal_font_size = 30
-text = "controls"
+text = "Controls"
 
 [node name="Button2" type="ColorRect" parent="UI/PauseScreen"]
 z_index = 40
@@ -260,12 +260,12 @@ color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button2"]
 layout_mode = 0
-offset_left = 70.0
-offset_right = 262.0
-offset_bottom = 51.0
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 291.0
+offset_bottom = 56.0
 theme_override_font_sizes/normal_font_size = 30
-text = "save game
-"
+text = "Back to Menu"
 
 [node name="inventoryContainer" type="Node2D" parent="UI"]
 process_mode = 3
@@ -389,6 +389,12 @@ offset_bottom = 53.0
 theme_override_font_sizes/normal_font_size = 13
 text = "controls"
 metadata/_edit_use_anchors_ = true
+
+[node name="fakeTicker" parent="Templates" instance=ExtResource("23_mnfnp")]
+offset_left = -70.0
+offset_top = -40.0
+offset_right = -6.0
+offset_bottom = -6.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3

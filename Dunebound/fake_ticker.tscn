@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://d16tp5irv6eiy"]
+
+[ext_resource type="Script" path="res://fakeTickerHandler.gd" id="1_igf25"]
+
+[node name="fakeTicker" type="ColorRect"]
+offset_top = 2.0
+offset_right = 64.0
+offset_bottom = 36.0
+color = Color(0.25098, 0.25098, 0.25098, 1)
+script = ExtResource("1_igf25")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 44.0
+offset_bottom = 42.0
+theme_override_font_sizes/normal_font_size = 29
+text = "0"
+
+[node name="up" type="ColorRect" parent="."]
+z_index = 4096
+offset_left = 48.0
+offset_right = 94.0
+offset_bottom = 49.0
+scale = Vector2(0.3, 0.3)
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="Text" type="RichTextLabel" parent="up"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 3.0
+offset_right = 214.0
+offset_bottom = 58.0
+theme_override_font_sizes/normal_font_size = 30
+text = "⬆"
+metadata/_edit_lock_ = true
+
+[node name="down" type="ColorRect" parent="."]
+z_index = 4096
+offset_left = 48.0
+offset_top = 15.0
+offset_right = 94.0
+offset_bottom = 71.0
+scale = Vector2(0.3, 0.3)
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="Text" type="RichTextLabel" parent="down"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 51.0
+offset_bottom = 55.0
+theme_override_font_sizes/normal_font_size = 30
+text = "⬇"
+metadata/_edit_lock_ = true

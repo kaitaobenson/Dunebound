@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=46 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="6_33g03"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="27_1bqp8"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="28_oe1qk"]
 [ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="29_8jjmo"]
+[ext_resource type="PackedScene" uid="uid://d16tp5irv6eiy" path="res://fake_ticker.tscn" id="30_01lw3"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="30_2bim5"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="31_hh07d"]
 
@@ -282,6 +283,7 @@ sandstorm_is_on = false
 
 [node name="PauseScreen" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
 process_mode = 3
+visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -326,8 +328,7 @@ offset_left = 70.0
 offset_right = 262.0
 offset_bottom = 51.0
 theme_override_font_sizes/normal_font_size = 30
-text = "save game
-"
+text = "Back to Menu"
 
 [node name="inventoryContainer" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
 process_mode = 3
@@ -534,6 +535,8 @@ offset_right = 222.0
 offset_bottom = 53.0
 theme_override_font_sizes/normal_font_size = 13
 text = "cancel"
+
+[node name="fakeTicker" parent="Stuff/NecessaryStuff/Templates" instance=ExtResource("30_01lw3")]
 
 [node name="Foreground" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

@@ -1,8 +1,14 @@
 extends Node
 
-
+var stockActions
 @onready var actions:Array = []
 var Parse:JSON = JSON.new()
+func filterOutNonStock(leShitToFilter:Array):
+	var stupidCrap = leShitToFilter
+	for x in leShitToFilter.size():
+		if(stockActions.find(stupidCrap[x])==-1):
+			InputMap.erase_action(stupidCrap[x])
+	print(InputMap.get_actions())
 func makeDefaultKeybinds()->void:
 	#uncomment the line below and delete the line below that line once its time to deploy to production
 	#also do the same in line 55 of UIGenerator.gd
@@ -48,15 +54,15 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	return true
 	
 func reloadKeybinds():
-	makeDefaultKeybinds()
 	var keybindConfig = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var configText = keybindConfig.get_as_text()
-	actions = InputMap.get_actions()
 	
 	#i just realized i have absolutely no reason to be deleting the entire stock inputmap
 	#for d in actions.size():
 		#InputMap.erase_action(actions[d])
-		
+	var fookinDoomb = InputMap.get_actions()
+	filterOutNonStock(fookinDoomb)
+	actions = InputMap.get_actions()
 	Parse.parse(configText)
 	var parseData = Parse.data
 	for ygu in parseData["keybinds"].size():
@@ -66,5 +72,6 @@ func reloadKeybinds():
 	keybindConfig.close()
 
 func _ready():
+	stockActions = InputMap.get_actions()
 	makeDefaultKeybinds()
 	reloadKeybinds()
