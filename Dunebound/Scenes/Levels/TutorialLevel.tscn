@@ -127,6 +127,9 @@ metadata/_edit_use_anchors_ = true
 [node name="tileTemplateHoverSensor" parent="Stuff/NecessaryStuff" index="5"]
 visible = true
 
+[node name="RichTextLabel" parent="Stuff/NecessaryStuff/Templates/cancelButton" index="0"]
+text = "Cancel"
+
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]
 position = Vector2(-130, 1287)
 

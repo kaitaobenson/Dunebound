@@ -84,7 +84,7 @@ func reloadKeybindUI()->void:
 		newTicker.value = tickerValues[retghghhvh]
 		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
-		newButton.text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
+		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
 		newText.position.y =  (((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newTicker.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65

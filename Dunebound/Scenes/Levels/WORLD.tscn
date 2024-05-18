@@ -282,7 +282,6 @@ sandstorm_is_on = false
 
 [node name="PauseScreen" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
 process_mode = 3
-visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -299,10 +298,10 @@ script = ExtResource("19_smkee")
 
 [node name="Button" type="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen"]
 z_index = 4096
-offset_left = -207.0
-offset_top = -490.0
-offset_right = 72.0
-offset_bottom = -434.0
+offset_left = 215.0
+offset_top = -8.0
+offset_right = 494.0
+offset_bottom = 48.0
 color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/UI/PauseScreen/Button"]
@@ -315,10 +314,10 @@ text = "controls"
 
 [node name="Button2" type="ColorRect" parent="Stuff/NecessaryStuff/UI/PauseScreen"]
 z_index = 40
-offset_left = -207.0
-offset_top = -395.0
-offset_right = 75.0
-offset_bottom = -342.0
+offset_left = 199.0
+offset_top = 106.0
+offset_right = 481.0
+offset_bottom = 159.0
 color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/UI/PauseScreen/Button2"]
@@ -409,29 +408,6 @@ metadata/tileName = "itemTileTemplate"
 [node name="keybindHandler" type="Node" parent="Stuff/NecessaryStuff"]
 script = ExtResource("25_05r5l")
 
-[node name="Templates" type="Node" parent="Stuff/NecessaryStuff"]
-
-[node name="keybindButton" type="Button" parent="Stuff/NecessaryStuff/Templates"]
-anchors_preset = -1
-anchor_right = 0.054
-anchor_bottom = 0.021
-offset_left = 40.0
-offset_top = -64.0
-offset_right = -14.208
-offset_bottom = -69.608
-theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
-script = ExtResource("26_rkl74")
-metadata/action = &""
-metadata/_edit_use_anchors_ = true
-
-[node name="cancelButton" type="Button" parent="Stuff/NecessaryStuff/Templates"]
-offset_right = 8.0
-offset_bottom = 8.0
-disabled = true
-text = "Cancel"
-script = ExtResource("27_1bqp8")
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="Stuff/NecessaryStuff"]
 process_mode = 3
 position = Vector2(375, 374)
@@ -518,6 +494,46 @@ offset_left = 822.0
 offset_top = 131.0
 offset_right = 840.0
 offset_bottom = 491.0
+
+[node name="Templates" type="Node" parent="Stuff/NecessaryStuff"]
+
+[node name="keybindButton" type="ColorRect" parent="Stuff/NecessaryStuff/Templates"]
+z_index = 4096
+offset_left = -94.0
+offset_top = -355.0
+offset_right = -15.0
+offset_bottom = -331.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+script = ExtResource("26_rkl74")
+metadata/action = &""
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/Templates/keybindButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 13
+text = "controls"
+
+[node name="cancelButton" type="ColorRect" parent="Stuff/NecessaryStuff/Templates"]
+z_index = 4096
+offset_left = -94.0
+offset_top = -355.0
+offset_right = -15.0
+offset_bottom = -331.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+script = ExtResource("27_1bqp8")
+metadata/action = &""
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Stuff/NecessaryStuff/Templates/cancelButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 13
+text = "cancel"
 
 [node name="Foreground" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

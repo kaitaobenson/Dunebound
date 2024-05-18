@@ -213,7 +213,6 @@ position = Vector2(44, 37)
 fade_in_time = 5.0
 
 [node name="WeatherControl" parent="." instance=ExtResource("3_6rqrq")]
-enabled = false
 sandstorm_is_on = false
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -349,25 +348,46 @@ script = ExtResource("10_k55li")
 
 [node name="Templates" type="Node" parent="."]
 
-[node name="keybindButton" type="Button" parent="Templates"]
-anchors_preset = -1
-anchor_right = 0.054
-anchor_bottom = 0.021
-offset_left = 40.0
-offset_top = -64.0
-offset_right = -14.208
-offset_bottom = -69.608
-theme_override_colors/icon_normal_color = Color(0.788235, 0.788235, 0.788235, 1)
+[node name="keybindButton" type="ColorRect" parent="Templates"]
+z_index = 4096
+offset_left = -94.0
+offset_top = -355.0
+offset_right = -15.0
+offset_bottom = -331.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 script = ExtResource("11_ileum")
 metadata/action = &""
 metadata/_edit_use_anchors_ = true
 
-[node name="cancelButton" type="Button" parent="Templates"]
-offset_right = 8.0
-offset_bottom = 8.0
-disabled = true
-text = "Cancel"
+[node name="RichTextLabel" type="RichTextLabel" parent="Templates/keybindButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 13
+text = "controls"
+metadata/_edit_use_anchors_ = true
+
+[node name="cancelButton" type="ColorRect" parent="Templates"]
+z_index = 4096
+offset_left = -94.0
+offset_top = -355.0
+offset_right = -15.0
+offset_bottom = -331.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 script = ExtResource("12_ju0bm")
+metadata/action = &""
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Templates/cancelButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 13
+text = "controls"
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
