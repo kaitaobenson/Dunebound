@@ -21,7 +21,7 @@ func _ready():
 	fire1.emitting = false
 	fire2.emitting = false
 	begin_smoke.emitting = true
-	visuals()
+	anim.frame = machine_parts_returned
 
 func _process(delta):
 	if area.get_overlapping_bodies().has(Global.Player):

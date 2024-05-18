@@ -6,7 +6,7 @@ extends GridContainer
 @onready var play = $"Play"
 @onready var credits = $"Credits"
 @onready var boss = $"Boss"
-@onready var newsave = $"NewSave"
+@onready var clear_save = $"../ClearSave"
 
 func _process(_delta):
 	if tutorial.is_pressed():
@@ -17,7 +17,7 @@ func _process(_delta):
 		_on_boss_pressed()
 	if credits.is_pressed():
 		_on_credits_pressed()
-	if newsave.is_pressed():
+	if clear_save.is_pressed():
 		_on_newsave_pressed()
 
 

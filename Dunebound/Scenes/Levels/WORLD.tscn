@@ -281,6 +281,7 @@ sandstorm_is_on = false
 
 [node name="PauseScreen" type="Node2D" parent="Stuff/NecessaryStuff/UI"]
 process_mode = 3
+visible = false
 z_index = 12
 position = Vector2(-87, 103)
 
@@ -580,14 +581,14 @@ metadata/_edit_lock_ = true
 [node name="Fall" parent="Foreground" instance=ExtResource("15_5y0xm")]
 position = Vector2(12930, 492)
 
-[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
-position = Vector2(696, 386)
-
-[node name="Water" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water2" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(11299, 348)
 
-[node name="Water2" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water3" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(14436, 3612)
 
-[node name="Water3" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water4" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(5554, 348)
+
+[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
+position = Vector2(696, 386)
