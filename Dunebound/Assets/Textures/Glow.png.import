@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbebv2oteo5bt"
-path="res://.godot/imported/Final_Boss.png-6dd99c7cb677e32b6ad1bec6c73ad124.ctex"
+uid="uid://gcuda32na7a6"
+path="res://.godot/imported/Glow.png-6f9c7ea0e2ff8ffb9e0042a64a869a67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Final_Boss.png"
-dest_files=["res://.godot/imported/Final_Boss.png-6dd99c7cb677e32b6ad1bec6c73ad124.ctex"]
+source_file="res://Assets/Textures/Glow.png"
+dest_files=["res://.godot/imported/Glow.png-6f9c7ea0e2ff8ffb9e0042a64a869a67.ctex"]
 
 [params]
 
