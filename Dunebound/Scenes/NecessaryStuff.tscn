@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cc338i60editu"]
+[gd_scene load_steps=25 format=3 uid="uid://cc338i60editu"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="15_r2oti"]
-[ext_resource type="PackedScene" uid="uid://b2mkgn5d4fr2" path="res://fake_scrollbar.tscn" id="23_jyurk"]
 [ext_resource type="PackedScene" uid="uid://d16tp5irv6eiy" path="res://fake_ticker.tscn" id="23_mnfnp"]
 [ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="26_b56ym"]
 
@@ -405,10 +404,3 @@ offset_bottom = 56.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
 [node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="."]
-
-[node name="fakeScrollbar" parent="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" instance=ExtResource("23_jyurk")]
-visible = false
-offset_left = 808.0
-offset_top = 175.0
-offset_right = 833.0
-offset_bottom = 490.0

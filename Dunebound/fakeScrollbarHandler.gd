@@ -13,7 +13,7 @@ func _input(event):
 	if(event is InputEventMouseMotion):
 		if(isHovering(self.size,self.global_position) and Input.is_mouse_button_pressed( 1 )):
 			get_node("scroll").global_position.y = get_global_mouse_position().y
-			value = get_node("scroll").global_position.y-self.global_position.y*0.10
+			value = get_node("scroll").global_position.y-self.global_position.y
 			scrolling.emit()
 		#finish this goofy stuff at convention
 func _process(delta):

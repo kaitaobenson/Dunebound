@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=46 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="6_33g03"]
@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="22_lbx4y"]
 [ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="23_mcabd"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="24_4fwo4"]
-[ext_resource type="PackedScene" uid="uid://b2mkgn5d4fr2" path="res://fake_scrollbar.tscn" id="24_x7rug"]
 [ext_resource type="Script" path="res://Scripts/keybindLoader.gd" id="25_05r5l"]
 [ext_resource type="Script" path="res://Scripts/keybindUIButtonHandler.gd" id="26_rkl74"]
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="27_1bqp8"]
@@ -487,13 +486,6 @@ offset_bottom = 56.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
 [node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="Stuff/NecessaryStuff"]
-
-[node name="fakeScrollbar" parent="Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" instance=ExtResource("24_x7rug")]
-visible = false
-offset_left = 820.0
-offset_top = 130.0
-offset_right = 845.0
-offset_bottom = 464.0
 
 [node name="Templates" type="Node" parent="Stuff/NecessaryStuff"]
 

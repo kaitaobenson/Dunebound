@@ -3,16 +3,15 @@ var scrollbarMax
 var actions = []
 var ignoreThisVar:Vector2
 var Parse:JSON = JSON.new()
-@onready var scrollbar = get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/fakeScrollbar")
+
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
-const uiCrapOffsetQuickFix:int = 300
+const uiCrapOffsetQuickFix:int = 200
 const TEXT_OFFSET_THINGYMABOBBER:int = 100
 const uiScaleDownQuickPatch:float = 0.5 
 #TODO: name a variable "TacticsComradesTactics"
 func getScrollbarSize():
 	var shit = actions
 	scrollbarMax = 350+65*shit.size()
-	scrollbar.max_value = (scrollbarMax/65)-9
 func replaceWithSpaces(thingydingy:String):
 	var dingythingy = thingydingy
 	for wrkjn in thingydingy.length():
@@ -82,13 +81,13 @@ func reloadKeybindUI()->void:
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newTicker.value = 0
-		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		print(newButton.position.y)
-		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
-		newText.position.y =  (((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix)-scrollbar.value*65
-		newTicker.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		newText.position.y =  (((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix)
+		newTicker.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		newText.z_index =99
 		newButton.z_index=999
 		newCancelButton.z_index=999
@@ -114,5 +113,3 @@ func _ready():
 	ignoreThisVar=Vector2(uiScaleDownQuickPatch,uiScaleDownQuickPatch)
 	actions = InputMap.get_actions()
 	reloadKeybindUI()
-	getScrollbarSize()
-	scrollbar.scrolling.connect(reloadKeybindUI)

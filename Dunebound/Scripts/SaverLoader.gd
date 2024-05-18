@@ -11,6 +11,7 @@ var save_dict: Dictionary = {
 
 func _init():
 	Global.saver_loader = self
+	print(save_path)
 	loader()
 	if clear_current_save:
 		clear_save()
@@ -40,7 +41,9 @@ func save() -> void:
 func loader():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		save_dict = file.get_var()
+		print(file.get_var())
+		if(file.get_var()!=null):
+			save_dict = file.get_var()
 
 
 func find_saved_value(desired_var):
