@@ -6,11 +6,6 @@ func pos(x,y):
 	#vector2 takes too long to type
 	return Vector2(x,y)
 func _ready():
-	var foodHandlerCreation = preload("res://Scenes/FoodTemplate.tscn").instantiate()
-	foodHandlerCreation.name = "foodHandler"
-	add_child(foodHandlerCreation)
-	var foodHandler = get_node("foodHandler")
-	
-	foodHandler.newFoodObject("exampleFood",pos(375,375),self)
+	pass
 func _process(_delta):
 	pass
