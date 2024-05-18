@@ -20,6 +20,7 @@ text = "0"
 
 [node name="up" type="ColorRect" parent="."]
 z_index = 4096
+layout_mode = 0
 offset_left = 48.0
 offset_right = 94.0
 offset_bottom = 49.0
@@ -38,6 +39,7 @@ metadata/_edit_lock_ = true
 
 [node name="down" type="ColorRect" parent="."]
 z_index = 4096
+layout_mode = 0
 offset_left = 48.0
 offset_top = 15.0
 offset_right = 94.0

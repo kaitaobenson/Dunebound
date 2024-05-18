@@ -7,7 +7,7 @@ func _process(_delta):
 		print("game paused")
 		print(get_tree().paused)
 		get_parent().visible = !get_parent().visible
-		get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = false
+		get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/fakeScrollbar").visible = false
 		get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = false
 		
 #handle the buttons in the pause menu through script, because i dont feel like finding whats blocking them
@@ -23,7 +23,7 @@ func _input(event):
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
-				get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible = !get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar").visible
+				get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/fakeScrollbar").visible = !get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/fakeScrollbar").visible
 				get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = !get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible
 		else:
 			controls.color = Color("4b4b4b")

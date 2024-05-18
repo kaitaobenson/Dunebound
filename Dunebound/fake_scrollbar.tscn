@@ -3,16 +3,13 @@
 [ext_resource type="Script" path="res://fakeScrollbarHandler.gd" id="1_foyfe"]
 
 [node name="fakeScrollbar" type="ColorRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 25.0
+offset_bottom = 248.0
+color = Color(0.32549, 0.32549, 0.32549, 1)
 script = ExtResource("1_foyfe")
 
 [node name="scroll" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 25.0
 offset_bottom = 40.0
-
-[node name="VScrollBar" type="VScrollBar" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+color = Color(0.529412, 0.529412, 0.529412, 1)

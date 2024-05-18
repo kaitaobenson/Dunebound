@@ -3,7 +3,7 @@ var scrollbarMax
 var actions = []
 var ignoreThisVar:Vector2
 var Parse:JSON = JSON.new()
-@onready var scrollbar = get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar")
+@onready var scrollbar = get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/fakeScrollbar")
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
 const uiCrapOffsetQuickFix:int = 300
 const TEXT_OFFSET_THINGYMABOBBER:int = 100
@@ -66,6 +66,7 @@ func filterStockKeybinds():
 		
 	print("action filter finished")
 func reloadKeybindUI()->void:
+	print("reloading")
 	filterStockKeybinds()
 	var tickerValues = getAllEvents()
 	var myChildren = get_children()
@@ -82,6 +83,7 @@ func reloadKeybindUI()->void:
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newTicker.value = 0
 		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		print(newButton.position.y)
 		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
 		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
