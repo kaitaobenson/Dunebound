@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhcvy0qd2gcto"]
+[gd_scene load_steps=9 format=3 uid="uid://bhcvy0qd2gcto"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_47de6"]
+[ext_resource type="Texture2D" uid="uid://dbebv2oteo5bt" path="res://Assets/Textures/Final_Boss.png" id="2_verbo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebkaj"]
-size = Vector2(124.813, 121.375)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fa6p5"]
+radius = 35.0
+height = 98.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yp5yy"]
 radius = 265.68
@@ -31,10 +33,11 @@ position = Vector2(323, 252)
 script = ExtResource("1_47de6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ebkaj")
-debug_color = Color(0, 0.6, 0.713726, 0.419608)
+shape = SubResource("CapsuleShape2D_fa6p5")
+debug_color = Color(0.815686, 0.411765, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_verbo")
 
 [node name="Small" type="Area2D" parent="."]
 
@@ -101,7 +104,7 @@ visible = false
 layout_mode = 0
 offset_right = 780.0
 offset_bottom = 92.0
-color = Color(1, 1, 0.313726, 0.156863)
+color = Color(1, 1, 0.313726, 0.313726)
 
 [node name="BulletSpawnPosition" type="Node2D" parent="laser_pivot"]
 position = Vector2(125, 0)

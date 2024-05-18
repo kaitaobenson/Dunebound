@@ -1,7 +1,7 @@
 class_name SaveGame
 extends Node
 
-var clear_current_save: bool = false
+
 
 const save_path = "user://savegame.tres"
 var loaded
@@ -12,15 +12,14 @@ var save_dict: Dictionary = {
 func _init():
 	Global.saver_loader = self
 	loader()
-	if clear_current_save:
-		clear_save()
 	
 	if save_dict.get("KillList") == null:
 		save_dict["KillList"] = []
 
 
 func _process(_delta):
-	pass
+	if save_dict.get("KillList") == null:
+		save_dict["KillList"] = []
 	#print(save_dict)
 
 
