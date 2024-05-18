@@ -4,6 +4,7 @@ var onStandby:bool
 var receivedKeypress:String
 var joob
 var myCancelButton
+var defaultCOlor
 signal fakeButtonPressed
 @onready var birthparent = get_parent()
 @onready var duplicateKeybindDialogueTimer = Timer.new()
@@ -40,6 +41,7 @@ func _ready():
 	duplicateKeybindDialogueTimer.one_shot = true
 	duplicateKeybindDialogueTimer.wait_time = 3
 	self.add_child(duplicateKeybindDialogueTimer)
+	defaultCOlor = self.color
 	if joob:
 		self.fakeButtonPressed.connect(keybindSetSequence)
 		joob.value_changed.connect(self.switchToAlternateKeybind)
@@ -50,3 +52,7 @@ func _process(_delta):
 	if(!onStandby&&joob!=null):
 		var debug = InputMap.action_get_events(self.get_meta("action"))
 		self.get_node("RichTextLabel").text= debug[int(joob.value)-1].as_text()
+	if(isHovering(self.size,self.global_position)):
+		self.color = Color("#A9A9A9")
+	else:
+		self.color = defaultCOlor
