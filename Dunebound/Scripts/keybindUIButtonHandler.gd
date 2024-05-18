@@ -1,5 +1,5 @@
 extends ColorRect
-@onready var keybindHandler = get_tree().get_root().get_node("WORLD/Stuff/NecessaryStuff/keybindHandler")
+@onready var keybindHandler = get_tree().get_root().get_node("RootNode/WORLD/Stuff/NecessaryStuff/keybindHandler")
 var onStandby:bool
 var receivedKeypress:String
 var joob

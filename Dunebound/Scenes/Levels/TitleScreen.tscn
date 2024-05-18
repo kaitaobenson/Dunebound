@@ -31,10 +31,10 @@ text = "Dunebound"
 scroll_active = false
 
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 35.0
-offset_top = 404.0
-offset_right = 555.0
-offset_bottom = 601.0
+offset_left = 24.0
+offset_top = 304.0
+offset_right = 608.0
+offset_bottom = 584.0
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2
@@ -75,6 +75,15 @@ theme_override_fonts/font = ExtResource("2_nq5fw")
 theme_override_font_sizes/font_size = 70
 action_mode = 0
 text = "Credits"
+
+[node name="NewSave" type="Button" parent="MainScreen/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_nq5fw")
+theme_override_font_sizes/font_size = 70
+action_mode = 0
+text = "New Save"
 
 [node name="Logo" type="Node2D" parent="."]
 visible = false
