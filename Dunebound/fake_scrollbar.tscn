@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2mkgn5d4fr2"]
+
+[ext_resource type="Script" path="res://fakeScrollbarHandler.gd" id="1_foyfe"]
+
+[node name="fakeScrollbar" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_foyfe")
+
+[node name="scroll" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
