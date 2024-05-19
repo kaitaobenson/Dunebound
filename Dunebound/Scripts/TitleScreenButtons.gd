@@ -6,7 +6,7 @@ extends GridContainer
 @onready var play = $"Play"
 @onready var credits = $"Credits"
 @onready var boss = $"Boss"
-
+@onready var clear_save = $"../ClearSave"
 
 func _process(_delta):
 	if tutorial.is_pressed():
@@ -17,6 +17,8 @@ func _process(_delta):
 		_on_boss_pressed()
 	if credits.is_pressed():
 		_on_credits_pressed()
+	if clear_save.is_pressed():
+		_on_newsave_pressed()
 
 
 func _on_tutorial_pressed():
@@ -34,3 +36,6 @@ func _on_boss_pressed():
 func _on_credits_pressed():
 	await fader.fade_in()
 	Global.root_node.change_level_to_scene("res://Scenes/Credits.tscn")
+
+func _on_newsave_pressed():
+	Global.saver_loader.clear_save()

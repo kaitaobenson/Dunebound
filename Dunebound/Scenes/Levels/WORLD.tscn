@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=46 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
@@ -25,7 +26,6 @@
 [ext_resource type="Script" path="res://Scripts/CheckpointUI.gd" id="15_1rx83"]
 [ext_resource type="PackedScene" uid="uid://c2kno0vi816i6" path="res://Scenes/Levels/WorldBits/FallLevel.tscn" id="15_5y0xm"]
 [ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="16_2cfps"]
-[ext_resource type="PackedScene" uid="uid://bassgtgl0te2m" path="res://Scenes/Creatures/Eagle.tscn" id="17_6618u"]
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="17_rx3lt"]
 [ext_resource type="PackedScene" uid="uid://c8l4cy8g8votk" path="res://Scenes/WeatherControl.tscn" id="18_n1jda"]
 [ext_resource type="PackedScene" uid="uid://dbgktjrc4u4om" path="res://Scenes/Levels/WorldBits/EndOfTheWorld.tscn" id="18_pq8rb"]
@@ -575,17 +575,14 @@ metadata/_edit_lock_ = true
 [node name="Fall" parent="Foreground" instance=ExtResource("15_5y0xm")]
 position = Vector2(12930, 492)
 
-[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
-position = Vector2(696, 386)
-
-[node name="Eagle" parent="." instance=ExtResource("17_6618u")]
-position = Vector2(12109, -63)
-
-[node name="Water" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water2" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(11299, 348)
 
-[node name="Water2" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water3" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(14436, 3612)
 
-[node name="Water3" parent="." instance=ExtResource("8_d5mjs")]
+[node name="Water4" parent="Foreground" instance=ExtResource("8_d5mjs")]
 position = Vector2(5554, 348)
+
+[node name="PlayerContainer" parent="." instance=ExtResource("8_72nur")]
+position = Vector2(696, 386)

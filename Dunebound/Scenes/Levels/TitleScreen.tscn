@@ -30,11 +30,23 @@ theme_override_font_sizes/normal_font_size = 200
 text = "Dunebound"
 scroll_active = false
 
+[node name="ClearSave" type="Button" parent="MainScreen"]
+offset_left = 34.0
+offset_top = 551.0
+offset_right = 390.0
+offset_bottom = 631.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_nq5fw")
+theme_override_font_sizes/font_size = 70
+action_mode = 0
+text = "Clear Save"
+
 [node name="GridContainer" type="GridContainer" parent="MainScreen"]
-offset_left = 35.0
-offset_top = 404.0
-offset_right = 555.0
-offset_bottom = 601.0
+offset_left = 33.0
+offset_top = 322.0
+offset_right = 657.0
+offset_bottom = 502.0
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2

@@ -84,7 +84,7 @@ func attack_manager():
 	can_action = true
 
 func teleport():
-	var tpRandomness = randi_range(1, 10)
+	var tpRandomness = randi_range(1, 5)
 	var tp_location = tp_spots[tpRandomness]
 	global_position = tp_location
 	await get_tree().create_timer(1).timeout
