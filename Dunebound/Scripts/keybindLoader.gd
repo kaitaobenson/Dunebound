@@ -15,7 +15,11 @@ func makeDefaultKeybinds()->void:
 	#if(!FileAccess.file_exists("user://keybinds.json")):
 	if(true):
 		var parse:JSON = JSON.new()
-		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var defaultPath = "res://UserData/keybinds.json"
+		var defaultkeybinds = FileAccess.open(defaultPath,FileAccess.READ)
+		print("printing stupid shit")
+		print(defaultkeybinds)
+		print(FileAccess.get_open_error())
 		var userKeybindFile = FileAccess.open("user://keybinds.json",7)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()
@@ -45,7 +49,11 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 			
 	if(foundActionNumber == -1):
 		return false
-	leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
+	#no matter how many times i write a fix, this dumbass bug always comes back somehow
+	if(keybindNumber>leJsonBuffer["keybinds"][foundActionNumber]["key"].size()):
+		leJsonBuffer["keybinds"][foundActionNumber]["key"][0] = newKey
+	else:
+		leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
 	lerawjson = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 	lerawjson.store_string(bufferParse.stringify(leJsonBuffer,"\t"))
 	lerawjson.close()

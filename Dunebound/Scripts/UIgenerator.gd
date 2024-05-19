@@ -52,7 +52,7 @@ func filterStockKeybinds():
 	var isCustom:bool
 	#if(!FileAccess.file_exists("user://keybinds.json")):
 	if(true):
-		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var defaultkeybinds = FileAccess.open("res://UserData/keybinds.json",FileAccess.READ)
 		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()

@@ -20,6 +20,9 @@ func _input(event):
 		
 	
 	if(onStandby&&event.as_text().length()<15):
+		print("no duplicates brov")
+		print(birthparent.getAllEvents().count(event.physical_keycode))
+		print(birthparent.getAllEvents())
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()
