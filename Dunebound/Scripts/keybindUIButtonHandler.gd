@@ -23,7 +23,14 @@ func _input(event):
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()
-			keybindHandler.changeKeybind(self.get_meta("action"),int(joob.value),receivedKeypress)
+			#not exactly the most flexible patch in the world, but it works
+			if(joob.max_value>0):
+				if(int(joob.value)==1):
+					keybindHandler.changeKeybind(self.get_meta("action"),0,receivedKeypress)
+				if(int(joob.value)==0):
+					keybindHandler.changeKeybind(self.get_meta("action"),1,receivedKeypress)
+			else :
+				keybindHandler.changeKeybind(self.get_meta("action"),0,receivedKeypress)
 		else:
 			self.get_node("RichTextLabel").text = "No Duplicate Keybinds!"
 			duplicateKeybindDialogueTimer.start()

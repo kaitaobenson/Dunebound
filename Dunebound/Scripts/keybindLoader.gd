@@ -45,7 +45,6 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 			
 	if(foundActionNumber == -1):
 		return false
-		
 	leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
 	lerawjson = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 	lerawjson.store_string(bufferParse.stringify(leJsonBuffer,"\t"))
@@ -67,6 +66,7 @@ func reloadKeybinds():
 	var parseData = Parse.data
 	for ygu in parseData["keybinds"].size():
 		for hbnnkjjijo in parseData["keybinds"][ygu]["key"].size():
+			print(InputMap.get_actions())
 			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
 		
 	keybindConfig.close()
