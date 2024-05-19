@@ -3,16 +3,15 @@ var scrollbarMax
 var actions = []
 var ignoreThisVar:Vector2
 var Parse:JSON = JSON.new()
-@onready var scrollbar = get_parent().get_parent().get_parent().get_node("stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis/VScrollBar")
+
 #il figure out how to scale ui depending on window size to make it look nice later, for now i just want it to appear in the camera
-const uiCrapOffsetQuickFix:int = 300
+const uiCrapOffsetQuickFix:int = 200
 const TEXT_OFFSET_THINGYMABOBBER:int = 100
 const uiScaleDownQuickPatch:float = 0.5 
 #TODO: name a variable "TacticsComradesTactics"
 func getScrollbarSize():
 	var shit = actions
 	scrollbarMax = 350+65*shit.size()
-	scrollbar.max_value = (scrollbarMax/65)-9
 func replaceWithSpaces(thingydingy:String):
 	var dingythingy = thingydingy
 	for wrkjn in thingydingy.length():
@@ -31,15 +30,14 @@ func generateZeroArray(size):
 	for xyzballshbihbhbugvbhu in size:
 		leArray.push_back(0)
 	return leArray
+#i dont even remember why i made this function wtf
 func getAllEvents():
 	var thingydingymalingypasingy:Array = InputMap.get_actions()
 	var theotherthingy:Array = []
 	var theotherdingybuffer
 	for yhuib in thingydingymalingypasingy.size():
 		theotherdingybuffer = InputMap.action_get_events(thingydingymalingypasingy[yhuib])
-		for abbagabba in theotherdingybuffer.size():
-			if(!thingydingymalingypasingy[yhuib].contains("ui_") and !theotherdingybuffer[abbagabba] is InputEventJoypadButton and !theotherdingybuffer[abbagabba] is InputEventJoypadMotion):
-				theotherthingy.push_back(theotherdingybuffer[abbagabba].physical_keycode)
+		theotherthingy.push_back(theotherdingybuffer.size())
 	return theotherthingy
 func returnCurrentTickerPositions()->Array:
 	var deArray:Array = []
@@ -54,7 +52,7 @@ func filterStockKeybinds():
 	var isCustom:bool
 	#if(!FileAccess.file_exists("user://keybinds.json")):
 	if(true):
-		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
+		var defaultkeybinds = FileAccess.open("res://UserData/keybinds.json",FileAccess.READ)
 		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()
@@ -67,6 +65,7 @@ func filterStockKeybinds():
 		
 	print("action filter finished")
 func reloadKeybindUI()->void:
+	print("reloading")
 	filterStockKeybinds()
 	var tickerValues = getAllEvents()
 	var myChildren = get_children()
@@ -75,26 +74,27 @@ func reloadKeybindUI()->void:
 	for retghghhvh in actions.size():
 		var newText = Label.new()
 		var newButton = $"../../../Templates/keybindButton".duplicate(15)
-		var newTicker = SpinBox.new()
+		var newTicker = $"../../../Templates/fakeTicker".duplicate(15)
 		var newCancelButton = $"../../../Templates/cancelButton".duplicate(15)
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
-		newTicker.value = tickerValues[retghghhvh]
-		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
-		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		newTicker.value = 0
+		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
+		print(newButton.position.y)
+		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
-		newText.position.y =  (((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix)-scrollbar.value*65
-		newTicker.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)-scrollbar.value*65
+		newText.position.y =  (((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch-25)+uiCrapOffsetQuickFix)
+		newTicker.position.y =  ((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		newText.z_index =99
 		newButton.z_index=999
 		newCancelButton.z_index=999
 		newButton.visible = true
 		newCancelButton.visible = false
 		newText.add_theme_font_size_override("font_size",66)
-		newText.text = replaceWithSpaces(actions[retghghhvh])+" :"
+		newText.text = replaceWithSpaces(actions[retghghhvh]).capitalize()+" :"
 		newButton.position.x = ((newText.position.x+150)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix+newText.text.length()*10
 		newCancelButton.position.x = ((newButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
 		newTicker.position.x = ((newCancelButton.position.x+300)*uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
@@ -113,5 +113,3 @@ func _ready():
 	ignoreThisVar=Vector2(uiScaleDownQuickPatch,uiScaleDownQuickPatch)
 	actions = InputMap.get_actions()
 	reloadKeybindUI()
-	getScrollbarSize()
-	scrollbar.scrolling.connect(reloadKeybindUI)

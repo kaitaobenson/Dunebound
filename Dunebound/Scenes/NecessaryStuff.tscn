@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc338i60editu"]
+[gd_scene load_steps=25 format=3 uid="uid://cc338i60editu"]
 
 [ext_resource type="PackedScene" uid="uid://cvcyou122pw7h" path="res://Scenes/fader.tscn" id="1_o1xk2"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="1_trsck"]
@@ -20,10 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="13_uimac"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="14_xgfq8"]
 [ext_resource type="Script" path="res://Scripts/unpauseHandler.gd" id="15_r2oti"]
-[ext_resource type="Script" path="res://Scripts/inventoryHandler.gd" id="16_j25vd"]
-[ext_resource type="Script" path="res://Scripts/itemTileHoverHandler.gd" id="17_gbn25"]
-[ext_resource type="Texture2D" uid="uid://f5y6p70rivr1" path="res://Assets/Textures/ui_close.svg" id="18_e5ahn"]
-[ext_resource type="Texture2D" uid="uid://c71tbo1nbobl0" path="res://Assets/Textures/mag_glass.svg" id="19_ebuym"]
+[ext_resource type="PackedScene" path="res://fake_ticker.tscn" id="23_mnfnp"]
 [ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="26_b56ym"]
 
 [sub_resource type="Gradient" id="Gradient_nj6uo"]
@@ -227,10 +224,10 @@ position = Vector2(-87, 103)
 process_mode = 3
 visibility_layer = 512
 z_index = 38
-offset_left = -1957.0
-offset_top = -719.0
-offset_right = 2753.0
-offset_bottom = 911.0
+offset_left = -1959.0
+offset_top = -717.0
+offset_right = 2751.0
+offset_bottom = 913.0
 color = Color(0.223529, 0.223529, 0.223529, 0.968627)
 script = ExtResource("15_r2oti")
 
@@ -248,7 +245,7 @@ offset_left = 70.0
 offset_right = 270.0
 offset_bottom = 55.0
 theme_override_font_sizes/normal_font_size = 30
-text = "controls"
+text = "Controls"
 
 [node name="Button2" type="ColorRect" parent="UI/PauseScreen"]
 z_index = 40
@@ -260,78 +257,12 @@ color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Button2"]
 layout_mode = 0
-offset_left = 70.0
-offset_right = 262.0
-offset_bottom = 51.0
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 291.0
+offset_bottom = 56.0
 theme_override_font_sizes/normal_font_size = 30
-text = "save game
-"
-
-[node name="inventoryContainer" type="Node2D" parent="UI"]
-process_mode = 3
-visible = false
-z_index = 45
-position = Vector2(-500, -300)
-script = ExtResource("16_j25vd")
-
-[node name="itemTileContainer" type="ColorRect" parent="UI/inventoryContainer"]
-offset_left = 212.0
-offset_top = 97.0
-offset_right = 832.0
-offset_bottom = 482.0
-mouse_filter = 2
-color = Color(0.0117647, 0.117647, 0.156863, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="itemTileTemplate" type="ColorRect" parent="UI/inventoryContainer/itemTileContainer"]
-z_index = 1
-layout_mode = 0
-offset_left = 47.0
-offset_top = 126.0
-offset_right = 117.0
-offset_bottom = 196.0
-mouse_filter = 2
-color = Color(0.294118, 0.294118, 0.294118, 1)
-script = ExtResource("17_gbn25")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/inventoryContainer/itemTileContainer/itemTileTemplate"]
-
-[node name="closeButton" type="Button" parent="UI/inventoryContainer"]
-process_mode = 3
-offset_left = 723.0
-offset_top = 110.0
-offset_right = 822.0
-offset_bottom = 209.0
-disabled = true
-action_mode = 0
-icon = ExtResource("18_e5ahn")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/inventoryContainer"]
-position = Vector2(256.5, 126.5)
-scale = Vector2(0.406249, 0.40625)
-texture = ExtResource("19_ebuym")
-
-[node name="TextEdit" type="TextEdit" parent="UI/inventoryContainer"]
-offset_left = 284.0
-offset_top = 108.0
-offset_right = 454.0
-offset_bottom = 142.0
-
-[node name="rawr~" type="ColorRect" parent="UI/inventoryContainer"]
-offset_left = 251.0
-offset_top = 215.0
-offset_right = 679.0
-offset_bottom = 459.0
-mouse_filter = 2
-color = Color(0.0392157, 0.0392157, 0.0392157, 1)
-metadata/_edit_lock_ = true
-
-[node name="VScrollBar" type="VScrollBar" parent="UI/inventoryContainer"]
-offset_left = 659.0
-offset_top = 222.0
-offset_right = 677.0
-offset_bottom = 446.0
+text = "Back to Menu"
 
 [node name="tileTemplateHoverSensor" type="TextureButton" parent="."]
 visible = false
@@ -389,6 +320,12 @@ offset_bottom = 53.0
 theme_override_font_sizes/normal_font_size = 13
 text = "controls"
 metadata/_edit_use_anchors_ = true
+
+[node name="fakeTicker" parent="Templates" instance=ExtResource("23_mnfnp")]
+offset_left = -70.0
+offset_top = -40.0
+offset_right = -6.0
+offset_bottom = -6.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -467,12 +404,3 @@ offset_bottom = 56.0
 text = "press button to change keybind, use ticker to cycle between alternate keybinds"
 
 [node name="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis" type="CanvasLayer" parent="."]
-
-[node name="VScrollBar" type="VScrollBar" parent="stupidScrollbarBullshitWhyDOesGodotNeedToBeLikeThis"]
-visible = false
-z_index = 4096
-z_as_relative = false
-offset_left = 822.0
-offset_top = 131.0
-offset_right = 840.0
-offset_bottom = 491.0

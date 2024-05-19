@@ -1,16 +1,26 @@
 extends Node
 
-
+var stockActions
 @onready var actions:Array = []
 var Parse:JSON = JSON.new()
+func filterOutNonStock(leShitToFilter:Array):
+	var stupidCrap = leShitToFilter
+	for x in leShitToFilter.size():
+		if(stockActions.find(stupidCrap[x])==-1):
+			InputMap.erase_action(stupidCrap[x])
+	print(InputMap.get_actions())
 func makeDefaultKeybinds()->void:
 	#uncomment the line below and delete the line below that line once its time to deploy to production
 	#also do the same in line 55 of UIGenerator.gd
 	#if(!FileAccess.file_exists("user://keybinds.json")):
 	if(true):
 		var parse:JSON = JSON.new()
-		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
-		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
+		var defaultPath = "res://UserData/keybinds.json"
+		var defaultkeybinds = FileAccess.open(defaultPath,FileAccess.READ)
+		print("printing stupid shit")
+		print(defaultkeybinds)
+		print(FileAccess.get_open_error())
+		var userKeybindFile = FileAccess.open("user://keybinds.json",7)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()
 func addInputAction(key:String,actionName:String):
@@ -39,8 +49,11 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 			
 	if(foundActionNumber == -1):
 		return false
-		
-	leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
+	#no matter how many times i write a fix, this dumbass bug always comes back somehow
+	if(keybindNumber>leJsonBuffer["keybinds"][foundActionNumber]["key"].size()):
+		leJsonBuffer["keybinds"][foundActionNumber]["key"][0] = newKey
+	else:
+		leJsonBuffer["keybinds"][foundActionNumber]["key"][keybindNumber] = newKey
 	lerawjson = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
 	lerawjson.store_string(bufferParse.stringify(leJsonBuffer,"\t"))
 	lerawjson.close()
@@ -48,23 +61,25 @@ func changeKeybind(actionName:String,keybindNumber:int,newKey:String)->bool:
 	return true
 	
 func reloadKeybinds():
-	makeDefaultKeybinds()
 	var keybindConfig = FileAccess.open("user://keybinds.json",FileAccess.READ)
 	var configText = keybindConfig.get_as_text()
-	actions = InputMap.get_actions()
 	
 	#i just realized i have absolutely no reason to be deleting the entire stock inputmap
 	#for d in actions.size():
 		#InputMap.erase_action(actions[d])
-		
+	var fookinDoomb = InputMap.get_actions()
+	filterOutNonStock(fookinDoomb)
+	actions = InputMap.get_actions()
 	Parse.parse(configText)
 	var parseData = Parse.data
 	for ygu in parseData["keybinds"].size():
 		for hbnnkjjijo in parseData["keybinds"][ygu]["key"].size():
+			print(InputMap.get_actions())
 			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
 		
 	keybindConfig.close()
 
 func _ready():
+	stockActions = InputMap.get_actions()
 	makeDefaultKeybinds()
 	reloadKeybinds()
