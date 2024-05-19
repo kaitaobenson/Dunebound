@@ -23,13 +23,13 @@ func _input(event):
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()
-			keybindHandler.changeKeybind(self.get_meta("action"),joob.value,receivedKeypress)
+			keybindHandler.changeKeybind(self.get_meta("action"),int(joob.value),receivedKeypress)
 		else:
 			self.get_node("RichTextLabel").text = "No Duplicate Keybinds!"
 			duplicateKeybindDialogueTimer.start()
 			await duplicateKeybindDialogueTimer.timeout
 			cancelKeybindChange()
-		self.get_node("RichTextLabel").text = InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text()
+		self.get_node("RichTextLabel").text = InputMap.action_get_events(self.get_meta("action"))[int(joob.value)].as_text()
 func keybindSetSequence():
 	onStandby = true
 	myCancelButton.keybindChangeStarted()

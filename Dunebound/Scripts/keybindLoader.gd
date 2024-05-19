@@ -16,7 +16,7 @@ func makeDefaultKeybinds()->void:
 	if(true):
 		var parse:JSON = JSON.new()
 		var defaultkeybinds = FileAccess.open("res://userData/keybinds.json",FileAccess.READ)
-		var userKeybindFile = FileAccess.open("user://keybinds.json",FileAccess.WRITE)
+		var userKeybindFile = FileAccess.open("user://keybinds.json",7)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()
 func addInputAction(key:String,actionName:String):
