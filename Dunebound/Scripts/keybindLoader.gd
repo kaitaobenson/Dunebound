@@ -76,7 +76,7 @@ func reloadKeybinds():
 		for hbnnkjjijo in parseData["keybinds"][ygu]["key"].size():
 			print(InputMap.get_actions())
 			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
-		
+	actions = InputMap.get_actions()
 	keybindConfig.close()
 
 func _ready():

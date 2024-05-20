@@ -20,7 +20,10 @@ func _input(event):
 		
 	
 	if(onStandby&&event.as_text().length()<15):
+		#epic debugging skill
 		print("no duplicates brov")
+		print(event.physical_keycode)
+		print(birthparent)
 		print(birthparent.getAllEvents().count(event.physical_keycode))
 		print(birthparent.getAllEvents())
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
@@ -48,6 +51,8 @@ func keybindSetSequence():
 func switchToAlternateKeybind(event):
 	self.get_node("RichTextLabel").text = InputMap.action_get_events(self.get_meta("action"))[joob.value].as_text()
 func _ready():
+	if(keybindHandler==null):
+		keybindHandler=get_tree().get_root().get_node("RootNode/WORLD2/Stuff/NecessaryStuff/keybindHandler")
 	duplicateKeybindDialogueTimer.one_shot = true
 	duplicateKeybindDialogueTimer.wait_time = 3
 	self.add_child(duplicateKeybindDialogueTimer)

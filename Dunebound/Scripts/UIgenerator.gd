@@ -31,13 +31,24 @@ func generateZeroArray(size):
 		leArray.push_back(0)
 	return leArray
 #i dont even remember why i made this function wtf
-func getAllEvents():
+#oh now i do nvm
+func getAllEventse():
 	var thingydingymalingypasingy:Array = InputMap.get_actions()
 	var theotherthingy:Array = []
 	var theotherdingybuffer
 	for yhuib in thingydingymalingypasingy.size():
 		theotherdingybuffer = InputMap.action_get_events(thingydingymalingypasingy[yhuib])
 		theotherthingy.push_back(theotherdingybuffer.size())
+	return theotherthingy
+func getAllEvents():
+	var thingydingymalingypasingy:Array = InputMap.get_actions()
+	var theotherthingy:Array = []
+	var theotherdingybuffer
+	for yhuib in thingydingymalingypasingy.size():
+		theotherdingybuffer = InputMap.action_get_events(thingydingymalingypasingy[yhuib])
+		for y in theotherdingybuffer.size():
+			if(!theotherdingybuffer[y] is InputEventJoypadButton and !theotherdingybuffer[y] is InputEventJoypadMotion):
+				theotherthingy.push_back(theotherdingybuffer[y].physical_keycode)
 	return theotherthingy
 func returnCurrentTickerPositions()->Array:
 	var deArray:Array = []
@@ -67,7 +78,7 @@ func filterStockKeybinds():
 func reloadKeybindUI()->void:
 	print("reloading")
 	filterStockKeybinds()
-	var tickerValues = getAllEvents()
+	var tickerValues = getAllEventse()
 	var myChildren = get_children()
 	for knife in myChildren.size():
 		myChildren[knife].queue_free()

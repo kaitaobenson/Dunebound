@@ -22,8 +22,9 @@ func _input(event):
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
-				
+				print("grrrr control button pressed")
 				get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = !get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible
+				get_parent().get_parent().get_parent().get_node("proFix").visible = get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible
 		else:
 			controls.color = Color("4b4b4b")
 		if(isHovering(save.size,save.global_position)):

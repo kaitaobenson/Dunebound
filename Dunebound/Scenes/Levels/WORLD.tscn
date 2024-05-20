@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=46 format=3 uid="uid://bp4snm0w7slu"]
+[gd_scene load_steps=45 format=3 uid="uid://bp4snm0w7slu"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_xb268"]
 [ext_resource type="Script" path="res://Scripts/KaiUI.gd" id="6_33g03"]
