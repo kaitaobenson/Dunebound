@@ -10,6 +10,8 @@ var save_dict: Dictionary = {
 
 
 func _init():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	Global.saver_loader = self
 	print(save_path)
 	loader()

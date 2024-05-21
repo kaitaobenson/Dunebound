@@ -39,7 +39,7 @@
 [ext_resource type="Script" path="res://Scripts/cancelButtonHandler.gd" id="27_1bqp8"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="28_oe1qk"]
 [ext_resource type="Script" path="res://Scripts/BottomBarrierDeath.gd" id="29_8jjmo"]
-[ext_resource type="PackedScene" path="res://fake_ticker.tscn" id="30_01lw3"]
+[ext_resource type="PackedScene" uid="uid://d16tp5irv6eiy" path="res://fake_ticker.tscn" id="30_01lw3"]
 [ext_resource type="Script" path="res://Scripts/UIgenerator.gd" id="30_2bim5"]
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="31_hh07d"]
 
