@@ -10,10 +10,7 @@ func filterOutNonStock(leShitToFilter:Array):
 			InputMap.erase_action(stupidCrap[x])
 	print(InputMap.get_actions())
 func makeDefaultKeybinds()->void:
-	#uncomment the line below and delete the line below that line once its time to deploy to production
-	#also do the same in line 55 of UIGenerator.gd
-	#if(!FileAccess.file_exists("user://keybinds.json")):
-	if(true):
+	if(!FileAccess.file_exists("user://keybinds.json")):
 		var parse:JSON = JSON.new()
 		var defaultPath = "res://UserData/keybinds.json"
 		var defaultkeybinds = FileAccess.open(defaultPath,FileAccess.READ)

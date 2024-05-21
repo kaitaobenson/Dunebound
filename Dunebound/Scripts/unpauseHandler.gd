@@ -7,6 +7,7 @@ func _process(_delta):
 		print("game paused")
 		print(get_tree().paused)
 		get_parent().visible = !get_parent().visible
+		get_tree().paused = get_parent().visible
 		get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = false
 		
 #handle the buttons in the pause menu through script, because i dont feel like finding whats blocking them
