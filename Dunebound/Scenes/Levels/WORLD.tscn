@@ -489,6 +489,7 @@ text = "press button to change keybind, use ticker to cycle between alternate ke
 [node name="Templates" type="Node" parent="Stuff/NecessaryStuff"]
 
 [node name="keybindButton" type="ColorRect" parent="Stuff/NecessaryStuff/Templates"]
+visible = false
 z_index = 4096
 offset_left = -94.0
 offset_top = -355.0
@@ -508,6 +509,7 @@ theme_override_font_sizes/normal_font_size = 13
 text = "controls"
 
 [node name="cancelButton" type="ColorRect" parent="Stuff/NecessaryStuff/Templates"]
+visible = false
 z_index = 4096
 offset_left = -94.0
 offset_top = -355.0
@@ -527,6 +529,7 @@ theme_override_font_sizes/normal_font_size = 13
 text = "cancel"
 
 [node name="fakeTicker" parent="Stuff/NecessaryStuff/Templates" instance=ExtResource("30_01lw3")]
+visible = false
 
 [node name="Foreground" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

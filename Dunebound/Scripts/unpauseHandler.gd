@@ -31,6 +31,7 @@ func _input(event):
 		if(isHovering(save.size,save.global_position)):
 			save.color = Color("333333")
 			if(pressed):
+				print("back to menu button pressed wtf")
 				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 		else: 
 			save.color = Color("4b4b4b")

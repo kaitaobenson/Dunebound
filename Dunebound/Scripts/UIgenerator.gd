@@ -86,6 +86,10 @@ func reloadKeybindUI()->void:
 		var newButton = $"../../../Templates/keybindButton".duplicate(15)
 		var newTicker = $"../../../Templates/fakeTicker".duplicate(15)
 		var newCancelButton = $"../../../Templates/cancelButton".duplicate(15)
+		newCancelButton.visible = true
+		newButton.visible = true
+		newTicker.visible = true
+		newCancelButton.visible = true
 		newButton.set_meta("action",actions[retghghhvh])
 		newTicker.min_value = 0
 		newTicker.max_value = InputMap.action_get_events(actions[retghghhvh]).size()-1

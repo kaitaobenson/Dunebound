@@ -1,6 +1,7 @@
 extends Node2D
 
 func _init():
+	print("dumbass init node is working as intended")
 	Global.root_node = self
 
 
