@@ -8,7 +8,7 @@
   			display: none;
 		}		
 		*{
-			overflow-x: hidden;
+			overflow-x: clip;
 			padding: 0px;
 			margin: 0px;
 		}
@@ -20,14 +20,24 @@
 			font-size: 10vh;
 		}
 		a{
-			justify-content: center;
-			display: flex;	
-			color: white;
-			text-decoration: none;
+				top: 5vh;
+			  justify-content: center;
+			  display: flex;
+			  color: white;
+			  text-decoration: none;
+			  position: relative;
+			  z-index: 1000;
+		}
+		#blog{
+			top: -6vh;
+			  left: 100vh;
 		}
 	</style>
 	<div id="navbar">
-		<a href="index.html">Home</a>
+		<center>
+			<a href="index.html" id="index">Home</a>
+		</center>
+		<a href="blog.html" id="blog">Blog</a>
 	</div>
 	<title>Flying Goose Games</title>
 </head>

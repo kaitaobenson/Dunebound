@@ -1,17 +1,17 @@
 extends Node2D
 
 func _init():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.root_node = self
 
 
 func _ready():
 	change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
-	
 
-func _process(_delta):
-	pass
 
 func change_level_to_scene(path: String):
+	get_tree().paused = false
+	
 	for child in get_children():
 		if child != Global.saver_loader:
 			child.queue_free()
@@ -19,6 +19,7 @@ func change_level_to_scene(path: String):
 	
 	await get_tree().create_timer(1).timeout
 	add_child(load(path).instantiate())
+	
 	Global.current_scene_path = path
 	
 	kill_list()
