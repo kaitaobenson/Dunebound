@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehe7ut1h77op"]
+[gd_scene load_steps=4 format=3 uid="uid://dehe7ut1h77op"]
 
 [ext_resource type="Script" path="res://Scripts/close_range_explosion.gd" id="1_2geye"]
+[ext_resource type="Texture2D" uid="uid://cvytbi3sgdier" path="res://Assets/Textures/BoomCircle.png" id="2_5ght8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ka2pe"]
+radius = 64.1249
 
 [node name="CloseRangeExplosion" type="Area2D"]
 script = ExtResource("1_2geye")
 
 [node name="ExplosionHitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_ka2pe")
 debug_color = Color(0.941176, 0, 0.603922, 0.419608)
+
+[node name="circleBoom" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_5ght8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

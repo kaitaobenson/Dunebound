@@ -39,7 +39,9 @@ func _init():
 	Global.Player = self
 
 func _ready():
-	if get_parent().name != "TutorialPlayerContainer":
+	await get_tree().create_timer(.001).timeout
+	print(Global.current_scene_path)
+	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
 		if Global.saver_loader.find_saved_value("Health") != null && Global.saver_loader.find_saved_value("Health") > 0:
 			_health_component.health = Global.saver_loader.find_saved_value("Health")
 			
@@ -48,10 +50,8 @@ func _ready():
 
 
 func _physics_process(delta):
-	if get_parent().name != "TutorialPlayerContainer":
-		Global.saver_loader.var_update(_health_component.health, "Health")
-		
-		if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+	if Global.current_scene_path == "res://Scenes/Levels/WORLD.tscn":
+			Global.saver_loader.var_update(_health_component.health, "Health")
 			Global.saver_loader.var_update(global_position, "SpawnPos")
 	
 	

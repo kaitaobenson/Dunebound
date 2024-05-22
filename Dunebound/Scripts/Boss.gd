@@ -6,10 +6,11 @@ signal laser_rect_done
 
 const bulletPath = preload("res://Scenes/boss_bullet.tscn")
 const ExplosionPath = preload("res://Scenes/CloseRangeExplosion.tscn")
-const MaxExplosionSize : float = 300.0
-const explosion_expand_rate : float = 3.0
+const MaxExplosionScale = 5
+const explosion_expand_rate : float = .01
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
 
 var can_action = true
 var explosion_is_active = false
@@ -94,12 +95,16 @@ func close_range_explosion():
 	var explosion = ExplosionPath.instantiate()
 	add_child(explosion)
 	
-	var explosion_size = 0.0
-	explosion.get_node("ExplosionHitbox").shape.radius = explosion_size
+	var explosion_scale = .25
+	var explosion_circle = explosion.get_node("circleBoom")
+	var explosion_hitbox = explosion.get_node("ExplosionHitbox")
 	
-	while explosion.get_node("ExplosionHitbox") != null && explosion.get_node("ExplosionHitbox").shape.radius < MaxExplosionSize:
-		explosion.get_node("ExplosionHitbox").shape.radius = explosion_size
-		explosion_size += explosion_expand_rate
+	while explosion.get_node("ExplosionHitbox") != null && explosion.get_node("ExplosionHitbox").scale.x < MaxExplosionScale:
+		explosion_hitbox.scale.x = explosion_scale
+		explosion_hitbox.scale.y = explosion_scale
+		explosion_circle.scale.x = explosion_scale
+		explosion_circle.scale.y = explosion_scale
+		explosion_scale += explosion_expand_rate
 		await get_tree().create_timer(0.001).timeout
 	
 	await get_tree().create_timer(0.25).timeout

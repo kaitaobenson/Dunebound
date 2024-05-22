@@ -71,7 +71,7 @@ func fire_bullet():
 	
 	bullet.global_position = bullet_pos
 	bullet.velociter = Player.global_position - bullet.global_position
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3.0).timeout
 	
 	can_fire = true
 

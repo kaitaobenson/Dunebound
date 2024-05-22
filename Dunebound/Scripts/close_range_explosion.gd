@@ -1,5 +1,5 @@
 extends Area2D
-
+var disable = false
 
 
 func _process(delta):
@@ -8,7 +8,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		set_deferred("monitorable", false)
+		disable = true
 
 func get_damage_id():
-	return "CloseRangeExplosion"
+	if !disable:
+		return "CloseRangeExplosion"
+	else:
+		return "null"
