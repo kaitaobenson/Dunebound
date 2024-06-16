@@ -10,6 +10,6 @@ func _ready():
 func _process(delta):
 	if area.get_overlapping_bodies().has(Global.Player):
 		tilemap.modulate.a = lerp(tilemap.modulate.a, 0.0, 0.05)
-		print("sdfsdf")
+
 	elif tilemap.modulate.a != 1:
 		tilemap.modulate.a = lerp(tilemap.modulate.a, 1.0, 0.05)

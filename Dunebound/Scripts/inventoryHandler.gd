@@ -39,18 +39,15 @@ func invToggle():
 func _process(_delta):
 	if(Input.is_action_just_pressed("inventory_toggle")):
 		invToggle()
-		print("funny button pressed ongod fr")
+
 func search():
-	print("search started omg ongod no cap")
 	var query:String = get_node("TextEdit").text
 	var itemFound:bool
 	var itemPos:Array = []
 	for x in items_node.size():
-		print(query)
 		if(items_node[x].foodTypeA==query):
 			itemFound = true
 			itemPos.push_back(x)
-			print("omg i found a food item no way no shot")
 			#il make the search work with non-food items later
 	var currentTileAmountOnPage:int = 0
 	var currentTileAMountOnRow:int = 0

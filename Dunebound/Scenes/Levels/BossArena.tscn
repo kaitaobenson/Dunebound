@@ -3,8 +3,8 @@
 [ext_resource type="TileSet" uid="uid://bd5i7tfrtfo56" path="res://Assets/Tilemap/Tilemap.tres" id="1_qladc"]
 [ext_resource type="PackedScene" uid="uid://bhcvy0qd2gcto" path="res://Scenes/Creatures/Boss.tscn" id="2_0foxx"]
 [ext_resource type="AudioStream" uid="uid://c4haiuschilxs" path="res://Sound/BGmusic.mp3" id="3_ax30p"]
+[ext_resource type="PackedScene" uid="uid://bvhfllxubgtko" path="res://Scenes/BossPlayer.tscn" id="3_qe3ee"]
 [ext_resource type="PackedScene" uid="uid://cm2naaay46o88" path="res://Scenes/Background1.tscn" id="4_mounp"]
-[ext_resource type="PackedScene" uid="uid://c2e2hmw035cvv" path="res://Scenes/Player.tscn" id="5_xq28t"]
 [ext_resource type="PackedScene" uid="uid://cc338i60editu" path="res://Scenes/NecessaryStuff.tscn" id="6_7imby"]
 
 [node name="BossArena" type="Node2D"]
@@ -17,6 +17,9 @@ layer_0/tile_data = PackedInt32Array(196622, 1245187, 17, 196623, 1310723, 17, 1
 
 [node name="Boss" parent="." instance=ExtResource("2_0foxx")]
 position = Vector2(0, -368)
+
+[node name="BossPlayerContainer" parent="." instance=ExtResource("3_qe3ee")]
+position = Vector2(488, -64)
 
 [node name="TPContainer" type="Node" parent="."]
 
@@ -50,10 +53,6 @@ position = Vector2(-528, -592)
 [node name="Tp10" type="Node2D" parent="TPContainer"]
 position = Vector2(-16, -688)
 
-[node name="PlayerContainer" parent="." instance=ExtResource("5_xq28t")]
-position = Vector2(552, -69)
-metadata/_edit_lock_ = true
-
 [node name="Stuff" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -66,6 +65,9 @@ autoplay = true
 metadata/_edit_lock_ = true
 
 [node name="NecessaryStuff" parent="Stuff" instance=ExtResource("6_7imby")]
+metadata/_edit_lock_ = true
+
+[node name="Container" parent="Stuff/NecessaryStuff/DeathScreen" index="0"]
 metadata/_edit_lock_ = true
 
 [node name="Left" parent="Stuff/NecessaryStuff/WorldBarrier" index="0"]

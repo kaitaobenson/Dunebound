@@ -21,11 +21,7 @@ func _input(event):
 	
 	if(onStandby&&event.as_text().length()<15):
 		#epic debugging skill
-		print("no duplicates brov")
-		print(event.physical_keycode)
-		print(birthparent)
-		print(birthparent.getAllEvents().count(event.physical_keycode))
-		print(birthparent.getAllEvents())
+		
 		if(birthparent.getAllEvents().count(event.physical_keycode)<1):
 			receivedKeypress = event.as_text()
 			cancelKeybindChange()

@@ -4,8 +4,6 @@ var controls
 #this script handles unpausing
 func _process(_delta):
 	if (Input.is_action_just_pressed("ui_cancel")):
-		print("game paused")
-		print(get_tree().paused)
 		get_parent().visible = !get_parent().visible
 		get_tree().paused = get_parent().visible
 		get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = false
@@ -23,7 +21,6 @@ func _input(event):
 		if(isHovering(controls.size,controls.global_position)):
 			controls.color = Color("333333")
 			if(pressed):
-				print("grrrr control button pressed")
 				get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible = !get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible
 				get_parent().get_parent().get_parent().get_node("proFix").visible = get_parent().get_parent().get_parent().get_node("proFix/uiContainer").visible
 		else:
@@ -31,7 +28,6 @@ func _input(event):
 		if(isHovering(save.size,save.global_position)):
 			save.color = Color("333333")
 			if(pressed):
-				print("back to menu button pressed wtf")
 				Global.root_node.change_level_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 		else: 
 			save.color = Color("4b4b4b")

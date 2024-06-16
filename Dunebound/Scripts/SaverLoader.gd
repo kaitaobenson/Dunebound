@@ -21,8 +21,7 @@ func _init():
 
 
 func _process(_delta):
-	if save_dict.get("KillList") == null:
-		save_dict["KillList"] = []
+	pass
 	#print(save_dict)
 
 
@@ -37,14 +36,16 @@ func var_update(value, var_name):
 func save() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_dict)
+	
 
 
 func loader():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		print(file.get_var())
-		if(file.get_var()!=null):
-			save_dict = file.get_var()
+		var thing = file.get_var()
+		print(thing)
+		if thing != null:
+			save_dict = thing
 
 
 func find_saved_value(desired_var):

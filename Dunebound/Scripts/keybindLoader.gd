@@ -8,15 +8,13 @@ func filterOutNonStock(leShitToFilter:Array):
 	for x in leShitToFilter.size():
 		if(stockActions.find(stupidCrap[x])==-1):
 			InputMap.erase_action(stupidCrap[x])
-	print(InputMap.get_actions())
+	
 func makeDefaultKeybinds()->void:
 	if(!FileAccess.file_exists("user://keybinds.json")):
 		var parse:JSON = JSON.new()
 		var defaultPath = "res://UserData/keybinds.json"
 		var defaultkeybinds = FileAccess.open(defaultPath,FileAccess.READ)
-		print("printing stupid shit")
-		print(defaultkeybinds)
-		print(FileAccess.get_open_error())
+		
 		var userKeybindFile = FileAccess.open("user://keybinds.json",7)
 		userKeybindFile.store_string(defaultkeybinds.get_as_text())
 		userKeybindFile.close()
@@ -71,7 +69,6 @@ func reloadKeybinds():
 	var parseData = Parse.data
 	for ygu in parseData["keybinds"].size():
 		for hbnnkjjijo in parseData["keybinds"][ygu]["key"].size():
-			print(InputMap.get_actions())
 			addInputAction(parseData["keybinds"][ygu]["key"][hbnnkjjijo],parseData["keybinds"][ygu]["actionName"])
 	actions = InputMap.get_actions()
 	keybindConfig.close()

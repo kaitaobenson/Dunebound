@@ -73,9 +73,8 @@ func filterStockKeybinds():
 	for i in stuffToRemove.size():
 		actions.pop_front()
 		
-	print("action filter finished")
+
 func reloadKeybindUI()->void:
-	print("reloading")
 	filterStockKeybinds()
 	var tickerValues = getAllEventse()
 	var myChildren = get_children()
@@ -96,7 +95,6 @@ func reloadKeybindUI()->void:
 		newTicker.name = "ticker" + str(Time.get_unix_time_from_system())
 		newTicker.value = 0
 		newButton.position.y  =((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
-		print(newButton.position.y)
 		newCancelButton.position.y=((retghghhvh*65+TEXT_OFFSET_THINGYMABOBBER)*uiScaleDownQuickPatch+uiCrapOffsetQuickFix)
 		newButton.get_node("RichTextLabel").text = InputMap.action_get_events(actions[retghghhvh])[0].as_text()
 		newText.position.x = (10+uiScaleDownQuickPatch)+uiCrapOffsetQuickFix
